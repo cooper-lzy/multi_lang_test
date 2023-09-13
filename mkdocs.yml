@@ -53,5 +53,7 @@ plugins:
           Section One: 第一节
           About Us: 关于我们
           
-
+extra: 
+  version:
+    provider: mike
 
