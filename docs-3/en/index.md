@@ -1,4 +1,4 @@
-# Welcome to MkDocsn Version 1.1.0
+# Welcome to MkDocsn Version 1.2.0
 
 For full documentation visit [mkdocs.org](https://www.mkdocs.org).
 
