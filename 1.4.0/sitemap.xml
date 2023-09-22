@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+    <url>
+        <loc>https://docs.nebula-graph.io/</loc>
+        <lastmod>2023-09-22</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://docs.nebula-graph.io/"/>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://docs.nebula-graph.com.cn/zh/"/>
+    </url>
+    <url>
+        <loc>https://docs.nebula-graph.io/about/</loc>
+        <lastmod>2023-09-22</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://docs.nebula-graph.io/about/"/>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://docs.nebula-graph.com.cn/zh/about/"/>
+    </url>
+    <url>
+        <loc>https://docs.nebula-graph.io/getting-started/topic-1/</loc>
+        <lastmod>2023-09-22</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://docs.nebula-graph.io/getting-started/topic-1/"/>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://docs.nebula-graph.com.cn/zh/getting-started/topic-1/"/>
+    </url>
+    <url>
+        <loc>https://docs.nebula-graph.com.cn/zh/</loc>
+        <lastmod>2023-09-22</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://docs.nebula-graph.com.cn/zh/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://docs.nebula-graph.com.cn/"/>
+    </url>
+    <url>
+        <loc>https://docs.nebula-graph.com.cn/zh/about/</loc>
+        <lastmod>2023-09-22</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://docs.nebula-graph.com.cn/zh/about/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://docs.nebula-graph.com.cn/about/"/>
+    </url>
+    <url>
+        <loc>https://docs.nebula-graph.com.cn/zh/getting-started/topic-1/</loc>
+        <lastmod>2023-09-22</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://docs.nebula-graph.com.cn/zh/getting-started/topic-1/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://docs.nebula-graph.com.cn/getting-started/topic-1/"/>
+    </url>
+</urlset>
