@@ -11,6 +11,9 @@ theme:
       repo: fontawesome/brands/github
   logo: 'https://docs-cdn.nebula-graph.com.cn/figures/vesoft-nebula-logo-white22-12-21.png'
   favicon: 'https://docs-cdn.nebula-graph.com.cn/figures/favicon.ico'
+  features:
+    - navigation.tabs
+    - navigation.tabs.sticky
   palette:
     - scheme: nebula
       toggle:
@@ -22,10 +25,11 @@ theme:
         name: Switch to light mode
 
 nav:
-- Home: en/index.md
-- Getting Started:
+- NebulaGraph: en/index.md
+- Cloud:
   - Section One: en/getting-started/topic-1.md
-- About Us: en/about.md
+- GQL: en/about.md
+- Visualization Tools:
 
 plugins:
   - search
@@ -47,11 +51,6 @@ plugins:
         site_name: "NebulaGraph 用户手册"
         site_url: https://docs.nebula-graph.com.cn/  # 社区版中文域名
         fixed_link: https://docs.nebula-graph.io/
-        nav_translations:
-          Home: 首页
-          Getting Started: 快速上手
-          Section One: 第一节
-          About Us: 关于我们
           
 extra: 
   version:
