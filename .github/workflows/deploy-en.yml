@@ -1,0 +1,37 @@
+name: Publish docs via GitHub Pages
+env:
+  ACTIONTEST: main
+on:
+  push:
+    branches:
+    # Remember to add v before the following version number unless the version is master.
+      - test
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 1 # fetch all commits/branches for gitversion
+
+      - name: Setup Python
+        uses: actions/setup-python@v1
+        with:
+          python-version: '3.8'
+
+      - name : prepare
+        run: sh ./prepare.sh 
+
+      - name: Git Config
+        run: git config user.name ChrisChen2023 && git config user.email chris.chen@vesoft.com
+          
+      - name: Mike Deploy
+        run: |
+          git fetch origin gh-pages --depth=1 # fix mike's CI update
+          mike list
+          mike deploy ${{ env.ACTIONTEST }}  -p --rebase
+      #   The set-default command is only applicable to the latest version and must be commented in older versions.
+      #   mike set-default ${{ env.ACTIONTEST }} -p --rebase 
+
+      
