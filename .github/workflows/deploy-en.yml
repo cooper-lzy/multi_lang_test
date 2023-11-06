@@ -32,6 +32,6 @@ jobs:
           mike list
           mike deploy ${{ env.ACTIONTEST }}  -p --rebase
       #   The set-default command is only applicable to the latest version and must be commented in older versions.
-      #   mike set-default ${{ env.ACTIONTEST }} -p --rebase 
+          mike set-default ${{ env.ACTIONTEST }} -p --rebase 
 
       
