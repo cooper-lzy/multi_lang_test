@@ -1,9 +1,10 @@
 site_name: Chris Docs
 docs_dir: docs-3
 repo_name: 'multi_lang_test'
-repo_url: 'https://github.com/ChrisChen2023/multi_lang_test'
+repo_url: https://github.com/ChrisChen2023/multi_lang_test
+site_url: https://chrischen2023.github.io/multi_lang_test/en
 
-edit_uri: 'https://github.com/ChrisChen2023/multi_lang_test/edit/master/docs-3'
+edit_uri: 'https://github.com/ChrisChen2023/multi_lang_test/edit/main/docs-3'
 
 theme:
   name: material
