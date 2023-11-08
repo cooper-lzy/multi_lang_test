@@ -4,7 +4,7 @@ repo_name: 'multi_lang_test'
 repo_url: https://github.com/ChrisChen2023/multi_lang_test
 site_url: https://chrischen2023.github.io/multi_lang_test/
 
-edit_uri: 'https://github.com/ChrisChen2023/multi_lang_test/edit/main/docs-3'
+edit_uri: 'https://github.com/ChrisChen2023/multi_lang_test/edit/v2.0.0/docs-3'
 
 theme:
   name: material
@@ -96,16 +96,16 @@ extra:
       link: 'https://github.com/vesoft-inc/nebula-docs-cn'
 # nav.comm.end
   nebula:
-    release: 3.6.0
+    release: 2.0.0
     nightly: nightly
     master: master
-    branch: release-3.6
-    tag: v3.6.0
+    branch: release-2.0
+    tag: v2.0.0
     name: NebulaGraph 
   dockercompose:
-    release: 3.6.0
-    branch: release-3.6
-    tag: v3.6.0
+    release: 2.0.0
+    branch: release-2.0
+    tag: v2.0.0
   console:
     release: 3.5.0
     branch: release-3.5
