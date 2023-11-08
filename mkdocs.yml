@@ -2,7 +2,7 @@ site_name: Chris Docs
 docs_dir: docs-3
 repo_name: 'multi_lang_test'
 repo_url: https://github.com/ChrisChen2023/multi_lang_test
-site_url: https://chrischen2023.github.io/multi_lang_test/en
+site_url: https://chrischen2023.github.io/multi_lang_test/
 
 edit_uri: 'https://github.com/ChrisChen2023/multi_lang_test/edit/main/docs-3'
 
@@ -25,18 +25,92 @@ theme:
       toggle:
         icon: material/toggle-switch
         name: Switch to light mode
+  
+  markdown_extensions:
+    - footnotes
+    - admonition
+    - codehilite:
+        guess_lang: false
+    - toc:
+        permalink: true
+        separator: "_"
+#        toc_depth: 1
+    - mdx_truly_sane_lists
+    - pymdownx.superfences
+    - pymdownx.snippets:
+        base_path: docs-3/reuse/
 
 nav:
-- NebulaGraph: en/index.md
-- Cloud:
-  - Section One: en/getting-started/topic-1.md
-- GQL: en/about.md
+  - Home: README.md
+  - Introduction:
+      - What is NebulaGraph: 1.introduction/1.what-is-nebula-graph.md
+      - Data model: 1.introduction/2.data-model.md
+      - Path: 1.introduction/2.1.path.md
+      - VID: 1.introduction/3.vid.md
+      - NebulaGraph architecture:
+        - Architecture overview: 1.introduction/3.nebula-graph-architecture/1.architecture-overview.md
+        - Meta Service: 1.introduction/3.nebula-graph-architecture/2.meta-service.md
+        - Graph Service: 1.introduction/3.nebula-graph-architecture/3.graph-service.md
+        - Storage Service:  1.introduction/3.nebula-graph-architecture/4.storage-service.md
+  
+  - Quick start:
+      - Deploy NebulaGraph using Docker: 2.quick-start/1.quick-start-workflow.md
+      - Deploy NebulaGraph on-premise: 
+        - Step 1 Install NebulaGraph: 2.quick-start/2.install-nebula-graph.md
+        - Step 2 Manage NebulaGraph Service: 2.quick-start/5.start-stop-service.md
+        - Step 3 Connect to NebulaGraph: 2.quick-start/3.connect-to-nebula-graph.md
+        - Step 4 Register the Storage Service: 2.quick-start/3.1add-storage-hosts.md
+        - Step 5 Use nGQL (CRUD): 2.quick-start/4.nebula-graph-crud.md
+      - nGQL cheatsheet: 2.quick-start/6.cheatsheet-for-ngql.md
+
+  - nGQL guide:
+      - nGQL overview:
+        - Overview: 3.ngql-guide/1.nGQL-overview/1.overview.md
+        - Graph patterns: 3.ngql-guide/1.nGQL-overview/3.graph-patterns.md
+        - Comments: 3.ngql-guide/1.nGQL-overview/comments.md
+        - Identifier case sensitivity: 3.ngql-guide/1.nGQL-overview/identifier-case-sensitivity.md
+        - Keywords: 3.ngql-guide/1.nGQL-overview/keywords-and-reserved-words.md
+        - nGQL style guide: 3.ngql-guide/1.nGQL-overview/ngql-style-guide.md
+
+  - Dashboard (Community):
+      - What is NebulaGraph Dashboard: nebula-dashboard/1.what-is-dashboard.md
+      - Deploy Dashboard: nebula-dashboard/2.deploy-dashboard.md
+      - Connect to Dashboard: nebula-dashboard/3.connect-dashboard.md
+      - Use Dashboard: nebula-dashboard/4.use-dashboard.md
+      - Monitoring metrics: nebula-dashboard/6.monitor-parameter.md
 
 plugins:
   - search
+  - macros:
+      include_dir: docs-3/reuse/
 
           
 extra: 
   version:
     provider: mike
+  social:
+    - icon: 'fontawesome/brands/github'
+      link: 'https://github.com/vesoft-inc/nebula-docs-cn'
+# nav.comm.end
+  nebula:
+    release: 3.6.0
+    nightly: nightly
+    master: master
+    branch: release-3.6
+    tag: v3.6.0
+    name: NebulaGraph 
+  dockercompose:
+    release: 3.6.0
+    branch: release-3.6
+    tag: v3.6.0
+  console:
+    release: 3.5.0
+    branch: release-3.5
+    tag: v3.5.0 
+  dashboard:
+    release: 3.4.0
+    tag: v3.4.0
+    base100: 1.0.0
+    branch: release-3.4   
+
 

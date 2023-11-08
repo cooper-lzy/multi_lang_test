@@ -1,30 +1,10 @@
-# Welcome to MkDocsn Version 1.2.0
-
-For full documentation visit [mkdocs.org](https://www.mkdocs.org).
-
-## Commands
-
-* `mkdocs new [dir-name]` - Create a new project.
-* `mkdocs serve` - Start the live-reloading docs server.
-* `mkdocs build` - Build the documentation site.
-* `mkdocs -h` - Print help message and exit.
-
-## Project layout
-
-    mkdocs.yml    # The configuration file.
-    docs/
-        index.md  # The documentation homepage.
-        ...       # Other markdown pages, images and other files.
+# Welcome to NebulaGraph {{ nebula.release }} Documentation
 
 !!! note
 
-    This manual is revised on {{ now().year }}-{{ now().month }}-{{ now().day }}, with GitHub commit [{{ git.short_commit }}](https://github.com/vesoft-inc/nebula-ent-docs/commits/v{{nebula.release}}).
+    This manual is revised on {{ now().year }}-{{ now().month }}-{{ now().day }}, with GitHub commit [{{ git.short_commit }}](https://github.com/vesoft-inc/nebula-docs/commits/v{{nebula.release}}).
 
-NebulaGraph is a distributed and scalable graph database. It is the optimal solution in the world capable of hosting graphs with dozens of billions of vertices (nodes) and trillions of edges (relationships) with millisecond latency.
-
-```yaml
-    test for chris
-```
+NebulaGraph is a distributed, scalable, and lightning-fast graph database. It is the optimal solution in the world capable of hosting graphs with dozens of billions of vertices (nodes) and trillions of edges (relationships) with millisecond latency.
 
 ## Getting started
 
@@ -34,15 +14,22 @@ NebulaGraph is a distributed and scalable graph database. It is the optimal solu
 * [FAQ](20.appendix/0.FAQ.md)
 * [Ecosystem Tools](20.appendix/6.eco-tool-version.md)
   
+
 ## Release notes
 
-- [NebulaGraph {{nebula.release}}](20.appendix/release-notes/nebula-ent-release-note.md)
-- [{{dashboard_ent.name}}](20.appendix/release-notes/dashboard-ent-release-note.md)
-- [{{explorer.name}}](20.appendix/release-notes/explorer-release-note.md)
+- [NebulaGraph Community Edition {{ nebula.release }}](20.appendix/release-notes/nebula-comm-release-note.md)
+- [NebulaGraph Dashboard Community](20.appendix/release-notes/dashboard-comm-release-note.md)
+- [NebulaGraph Studio](20.appendix/release-notes/studio-release-note.md)
+
 
 ## Other Sources
 
+- [To cite NebulaGraph](https://arxiv.org/abs/2206.07278)
+- [Forum](https://github.com/vesoft-inc/nebula/discussions)
 - [NebulaGraph Homepage](https://nebula-graph.io/)
+- [Blogs](https://nebula-graph.io/posts/)
+- [Videos](https://www.youtube.com/channel/UC73V8q795eSEMxDX4Pvdwmw)
+- [Chinese Docs](https://docs.nebula-graph.com.cn/)
 
 ## Symbols used in this manual
 
@@ -76,7 +63,10 @@ This manual has over 80 compatibilities and corresponding tips.
 
     The compatibility notes between nGQL and openCypher, or between the current version of nGQL and its prior ones. 
 
+!!! enterpriseonly
+
+    Differences between the NebulaGraph Community and Enterprise editions.
+
 ## Modify errors
  
 This NebulaGraph manual is written in the Markdown language. Users can click the pencil sign on the upper right side of each document title and modify errors.
-
