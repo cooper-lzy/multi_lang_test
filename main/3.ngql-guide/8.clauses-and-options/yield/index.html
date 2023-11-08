@@ -44,6 +44,8 @@
       
     
     
+      <link rel="stylesheet" href="../../../stylesheets/note.css">
+    
     <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -1260,14 +1262,14 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#opencypher-compatibility" class="md-nav__link">
+  <a href="#opencypher_compatibility" class="md-nav__link">
     OpenCypher compatibility
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#yield-clauses" class="md-nav__link">
+  <a href="#yield_clauses" class="md-nav__link">
     YIELD clauses
   </a>
   
@@ -1282,7 +1284,7 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
 </li>
         
           <li class="md-nav__item">
-  <a href="#use-a-yield-clause-in-a-statement" class="md-nav__link">
+  <a href="#use_a_yield_clause_in_a_statement" class="md-nav__link">
     Use a YIELD clause in a statement
   </a>
   
@@ -1294,7 +1296,7 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
 </li>
       
         <li class="md-nav__item">
-  <a href="#yield-statements" class="md-nav__link">
+  <a href="#yield_statements" class="md-nav__link">
     YIELD statements
   </a>
   
@@ -1309,14 +1311,14 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
 </li>
         
           <li class="md-nav__item">
-  <a href="#use-a-yield-statement-in-a-composite-query" class="md-nav__link">
+  <a href="#use_a_yield_statement_in_a_composite_query" class="md-nav__link">
     Use a YIELD statement in a composite query
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#use-a-standalone-yield-statement" class="md-nav__link">
+  <a href="#use_a_standalone_yield_statement" class="md-nav__link">
     Use a standalone YIELD statement
   </a>
   
@@ -1345,35 +1347,38 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
   
 
 
-<h1 id="yield">YIELD</h1>
+<h1 id="yield">YIELD<a class="headerlink" href="#yield" title="Permanent link">&para;</a></h1>
 <p><code>YIELD</code> defines the output of an nGQL query.</p>
 <p><code>YIELD</code> can lead a clause or a statement:</p>
 <ul>
-<li>
-<p>A <code>YIELD</code> clause works in nGQL statements such as <code>GO</code>, <code>FETCH</code>, or <code>LOOKUP</code> and must be defined to return the result.</p>
-</li>
-<li>
-<p>A <code>YIELD</code> statement works in a composite query or independently.</p>
-</li>
+<li>A <code>YIELD</code> clause works in nGQL statements such as <code>GO</code>, <code>FETCH</code>, or <code>LOOKUP</code> and must be defined to return the result.</li>
 </ul>
-<h2 id="opencypher-compatibility">OpenCypher compatibility</h2>
+<ul>
+<li>A <code>YIELD</code> statement works in a composite query or independently.</li>
+</ul>
+<h2 id="opencypher_compatibility">OpenCypher compatibility<a class="headerlink" href="#opencypher_compatibility" title="Permanent link">&para;</a></h2>
 <p>This topic applies to native nGQL only. For the openCypher syntax, use <a href="../return/"><code>RETURN</code></a>.</p>
 <p><code>YIELD</code> has different functions in openCypher and nGQL.</p>
 <ul>
-<li>In openCypher, <code>YIELD</code> is used in the <code>CALL[…YIELD]</code> clause to specify the output of the procedure call.</li>
+<li>
+<p>In openCypher, <code>YIELD</code> is used in the <code>CALL[…YIELD]</code> clause to specify the output of the procedure call.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>NGQL does not support <code>CALL[…YIELD]</code> yet.</p>
+</div>
+</li>
 </ul>
-<p>!!! note</p>
-<pre><code>    NGQL does not support `CALL[…YIELD]` yet.
-</code></pre>
 <ul>
 <li>In nGQL, <code>YIELD</code> works like <code>RETURN</code> in openCypher.</li>
 </ul>
-<p>!!! note
-    In the following examples, <code>$$</code> and <code>$-</code> are reference operators. For more information, see <a href="../../5.operators/5.property-reference/">Operators</a>.</p>
-<h2 id="yield-clauses">YIELD clauses</h2>
-<h3 id="syntax">Syntax</h3>
-<pre><code class="language-ngql">YIELD [DISTINCT] &lt;col&gt; [AS &lt;alias&gt;] [, &lt;col&gt; [AS &lt;alias&gt;] ...];
-</code></pre>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In the following examples, <code>$$</code> and <code>$-</code> are reference operators. For more information, see <a href="../../5.operators/5.property-reference/">Operators</a>.</p>
+</div>
+<h2 id="yield_clauses">YIELD clauses<a class="headerlink" href="#yield_clauses" title="Permanent link">&para;</a></h2>
+<h3 id="syntax">Syntax<a class="headerlink" href="#syntax" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>YIELD [DISTINCT] &lt;col&gt; [AS &lt;alias&gt;] [, &lt;col&gt; [AS &lt;alias&gt;] ...];
+</code></pre></div>
 <table>
 <thead>
 <tr>
@@ -1396,48 +1401,46 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
 </tr>
 </tbody>
 </table>
-<h3 id="use-a-yield-clause-in-a-statement">Use a YIELD clause in a statement</h3>
+<h3 id="use_a_yield_clause_in_a_statement">Use a YIELD clause in a statement<a class="headerlink" href="#use_a_yield_clause_in_a_statement" title="Permanent link">&para;</a></h3>
 <ul>
-<li>
-<p>Use <code>YIELD</code> with <code>GO</code>:</p>
-<p><code>ngql
-nebula&gt; GO FROM "player100" OVER follow \
+<li>Use <code>YIELD</code> with <code>GO</code>:<div class="highlight"><pre><span></span><code>nebula&gt; GO FROM &quot;player100&quot; OVER follow \
         YIELD properties($$).name AS Friend, properties($$).age AS Age;
 +-----------------+-----+
 | Friend          | Age |
 +-----------------+-----+
-| "Tony Parker"   | 36  |
-| "Manu Ginobili" | 41  |
-+-----------------+-----+</code></p>
+| &quot;Tony Parker&quot;   | 36  |
+| &quot;Manu Ginobili&quot; | 41  |
++-----------------+-----+
+</code></pre></div>
 </li>
-<li>
-<p>Use <code>YIELD</code> with <code>FETCH</code>:</p>
-<p><code>ngql
-nebula&gt; FETCH PROP ON player "player100" \
+</ul>
+<ul>
+<li>Use <code>YIELD</code> with <code>FETCH</code>:<div class="highlight"><pre><span></span><code>nebula&gt; FETCH PROP ON player &quot;player100&quot; \
         YIELD properties(vertex).name;
 +-------------------------+
 | properties(VERTEX).name |
 +-------------------------+
-| "Tim Duncan"            |
-+-------------------------+</code></p>
+| &quot;Tim Duncan&quot;            |
++-------------------------+
+</code></pre></div>
 </li>
-<li>
-<p>Use <code>YIELD</code> with <code>LOOKUP</code>:</p>
-<p><code>ngql
-nebula&gt; LOOKUP ON player WHERE player.name == "Tony Parker" \
+</ul>
+<ul>
+<li>Use <code>YIELD</code> with <code>LOOKUP</code>:<div class="highlight"><pre><span></span><code>nebula&gt; LOOKUP ON player WHERE player.name == &quot;Tony Parker&quot; \
         YIELD properties(vertex).name, properties(vertex).age;
 +-------------------------+------------------------+
 | properties(VERTEX).name | properties(VERTEX).age |
 +-------------------------+------------------------+
-| "Tony Parker"           | 36                     |
-+-------------------------+------------------------+</code></p>
+| &quot;Tony Parker&quot;           | 36                     |
++-------------------------+------------------------+
+</code></pre></div>
 </li>
 </ul>
-<h2 id="yield-statements">YIELD statements</h2>
-<h3 id="syntax_1">Syntax</h3>
-<pre><code class="language-ngql">YIELD [DISTINCT] &lt;col&gt; [AS &lt;alias&gt;] [, &lt;col&gt; [AS &lt;alias&gt;] ...]
+<h2 id="yield_statements">YIELD statements<a class="headerlink" href="#yield_statements" title="Permanent link">&para;</a></h2>
+<h3 id="syntax_1">Syntax<a class="headerlink" href="#syntax_1" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>YIELD [DISTINCT] &lt;col&gt; [AS &lt;alias&gt;] [, &lt;col&gt; [AS &lt;alias&gt;] ...]
 [WHERE &lt;conditions&gt;];
-</code></pre>
+</code></pre></div>
 <table>
 <thead>
 <tr>
@@ -1464,10 +1467,10 @@ nebula&gt; LOOKUP ON player WHERE player.name == "Tony Parker" \
 </tr>
 </tbody>
 </table>
-<h3 id="use-a-yield-statement-in-a-composite-query">Use a YIELD statement in a composite query</h3>
+<h3 id="use_a_yield_statement_in_a_composite_query">Use a YIELD statement in a composite query<a class="headerlink" href="#use_a_yield_statement_in_a_composite_query" title="Permanent link">&para;</a></h3>
 <p>In a <a href="../../4.variable-and-composite-queries/1.composite-queries/">composite query</a>, a <code>YIELD</code> statement accepts, filters, and modifies the result set of the preceding statement, and then outputs it.</p>
 <p>The following query finds the players that "player100" follows and calculates their average age.</p>
-<pre><code class="language-ngql">nebula&gt; GO FROM &quot;player100&quot; OVER follow \
+<div class="highlight"><pre><span></span><code>nebula&gt; GO FROM &quot;player100&quot; OVER follow \
         YIELD dst(edge) AS ID \
         | FETCH PROP ON player $-.ID \
         YIELD properties(vertex).age AS Age \
@@ -1477,9 +1480,9 @@ nebula&gt; LOOKUP ON player WHERE player.name == "Tony Parker" \
 +---------+-------------+
 | 38.5    | 2           |
 +---------+-------------+
-</code></pre>
+</code></pre></div>
 <p>The following query finds the players that "player101" follows with the follow degrees greater than 90.</p>
-<pre><code class="language-ngql">nebula&gt; $var1 = GO FROM &quot;player101&quot; OVER follow \
+<div class="highlight"><pre><span></span><code>nebula&gt; $var1 = GO FROM &quot;player101&quot; OVER follow \
         YIELD properties(edge).degree AS Degree, dst(edge) as ID; \
         YIELD $var1.ID AS ID WHERE $var1.Degree &gt; 90;
 +-------------+
@@ -1488,9 +1491,9 @@ nebula&gt; LOOKUP ON player WHERE player.name == "Tony Parker" \
 | &quot;player100&quot; |
 | &quot;player125&quot; |
 +-------------+
-</code></pre>
+</code></pre></div>
 <p>The following query finds the vertices in the player that are older than 30 and younger than 32, and returns the de-duplicate results.</p>
-<pre><code class="language-ngql">nebula&gt; LOOKUP ON player  \
+<div class="highlight"><pre><span></span><code>nebula&gt; LOOKUP ON player  \
         WHERE player.age &lt; 32 and player.age &gt;30  \
         YIELD DISTINCT properties(vertex).age as v;
 +--------+
@@ -1498,10 +1501,10 @@ nebula&gt; LOOKUP ON player WHERE player.name == "Tony Parker" \
 +--------+
 | 31     |
 +--------+
-</code></pre>
-<h3 id="use-a-standalone-yield-statement">Use a standalone YIELD statement</h3>
+</code></pre></div>
+<h3 id="use_a_standalone_yield_statement">Use a standalone YIELD statement<a class="headerlink" href="#use_a_standalone_yield_statement" title="Permanent link">&para;</a></h3>
 <p>A <code>YIELD</code> statement can calculate a valid expression and output the result.</p>
-<pre><code class="language-ngql">nebula&gt; YIELD rand32(1, 6);
+<div class="highlight"><pre><span></span><code>nebula&gt; YIELD rand32(1, 6);
 +-------------+
 | rand32(1,6) |
 +-------------+
@@ -1541,7 +1544,7 @@ nebula&gt; YIELD 1- -1;
 +----------+
 | 2        |
 +----------+
-</code></pre>
+</code></pre></div>
 
 
 

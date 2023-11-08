@@ -44,6 +44,8 @@
       
     
     
+      <link rel="stylesheet" href="../../../stylesheets/note.css">
+    
     <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -73,7 +75,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#create-edge" class="md-skip">
+        <a href="#create_edge" class="md-skip">
           Skip to content
         </a>
       
@@ -1260,7 +1262,7 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#opencypher-compatibility" class="md-nav__link">
+  <a href="#opencypher_compatibility" class="md-nav__link">
     OpenCypher compatibility
   </a>
   
@@ -1311,27 +1313,27 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
   
 
 
-<h1 id="create-edge">CREATE EDGE</h1>
+<h1 id="create_edge">CREATE EDGE<a class="headerlink" href="#create_edge" title="Permanent link">&para;</a></h1>
 <p><code>CREATE EDGE</code> creates an edge type with the given name in a graph space.</p>
-<h2 id="opencypher-compatibility">OpenCypher compatibility</h2>
+<h2 id="opencypher_compatibility">OpenCypher compatibility<a class="headerlink" href="#opencypher_compatibility" title="Permanent link">&para;</a></h2>
 <p>Edge types in nGQL are similar to relationship types in openCypher. But they are also quite different. For example, the ways to create them are different.</p>
 <ul>
 <li>In openCypher, relationship types are created together with vertices in <code>CREATE</code> statements.</li>
 <li>In nGQL, edge types are created separately using <code>CREATE EDGE</code> statements. Edge types in nGQL are more like tables in MySQL.</li>
 </ul>
-<h2 id="prerequisites">Prerequisites</h2>
+<h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h2>
 <p>Running the <code>CREATE EDGE</code> statement requires some <a href="../../7.data-security/1.authentication/3.role-list.md">privileges</a> for the graph space. Otherwise, NebulaGraph throws an error.</p>
-<h2 id="syntax">Syntax</h2>
+<h2 id="syntax">Syntax<a class="headerlink" href="#syntax" title="Permanent link">&para;</a></h2>
 <p>To create an edge type in a specific graph space, you must specify the current working space with the <code>USE</code> statement.</p>
-<pre><code class="language-ngql">CREATE EDGE [IF NOT EXISTS] &lt;edge_type_name&gt;
+<div class="highlight"><pre><span></span><code>CREATE EDGE [IF NOT EXISTS] &lt;edge_type_name&gt;
     (
-      &lt;prop_name&gt; &lt;data_type&gt; [NULL | NOT NULL] [DEFAULT &lt;default_value&gt;] [COMMENT '&lt;comment&gt;']
-      [{, &lt;prop_name&gt; &lt;data_type&gt; [NULL | NOT NULL] [DEFAULT &lt;default_value&gt;] [COMMENT '&lt;comment&gt;']} ...] 
+      &lt;prop_name&gt; &lt;data_type&gt; [NULL | NOT NULL] [DEFAULT &lt;default_value&gt;] [COMMENT &#39;&lt;comment&gt;&#39;]
+      [{, &lt;prop_name&gt; &lt;data_type&gt; [NULL | NOT NULL] [DEFAULT &lt;default_value&gt;] [COMMENT &#39;&lt;comment&gt;&#39;]} ...] 
     )
     [TTL_DURATION = &lt;ttl_duration&gt;]
     [TTL_COL = &lt;prop_name&gt;]
-    [COMMENT = '&lt;comment&gt;'];
-</code></pre>
+    [COMMENT = &#39;&lt;comment&gt;&#39;];
+</code></pre></div>
 <table>
 <thead>
 <tr>
@@ -1378,8 +1380,8 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
 </tr>
 </tbody>
 </table>
-<h3 id="examples">Examples</h3>
-<pre><code class="language-ngql">nebula&gt; CREATE EDGE IF NOT EXISTS follow(degree int);
+<h3 id="examples">Examples<a class="headerlink" href="#examples" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>nebula&gt; CREATE EDGE IF NOT EXISTS follow(degree int);
 
 # The following example creates an edge type with no properties.
 nebula&gt; CREATE EDGE IF NOT EXISTS no_property();
@@ -1390,7 +1392,7 @@ nebula&gt; CREATE EDGE IF NOT EXISTS follow_with_default(degree int DEFAULT 20);
 # In the following example, the TTL of the p2 field is set to be 100 seconds.
 nebula&gt; CREATE EDGE IF NOT EXISTS e1(p1 string, p2 int, p3 timestamp) \
         TTL_DURATION = 100, TTL_COL = &quot;p2&quot;;
-</code></pre>
+</code></pre></div>
 
 
 

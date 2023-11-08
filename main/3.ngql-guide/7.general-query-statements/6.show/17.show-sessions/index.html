@@ -44,6 +44,8 @@
       
     
     
+      <link rel="stylesheet" href="../../../../stylesheets/note.css">
+    
     <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -73,7 +75,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#show-sessions" class="md-skip">
+        <a href="#show_sessions" class="md-skip">
           Skip to content
         </a>
       
@@ -1298,30 +1300,28 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
   
 
 
-<h1 id="show-sessions">SHOW SESSIONS</h1>
+<h1 id="show_sessions">SHOW SESSIONS<a class="headerlink" href="#show_sessions" title="Permanent link">&para;</a></h1>
 <p>When a user logs in to the database, a corresponding session will be created and users can query for session information.</p>
 <p>The <code>SHOW SESSIONS</code> statement shows the information of all the sessions. It can also show a specified session with its ID.</p>
-<h2 id="precautions">Precautions</h2>
+<h2 id="precautions">Precautions<a class="headerlink" href="#precautions" title="Permanent link">&para;</a></h2>
 <ul>
-<li>
-<p>The client will call the API <code>release</code> to release the session and clear the session information when you run <code>exit</code> after the operation ends. If you exit the database in an unexpected way and the session timeout duration is not set via <code>session_idle_timeout_secs</code> in <a href="../../../5.configurations-and-logs/1.configurations/3.graph-config.md">nebula-graphd.conf</a>, the session will not be released automatically. For those sessions that are not automatically released, you need to delete them manually. For details, see <a href="../../../17.query-tuning-statements/2.kill-session/">KILL SESSIONS</a>.</p>
-</li>
-<li>
-<p><code>SHOW SESSIONS</code> queries the session information of all the Graph services.</p>
-</li>
-<li>
-<p><code>SHOW LOCAL SESSIONS</code> queries the session information of the currently connected Graph service and does not query the session information of other Graph services.</p>
-</li>
-<li>
-<p><code>SHOW SESSION &lt;Session_Id&gt;</code> queries the session information with a specific session id.</p>
-</li>
+<li>The client will call the API <code>release</code> to release the session and clear the session information when you run <code>exit</code> after the operation ends. If you exit the database in an unexpected way and the session timeout duration is not set via <code>session_idle_timeout_secs</code> in <a href="../../../5.configurations-and-logs/1.configurations/3.graph-config.md">nebula-graphd.conf</a>, the session will not be released automatically. For those sessions that are not automatically released, you need to delete them manually. For details, see <a href="../../../17.query-tuning-statements/2.kill-session/">KILL SESSIONS</a>.</li>
 </ul>
-<h2 id="syntax">Syntax</h2>
-<pre><code class="language-ngql">SHOW [LOCAL] SESSIONS;
+<ul>
+<li><code>SHOW SESSIONS</code> queries the session information of all the Graph services.</li>
+</ul>
+<ul>
+<li><code>SHOW LOCAL SESSIONS</code> queries the session information of the currently connected Graph service and does not query the session information of other Graph services.</li>
+</ul>
+<ul>
+<li><code>SHOW SESSION &lt;Session_Id&gt;</code> queries the session information with a specific session id.</li>
+</ul>
+<h2 id="syntax">Syntax<a class="headerlink" href="#syntax" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code>SHOW [LOCAL] SESSIONS;
 SHOW SESSION &lt;Session_Id&gt;;
-</code></pre>
-<h2 id="examples">Examples</h2>
-<pre><code class="language-ngql">nebula&gt; SHOW SESSIONS;
+</code></pre></div>
+<h2 id="examples">Examples<a class="headerlink" href="#examples" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code>nebula&gt; SHOW SESSIONS;
 +------------------+----------+--------------------+----------------------------+----------------------------+------------------+----------+--------------------+
 | SessionId        | UserName | SpaceName          | CreateTime                 | UpdateTime                 | GraphAddr        | Timezone | ClientIp           |
 +------------------+----------+--------------------+----------------------------+----------------------------+------------------+----------+--------------------+
@@ -1339,7 +1339,7 @@ nebula&gt; SHOW SESSION 1635254859271703;
 +------------------+----------+--------------------+----------------------------+----------------------------+------------------+----------+--------------------+
 | 1651220858102296 | &quot;root&quot;   | &quot;basketballplayer&quot; | 2022-04-29T08:27:38.102296 | 2022-04-29T08:50:54.254384 | &quot;127.0.0.1:9669&quot; | 0        | &quot;127.0.0.1&quot; |
 +------------------+----------+--------------------+----------------------------+----------------------------+------------------+----------+--------------------+
-</code></pre>
+</code></pre></div>
 <table>
 <thead>
 <tr>

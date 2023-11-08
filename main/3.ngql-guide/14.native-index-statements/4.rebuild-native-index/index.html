@@ -44,6 +44,8 @@
       
     
     
+      <link rel="stylesheet" href="../../../stylesheets/note.css">
+    
     <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -73,7 +75,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#rebuild-index" class="md-skip">
+        <a href="#rebuild_index" class="md-skip">
           Skip to content
         </a>
       
@@ -1291,31 +1293,33 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
   
 
 
-<h1 id="rebuild-index">REBUILD INDEX</h1>
-<p>!!! danger</p>
-<pre><code>- If data is updated or inserted before the creation of the index, you must rebuild the indexes **manually** to make sure that the indexes contain the previously added data. Otherwise, you cannot use `LOOKUP` and `MATCH` to query the data based on the index. If the index is created before any data insertion, there is no need to rebuild the index.
-- When the rebuild of an index is incomplete, queries that rely on the index can use only part of the index and therefore cannot obtain accurate results.
-</code></pre>
+<h1 id="rebuild_index">REBUILD INDEX<a class="headerlink" href="#rebuild_index" title="Permanent link">&para;</a></h1>
+<div class="admonition danger">
+<p class="admonition-title">Danger</p>
+<ul>
+<li>If data is updated or inserted before the creation of the index, you must rebuild the indexes <strong>manually</strong> to make sure that the indexes contain the previously added data. Otherwise, you cannot use <code>LOOKUP</code> and <code>MATCH</code> to query the data based on the index. If the index is created before any data insertion, there is no need to rebuild the index.</li>
+<li>When the rebuild of an index is incomplete, queries that rely on the index can use only part of the index and therefore cannot obtain accurate results.</li>
+</ul>
+</div>
 <p>You can use <code>REBUILD INDEX</code> to rebuild the created tag or edge type index. For details on how to create an index, see <a href="../1.create-native-index/">CREATE INDEX</a>.</p>
-<p>!!! performance</p>
-<pre><code>The speed of rebuilding indexes can be optimized by modifying the `rebuild_index_part_rate_limit` and `snapshot_batch_size` parameters in the configuration file. In addition, greater parameter values may result in higher memory and network usage, see [Storage Service configurations](../../5.configurations-and-logs/1.configurations/4.storage-config.md#misc_configurations) for details.
-</code></pre>
-<h2 id="syntax">Syntax</h2>
-<pre><code class="language-ngql">REBUILD {TAG | EDGE} INDEX [&lt;index_name_list&gt;];
+<div class="admonition performance">
+<p class="admonition-title">Performance</p>
+<p>The speed of rebuilding indexes can be optimized by modifying the <code>rebuild_index_part_rate_limit</code> and <code>snapshot_batch_size</code> parameters in the configuration file. In addition, greater parameter values may result in higher memory and network usage, see <a href="../../5.configurations-and-logs/1.configurations/4.storage-config.md#misc_configurations">Storage Service configurations</a> for details.</p>
+</div>
+<h2 id="syntax">Syntax<a class="headerlink" href="#syntax" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code>REBUILD {TAG | EDGE} INDEX [&lt;index_name_list&gt;];
 
 &lt;index_name_list&gt;::=
     [index_name [, index_name] ...]
-</code></pre>
+</code></pre></div>
 <ul>
-<li>
-<p>Multiple indexes are permitted in a single <code>REBUILD</code> statement, separated by commas. When the index name is not specified, all tag or edge indexes are rebuilt.</p>
-</li>
-<li>
-<p>After the rebuilding is complete, you can use the <code>SHOW {TAG | EDGE} INDEX STATUS</code> command to check if the index is successfully rebuilt. For details on index status, see <a href="../5.show-native-index-status/">SHOW INDEX STATUS</a>.</p>
-</li>
+<li>Multiple indexes are permitted in a single <code>REBUILD</code> statement, separated by commas. When the index name is not specified, all tag or edge indexes are rebuilt.</li>
 </ul>
-<h2 id="examples">Examples</h2>
-<pre><code class="language-ngql">nebula&gt; CREATE TAG IF NOT EXISTS person(name string, age int, gender string, email string);
+<ul>
+<li>After the rebuilding is complete, you can use the <code>SHOW {TAG | EDGE} INDEX STATUS</code> command to check if the index is successfully rebuilt. For details on index status, see <a href="../5.show-native-index-status/">SHOW INDEX STATUS</a>.</li>
+</ul>
+<h2 id="examples">Examples<a class="headerlink" href="#examples" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code>nebula&gt; CREATE TAG IF NOT EXISTS person(name string, age int, gender string, email string);
 nebula&gt; CREATE TAG INDEX IF NOT EXISTS single_person_index ON person(name(10));
 
 # The following example rebuilds an index and returns the job ID.
@@ -1345,7 +1349,7 @@ nebula&gt; SHOW JOB 31;
 | 2              | &quot;storaged0&quot;         | &quot;FINISHED&quot; | 2021-07-07T09:04:24.000 | 2021-07-07T09:04:28.000 | &quot;SUCCEEDED&quot; |
 | &quot;Total:3&quot;      | &quot;Succeeded:3&quot;       | &quot;Failed:0&quot; | &quot;In Progress:0&quot;         | &quot;&quot;                      | &quot;&quot;          |
 +----------------+---------------------+------------+-------------------------+-------------------------+-------------+
-</code></pre>
+</code></pre></div>
 <p>NebulaGraph creates a job to rebuild the index. The job ID is displayed in the preceding return message. To check if the rebuilding process is complete, use the <code>SHOW JOB &lt;job_id&gt;</code> statement. For more information, see <a href="../../4.job-statements/#show_job">SHOW JOB</a>.</p>
 
 

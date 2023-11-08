@@ -48,6 +48,8 @@
       
     
     
+      <link rel="stylesheet" href="../../stylesheets/note.css">
+    
     <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -563,28 +565,28 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
 </li>
       
         <li class="md-nav__item">
-  <a href="#vid-operation" class="md-nav__link">
+  <a href="#vid_operation" class="md-nav__link">
     VID Operation
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#vid-generation" class="md-nav__link">
+  <a href="#vid_generation" class="md-nav__link">
     VID Generation
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#define-and-modify-a-vid-and-its-data-type" class="md-nav__link">
+  <a href="#define_and_modify_a_vid_and_its_data_type" class="md-nav__link">
     Define and modify a VID and its data type
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#query-start-vid-and-global-scan" class="md-nav__link">
+  <a href="#query_start_vid_and_global_scan" class="md-nav__link">
     Query start vid and global scan
   </a>
   
@@ -1350,28 +1352,28 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
 </li>
       
         <li class="md-nav__item">
-  <a href="#vid-operation" class="md-nav__link">
+  <a href="#vid_operation" class="md-nav__link">
     VID Operation
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#vid-generation" class="md-nav__link">
+  <a href="#vid_generation" class="md-nav__link">
     VID Generation
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#define-and-modify-a-vid-and-its-data-type" class="md-nav__link">
+  <a href="#define_and_modify_a_vid_and_its_data_type" class="md-nav__link">
     Define and modify a VID and its data type
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#query-start-vid-and-global-scan" class="md-nav__link">
+  <a href="#query_start_vid_and_global_scan" class="md-nav__link">
     Query start vid and global scan
   </a>
   
@@ -1395,73 +1397,69 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
   
 
 
-<h1 id="vid">VID</h1>
+<h1 id="vid">VID<a class="headerlink" href="#vid" title="Permanent link">&para;</a></h1>
 <p>In a graph space, a vertex is uniquely identified by its ID, which is called a VID or a Vertex ID.</p>
-<h2 id="features">Features</h2>
+<h2 id="features">Features<a class="headerlink" href="#features" title="Permanent link">&para;</a></h2>
 <ul>
-<li>
-<p>The data types of VIDs are restricted to <code>FIXED_STRING(&lt;N&gt;)</code> or <code>INT64</code>. One graph space can only select one VID type.</p>
-</li>
-<li>
-<p>A VID in a graph space is unique. It functions just as a primary key in a relational database. VIDs in different graph spaces are independent.</p>
-</li>
-<li>
-<p>The VID generation method must be set by users, because NebulaGraph does not provide auto increasing ID, or UUID.</p>
-</li>
+<li>The data types of VIDs are restricted to <code>FIXED_STRING(&lt;N&gt;)</code> or <code>INT64</code>. One graph space can only select one VID type.</li>
+</ul>
+<ul>
+<li>A VID in a graph space is unique. It functions just as a primary key in a relational database. VIDs in different graph spaces are independent.</li>
+</ul>
+<ul>
+<li>The VID generation method must be set by users, because NebulaGraph does not provide auto increasing ID, or UUID.</li>
+</ul>
+<ul>
 <li>
 <p>Vertices with the same VID will be identified as the same one. For example:</p>
-</li>
-<li>
-<p>A VID is the unique identifier of an entity, like a person's ID card number. A tag means the type of an entity,  such as driver, and boss. Different tags define two groups of different properties, such as driving license number, driving age, order amount, order taking alt, and job number, payroll, debt ceiling, business phone number.</p>
-</li>
-<li>
-<p>When two <code>INSERT</code> statements (neither uses a parameter of <code>IF NOT EXISTS</code>) with the same VID and tag are operated at the same time, the latter <code>INSERT</code> will overwrite the former.</p>
-</li>
-<li>
-<p>When two <code>INSERT</code> statements with the same VID but different tags, like <code>TAG A</code> and <code>TAG B</code>, are operated at the same time, the operation of <code>Tag A</code> will not affect <code>Tag B</code>.</p>
-</li>
-<li>
-<p>VIDs will usually be indexed and stored into memory (in the way of LSM-tree). Thus, direct access to VIDs enjoys peak performance.</p>
-</li>
-</ul>
-<h2 id="vid-operation">VID Operation</h2>
 <ul>
-<li>
-<p>NebulaGraph 1.x only supports <code>INT64</code> while NebulaGraph 2.x supports <code>INT64</code> and <code>FIXED_STRING(&lt;N&gt;)</code>. In <code>CREATE SPACE</code>, VID types can be set via <code>vid_type</code>.</p>
-</li>
-<li>
-<p><code>id()</code> function can be used to specify or locate a VID.</p>
-</li>
-<li>
-<p><code>LOOKUP</code> or <code>MATCH</code> statements can be used to find a VID via property index.</p>
-</li>
-<li>
-<p>Direct access to vertices statements via VIDs enjoys peak performance, such as <code>DELETE xxx WHERE id(xxx) == "player100"</code> or <code>GO FROM "player100"</code>. Finding VIDs via properties and then operating the graph will cause poor performance, such as <code>LOOKUP | GO FROM $-.ids</code>, which will run both <code>LOOKUP</code> and <code>|</code> one more time.</p>
+<li>A VID is the unique identifier of an entity, like a person's ID card number. A tag means the type of an entity,  such as driver, and boss. Different tags define two groups of different properties, such as driving license number, driving age, order amount, order taking alt, and job number, payroll, debt ceiling, business phone number.</li>
+</ul>
+<ul>
+<li>When two <code>INSERT</code> statements (neither uses a parameter of <code>IF NOT EXISTS</code>) with the same VID and tag are operated at the same time, the latter <code>INSERT</code> will overwrite the former.</li>
+</ul>
+<ul>
+<li>When two <code>INSERT</code> statements with the same VID but different tags, like <code>TAG A</code> and <code>TAG B</code>, are operated at the same time, the operation of <code>Tag A</code> will not affect <code>Tag B</code>.</li>
+</ul>
 </li>
 </ul>
-<h2 id="vid-generation">VID Generation</h2>
+<ul>
+<li>VIDs will usually be indexed and stored into memory (in the way of LSM-tree). Thus, direct access to VIDs enjoys peak performance.</li>
+</ul>
+<h2 id="vid_operation">VID Operation<a class="headerlink" href="#vid_operation" title="Permanent link">&para;</a></h2>
+<ul>
+<li>NebulaGraph 1.x only supports <code>INT64</code> while NebulaGraph 2.x supports <code>INT64</code> and <code>FIXED_STRING(&lt;N&gt;)</code>. In <code>CREATE SPACE</code>, VID types can be set via <code>vid_type</code>.</li>
+</ul>
+<ul>
+<li><code>id()</code> function can be used to specify or locate a VID.</li>
+</ul>
+<ul>
+<li><code>LOOKUP</code> or <code>MATCH</code> statements can be used to find a VID via property index.</li>
+</ul>
+<ul>
+<li>Direct access to vertices statements via VIDs enjoys peak performance, such as <code>DELETE xxx WHERE id(xxx) == "player100"</code> or <code>GO FROM "player100"</code>. Finding VIDs via properties and then operating the graph will cause poor performance, such as <code>LOOKUP | GO FROM $-.ids</code>, which will run both <code>LOOKUP</code> and <code>|</code> one more time.</li>
+</ul>
+<h2 id="vid_generation">VID Generation<a class="headerlink" href="#vid_generation" title="Permanent link">&para;</a></h2>
 <p>VIDs can be generated via applications. Here are some tips:</p>
 <ul>
-<li>
-<p>(Optimal) Directly take a unique primary key or property as a VID. Property access depends on the VID.</p>
-</li>
-<li>
-<p>Generate a VID via a unique combination of properties. Property access depends on property index.</p>
-</li>
-<li>
-<p>Generate a VID via algorithms like snowflake. Property access depends on property index.</p>
-</li>
-<li>
-<p>If short primary keys greatly outnumber long primary keys, do not enlarge the <code>N</code> of <code>FIXED_STRING(&lt;N&gt;)</code> too much. Otherwise, it will occupy a lot of memory and hard disks, and slow down performance. Generate VIDs via BASE64, MD5, hash by encoding and splicing.</p>
-</li>
-<li>
-<p>If you generate int64 VID via hash, the probability of collision is about 1/10 when there are 1 billion vertices. The number of edges has no concern with the probability of collision.</p>
-</li>
+<li>(Optimal) Directly take a unique primary key or property as a VID. Property access depends on the VID.</li>
 </ul>
-<h2 id="define-and-modify-a-vid-and-its-data-type">Define and modify a VID and its data type</h2>
+<ul>
+<li>Generate a VID via a unique combination of properties. Property access depends on property index.</li>
+</ul>
+<ul>
+<li>Generate a VID via algorithms like snowflake. Property access depends on property index.</li>
+</ul>
+<ul>
+<li>If short primary keys greatly outnumber long primary keys, do not enlarge the <code>N</code> of <code>FIXED_STRING(&lt;N&gt;)</code> too much. Otherwise, it will occupy a lot of memory and hard disks, and slow down performance. Generate VIDs via BASE64, MD5, hash by encoding and splicing.</li>
+</ul>
+<ul>
+<li>If you generate int64 VID via hash, the probability of collision is about 1/10 when there are 1 billion vertices. The number of edges has no concern with the probability of collision.</li>
+</ul>
+<h2 id="define_and_modify_a_vid_and_its_data_type">Define and modify a VID and its data type<a class="headerlink" href="#define_and_modify_a_vid_and_its_data_type" title="Permanent link">&para;</a></h2>
 <p>The data type of a VID must be defined when you <a href="../../3.ngql-guide/9.space-statements/1.create-space/">create the graph space</a>. Once defined, it cannot be modified.</p>
 <p>A VID is set when you <a href="../../3.ngql-guide/12.vertex-statements/1.insert-vertex/">insert a vertex</a> and cannot be modified. </p>
-<h2 id="query-start-vid-and-global-scan">Query <code>start vid</code> and global scan</h2>
+<h2 id="query_start_vid_and_global_scan">Query <code>start vid</code> and global scan<a class="headerlink" href="#query_start_vid_and_global_scan" title="Permanent link">&para;</a></h2>
 <p>In most cases, the execution plan of query statements in NebulaGraph (<code>MATCH</code>, <code>GO</code>, and <code>LOOKUP</code>) must query the <code>start vid</code> in a certain way.</p>
 <p>There are only two ways to locate <code>start vid</code>:</p>
 <ol>

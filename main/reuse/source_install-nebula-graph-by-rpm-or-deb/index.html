@@ -44,6 +44,8 @@
       
     
     
+      <link rel="stylesheet" href="../../stylesheets/note.css">
+    
     <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -1265,21 +1267,21 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
 </li>
       
         <li class="md-nav__item">
-  <a href="#step-1-download-the-package-from-cloud-service" class="md-nav__link">
+  <a href="#step_1_download_the_package_from_cloud_service" class="md-nav__link">
     Step 1: Download the package from cloud service
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#step-2-install-nebulagraph" class="md-nav__link">
+  <a href="#step_2_install_nebulagraph" class="md-nav__link">
     Step 2: Install NebulaGraph
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#next-to-do" class="md-nav__link">
+  <a href="#next_to_do" class="md-nav__link">
     Next to do
   </a>
   
@@ -1306,114 +1308,118 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
   <h1>Source install nebula graph by rpm or deb</h1>
 
 <p>RPM and DEB are common package formats on Linux systems. This topic shows how to quickly install NebulaGraph with the RPM or DEB package.</p>
-<p>!!! note</p>
-<pre><code>The console is not complied or packaged with NebulaGraph server binaries. You can install [nebula-console](https://github.com/vesoft-inc/nebula-console) by yourself.
-</code></pre>
-<h2 id="prerequisites">Prerequisites</h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The console is not complied or packaged with NebulaGraph server binaries. You can install <a href="https://github.com/vesoft-inc/nebula-console">nebula-console</a> by yourself.</p>
+</div>
+<h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h2>
 <ul>
 <li>The tool <code>wget</code> is installed.</li>
 </ul>
-<h2 id="step-1-download-the-package-from-cloud-service">Step 1: Download the package from cloud service</h2>
-<p>!!! note</p>
-<pre><code>NebulaGraph is currently only supported for installation on Linux systems, and only CentOS 7.x, CentOS 8.x, Ubuntu 16.04, Ubuntu 18.04, and Ubuntu 20.04 operating systems are supported.
-</code></pre>
+<h2 id="step_1_download_the_package_from_cloud_service">Step 1: Download the package from cloud service<a class="headerlink" href="#step_1_download_the_package_from_cloud_service" title="Permanent link">&para;</a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>NebulaGraph is currently only supported for installation on Linux systems, and only CentOS 7.x, CentOS 8.x, Ubuntu 16.04, Ubuntu 18.04, and Ubuntu 20.04 operating systems are supported. </p>
+</div>
 <ul>
-<li>
-<p>Download the released version.</p>
-<p>URL:</p>
-<p>```bash
-//Centos 7
-https://oss-cdn.nebula-graph.io/package/<release_version>/nebula-graph-<release_version>.el7.x86_64.rpm</p>
-<p>//Centos 8
-https://oss-cdn.nebula-graph.io/package/<release_version>/nebula-graph-<release_version>.el8.x86_64.rpm</p>
-<p>//Ubuntu 1604
-https://oss-cdn.nebula-graph.io/package/<release_version>/nebula-graph-<release_version>.ubuntu1604.amd64.deb</p>
-<p>//Ubuntu 1804
-https://oss-cdn.nebula-graph.io/package/<release_version>/nebula-graph-<release_version>.ubuntu1804.amd64.deb</p>
-<p>//Ubuntu 2004
-https://oss-cdn.nebula-graph.io/package/<release_version>/nebula-graph-<release_version>.ubuntu2004.amd64.deb
-```</p>
+<li>Download the released version.<p>URL:</p>
+<div class="highlight"><pre><span></span><code>//Centos<span class="w"> </span><span class="m">7</span>
+https://oss-cdn.nebula-graph.io/package/&lt;release_version&gt;/nebula-graph-&lt;release_version&gt;.el7.x86_64.rpm
+
+//Centos<span class="w"> </span><span class="m">8</span>
+https://oss-cdn.nebula-graph.io/package/&lt;release_version&gt;/nebula-graph-&lt;release_version&gt;.el8.x86_64.rpm
+
+//Ubuntu<span class="w"> </span><span class="m">1604</span>
+https://oss-cdn.nebula-graph.io/package/&lt;release_version&gt;/nebula-graph-&lt;release_version&gt;.ubuntu1604.amd64.deb
+
+//Ubuntu<span class="w"> </span><span class="m">1804</span>
+https://oss-cdn.nebula-graph.io/package/&lt;release_version&gt;/nebula-graph-&lt;release_version&gt;.ubuntu1804.amd64.deb
+
+//Ubuntu<span class="w"> </span><span class="m">2004</span>
+https://oss-cdn.nebula-graph.io/package/&lt;release_version&gt;/nebula-graph-&lt;release_version&gt;.ubuntu2004.amd64.deb
+</code></pre></div>
 <p>For example, download the release package <code>3.6.0</code> for <code>Centos 7.5</code>:</p>
-<p><code>bash
-wget https://oss-cdn.nebula-graph.io/package/3.6.0/nebula-graph-3.6.0.el7.x86_64.rpm
-wget https://oss-cdn.nebula-graph.io/package/3.6.0/nebula-graph-3.6.0.el7.x86_64.rpm.sha256sum.txt</code></p>
+<div class="highlight"><pre><span></span><code>wget<span class="w"> </span>https://oss-cdn.nebula-graph.io/package/3.6.0/nebula-graph-3.6.0.el7.x86_64.rpm
+wget<span class="w"> </span>https://oss-cdn.nebula-graph.io/package/3.6.0/nebula-graph-3.6.0.el7.x86_64.rpm.sha256sum.txt
+</code></pre></div>
 <p>Download the release package <code>3.6.0</code> for <code>Ubuntu 1804</code>:</p>
-<p><code>bash
-wget https://oss-cdn.nebula-graph.io/package/3.6.0/nebula-graph-3.6.0.ubuntu1804.amd64.deb
-wget https://oss-cdn.nebula-graph.io/package/3.6.0/nebula-graph-3.6.0.ubuntu1804.amd64.deb.sha256sum.txt</code></p>
+<div class="highlight"><pre><span></span><code>wget<span class="w"> </span>https://oss-cdn.nebula-graph.io/package/3.6.0/nebula-graph-3.6.0.ubuntu1804.amd64.deb
+wget<span class="w"> </span>https://oss-cdn.nebula-graph.io/package/3.6.0/nebula-graph-3.6.0.ubuntu1804.amd64.deb.sha256sum.txt
+</code></pre></div>
 </li>
+</ul>
+<ul>
 <li>
 <p>Download the nightly version.</p>
-</li>
+<div class="admonition danger">
+<p class="admonition-title">Danger</p>
+<ul>
+<li>Nightly versions are usually used to test new features. Do not use it in a production environment.</li>
+<li>Nightly versions may not be built successfully every night. And the names may change from day to day.</li>
 </ul>
-<p>!!! danger</p>
-<pre><code>  - Nightly versions are usually used to test new features. Do not use it in a production environment.
-  - Nightly versions may not be built successfully every night. And the names may change from day to day.
-
-URL:
-
-```bash
-//Centos 7
+</div>
+<p>URL:</p>
+<div class="highlight"><pre><span></span><code>//Centos<span class="w"> </span><span class="m">7</span>
 https://oss-cdn.nebula-graph.io/package/nightly/&lt;yyyy.mm.dd&gt;/nebula-graph-&lt;yyyy.mm.dd&gt;-nightly.el7.x86_64.rpm
 
-//Centos 8
+//Centos<span class="w"> </span><span class="m">8</span>
 https://oss-cdn.nebula-graph.io/package/nightly/&lt;yyyy.mm.dd&gt;/nebula-graph-&lt;yyyy.mm.dd&gt;-nightly.el8.x86_64.rpm
 
-//Ubuntu 1604
+//Ubuntu<span class="w"> </span><span class="m">1604</span>
 https://oss-cdn.nebula-graph.io/package/nightly/&lt;yyyy.mm.dd&gt;/nebula-graph-&lt;yyyy.mm.dd&gt;-nightly.ubuntu1604.amd64.deb
 
-//Ubuntu 1804
+//Ubuntu<span class="w"> </span><span class="m">1804</span>
 https://oss-cdn.nebula-graph.io/package/nightly/&lt;yyyy.mm.dd&gt;/nebula-graph-&lt;yyyy.mm.dd&gt;-nightly.ubuntu1804.amd64.deb
 
-//Ubuntu 2004
+//Ubuntu<span class="w"> </span><span class="m">2004</span>
 https://oss-cdn.nebula-graph.io/package/nightly/&lt;yyyy.mm.dd&gt;/nebula-graph-&lt;yyyy.mm.dd&gt;-nightly.ubuntu2004.amd64.deb
-```
-
-For example, download the `Centos 7.5` package developed and built in `2021.11.28`:
-
-```bash
-wget https://oss-cdn.nebula-graph.io/package/nightly/2021.11.28/nebula-graph-2021.11.28-nightly.el7.x86_64.rpm
-wget https://oss-cdn.nebula-graph.io/package/nightly/2021.11.28/nebula-graph-2021.11.28-nightly.el7.x86_64.rpm.sha256sum.txt
-```
-
-For example, download the `Ubuntu 1804` package developed and built in `2021.11.28`:
-
-```bash
-wget https://oss-cdn.nebula-graph.io/package/nightly/2021.11.28/nebula-graph-2021.11.28-nightly.ubuntu1804.amd64.deb
-wget https://oss-cdn.nebula-graph.io/package/nightly/2021.11.28/nebula-graph-2021.11.28-nightly.ubuntu1804.amd64.deb.sha256sum.txt
-```
-</code></pre>
-<h2 id="step-2-install-nebulagraph">Step 2: Install NebulaGraph</h2>
-<ul>
-<li>Use the following syntax to install with an RPM package.</li>
+</code></pre></div>
+<p>For example, download the <code>Centos 7.5</code> package developed and built in <code>2021.11.28</code>:</p>
+<div class="highlight"><pre><span></span><code>wget<span class="w"> </span>https://oss-cdn.nebula-graph.io/package/nightly/2021.11.28/nebula-graph-2021.11.28-nightly.el7.x86_64.rpm
+wget<span class="w"> </span>https://oss-cdn.nebula-graph.io/package/nightly/2021.11.28/nebula-graph-2021.11.28-nightly.el7.x86_64.rpm.sha256sum.txt
+</code></pre></div>
+<p>For example, download the <code>Ubuntu 1804</code> package developed and built in <code>2021.11.28</code>:</p>
+<div class="highlight"><pre><span></span><code>wget<span class="w"> </span>https://oss-cdn.nebula-graph.io/package/nightly/2021.11.28/nebula-graph-2021.11.28-nightly.ubuntu1804.amd64.deb
+wget<span class="w"> </span>https://oss-cdn.nebula-graph.io/package/nightly/2021.11.28/nebula-graph-2021.11.28-nightly.ubuntu1804.amd64.deb.sha256sum.txt
+</code></pre></div>
+</li>
 </ul>
-<p><code>bash
-  $ sudo rpm -ivh --prefix=&lt;installation_path&gt; &lt;package_name&gt;</code></p>
+<h2 id="step_2_install_nebulagraph">Step 2: Install NebulaGraph<a class="headerlink" href="#step_2_install_nebulagraph" title="Permanent link">&para;</a></h2>
+<ul>
+<li>
+<p>Use the following syntax to install with an RPM package.</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>sudo<span class="w"> </span>rpm<span class="w"> </span>-ivh<span class="w"> </span>--prefix<span class="o">=</span>&lt;installation_path&gt;<span class="w"> </span>&lt;package_name&gt;
+</code></pre></div>
 <p>The option <code>--prefix</code> indicates the installation path. The default path is <code>/usr/local/nebula/</code>.</p>
 <p>For example, to install an RPM package in the default path for the 3.6.0 version, run the following command.</p>
-<p><code>bash
-  sudo rpm -ivh nebula-graph-3.6.0.el7.x86_64.rpm</code></p>
-<ul>
-<li>Use the following syntax to install with a DEB package.</li>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>rpm<span class="w"> </span>-ivh<span class="w"> </span>nebula-graph-3.6.0.el7.x86_64.rpm
+</code></pre></div>
+</li>
 </ul>
-<p><code>bash
-  $ sudo dpkg -i &lt;package_name&gt;</code></p>
-<p>!!! note
-        Customizing the installation path is not supported when installing NebulaGraph with a DEB package. The default installation path is <code>/usr/local/nebula/</code>.</p>
-<p>For example, to install a DEB package for the 3.6.0 version, run the following command.</p>
-<p><code>bash
-  sudo dpkg -i nebula-graph-3.6.0.ubuntu1804.amd64.deb</code></p>
-<p>!!! note</p>
-<pre><code>    The default installation path is `/usr/local/nebula/`.
-</code></pre>
-<h2 id="next-to-do">Next to do</h2>
 <ul>
 <li>
-<p><a href="https://docs.nebula-graph.io/3.6.0/2.quick-start/5.start-stop-service/">Start NebulaGraph</a>  <!--这里用外链。--></p>
+<p>Use the following syntax to install with a DEB package.</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>sudo<span class="w"> </span>dpkg<span class="w"> </span>-i<span class="w"> </span>&lt;package_name&gt;
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Customizing the installation path is not supported when installing NebulaGraph with a DEB package. The default installation path is <code>/usr/local/nebula/</code>.</p>
+</div>
+<p>For example, to install a DEB package for the 3.6.0 version, run the following command.</p>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>dpkg<span class="w"> </span>-i<span class="w"> </span>nebula-graph-3.6.0.ubuntu1804.amd64.deb
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The default installation path is <code>/usr/local/nebula/</code>.</p>
+</div>
 </li>
-<li>
-<p><a href="https://docs.nebula-graph.io/3.6.0/2.quick-start/3.connect-to-nebula-graph/">Connect to NebulaGraph</a><!--这里用外链。--></p>
-</li>
+</ul>
+<h2 id="next_to_do">Next to do<a class="headerlink" href="#next_to_do" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="https://docs.nebula-graph.io/3.6.0/2.quick-start/5.start-stop-service/">Start NebulaGraph</a>  <!--这里用外链。--></li>
+</ul>
+<ul>
+<li><a href="https://docs.nebula-graph.io/3.6.0/2.quick-start/3.connect-to-nebula-graph/">Connect to NebulaGraph</a><!--这里用外链。--></li>
 </ul>
 
 

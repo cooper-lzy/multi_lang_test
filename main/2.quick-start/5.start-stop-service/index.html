@@ -48,6 +48,8 @@
       
     
     
+      <link rel="stylesheet" href="../../stylesheets/note.css">
+    
     <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -77,7 +79,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#step-2-manage-nebulagraph-service" class="md-skip">
+        <a href="#step_2_manage_nebulagraph_service" class="md-skip">
           Skip to content
         </a>
       
@@ -824,7 +826,7 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#manage-services-with-script" class="md-nav__link">
+  <a href="#manage_services_with_script" class="md-nav__link">
     Manage services with script
   </a>
   
@@ -844,28 +846,28 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
 </li>
       
         <li class="md-nav__item">
-  <a href="#start-nebulagraph" class="md-nav__link">
+  <a href="#start_nebulagraph" class="md-nav__link">
     Start NebulaGraph
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#stop-nebulagraph" class="md-nav__link">
+  <a href="#stop_nebulagraph" class="md-nav__link">
     Stop NebulaGraph
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#check-the-service-status" class="md-nav__link">
+  <a href="#check_the_service_status" class="md-nav__link">
     Check the service status
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#next-to-do" class="md-nav__link">
+  <a href="#next_to_do" class="md-nav__link">
     Next to do
   </a>
   
@@ -1358,7 +1360,7 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#manage-services-with-script" class="md-nav__link">
+  <a href="#manage_services_with_script" class="md-nav__link">
     Manage services with script
   </a>
   
@@ -1378,28 +1380,28 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
 </li>
       
         <li class="md-nav__item">
-  <a href="#start-nebulagraph" class="md-nav__link">
+  <a href="#start_nebulagraph" class="md-nav__link">
     Start NebulaGraph
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#stop-nebulagraph" class="md-nav__link">
+  <a href="#stop_nebulagraph" class="md-nav__link">
     Stop NebulaGraph
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#check-the-service-status" class="md-nav__link">
+  <a href="#check_the_service_status" class="md-nav__link">
     Check the service status
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#next-to-do" class="md-nav__link">
+  <a href="#next_to_do" class="md-nav__link">
     Next to do
   </a>
   
@@ -1423,19 +1425,20 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
   
 
 
-<h1 id="step-2-manage-nebulagraph-service">Step 2: Manage NebulaGraph Service</h1>
+<h1 id="step_2_manage_nebulagraph_service">Step 2: Manage NebulaGraph Service<a class="headerlink" href="#step_2_manage_nebulagraph_service" title="Permanent link">&para;</a></h1>
 <p>NebulaGraph supports managing services with scripts. </p>
-<h2 id="manage-services-with-script">Manage services with script</h2>
+<h2 id="manage_services_with_script">Manage services with script<a class="headerlink" href="#manage_services_with_script" title="Permanent link">&para;</a></h2>
 <p>You can use the <code>nebula.service</code> script to start, stop, restart, terminate, and check the NebulaGraph services.</p>
-<p>!!! note</p>
-<pre><code>`nebula.service` is stored in the `/usr/local/nebula/scripts` directory by default. If you have customized the path, use the actual path in your environment.
-</code></pre>
-<h3 id="syntax">Syntax</h3>
-<pre><code class="language-bash">$ sudo /usr/local/nebula/scripts/nebula.service
-[-v] [-c &lt;config_file_path&gt;]
-&lt;start | stop | restart | kill | status&gt;
-&lt;metad | graphd | storaged | all&gt;
-</code></pre>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><code>nebula.service</code> is stored in the <code>/usr/local/nebula/scripts</code> directory by default. If you have customized the path, use the actual path in your environment.</p>
+</div>
+<h3 id="syntax">Syntax<a class="headerlink" href="#syntax" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>sudo<span class="w"> </span>/usr/local/nebula/scripts/nebula.service
+<span class="o">[</span>-v<span class="o">]</span><span class="w"> </span><span class="o">[</span>-c<span class="w"> </span>&lt;config_file_path&gt;<span class="o">]</span>
+&lt;start<span class="w"> </span><span class="p">|</span><span class="w"> </span>stop<span class="w"> </span><span class="p">|</span><span class="w"> </span>restart<span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="nb">kill</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>status&gt;
+&lt;metad<span class="w"> </span><span class="p">|</span><span class="w"> </span>graphd<span class="w"> </span><span class="p">|</span><span class="w"> </span>storaged<span class="w"> </span><span class="p">|</span><span class="w"> </span>all&gt;
+</code></pre></div>
 <table>
 <thead>
 <tr>
@@ -1490,58 +1493,58 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
 </tr>
 </tbody>
 </table>
-<h2 id="start-nebulagraph">Start NebulaGraph</h2>
+<h2 id="start_nebulagraph">Start NebulaGraph<a class="headerlink" href="#start_nebulagraph" title="Permanent link">&para;</a></h2>
 <p>Run the following command to start NebulaGraph.</p>
-<pre><code class="language-bash">$ sudo /usr/local/nebula/scripts/nebula.service start all
-[INFO] Starting nebula-metad...
-[INFO] Done
-[INFO] Starting nebula-graphd...
-[INFO] Done
-[INFO] Starting nebula-storaged...
-[INFO] Done
-</code></pre>
-<h2 id="stop-nebulagraph">Stop NebulaGraph</h2>
-<p>!!! danger</p>
-<pre><code>Do not run `kill -9` to forcibly terminate the processes. Otherwise, there is a low probability of data loss.
-</code></pre>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>sudo<span class="w"> </span>/usr/local/nebula/scripts/nebula.service<span class="w"> </span>start<span class="w"> </span>all
+<span class="o">[</span>INFO<span class="o">]</span><span class="w"> </span>Starting<span class="w"> </span>nebula-metad...
+<span class="o">[</span>INFO<span class="o">]</span><span class="w"> </span>Done
+<span class="o">[</span>INFO<span class="o">]</span><span class="w"> </span>Starting<span class="w"> </span>nebula-graphd...
+<span class="o">[</span>INFO<span class="o">]</span><span class="w"> </span>Done
+<span class="o">[</span>INFO<span class="o">]</span><span class="w"> </span>Starting<span class="w"> </span>nebula-storaged...
+<span class="o">[</span>INFO<span class="o">]</span><span class="w"> </span>Done
+</code></pre></div>
+<h2 id="stop_nebulagraph">Stop NebulaGraph<a class="headerlink" href="#stop_nebulagraph" title="Permanent link">&para;</a></h2>
+<div class="admonition danger">
+<p class="admonition-title">Danger</p>
+<p>Do not run <code>kill -9</code> to forcibly terminate the processes. Otherwise, there is a low probability of data loss.</p>
+</div>
 <p>Run the following command to stop NebulaGraph.</p>
-<pre><code class="language-bash">$ sudo /usr/local/nebula/scripts/nebula.service stop all
-[INFO] Stopping nebula-metad...
-[INFO] Done
-[INFO] Stopping nebula-graphd...
-[INFO] Done
-[INFO] Stopping nebula-storaged...
-[INFO] Done
-</code></pre>
-<h2 id="check-the-service-status">Check the service status</h2>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>sudo<span class="w"> </span>/usr/local/nebula/scripts/nebula.service<span class="w"> </span>stop<span class="w"> </span>all
+<span class="o">[</span>INFO<span class="o">]</span><span class="w"> </span>Stopping<span class="w"> </span>nebula-metad...
+<span class="o">[</span>INFO<span class="o">]</span><span class="w"> </span>Done
+<span class="o">[</span>INFO<span class="o">]</span><span class="w"> </span>Stopping<span class="w"> </span>nebula-graphd...
+<span class="o">[</span>INFO<span class="o">]</span><span class="w"> </span>Done
+<span class="o">[</span>INFO<span class="o">]</span><span class="w"> </span>Stopping<span class="w"> </span>nebula-storaged...
+<span class="o">[</span>INFO<span class="o">]</span><span class="w"> </span>Done
+</code></pre></div>
+<h2 id="check_the_service_status">Check the service status<a class="headerlink" href="#check_the_service_status" title="Permanent link">&para;</a></h2>
 <p>Run the following command to check the service status of NebulaGraph.</p>
-<pre><code class="language-bash">$ sudo /usr/local/nebula/scripts/nebula.service status all
-</code></pre>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>sudo<span class="w"> </span>/usr/local/nebula/scripts/nebula.service<span class="w"> </span>status<span class="w"> </span>all
+</code></pre></div>
 <ul>
 <li>
 <p>NebulaGraph is running normally if the following information is returned.</p>
-<p><code>bash
-INFO] nebula-metad(33fd35e): Running as 29020, Listening on 9559
-[INFO] nebula-graphd(33fd35e): Running as 29095, Listening on 9669
-[WARN] nebula-storaged after v3.0.0 will not start service until it is added to cluster.
-[WARN] See Manage Storage hosts:ADD HOSTS in https://docs.nebula-graph.io/
-[INFO] nebula-storaged(33fd35e): Running as 29147, Listening on 9779</code></p>
+<div class="highlight"><pre><span></span><code>INFO<span class="o">]</span><span class="w"> </span>nebula-metad<span class="o">(</span>33fd35e<span class="o">)</span>:<span class="w"> </span>Running<span class="w"> </span>as<span class="w"> </span><span class="m">29020</span>,<span class="w"> </span>Listening<span class="w"> </span>on<span class="w"> </span><span class="m">9559</span>
+<span class="o">[</span>INFO<span class="o">]</span><span class="w"> </span>nebula-graphd<span class="o">(</span>33fd35e<span class="o">)</span>:<span class="w"> </span>Running<span class="w"> </span>as<span class="w"> </span><span class="m">29095</span>,<span class="w"> </span>Listening<span class="w"> </span>on<span class="w"> </span><span class="m">9669</span>
+<span class="o">[</span>WARN<span class="o">]</span><span class="w"> </span>nebula-storaged<span class="w"> </span>after<span class="w"> </span>v3.0.0<span class="w"> </span>will<span class="w"> </span>not<span class="w"> </span>start<span class="w"> </span>service<span class="w"> </span><span class="k">until</span><span class="w"> </span>it<span class="w"> </span>is<span class="w"> </span>added<span class="w"> </span>to<span class="w"> </span>cluster.
+<span class="o">[</span>WARN<span class="o">]</span><span class="w"> </span>See<span class="w"> </span>Manage<span class="w"> </span>Storage<span class="w"> </span>hosts:ADD<span class="w"> </span>HOSTS<span class="w"> </span><span class="k">in</span><span class="w"> </span>https://docs.nebula-graph.io/
+<span class="o">[</span>INFO<span class="o">]</span><span class="w"> </span>nebula-storaged<span class="o">(</span>33fd35e<span class="o">)</span>:<span class="w"> </span>Running<span class="w"> </span>as<span class="w"> </span><span class="m">29147</span>,<span class="w"> </span>Listening<span class="w"> </span>on<span class="w"> </span><span class="m">9779</span>
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>After starting NebulaGraph, the port of the <code>nebula-storaged</code> process is shown in red. Because the <code>nebula-storaged</code> process waits for the <code>nebula-metad</code> to add the current Storage service during the startup process. The Storage works after it receives the ready signal. Starting from NebulaGraph 3.0.0, the Meta service cannot directly read or write data in the Storage service that you add in the configuration file. The configuration file only registers the Storage service to the Meta service. You must run the <code>ADD HOSTS</code> command to enable the Meta to read and write data in the Storage service. For more information, see <a href="../4.deployment-and-installation/manage-storage-host.md">Manage Storage hosts</a>.</p>
+</div>
 </li>
 </ul>
-<p>!!! note</p>
-<pre><code>    After starting NebulaGraph, the port of the `nebula-storaged` process is shown in red. Because the `nebula-storaged` process waits for the `nebula-metad` to add the current Storage service during the startup process. The Storage works after it receives the ready signal. Starting from NebulaGraph 3.0.0, the Meta service cannot directly read or write data in the Storage service that you add in the configuration file. The configuration file only registers the Storage service to the Meta service. You must run the `ADD HOSTS` command to enable the Meta to read and write data in the Storage service. For more information, see [Manage Storage hosts](../4.deployment-and-installation/manage-storage-host.md).
-</code></pre>
 <ul>
-<li>
-<p>If the returned result is similar to the following one, there is a problem. You may also go to the <a href="https://github.com/vesoft-inc/nebula/discussions">NebulaGraph community</a> for help.</p>
-<p><code>bash
-[INFO] nebula-metad: Running as 25600, Listening on 9559
-[INFO] nebula-graphd: Exited
-[INFO] nebula-storaged: Running as 25646, Listening on 9779</code></p>
+<li>If the returned result is similar to the following one, there is a problem. You may also go to the <a href="https://github.com/vesoft-inc/nebula/discussions">NebulaGraph community</a> for help.<div class="highlight"><pre><span></span><code><span class="o">[</span>INFO<span class="o">]</span><span class="w"> </span>nebula-metad:<span class="w"> </span>Running<span class="w"> </span>as<span class="w"> </span><span class="m">25600</span>,<span class="w"> </span>Listening<span class="w"> </span>on<span class="w"> </span><span class="m">9559</span>
+<span class="o">[</span>INFO<span class="o">]</span><span class="w"> </span>nebula-graphd:<span class="w"> </span>Exited
+<span class="o">[</span>INFO<span class="o">]</span><span class="w"> </span>nebula-storaged:<span class="w"> </span>Running<span class="w"> </span>as<span class="w"> </span><span class="m">25646</span>,<span class="w"> </span>Listening<span class="w"> </span>on<span class="w"> </span><span class="m">9779</span>
+</code></pre></div>
 </li>
 </ul>
 <p>The NebulaGraph services consist of the Meta Service, Graph Service, and Storage Service. The configuration files for all three services are stored in the <code>/usr/local/nebula/etc/</code> directory by default. You can check the configuration files according to the returned result to troubleshoot problems.</p>
-<h2 id="next-to-do">Next to do</h2>
+<h2 id="next_to_do">Next to do<a class="headerlink" href="#next_to_do" title="Permanent link">&para;</a></h2>
 <p><a href="https://docs.nebula-graph.io/3.6.0/2.quick-start/3.connect-to-nebula-graph/">Connect to NebulaGraph</a><!--这里用外链。--></p>
 <!-- The line above is for content reusing. The source file is in the docs-2.0/reuse directory. -->
 

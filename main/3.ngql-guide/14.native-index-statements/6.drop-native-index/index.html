@@ -44,6 +44,8 @@
       
     
     
+      <link rel="stylesheet" href="../../../stylesheets/note.css">
+    
     <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -73,7 +75,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#drop-index" class="md-skip">
+        <a href="#drop_index" class="md-skip">
           Skip to content
         </a>
       
@@ -1298,17 +1300,17 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
   
 
 
-<h1 id="drop-index">DROP INDEX</h1>
+<h1 id="drop_index">DROP INDEX<a class="headerlink" href="#drop_index" title="Permanent link">&para;</a></h1>
 <p><code>DROP INDEX</code> removes an existing index from the current graph space.</p>
-<h2 id="prerequisite">Prerequisite</h2>
+<h2 id="prerequisite">Prerequisite<a class="headerlink" href="#prerequisite" title="Permanent link">&para;</a></h2>
 <p>Running the <code>DROP INDEX</code> statement requires some <a href="../../7.data-security/1.authentication/3.role-list.md">privileges</a> of <code>DROP TAG INDEX</code> and <code>DROP EDGE INDEX</code> in the given graph space. Otherwise, NebulaGraph throws an error.</p>
-<h2 id="syntax">Syntax</h2>
-<pre><code class="language-ngql">DROP {TAG | EDGE} INDEX [IF EXISTS] &lt;index_name&gt;;
-</code></pre>
+<h2 id="syntax">Syntax<a class="headerlink" href="#syntax" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code>DROP {TAG | EDGE} INDEX [IF EXISTS] &lt;index_name&gt;;
+</code></pre></div>
 <p><code>IF EXISTS</code>: Detects whether the index that you want to drop exists. If it exists, it will be dropped.</p>
-<h2 id="example">Example</h2>
-<pre><code class="language-ngql">nebula&gt; DROP TAG INDEX player_index_0;
-</code></pre>
+<h2 id="example">Example<a class="headerlink" href="#example" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code>nebula&gt; DROP TAG INDEX player_index_0;
+</code></pre></div>
 
 
 

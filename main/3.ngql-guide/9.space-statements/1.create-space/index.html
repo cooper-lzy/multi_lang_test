@@ -44,6 +44,8 @@
       
     
     
+      <link rel="stylesheet" href="../../../stylesheets/note.css">
+    
     <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -73,7 +75,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#create-space" class="md-skip">
+        <a href="#create_space" class="md-skip">
           Skip to content
         </a>
       
@@ -1275,14 +1277,14 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#create-graph-spaces" class="md-nav__link">
+  <a href="#create_graph_spaces" class="md-nav__link">
     Create graph spaces
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#clone-graph-spaces" class="md-nav__link">
+  <a href="#clone_graph_spaces" class="md-nav__link">
     Clone graph spaces
   </a>
   
@@ -1301,14 +1303,14 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
 </li>
       
         <li class="md-nav__item">
-  <a href="#implementation-of-the-operation" class="md-nav__link">
+  <a href="#implementation_of_the_operation" class="md-nav__link">
     Implementation of the operation
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#check-partition-distribution" class="md-nav__link">
+  <a href="#check_partition_distribution" class="md-nav__link">
     Check partition distribution
   </a>
   
@@ -1332,19 +1334,19 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
   
 
 
-<h1 id="create-space">CREATE SPACE</h1>
+<h1 id="create_space">CREATE SPACE<a class="headerlink" href="#create_space" title="Permanent link">&para;</a></h1>
 <p>Graph spaces are used to store data in a physically isolated way in NebulaGraph, which is similar to the database concept in MySQL. The <code>CREATE SPACE</code> statement can create a new graph space or clone the schema of an existing graph space.</p>
-<h2 id="prerequisites">Prerequisites</h2>
+<h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h2>
 <p>Only the God role can use the <code>CREATE SPACE</code> statement. For more information, see <a href="../../7.data-security/1.authentication/1.authentication.md">AUTHENTICATION</a>.</p>
-<h2 id="syntax">Syntax</h2>
-<h3 id="create-graph-spaces">Create graph spaces</h3>
-<pre><code class="language-ngql">CREATE SPACE [IF NOT EXISTS] &lt;graph_space_name&gt; (
+<h2 id="syntax">Syntax<a class="headerlink" href="#syntax" title="Permanent link">&para;</a></h2>
+<h3 id="create_graph_spaces">Create graph spaces<a class="headerlink" href="#create_graph_spaces" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>CREATE SPACE [IF NOT EXISTS] &lt;graph_space_name&gt; (
     [partition_num = &lt;partition_number&gt;,]
     [replica_factor = &lt;replica_number&gt;,]
     vid_type = {FIXED_STRING(&lt;N&gt;) | INT[64]}
     )
-    [COMMENT = '&lt;comment&gt;']
-</code></pre>
+    [COMMENT = &#39;&lt;comment&gt;&#39;]
+</code></pre></div>
 <table>
 <thead>
 <tr>
@@ -1379,32 +1381,48 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
 </tr>
 </tbody>
 </table>
-<p>!!! caution</p>
-<pre><code>- If the replica number is set to one, you will not be able to load balance or scale out the NebulaGraph Storage Service with the [SUBMIT JOB BALANCE](../../8.service-tuning/load-balance.md) statement.
-
-- Restrictions on VID type change and VID length:
-
-  - For NebulaGraph v1.x, the type of VIDs can only be `INT64`, and the String type is not allowed. For NebulaGraph v2.x, both `INT64` and `FIXED_STRING(&lt;N&gt;)` VID types are allowed. You must specify the VID type when creating a graph space, and use the same VID type in `INSERT` statements, otherwise, an error message `Wrong vertex id type: 1001` occurs.
-
-  - The length of the VID should not be longer than `N` characters. If it exceeds `N`, NebulaGraph throws `The VID must be a 64-bit integer or a string fitting space vertex id length limit.`.
-
-- If the `Host not enough!` error appears, the immediate cause is that the number of online storage hosts is less than the value of `replica_factor` specified when creating a graph space. In this case, you can use the `SHOW HOSTS` command to see if the following situations occur:
-
-  - For the case where there is only one storage host in a cluster, the value of `replica_factor` can only be specified to `1`. Or create a graph space after storage hosts are scaled out.
-
-  - A new storage host is found, but `ADD HOSTS` is not executed to activate it. In this case, run `SHOW HOSTS` to locate the new storage host information and then run `ADD HOSTS` to activate it. A graph space can be created after there are enough storage hosts.
-
-  - For offline storage hosts after running `SHOW HOSTS`, troubleshooting is needed.
-</code></pre>
-<p>!!! compatibility "Legacy version compatibility"</p>
-<pre><code>For NebulaGraph v2.x before v2.5.0, `vid_type` is optional and defaults to `FIXED_STRING(8)`.
-</code></pre>
-<p>!!! note</p>
-<pre><code>`graph_space_name`, `partition_num`, `replica_factor`, `vid_type`, and `comment` cannot be modified once set. To modify them, drop the current working graph space with [`DROP SPACE`](./5.drop-space.md) and create a new one with `CREATE SPACE`.
-</code></pre>
-<h3 id="clone-graph-spaces">Clone graph spaces</h3>
-<pre><code class="language-ngql">CREATE SPACE [IF NOT EXISTS] &lt;new_graph_space_name&gt; AS &lt;old_graph_space_name&gt;;
-</code></pre>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<ul>
+<li>If the replica number is set to one, you will not be able to load balance or scale out the NebulaGraph Storage Service with the <a href="../../8.service-tuning/load-balance.md">SUBMIT JOB BALANCE</a> statement.</li>
+</ul>
+<ul>
+<li>
+<p>Restrictions on VID type change and VID length:</p>
+<ul>
+<li>For NebulaGraph v1.x, the type of VIDs can only be <code>INT64</code>, and the String type is not allowed. For NebulaGraph v2.x, both <code>INT64</code> and <code>FIXED_STRING(&lt;N&gt;)</code> VID types are allowed. You must specify the VID type when creating a graph space, and use the same VID type in <code>INSERT</code> statements, otherwise, an error message <code>Wrong vertex id type: 1001</code> occurs.</li>
+</ul>
+<ul>
+<li>The length of the VID should not be longer than <code>N</code> characters. If it exceeds <code>N</code>, NebulaGraph throws <code>The VID must be a 64-bit integer or a string fitting space vertex id length limit.</code>.</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>
+<p>If the <code>Host not enough!</code> error appears, the immediate cause is that the number of online storage hosts is less than the value of <code>replica_factor</code> specified when creating a graph space. In this case, you can use the <code>SHOW HOSTS</code> command to see if the following situations occur:</p>
+<ul>
+<li>For the case where there is only one storage host in a cluster, the value of <code>replica_factor</code> can only be specified to <code>1</code>. Or create a graph space after storage hosts are scaled out. </li>
+</ul>
+<ul>
+<li>A new storage host is found, but <code>ADD HOSTS</code> is not executed to activate it. In this case, run <code>SHOW HOSTS</code> to locate the new storage host information and then run <code>ADD HOSTS</code> to activate it. A graph space can be created after there are enough storage hosts.</li>
+</ul>
+<ul>
+<li>For offline storage hosts after running <code>SHOW HOSTS</code>, troubleshooting is needed.</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="admonition compatibility">
+<p class="admonition-title">Legacy version compatibility</p>
+<p>For NebulaGraph v2.x before v2.5.0, <code>vid_type</code> is optional and defaults to <code>FIXED_STRING(8)</code>.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><code>graph_space_name</code>, <code>partition_num</code>, <code>replica_factor</code>, <code>vid_type</code>, and <code>comment</code> cannot be modified once set. To modify them, drop the current working graph space with <a href="../5.drop-space/"><code>DROP SPACE</code></a> and create a new one with <code>CREATE SPACE</code>.</p>
+</div>
+<h3 id="clone_graph_spaces">Clone graph spaces<a class="headerlink" href="#clone_graph_spaces" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>CREATE SPACE [IF NOT EXISTS] &lt;new_graph_space_name&gt; AS &lt;old_graph_space_name&gt;;
+</code></pre></div>
 <table>
 <thead>
 <tr>
@@ -1427,8 +1445,8 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
 </tr>
 </tbody>
 </table>
-<h2 id="examples">Examples</h2>
-<pre><code class="language-ngql"># The following example creates a graph space with a specified VID type and the maximum length. Other fields still use the default values.
+<h2 id="examples">Examples<a class="headerlink" href="#examples" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code># The following example creates a graph space with a specified VID type and the maximum length. Other fields still use the default values.
 nebula&gt; CREATE SPACE IF NOT EXISTS my_space_1 (vid_type=FIXED_STRING(30));
 
 # The following example creates a graph space with a specified partition number, replica number, and VID type.
@@ -1443,16 +1461,17 @@ nebula&gt; SHOW CREATE SPACE my_space_4;
 +--------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | Space        | Create Space                                                                                                                                                 |
 +--------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| &quot;my_space_4&quot; | &quot;CREATE SPACE `my_space_4` (partition_num = 15, replica_factor = 1, charset = utf8, collate = utf8_bin, vid_type = FIXED_STRING(30)) comment = '测试图空间'&quot; |
+| &quot;my_space_4&quot; | &quot;CREATE SPACE `my_space_4` (partition_num = 15, replica_factor = 1, charset = utf8, collate = utf8_bin, vid_type = FIXED_STRING(30)) comment = &#39;测试图空间&#39;&quot; |
 +--------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------+
-</code></pre>
-<h2 id="implementation-of-the-operation">Implementation of the operation</h2>
-<p>!!! caution</p>
-<pre><code>Trying to use a newly created graph space may fail because the creation is implemented asynchronously. To make sure the follow-up operations work as expected, Wait for two heartbeat cycles, i.e., 20 seconds. To change the heartbeat interval, modify the `heartbeat_interval_secs` parameter in the [configuration files](../../5.configurations-and-logs/1.configurations/1.configurations.md) for all services. If the heartbeat interval is too short (i.e., less than 5 seconds), disconnection between peers may happen because of the misjudgment of machines in the distributed system.
-</code></pre>
-<h2 id="check-partition-distribution">Check partition distribution</h2>
+</code></pre></div>
+<h2 id="implementation_of_the_operation">Implementation of the operation<a class="headerlink" href="#implementation_of_the_operation" title="Permanent link">&para;</a></h2>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<p>Trying to use a newly created graph space may fail because the creation is implemented asynchronously. To make sure the follow-up operations work as expected, Wait for two heartbeat cycles, i.e., 20 seconds. To change the heartbeat interval, modify the <code>heartbeat_interval_secs</code> parameter in the <a href="../../5.configurations-and-logs/1.configurations/1.configurations.md">configuration files</a> for all services. If the heartbeat interval is too short (i.e., less than 5 seconds), disconnection between peers may happen because of the misjudgment of machines in the distributed system.</p>
+</div>
+<h2 id="check_partition_distribution">Check partition distribution<a class="headerlink" href="#check_partition_distribution" title="Permanent link">&para;</a></h2>
 <p>On some large clusters, the partition distribution is possibly unbalanced because of the different startup times. You can run the following command to do a check of the machine distribution.</p>
-<pre><code class="language-ngql">nebula&gt; SHOW HOSTS;
+<div class="highlight"><pre><span></span><code>nebula&gt; SHOW HOSTS;
 +-------------+------+----------+--------------+--------------------------------+--------------------------------+---------+
 | Host        | Port | Status   | Leader count | Leader distribution            | Partition distribution         | Version |
 +-------------+------+----------+--------------+--------------------------------+--------------------------------+---------+
@@ -1460,9 +1479,9 @@ nebula&gt; SHOW CREATE SPACE my_space_4;
 | &quot;storaged1&quot; | 9779 | &quot;ONLINE&quot; | 9            | &quot;basketballplayer:4, test:5&quot;   | &quot;basketballplayer:10, test:10&quot; | &quot;3.6.0&quot; |
 | &quot;storaged2&quot; | 9779 | &quot;ONLINE&quot; | 3            | &quot;basketballplayer:3&quot;           | &quot;basketballplayer:10, test:10&quot; | &quot;3.6.0&quot; |
 +-------------+------+----------+--------------+--------------------------------+--------------------------------+---------+
-</code></pre>
+</code></pre></div>
 <p>To balance the request loads, use the following command.</p>
-<pre><code class="language-ngql">nebula&gt; BALANCE LEADER;
+<div class="highlight"><pre><span></span><code>nebula&gt; BALANCE LEADER;
 nebula&gt; SHOW HOSTS;
 +-------------+------+----------+--------------+--------------------------------+--------------------------------+---------+
 | Host        | Port | HTTP port | Status   | Leader count | Leader distribution            | Partition distribution         | Version |
@@ -1471,7 +1490,7 @@ nebula&gt; SHOW HOSTS;
 | &quot;storaged1&quot; | 9779 | &quot;ONLINE&quot; | 7            | &quot;basketballplayer:4, test:3&quot;   | &quot;basketballplayer:10, test:10&quot; | &quot;3.6.0&quot; |
 | &quot;storaged2&quot; | 9779 | &quot;ONLINE&quot; | 6            | &quot;basketballplayer:3, test:3&quot;   | &quot;basketballplayer:10, test:10&quot; | &quot;3.6.0&quot; |
 +-------------+------+----------+--------------+--------------------------------+--------------------------------+---------+
-</code></pre>
+</code></pre></div>
 
 
 

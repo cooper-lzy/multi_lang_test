@@ -44,6 +44,8 @@
       
     
     
+      <link rel="stylesheet" href="../../../stylesheets/note.css">
+    
     <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -73,7 +75,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#built-in-date-and-time-functions" class="md-skip">
+        <a href="#built-in_date_and_time_functions" class="md-skip">
           Skip to content
         </a>
       
@@ -1284,7 +1286,7 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
   
 
 
-<h1 id="built-in-date-and-time-functions">Built-in date and time functions</h1>
+<h1 id="built-in_date_and_time_functions">Built-in date and time functions<a class="headerlink" href="#built-in_date_and_time_functions" title="Permanent link">&para;</a></h1>
 <p>NebulaGraph supports the following built-in date and time functions:</p>
 <table>
 <thead>
@@ -1321,14 +1323,14 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
 </tbody>
 </table>
 <p>For more information, see <a href="../../3.data-types/4.date-and-time/">Date and time types</a>.</p>
-<h2 id="examples">Examples</h2>
-<pre><code class="language-ngql">nebula&gt;  RETURN now(), timestamp(), date(), time(), datetime();
+<h2 id="examples">Examples<a class="headerlink" href="#examples" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code>nebula&gt;  RETURN now(), timestamp(), date(), time(), datetime();
 +------------+-------------+------------+-----------------+----------------------------+
 | now()      | timestamp() | date()     | time()          | datetime()                 |
 +------------+-------------+------------+-----------------+----------------------------+
 | 1640057560 | 1640057560  | 2021-12-21 | 03:32:40.351000 | 2021-12-21T03:32:40.351000 |
 +------------+-------------+------------+-----------------+----------------------------+
-</code></pre>
+</code></pre></div>
 
 
 

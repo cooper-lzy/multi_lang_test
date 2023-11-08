@@ -44,6 +44,8 @@
       
     
     
+      <link rel="stylesheet" href="../../../stylesheets/note.css">
+    
     <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -73,7 +75,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#inner-join" class="md-skip">
+        <a href="#inner_join" class="md-skip">
           Skip to content
         </a>
       
@@ -1260,7 +1262,7 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#opencypher-compatibility" class="md-nav__link">
+  <a href="#opencypher_compatibility" class="md-nav__link">
     openCypher compatibility
   </a>
   
@@ -1289,21 +1291,21 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#example-1" class="md-nav__link">
+  <a href="#example_1" class="md-nav__link">
     Example 1
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#example-2" class="md-nav__link">
+  <a href="#example_2" class="md-nav__link">
     Example 2
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#example-3" class="md-nav__link">
+  <a href="#example_3" class="md-nav__link">
     Example 3
   </a>
   
@@ -1332,18 +1334,19 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
   
 
 
-<h1 id="inner-join">INNER JOIN</h1>
+<h1 id="inner_join">INNER JOIN<a class="headerlink" href="#inner_join" title="Permanent link">&para;</a></h1>
 <p><code>INNER JOIN</code> is a type of join query that matches records based on common column values between two tables. It is commonly used to create a result set that includes two tables based on values in their associated columns. In NebulaGraph, the <code>INNER JOIN</code> clause can be explicitly used to conduct join queries between two tables, leading to more complex query results.</p>
-<p>!!! note</p>
-<pre><code>In nGQL statements, the multi-hop query of `GO` implicitly utilizes the `INNER JOIN` clause. For example, in the statement `GO 1 TO 2 STEPS FROM "player101" OVER follow YIELD $$.player.name AS name, $$.player.age AS age`, the `GO` clause implicitly utilizes the `INNER JOIN` clause, matching the result columns of the first-hop query starting from `player101` along the `follow` edge with the starting columns of the second-hop query. Then, based on the matching results, it returns `name` and `age`.
-</code></pre>
-<h2 id="opencypher-compatibility">openCypher compatibility</h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In nGQL statements, the multi-hop query of <code>GO</code> implicitly utilizes the <code>INNER JOIN</code> clause. For example, in the statement <code>GO 1 TO 2 STEPS FROM "player101" OVER follow YIELD $$.player.name AS name, $$.player.age AS age</code>, the <code>GO</code> clause implicitly utilizes the <code>INNER JOIN</code> clause, matching the result columns of the first-hop query starting from <code>player101</code> along the <code>follow</code> edge with the starting columns of the second-hop query. Then, based on the matching results, it returns <code>name</code> and <code>age</code>. </p>
+</div>
+<h2 id="opencypher_compatibility">openCypher compatibility<a class="headerlink" href="#opencypher_compatibility" title="Permanent link">&para;</a></h2>
 <p>The <code>INNER JOIN</code> clause is only applicable to the native nGQL syntax.</p>
-<h2 id="syntax">Syntax</h2>
-<pre><code class="language-ngql">YIELD &lt;column_name_list&gt;
+<h2 id="syntax">Syntax<a class="headerlink" href="#syntax" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code>YIELD &lt;column_name_list&gt;
 FROM &lt;first_table&gt; INNER JOIN &lt;second_table&gt; ON &lt;join_condition&gt;
-</code></pre>
-<h2 id="notes">Notes</h2>
+</code></pre></div>
+<h2 id="notes">Notes<a class="headerlink" href="#notes" title="Permanent link">&para;</a></h2>
 <p>To conduct an <code>INNER JOIN</code> query, you need to follow these rules:</p>
 <ul>
 <li>Use the <code>YIELD</code> clause to specify the returned columns, and place it before the <code>INNER JOIN</code> clause.</li>
@@ -1352,12 +1355,12 @@ FROM &lt;first_table&gt; INNER JOIN &lt;second_table&gt; ON &lt;join_condition&g
 <li><code>&lt;first_table&gt;</code> and <code>&lt;second_table&gt;</code> are the two tables to be joined, and the two table names cannot be the same.</li>
 <li>Use user-defined variables to specify the table names. For more information, see <a href="../../4.variable-and-composite-queries/2.user-defined-variables/">User-defined variables</a>.</li>
 </ul>
-<h2 id="examples">Examples</h2>
+<h2 id="examples">Examples<a class="headerlink" href="#examples" title="Permanent link">&para;</a></h2>
 <p>The following examples show how to use the <code>INNER JOIN</code> clause to join the results of two queries in nGQL statements.</p>
-<h3 id="example-1">Example 1</h3>
+<h3 id="example_1">Example 1<a class="headerlink" href="#example_1" title="Permanent link">&para;</a></h3>
 <p>Firstly, the <code>dst</code> column obtained from the initial <code>LOOK UP</code> operation (whose value for Tony Parker has an ID of <code>player101</code>) is connected with the <code>src</code> column obtained from the second <code>GO</code> query (which has IDs <code>player101</code> and <code>player125</code>). By matching the two columns where <code>player101</code> appears on both sides, we obtain the resulting data set. The final request then uses a <code>YIELD</code> statement <code>YIELD $b.vid AS vid, $a.v AS v, $b.e2 AS e2</code> to display the information.</p>
-<pre><code class="language-ngql">nebula&gt; $a = LOOKUP ON player WHERE player.name == 'Tony Parker' YIELD id(vertex) as dst, vertex AS v; \
-        $b = GO FROM 'player101', 'player125' OVER follow YIELD id($^) as src, id($$) as vid, edge AS e2; \
+<div class="highlight"><pre><span></span><code>nebula&gt; $a = LOOKUP ON player WHERE player.name == &#39;Tony Parker&#39; YIELD id(vertex) as dst, vertex AS v; \
+        $b = GO FROM &#39;player101&#39;, &#39;player125&#39; OVER follow YIELD id($^) as src, id($$) as vid, edge AS e2; \
         YIELD $b.vid AS vid, $a.v AS v, $b.e2 AS e2 FROM $a INNER JOIN $b ON $a.dst == $b.src;
 +-------------+-----------------------------------------------------+----------------------------------------------------+
 | vid         | v                                                   | e2                                                 |
@@ -1366,19 +1369,19 @@ FROM &lt;first_table&gt; INNER JOIN &lt;second_table&gt; ON &lt;join_condition&g
 | &quot;player102&quot; | (&quot;player101&quot; :player{age: 36, name: &quot;Tony Parker&quot;}) | [:follow &quot;player101&quot;-&gt;&quot;player102&quot; @0 {degree: 90}] |
 | &quot;player125&quot; | (&quot;player101&quot; :player{age: 36, name: &quot;Tony Parker&quot;}) | [:follow &quot;player101&quot;-&gt;&quot;player125&quot; @0 {degree: 95}] |
 +-------------+-----------------------------------------------------+----------------------------------------------------+
-</code></pre>
-<h3 id="example-2">Example 2</h3>
+</code></pre></div>
+<h3 id="example_2">Example 2<a class="headerlink" href="#example_2" title="Permanent link">&para;</a></h3>
 <p>The following nGQL example utilizes the <code>INNER JOIN</code> clause to combine the <code>src</code> column from the first <code>LOOKUP</code> query (with <code>player101</code> as ID for <code>Tony Parker</code>) and the <code>src</code> column from the second <code>FETCH</code> query (with <code>player101</code> being the starting point to <code>player100</code>). By matching <code>player101</code> in both source columns, we obtain the resulting data set. The final request then utilizes a <code>YIELD</code> clause <code>YIELD $a.src AS src, $a.v AS v, $b.e AS e</code> to display the information.</p>
-<pre><code class="language-ngql">nebula&gt; $a = LOOKUP ON player WHERE player.name == 'Tony Parker' YIELD id(vertex) as src, vertex AS v; \
-        $b = FETCH PROP ON follow 'player101'-&gt;'player100' YIELD src(edge) as src, edge as e; \
+<div class="highlight"><pre><span></span><code>nebula&gt; $a = LOOKUP ON player WHERE player.name == &#39;Tony Parker&#39; YIELD id(vertex) as src, vertex AS v; \
+        $b = FETCH PROP ON follow &#39;player101&#39;-&gt;&#39;player100&#39; YIELD src(edge) as src, edge as e; \
         YIELD $a.src AS src, $a.v AS v, $b.e AS e FROM $a INNER JOIN $b ON $a.src == $b.src;
 +-------------+-----------------------------------------------------+----------------------------------------------------+
 | src         | v                                                   | e                                                  |
 +-------------+-----------------------------------------------------+----------------------------------------------------+
 | &quot;player101&quot; | (&quot;player101&quot; :player{age: 36, name: &quot;Tony Parker&quot;}) | [:follow &quot;player101&quot;-&gt;&quot;player100&quot; @0 {degree: 95}] |
 +-------------+-----------------------------------------------------+----------------------------------------------------+
-</code></pre>
-<h3 id="example-3">Example 3</h3>
+</code></pre></div>
+<h3 id="example_3">Example 3<a class="headerlink" href="#example_3" title="Permanent link">&para;</a></h3>
 <p>The following example shows the process of using the <code>INNER JOIN</code> clause to join the results of the <code>LOOKUP</code>, <code>GO</code>, and <code>FIND PATH</code> clauses.</p>
 <ol>
 <li>Query the <code>player</code> table using the <code>LOOKUP ON</code> statement to find the vertex for player <code>Tony Parker</code>, storing the ID and properties in the <code>$a.src</code> and <code>$a.v</code> columns, respectively.</li>
@@ -1387,7 +1390,7 @@ FROM &lt;first_table&gt; INNER JOIN &lt;second_table&gt; ON &lt;join_condition&g
 <li>Using the <code>FIND SHORTEST PATH</code> statement, find the shortest path from <code>$c.dst</code> back to <code>$a.src</code>, storing the path in <code>$d.p</code> and the starting point in <code>$d.src</code>.</li>
 <li>Finally, we utilize the <code>INNER JOIN</code> clause to join the results of steps 3 and 4 by matching the <code>$c.dst</code> column with the <code>$d.src</code> column. Then use the <code>YIELD</code> statement <code>YIELD $c.forward AS forwardPath, $c.dst AS end, $d.p AS backwardPath</code> to return the matched records of the join.</li>
 </ol>
-<pre><code class="language-ngql">nebula&gt; $a = LOOKUP ON player WHERE player.name == 'Tony Parker' YIELD id(vertex) as src, vertex AS v; \
+<div class="highlight"><pre><span></span><code>nebula&gt; $a = LOOKUP ON player WHERE player.name == &#39;Tony Parker&#39; YIELD id(vertex) as src, vertex AS v; \
         $b = GO 2 TO 5 STEPS FROM $a.src OVER follow WHERE $$.player.age &gt; 30 YIELD id($$) AS dst; \
         $c = (FIND ALL PATH FROM $a.src TO $b.dst OVER follow YIELD path AS p | YIELD $-.p AS forward, id(endNode($-.p)) AS dst); \
         $d = (FIND SHORTEST PATH FROM $c.dst TO $a.src OVER follow YIELD path AS p | YIELD $-.p AS p, id(startNode($-.p)) AS src); \
@@ -1404,7 +1407,7 @@ FROM &lt;first_table&gt; INNER JOIN &lt;second_table&gt; ON &lt;join_condition&g
 | &lt;(&quot;player101&quot;)-[:follow@0 {}]-&gt;(&quot;player102&quot;)-[:follow@0 {}]-&gt;(&quot;player101&quot;)-[:follow@0 {}]-&gt;(&quot;player125&quot;)&gt;                                                             | &quot;player125&quot; | &lt;(&quot;player125&quot;)-[:follow@0 {}]-&gt;(&quot;player100&quot;)-[:follow@0 {}]-&gt;(&quot;player101&quot;)&gt; |
 ...
 +-----------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------+-----------------------------------------------------------------------------+
-</code></pre>
+</code></pre></div>
 
 
 

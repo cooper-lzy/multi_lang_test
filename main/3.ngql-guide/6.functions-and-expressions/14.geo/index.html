@@ -44,6 +44,8 @@
       
     
     
+      <link rel="stylesheet" href="../../../stylesheets/note.css">
+    
     <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -73,7 +75,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#geography-functions" class="md-skip">
+        <a href="#geography_functions" class="md-skip">
           Skip to content
         </a>
       
@@ -1291,10 +1293,10 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
   
 
 
-<h1 id="geography-functions">Geography functions</h1>
+<h1 id="geography_functions">Geography functions<a class="headerlink" href="#geography_functions" title="Permanent link">&para;</a></h1>
 <p>Geography functions are used to generate or perform operations on the value of the geography data type.</p>
 <p>For descriptions of the geography data types, see <a href="../../3.data-types/10.geography/">Geography</a>.</p>
-<h2 id="descriptions">Descriptions</h2>
+<h2 id="descriptions">Descriptions<a class="headerlink" href="#descriptions" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
 <tr>
@@ -1366,8 +1368,8 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
 </tr>
 </tbody>
 </table>
-<h2 id="examples">Examples</h2>
-<pre><code class="language-ngql">nebula&gt; RETURN ST_ASText(ST_Point(1,1));
+<h2 id="examples">Examples<a class="headerlink" href="#examples" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code>nebula&gt; RETURN ST_ASText(ST_Point(1,1));
 +--------------------------+
 | ST_ASText(ST_Point(1,1)) |
 +--------------------------+
@@ -1443,7 +1445,7 @@ nebula&gt; RETURN S2_CoveringCellIds(ST_GeogFromText(&quot;POLYGON((0 1, 1 2, 2 
 +--------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | [1152391494368201343, 1153466862374223872, 1153554823304445952, 1153836298281156608, 1153959443583467520, 1154240918560178176, 1160503736791990272, 1160591697722212352] |
 +--------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-</code></pre>
+</code></pre></div>
 
 
 

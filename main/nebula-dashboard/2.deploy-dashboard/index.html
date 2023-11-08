@@ -48,6 +48,8 @@
       
     
     
+      <link rel="stylesheet" href="../../stylesheets/note.css">
+    
     <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -77,7 +79,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#deploy-dashboard-community-edition" class="md-skip">
+        <a href="#deploy_dashboard_community_edition" class="md-skip">
           Skip to content
         </a>
       
@@ -1221,7 +1223,7 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#deploy-dashboard-with-docker-compose" class="md-nav__link">
+  <a href="#deploy_dashboard_with_docker_compose" class="md-nav__link">
     Deploy Dashboard with Docker Compose
   </a>
   
@@ -1233,14 +1235,14 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
 </li>
       
         <li class="md-nav__item">
-  <a href="#manage-services-in-dashboard" class="md-nav__link">
+  <a href="#manage_services_in_dashboard" class="md-nav__link">
     Manage services in Dashboard
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#next-to-do" class="md-nav__link">
+  <a href="#next_to_do" class="md-nav__link">
     Next to do
   </a>
   
@@ -1364,7 +1366,7 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#deploy-dashboard-with-docker-compose" class="md-nav__link">
+  <a href="#deploy_dashboard_with_docker_compose" class="md-nav__link">
     Deploy Dashboard with Docker Compose
   </a>
   
@@ -1376,14 +1378,14 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
 </li>
       
         <li class="md-nav__item">
-  <a href="#manage-services-in-dashboard" class="md-nav__link">
+  <a href="#manage_services_in_dashboard" class="md-nav__link">
     Manage services in Dashboard
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#next-to-do" class="md-nav__link">
+  <a href="#next_to_do" class="md-nav__link">
     Next to do
   </a>
   
@@ -1407,38 +1409,38 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
   
 
 
-<h1 id="deploy-dashboard-community-edition">Deploy Dashboard Community Edition</h1>
+<h1 id="deploy_dashboard_community_edition">Deploy Dashboard Community Edition<a class="headerlink" href="#deploy_dashboard_community_edition" title="Permanent link">&para;</a></h1>
 <p>This topic will describe how to deploy NebulaGraph Dashboard in detail.</p>
 <p>To download and compile the latest source code of Dashboard, follow the instructions on the <a href="https://github.com/vesoft-inc/nebula-dashboard">nebula dashboard GitHub page</a>.</p>
-<h2 id="prerequisites">Prerequisites</h2>
+<h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h2>
 <p>Before you deploy Dashboard, you must confirm that:</p>
 <ul>
-<li>
-<p>The NebulaGraph services are deployed and started. For more information, see <a href="../../2.quick-start/1.quick-start-workflow/">NebulaGraph Database Manual</a>.</p>
-</li>
+<li>The NebulaGraph services are deployed and started. For more information, see <a href="../../2.quick-start/1.quick-start-workflow/">NebulaGraph Database Manual</a>.</li>
+</ul>
+<ul>
 <li>
 <p>Before the installation starts, the following ports are not occupied.</p>
-</li>
-<li>
-<p>9200</p>
-</li>
-<li>
-<p>9100</p>
-</li>
-<li>
-<p>9090</p>
-</li>
-<li>
-<p>8090</p>
-</li>
-<li>
-<p>7003</p>
-</li>
-<li>
-<p>The node-exporter is installed on the machines to be monitored. For details on installation, see <a href="https://prometheus.io/docs/guides/node-exporter/">Prometheus document</a>.</p>
+<ul>
+<li>9200</li>
+</ul>
+<ul>
+<li>9100</li>
+</ul>
+<ul>
+<li>9090</li>
+</ul>
+<ul>
+<li>8090</li>
+</ul>
+<ul>
+<li>7003</li>
+</ul>
 </li>
 </ul>
-<h2 id="steps">Steps</h2>
+<ul>
+<li>The node-exporter is installed on the machines to be monitored. For details on installation, see <a href="https://prometheus.io/docs/guides/node-exporter/">Prometheus document</a>.</li>
+</ul>
+<h2 id="steps">Steps<a class="headerlink" href="#steps" title="Permanent link">&para;</a></h2>
 <ol>
 <li>
 <p>Download the tar package<a href="https://oss-cdn.nebula-graph.com.cn/nebula-graph-dashboard/3.4.0/nebula-dashboard-3.4.0.x86_64.tar.gz">nebula-dashboard-3.4.0.x86_64.tar.gz</a>  as needed.</p>
@@ -1448,8 +1450,6 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
 </li>
 <li>
 <p>Modify the <code>config.yaml</code> file in <code>nebula-dashboard</code>.</p>
-</li>
-</ol>
 <p>The configuration file contains the configurations of four dependent services and configurations of clusters. The descriptions of the dependent services are as follows.</p>
 <table>
 <thead>
@@ -1483,75 +1483,78 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
 </tbody>
 </table>
 <p>The descriptions of the configuration file are as follows.</p>
-<p><code>yaml
-  port: 7003   # Web service port.
-  gateway:
-    ip: hostIP   # The IP of the machine where the Dashboard is deployed.
-    port: 8090
-    https: false  # Whether to enable HTTPS.
-    runmode: dev  # Program running mode, including dev, test, and prod. It is used to distinguish between different running environments generally.
-  stats-exporter:
-    ip: hostIP   # The IP of the machine where the Dashboard is deployed.
-    nebulaPort: 9200
-    https: false  # Whether to enable HTTPS.
-  node-exporter:
-    - ip: nebulaHostIP_1 # The IP of the machine where the NebulaGraph is deployed.
-      port: 9100
-      https: false # Whether to enable HTTPS.
-  # - ip: nebulaHostIP_2
-  #   port: 9100
-  #   https: false
-  prometheus:
-    ip: hostIP    # The IP of the machine where the Dashboard is deployed.
-    prometheusPort: 9090
-    https: false  # Whether to enable HTTPS.
-    scrape_interval: 5s  # The interval for collecting the monitoring data, which is 1 minute by default.
-    evaluation_interval: 5s  # The interval for running alert rules, which is 1 minute by default.
-  # Cluster node info
-  nebula-cluster:
-    name: 'default' # Cluster name
-    metad:
-      - name: metad0
-        endpointIP: nebulaMetadIP  # The IP of the machine where the Meta service is deployed.
-        port: 9559
-        endpointPort: 19559
-    # - name: metad1
-    #   endpointIP: nebulaMetadIP
-    #   port: 9559
-    #   endpointPort: 19559  
-    graphd:
-      - name: graphd0
-        endpointIP: nebulaGraphdIP  # The IP of the machine where the Graph service is deployed.
-        port: 9669
-        endpointPort: 19669
-    # - name: graphd1
-    #   endpointIP: nebulaGraphdIP
-    #   port: 9669
-    #   endpointPort: 19669  
-    storaged:
-      - name: storaged0
-        endpointIP: nebulaStoragedIP  # The IP of the machine where the Storage service is deployed.
-        port: 9779
-        endpointPort: 19779
-    # - name: storaged1
-    #   endpointIP: nebulaStoragedIP
-    #   port: 9779
-    #   endpointPort: 19779</code></p>
-<ol>
-<li>Run <code>./dashboard.service start all</code> to start the services.</li>
+<div class="highlight"><pre><span></span><code><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">7003</span><span class="w">   </span><span class="c1"># Web service port.</span>
+<span class="nt">gateway</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">ip</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">hostIP</span><span class="w">   </span><span class="c1"># The IP of the machine where the Dashboard is deployed.</span>
+<span class="w">  </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8090</span>
+<span class="w">  </span><span class="nt">https</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span><span class="w">  </span><span class="c1"># Whether to enable HTTPS.</span>
+<span class="w">  </span><span class="nt">runmode</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dev</span><span class="w">  </span><span class="c1"># Program running mode, including dev, test, and prod. It is used to distinguish between different running environments generally.</span>
+<span class="nt">stats-exporter</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">ip</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">hostIP</span><span class="w">   </span><span class="c1"># The IP of the machine where the Dashboard is deployed.</span>
+<span class="w">  </span><span class="nt">nebulaPort</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">9200</span>
+<span class="w">  </span><span class="nt">https</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span><span class="w">  </span><span class="c1"># Whether to enable HTTPS.</span>
+<span class="nt">node-exporter</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">ip</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nebulaHostIP_1</span><span class="w"> </span><span class="c1"># The IP of the machine where the NebulaGraph is deployed.</span>
+<span class="w">    </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">9100</span>
+<span class="w">    </span><span class="nt">https</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span><span class="w"> </span><span class="c1"># Whether to enable HTTPS.</span>
+<span class="c1"># - ip: nebulaHostIP_2</span>
+<span class="c1">#   port: 9100</span>
+<span class="c1">#   https: false</span>
+<span class="nt">prometheus</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">ip</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">hostIP</span><span class="w">    </span><span class="c1"># The IP of the machine where the Dashboard is deployed.</span>
+<span class="w">  </span><span class="nt">prometheusPort</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">9090</span>
+<span class="w">  </span><span class="nt">https</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span><span class="w">  </span><span class="c1"># Whether to enable HTTPS.</span>
+<span class="w">  </span><span class="nt">scrape_interval</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5s</span><span class="w">  </span><span class="c1"># The interval for collecting the monitoring data, which is 1 minute by default.</span>
+<span class="w">  </span><span class="nt">evaluation_interval</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5s</span><span class="w">  </span><span class="c1"># The interval for running alert rules, which is 1 minute by default.</span>
+<span class="c1"># Cluster node info</span>
+<span class="nt">nebula-cluster</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;default&#39;</span><span class="w"> </span><span class="c1"># Cluster name</span>
+<span class="w">  </span><span class="nt">metad</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">metad0</span>
+<span class="w">      </span><span class="nt">endpointIP</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nebulaMetadIP</span><span class="w">  </span><span class="c1"># The IP of the machine where the Meta service is deployed.</span>
+<span class="w">      </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">9559</span>
+<span class="w">      </span><span class="nt">endpointPort</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">19559</span>
+<span class="w">  </span><span class="c1"># - name: metad1</span>
+<span class="w">  </span><span class="c1">#   endpointIP: nebulaMetadIP</span>
+<span class="w">  </span><span class="c1">#   port: 9559</span>
+<span class="w">  </span><span class="c1">#   endpointPort: 19559  </span>
+<span class="w">  </span><span class="nt">graphd</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">graphd0</span>
+<span class="w">      </span><span class="nt">endpointIP</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nebulaGraphdIP</span><span class="w">  </span><span class="c1"># The IP of the machine where the Graph service is deployed.</span>
+<span class="w">      </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">9669</span>
+<span class="w">      </span><span class="nt">endpointPort</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">19669</span>
+<span class="w">  </span><span class="c1"># - name: graphd1</span>
+<span class="w">  </span><span class="c1">#   endpointIP: nebulaGraphdIP</span>
+<span class="w">  </span><span class="c1">#   port: 9669</span>
+<span class="w">  </span><span class="c1">#   endpointPort: 19669  </span>
+<span class="w">  </span><span class="nt">storaged</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">storaged0</span>
+<span class="w">      </span><span class="nt">endpointIP</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nebulaStoragedIP</span><span class="w">  </span><span class="c1"># The IP of the machine where the Storage service is deployed.</span>
+<span class="w">      </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">9779</span>
+<span class="w">      </span><span class="nt">endpointPort</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">19779</span>
+<span class="w">  </span><span class="c1"># - name: storaged1</span>
+<span class="w">  </span><span class="c1">#   endpointIP: nebulaStoragedIP</span>
+<span class="w">  </span><span class="c1">#   port: 9779</span>
+<span class="w">  </span><span class="c1">#   endpointPort: 19779  </span>
+</code></pre></div>
+</li>
+<li>
+<p>Run <code>./dashboard.service start all</code> to start the services.</p>
+</li>
 </ol>
-<h3 id="deploy-dashboard-with-docker-compose">Deploy Dashboard with Docker Compose</h3>
+<h3 id="deploy_dashboard_with_docker_compose">Deploy Dashboard with Docker Compose<a class="headerlink" href="#deploy_dashboard_with_docker_compose" title="Permanent link">&para;</a></h3>
 <p>If you are deploying Dashboard using docker, you should also modify the configuration file <code>config.yaml</code>, and then run <code>docker-compose up -d</code> to start the container.</p>
-<p>!!! note</p>
-<pre><code>If you change the port number in `config.yaml`, the port number in `docker-compose.yaml` needs to be consistent as well.
-</code></pre>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you change the port number in <code>config.yaml</code>, the port number in <code>docker-compose.yaml</code> needs to be consistent as well.</p>
+</div>
 <p>Run <code>docker-compose stop</code> to stop the container.</p>
-<h2 id="manage-services-in-dashboard">Manage services in Dashboard</h2>
+<h2 id="manage_services_in_dashboard">Manage services in Dashboard<a class="headerlink" href="#manage_services_in_dashboard" title="Permanent link">&para;</a></h2>
 <p>You can use the <code>dashboard.service</code> script to start, restart, stop, and check the Dashboard services.</p>
-<pre><code class="language-bash">sudo &lt;dashboard_path&gt;/dashboard.service
-[-v] [-h]
-&lt;start|restart|stop|status&gt;  &lt;prometheus|webserver|exporter|gateway|all&gt;
-</code></pre>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>&lt;dashboard_path&gt;/dashboard.service
+<span class="o">[</span>-v<span class="o">]</span><span class="w"> </span><span class="o">[</span>-h<span class="o">]</span>
+&lt;start<span class="p">|</span>restart<span class="p">|</span>stop<span class="p">|</span>status&gt;<span class="w">  </span>&lt;prometheus<span class="p">|</span>webserver<span class="p">|</span>exporter<span class="p">|</span>gateway<span class="p">|</span>all&gt;
+</code></pre></div>
 <table>
 <thead>
 <tr>
@@ -1610,10 +1613,11 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
 </tr>
 </tbody>
 </table>
-<p>!!! note</p>
-<pre><code>To view the Dashboard version, run the command `./dashboard.service -version`.
-</code></pre>
-<h2 id="next-to-do">Next to do</h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>To view the Dashboard version, run the command <code>./dashboard.service -version</code>.</p>
+</div>
+<h2 id="next_to_do">Next to do<a class="headerlink" href="#next_to_do" title="Permanent link">&para;</a></h2>
 <p><a href="../3.connect-dashboard/">Connect to Dashboard</a></p>
 
 

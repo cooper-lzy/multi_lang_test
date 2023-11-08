@@ -48,6 +48,8 @@
       
     
     
+      <link rel="stylesheet" href="../../stylesheets/note.css">
+    
     <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -77,7 +79,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#what-is-nebulagraph-dashboard-community-edition" class="md-skip">
+        <a href="#what_is_nebulagraph_dashboard_community_edition" class="md-skip">
           Skip to content
         </a>
       
@@ -1207,14 +1209,14 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
 </li>
       
         <li class="md-nav__item">
-  <a href="#version-compatibility" class="md-nav__link">
+  <a href="#version_compatibility" class="md-nav__link">
     Version compatibility
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#release-note" class="md-nav__link">
+  <a href="#release_note" class="md-nav__link">
     Release note
   </a>
   
@@ -1364,14 +1366,14 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
 </li>
       
         <li class="md-nav__item">
-  <a href="#version-compatibility" class="md-nav__link">
+  <a href="#version_compatibility" class="md-nav__link">
     Version compatibility
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#release-note" class="md-nav__link">
+  <a href="#release_note" class="md-nav__link">
     Release note
   </a>
   
@@ -1395,46 +1397,44 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
   
 
 
-<h1 id="what-is-nebulagraph-dashboard-community-edition">What is NebulaGraph Dashboard Community Edition</h1>
+<h1 id="what_is_nebulagraph_dashboard_community_edition">What is NebulaGraph Dashboard Community Edition<a class="headerlink" href="#what_is_nebulagraph_dashboard_community_edition" title="Permanent link">&para;</a></h1>
 <p>NebulaGraph Dashboard Community Edition (Dashboard for short) is a visualization tool that monitors the status of machines and services in NebulaGraph clusters.</p>
-<p>!!! enterpriseonly</p>
-<pre><code>Dashboard Enterprise Edition adds features such as visual cluster creation, batch import of clusters, fast scaling, etc. For more information, see [Pricing](https://nebula-graph.io/pricing/).
-</code></pre>
-<h2 id="features">Features</h2>
+<div class="admonition enterpriseonly">
+<p class="admonition-title">Enterpriseonly</p>
+<p>Dashboard Enterprise Edition adds features such as visual cluster creation, batch import of clusters, fast scaling, etc. For more information, see <a href="https://nebula-graph.io/pricing/">Pricing</a>.</p>
+</div>
+<h2 id="features">Features<a class="headerlink" href="#features" title="Permanent link">&para;</a></h2>
 <p>Dashboard monitors:</p>
 <ul>
-<li>
-<p>The status of all the machines in clusters, including CPU, memory, load, disk, and network.</p>
-</li>
-<li>
-<p>The information of all the services in clusters, including the IP addresses, versions, and monitoring metrics (such as the number of queries, the latency of queries, the latency of heartbeats, and so on).</p>
-</li>
-<li>
-<p>The information of clusters, including the information of services, partitions, configurations, and long-term tasks.</p>
-</li>
-<li>
-<p>Set how often the metrics page refreshes.</p>
-</li>
+<li>The status of all the machines in clusters, including CPU, memory, load, disk, and network.</li>
 </ul>
-<h2 id="scenarios">Scenarios</h2>
+<ul>
+<li>The information of all the services in clusters, including the IP addresses, versions, and monitoring metrics (such as the number of queries, the latency of queries, the latency of heartbeats, and so on).</li>
+</ul>
+<ul>
+<li>The information of clusters, including the information of services, partitions, configurations, and long-term tasks.</li>
+</ul>
+<ul>
+<li>Set how often the metrics page refreshes.</li>
+</ul>
+<h2 id="scenarios">Scenarios<a class="headerlink" href="#scenarios" title="Permanent link">&para;</a></h2>
 <p>You can use Dashboard in one of the following scenarios:</p>
 <ul>
-<li>
-<p>You want to monitor key metrics conveniently and quickly, and present multiple key information of the business to ensure the business operates normally.</p>
-</li>
-<li>
-<p>You want to monitor clusters from multiple dimensions (such as the time, aggregate rules, and metrics).</p>
-</li>
-<li>
-<p>After a failure occurs, you need to review it and confirm its occurrence time and unexpected phenomena.</p>
-</li>
+<li>You want to monitor key metrics conveniently and quickly, and present multiple key information of the business to ensure the business operates normally.</li>
 </ul>
-<h2 id="precautions">Precautions</h2>
+<ul>
+<li>You want to monitor clusters from multiple dimensions (such as the time, aggregate rules, and metrics).</li>
+</ul>
+<ul>
+<li>After a failure occurs, you need to review it and confirm its occurrence time and unexpected phenomena.</li>
+</ul>
+<h2 id="precautions">Precautions<a class="headerlink" href="#precautions" title="Permanent link">&para;</a></h2>
 <p>The monitoring data will be retained for 14 days by default, that is, only the monitoring data within the last 14 days can be queried.</p>
-<p>!!! note</p>
-<pre><code>The monitoring service is supported by Prometheus. The update frequency and retention intervals can be modified. For details, see [Prometheus](https://prometheus.io/docs/prometheus/latest/configuration/configuration/).
-</code></pre>
-<h2 id="version-compatibility">Version compatibility</h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The monitoring service is supported by Prometheus. The update frequency and retention intervals can be modified. For details, see <a href="https://prometheus.io/docs/prometheus/latest/configuration/configuration/">Prometheus</a>.</p>
+</div>
+<h2 id="version_compatibility">Version compatibility<a class="headerlink" href="#version_compatibility" title="Permanent link">&para;</a></h2>
 <p>The version correspondence between NebulaGraph and Dashboard Community Edition is as follows.</p>
 <table>
 <thead>
@@ -1474,7 +1474,7 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
 </tr>
 </tbody>
 </table>
-<h2 id="release-note">Release note</h2>
+<h2 id="release_note">Release note<a class="headerlink" href="#release_note" title="Permanent link">&para;</a></h2>
 <p><a href="https://github.com/vesoft-inc/nebula-dashboard/releases/tag/v3.4.0">Release</a></p>
 
 

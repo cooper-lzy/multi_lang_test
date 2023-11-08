@@ -44,6 +44,8 @@
       
     
     
+      <link rel="stylesheet" href="../../../stylesheets/note.css">
+    
     <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -73,7 +75,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#clear-space" class="md-skip">
+        <a href="#clear_space" class="md-skip">
           Skip to content
         </a>
       
@@ -1260,7 +1262,7 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#permission-requirements" class="md-nav__link">
+  <a href="#permission_requirements" class="md-nav__link">
     Permission requirements
   </a>
   
@@ -1281,7 +1283,7 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
 </li>
       
         <li class="md-nav__item">
-  <a href="#data-reserved" class="md-nav__link">
+  <a href="#data_reserved" class="md-nav__link">
     Data reserved
   </a>
   
@@ -1305,26 +1307,28 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
   
 
 
-<h1 id="clear-space">CLEAR SPACE</h1>
+<h1 id="clear_space">CLEAR SPACE<a class="headerlink" href="#clear_space" title="Permanent link">&para;</a></h1>
 <p><code>CLEAR SPACE</code> deletes the vertices and edges in a graph space, but does not delete the graph space itself and the schema information.</p>
-<p>!!! note</p>
-<pre><code>It is recommended to execute [`SUBMIT JOB COMPACT`](../../4.job-statements/#submit_job_compact) immediately after executing the `CLEAR SPACE` operation improve the query performance. Note that the COMPACT operation may affect query performance, and it is recommended to perform this operation during low business hours (e.g., early morning).
-</code></pre>
-<h2 id="permission-requirements">Permission requirements</h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>It is recommended to execute <a href="../../4.job-statements/#submit_job_compact"><code>SUBMIT JOB COMPACT</code></a> immediately after executing the <code>CLEAR SPACE</code> operation improve the query performance. Note that the COMPACT operation may affect query performance, and it is recommended to perform this operation during low business hours (e.g., early morning).</p>
+</div>
+<h2 id="permission_requirements">Permission requirements<a class="headerlink" href="#permission_requirements" title="Permanent link">&para;</a></h2>
 <p>Only the <a href="../../7.data-security/1.authentication/3.role-list.md">God role</a> has the permission to run <code>CLEAR SPACE</code>.</p>
-<h2 id="caution">Caution</h2>
+<h2 id="caution">Caution<a class="headerlink" href="#caution" title="Permanent link">&para;</a></h2>
 <ul>
 <li>Once cleared, the data <strong>CANNOT be recovered</strong>. Use <code>CLEAR SPACE</code> with caution.</li>
 <li><code>CLEAR SPACE</code> is not an atomic operation. If an error occurs, re-run <code>CLEAR SPACE</code> to avoid data remaining.</li>
 <li>The larger the amount of data in the graph space, the longer it takes to clear it. If the execution fails due to client connection timeout, increase the value of the <code>storage_client_timeout_ms</code> parameter in the <a href="../../5.configurations-and-logs/1.configurations/3.graph-config.md">Graph Service configuration</a>.</li>
 <li>During the execution of <code>CLEAR SPACE</code>, writing data into the graph space is not automatically prohibited. Such write operations can result in incomplete data clearing, and the residual data can be damaged.</li>
 </ul>
-<p>!!! note</p>
-<pre><code>The NebulaGraph Community Edition does not support blocking data writing while allowing `CLEAR SPACE`.
-</code></pre>
-<h2 id="syntax">Syntax</h2>
-<pre><code class="language-ngql">CLEAR SPACE [IF EXISTS] &lt;space_name&gt;;
-</code></pre>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The NebulaGraph Community Edition does not support blocking data writing while allowing <code>CLEAR SPACE</code>.</p>
+</div>
+<h2 id="syntax">Syntax<a class="headerlink" href="#syntax" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code>CLEAR SPACE [IF EXISTS] &lt;space_name&gt;;
+</code></pre></div>
 <table>
 <thead>
 <tr>
@@ -1344,9 +1348,9 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
 </tbody>
 </table>
 <p>Example:</p>
-<pre><code class="language-ngql">CLEAR SPACE basketballplayer;
-</code></pre>
-<h2 id="data-reserved">Data reserved</h2>
+<div class="highlight"><pre><span></span><code>CLEAR SPACE basketballplayer;
+</code></pre></div>
+<h2 id="data_reserved">Data reserved<a class="headerlink" href="#data_reserved" title="Permanent link">&para;</a></h2>
 <p><code>CLEAR SPACE</code> does not delete the following data in a graph space:</p>
 <ul>
 <li>Tag information.</li>
@@ -1354,7 +1358,7 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
 <li>The metadata of native indexes and full-text indexes.</li>
 </ul>
 <p>The following example shows what <code>CLEAR SPACE</code> deletes and reserves.</p>
-<pre><code class="language-ngql"># Enter the graph space basketballplayer.
+<div class="highlight"><pre><span></span><code># Enter the graph space basketballplayer.
 nebula [(none)]&gt; use basketballplayer;
 Execution succeeded
 
@@ -1447,7 +1451,7 @@ nebula[basketballplayer]&gt; SHOW TAG INDEXES;
 | &quot;player_index_1&quot; | &quot;player&quot; | [&quot;name&quot;] |
 +------------------+----------+----------+
 Got 2 rows (time spent 523/978 us)
-</code></pre>
+</code></pre></div>
 
 
 

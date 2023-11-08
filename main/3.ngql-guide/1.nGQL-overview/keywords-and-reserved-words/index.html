@@ -48,6 +48,8 @@
       
     
     
+      <link rel="stylesheet" href="../../../stylesheets/note.css">
+    
     <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -1096,14 +1098,14 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#reserved-keywords" class="md-nav__link">
+  <a href="#reserved_keywords" class="md-nav__link">
     Reserved keywords
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#non-reserved-keywords" class="md-nav__link">
+  <a href="#non-reserved_keywords" class="md-nav__link">
     Non-reserved keywords
   </a>
   
@@ -1326,14 +1328,14 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#reserved-keywords" class="md-nav__link">
+  <a href="#reserved_keywords" class="md-nav__link">
     Reserved keywords
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#non-reserved-keywords" class="md-nav__link">
+  <a href="#non-reserved_keywords" class="md-nav__link">
     Non-reserved keywords
   </a>
   
@@ -1357,22 +1359,21 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
   
 
 
-<h1 id="keywords">Keywords</h1>
+<h1 id="keywords">Keywords<a class="headerlink" href="#keywords" title="Permanent link">&para;</a></h1>
 <p>Keywords in nGQL are words with particular meanings, such as <code>CREATE</code> and <code>TAG</code> in the <code>CREATE TAG</code> statement. Keywords that require special processing to be used as identifiers are referred to as <code>reserved keywords</code>, while the part of keywords that can be used directly as identifiers are called <code>non-reserved keywords</code>."</p>
 <p>It is not recommend to use keywords in schema. If you must use keywords in schema:</p>
 <ul>
-<li>
-<p>Non-reserved keywords can be used as identifiers without quotes if they are all in lowercase. However, if a non-reserved keyword contains any uppercase letters when used as an identifier, it must be enclosed in backticks (`), for example, `Comment`.</p>
-</li>
-<li>
-<p>To use special characters or reserved keywords as identifiers, quote them with backticks such as <code>AND</code>.</p>
-</li>
+<li>Non-reserved keywords can be used as identifiers without quotes if they are all in lowercase. However, if a non-reserved keyword contains any uppercase letters when used as an identifier, it must be enclosed in backticks (`), for example, `Comment`.</li>
 </ul>
-<p>!!! Note</p>
-<pre><code>Keywords are case-insensitive.
-</code></pre>
-<pre><code class="language-ngql">nebula&gt; CREATE TAG TAG(name string);
-[ERROR (-1004)]: SyntaxError: syntax error near `TAG'
+<ul>
+<li>To use special characters or reserved keywords as identifiers, quote them with backticks such as <code>AND</code>.</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Keywords are case-insensitive.</p>
+</div>
+<div class="highlight"><pre><span></span><code>nebula&gt; CREATE TAG TAG(name string);
+[ERROR (-1004)]: SyntaxError: syntax error near `TAG&#39;
 
 nebula&gt; CREATE TAG `TAG` (name string);
 Execution succeeded
@@ -1385,9 +1386,9 @@ Execution succeeded
 
 nebula&gt; CREATE TAG `￥%special characters&amp;*+-*/` (`q~！（）=  wer` string);
 Execution succeeded
-</code></pre>
-<h2 id="reserved-keywords">Reserved keywords</h2>
-<pre><code class="language-ngql">ACROSS
+</code></pre></div>
+<h2 id="reserved_keywords">Reserved keywords<a class="headerlink" href="#reserved_keywords" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code>ACROSS
 ADD
 ALTER
 AND
@@ -1490,9 +1491,9 @@ WHERE
 WITH
 XOR
 YIELD
-</code></pre>
-<h2 id="non-reserved-keywords">Non-reserved keywords</h2>
-<pre><code class="language-ngql">ACCOUNT
+</code></pre></div>
+<h2 id="non-reserved_keywords">Non-reserved keywords<a class="headerlink" href="#non-reserved_keywords" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code>ACCOUNT
 ADMIN
 ALL
 ANY
@@ -1596,7 +1597,7 @@ VID_TYPE
 WILDCARD
 ZONE
 ZONES
-</code></pre>
+</code></pre></div>
 
 
 

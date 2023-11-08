@@ -44,6 +44,8 @@
       
     
     
+      <link rel="stylesheet" href="../../../stylesheets/note.css">
+    
     <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -1298,15 +1300,15 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
   
 
 
-<h1 id="use">USE</h1>
+<h1 id="use">USE<a class="headerlink" href="#use" title="Permanent link">&para;</a></h1>
 <p><code>USE</code> specifies a graph space as the current working graph space for subsequent queries.</p>
-<h2 id="prerequisites">Prerequisites</h2>
+<h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h2>
 <p>Running the <code>USE</code> statement requires some <a href="../../7.data-security/1.authentication/3.role-list.md">privileges</a> for the graph space. Otherwise, NebulaGraph throws an error.</p>
-<h2 id="syntax">Syntax</h2>
-<pre><code class="language-ngql">USE &lt;graph_space_name&gt;;
-</code></pre>
-<h2 id="examples">Examples</h2>
-<pre><code class="language-ngql"># The following example creates two sample spaces.
+<h2 id="syntax">Syntax<a class="headerlink" href="#syntax" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code>USE &lt;graph_space_name&gt;;
+</code></pre></div>
+<h2 id="examples">Examples<a class="headerlink" href="#examples" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code># The following example creates two sample spaces.
 nebula&gt; CREATE SPACE IF NOT EXISTS space1 (vid_type=FIXED_STRING(30));
 nebula&gt; CREATE SPACE IF NOT EXISTS space2 (vid_type=FIXED_STRING(30));
 
@@ -1315,12 +1317,12 @@ nebula&gt; USE space1;
 
 # The following example specifies space2 as the current working graph space. Hereafter, you cannot read any data from space1, because these vertices and edges being traversed have no relevance with space1.
 nebula&gt; USE space2;
-</code></pre>
-<p>!!! Caution</p>
-<pre><code>You cannot use two graph spaces in one statement.
-
-Different from Fabric Cypher, graph spaces in NebulaGraph are fully isolated from each other. Making a graph space as the working graph space prevents you from accessing other spaces. The only way to traverse in a new graph space is to switch by the `USE` statement. In Fabric Cypher, you can use two graph spaces in one statement (using the `USE + CALL` syntax). But in NebulaGraph, you can only use one graph space in one statement.
-</code></pre>
+</code></pre></div>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<p>You cannot use two graph spaces in one statement.</p>
+<p>Different from Fabric Cypher, graph spaces in NebulaGraph are fully isolated from each other. Making a graph space as the working graph space prevents you from accessing other spaces. The only way to traverse in a new graph space is to switch by the <code>USE</code> statement. In Fabric Cypher, you can use two graph spaces in one statement (using the <code>USE + CALL</code> syntax). But in NebulaGraph, you can only use one graph space in one statement.</p>
+</div>
 
 
 

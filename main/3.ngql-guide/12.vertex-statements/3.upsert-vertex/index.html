@@ -44,6 +44,8 @@
       
     
     
+      <link rel="stylesheet" href="../../../stylesheets/note.css">
+    
     <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -73,7 +75,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#upsert-vertex" class="md-skip">
+        <a href="#upsert_vertex" class="md-skip">
           Skip to content
         </a>
       
@@ -1267,14 +1269,14 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
 </li>
       
         <li class="md-nav__item">
-  <a href="#insert-a-vertex-if-it-does-not-exist" class="md-nav__link">
+  <a href="#insert_a_vertex_if_it_does_not_exist" class="md-nav__link">
     Insert a vertex if it does not exist
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#update-a-vertex-if-it-exists" class="md-nav__link">
+  <a href="#update_a_vertex_if_it_exists" class="md-nav__link">
     Update a vertex if it exists
   </a>
   
@@ -1298,21 +1300,23 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
   
 
 
-<h1 id="upsert-vertex">UPSERT VERTEX</h1>
+<h1 id="upsert_vertex">UPSERT VERTEX<a class="headerlink" href="#upsert_vertex" title="Permanent link">&para;</a></h1>
 <p>The <code>UPSERT</code> statement is a combination of <code>UPDATE</code> and <code>INSERT</code>. You can use <code>UPSERT VERTEX</code> to update the properties of a vertex if it exists or insert a new vertex if it does not exist.</p>
-<p>!!! note</p>
-<pre><code>An `UPSERT VERTEX` statement can only update the properties on **ONE TAG** of a vertex.
-</code></pre>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>An <code>UPSERT VERTEX</code> statement can only update the properties on <strong>ONE TAG</strong> of a vertex.</p>
+</div>
 <p>The performance of <code>UPSERT</code> is much lower than that of <code>INSERT</code> because <code>UPSERT</code> is a read-modify-write serialization operation at the partition level.</p>
-<p>!!! danger</p>
-<pre><code>Don't use `UPSERT` for scenarios with highly concurrent writes. You can use `UPDATE` or `INSERT` instead.
-</code></pre>
-<h2 id="syntax">Syntax</h2>
-<pre><code class="language-ngql">UPSERT VERTEX ON &lt;tag&gt; &lt;vid&gt;
+<div class="admonition danger">
+<p class="admonition-title">Danger</p>
+<p>Don't use <code>UPSERT</code> for scenarios with highly concurrent writes. You can use <code>UPDATE</code> or <code>INSERT</code> instead.</p>
+</div>
+<h2 id="syntax">Syntax<a class="headerlink" href="#syntax" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code>UPSERT VERTEX ON &lt;tag&gt; &lt;vid&gt;
 SET &lt;update_prop&gt;
 [WHEN &lt;condition&gt;]
 [YIELD &lt;output&gt;]
-</code></pre>
+</code></pre></div>
 <table>
 <thead>
 <tr>
@@ -1355,24 +1359,20 @@ SET &lt;update_prop&gt;
 </tr>
 </tbody>
 </table>
-<h2 id="insert-a-vertex-if-it-does-not-exist">Insert a vertex if it does not exist</h2>
+<h2 id="insert_a_vertex_if_it_does_not_exist">Insert a vertex if it does not exist<a class="headerlink" href="#insert_a_vertex_if_it_does_not_exist" title="Permanent link">&para;</a></h2>
 <p>If a vertex does not exist, it is created no matter the conditions in the <code>WHEN</code> clause are met or not, and the <code>SET</code> clause always takes effect. The property values of the new vertex depend on:</p>
 <ul>
-<li>
-<p>How the <code>SET</code> clause is defined.</p>
-</li>
-<li>
-<p>Whether the property has a default value.</p>
-</li>
+<li>How the <code>SET</code> clause is defined.</li>
+</ul>
+<ul>
+<li>Whether the property has a default value.</li>
 </ul>
 <p>For example, if:</p>
 <ul>
-<li>
-<p>The vertex to be inserted will have properties <code>name</code> and <code>age</code> based on the tag <code>player</code>.</p>
-</li>
-<li>
-<p>The <code>SET</code> clause specifies that <code>age = 30</code>.</p>
-</li>
+<li>The vertex to be inserted will have properties <code>name</code> and <code>age</code> based on the tag <code>player</code>.</li>
+</ul>
+<ul>
+<li>The <code>SET</code> clause specifies that <code>age = 30</code>.</li>
 </ul>
 <p>Then the property values in different cases are listed as follows:</p>
 <table>
@@ -1412,7 +1412,7 @@ SET &lt;update_prop&gt;
 </tbody>
 </table>
 <p>Here are some examples:</p>
-<pre><code class="language-ngql">// This query checks if the following three vertices exist. The result &quot;Empty set&quot; indicates that the vertices do not exist.
+<div class="highlight"><pre><span></span><code>// This query checks if the following three vertices exist. The result &quot;Empty set&quot; indicates that the vertices do not exist.
 nebula&gt; FETCH PROP ON * &quot;player666&quot;, &quot;player667&quot;, &quot;player668&quot; YIELD properties(vertex);
 +--------------------+
 | properties(VERTEX) |
@@ -1457,9 +1457,9 @@ nebula&gt; UPSERT VERTEX ON player &quot;player668&quot; \
 +---------+----------+
 | &quot;Amber&quot; | __NULL__ |
 +---------+----------+
-</code></pre>
+</code></pre></div>
 <p>In the last query of the preceding examples, since <code>age</code> has no default value, when the vertex is created, <code>age</code> is <code>NULL</code>, and <code>age = age + 1</code> does not take effect. But if <code>age</code> has a default value, <code>age = age + 1</code> will take effect. For example:</p>
-<pre><code class="language-ngql">nebula&gt; CREATE TAG IF NOT EXISTS player_with_default(name string, age int DEFAULT 20);
+<div class="highlight"><pre><span></span><code>nebula&gt; CREATE TAG IF NOT EXISTS player_with_default(name string, age int DEFAULT 20);
 Execution succeeded
 
 nebula&gt; UPSERT VERTEX ON player_with_default &quot;player101&quot; \
@@ -1471,10 +1471,10 @@ nebula&gt; UPSERT VERTEX ON player_with_default &quot;player101&quot; \
 +----------+-----+
 | __NULL__ | 21  |
 +----------+-----+
-</code></pre>
-<h2 id="update-a-vertex-if-it-exists">Update a vertex if it exists</h2>
+</code></pre></div>
+<h2 id="update_a_vertex_if_it_exists">Update a vertex if it exists<a class="headerlink" href="#update_a_vertex_if_it_exists" title="Permanent link">&para;</a></h2>
 <p>If the vertex exists and the <code>WHEN</code> conditions are met, the vertex is updated.</p>
-<pre><code class="language-ngql">nebula&gt; FETCH PROP ON player &quot;player101&quot; YIELD properties(vertex);
+<div class="highlight"><pre><span></span><code>nebula&gt; FETCH PROP ON player &quot;player101&quot; YIELD properties(vertex);
 +--------------------------------+
 | properties(VERTEX)             |
 +--------------------------------+
@@ -1490,9 +1490,9 @@ nebula&gt; UPSERT VERTEX ON player &quot;player101&quot; \
 +---------------+-----+
 | &quot;Tony Parker&quot; | 38  |
 +---------------+-----+
-</code></pre>
+</code></pre></div>
 <p>If the vertex exists and the <code>WHEN</code> conditions are not met, the update does not take effect.</p>
-<pre><code class="language-ngql">nebula&gt; FETCH PROP ON player &quot;player101&quot; YIELD properties(vertex);
+<div class="highlight"><pre><span></span><code>nebula&gt; FETCH PROP ON player &quot;player101&quot; YIELD properties(vertex);
 +--------------------------------+
 | properties(VERTEX)             |
 +--------------------------------+
@@ -1508,7 +1508,7 @@ nebula&gt; UPSERT VERTEX ON player &quot;player101&quot; \
 +---------------+-----+
 | &quot;Tony Parker&quot; | 38  |
 +---------------+-----+
-</code></pre>
+</code></pre></div>
 
 
 

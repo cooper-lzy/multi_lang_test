@@ -44,6 +44,8 @@
       
     
     
+      <link rel="stylesheet" href="../../../stylesheets/note.css">
+    
     <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -73,7 +75,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#type-conversion-functions" class="md-skip">
+        <a href="#type_conversion_functions" class="md-skip">
           Skip to content
         </a>
       
@@ -1319,16 +1321,16 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
   
 
 
-<h1 id="type-conversion-functions">Type conversion functions</h1>
+<h1 id="type_conversion_functions">Type conversion functions<a class="headerlink" href="#type_conversion_functions" title="Permanent link">&para;</a></h1>
 <p>This topic describes the type conversion functions supported by NebulaGraph.</p>
-<h2 id="toboolean">toBoolean()</h2>
+<h2 id="toboolean">toBoolean()<a class="headerlink" href="#toboolean" title="Permanent link">&para;</a></h2>
 <p>toBoolean() converts a string value to a boolean value.</p>
 <p>Syntax: <code>toBoolean(&lt;value&gt;)</code></p>
 <ul>
 <li>Result type: Bool</li>
 </ul>
 <p>Example:</p>
-<pre><code class="language-ngql">nebula&gt; UNWIND [true, false, 'true', 'false', NULL] AS b \
+<div class="highlight"><pre><span></span><code>nebula&gt; UNWIND [true, false, &#39;true&#39;, &#39;false&#39;, NULL] AS b \
         RETURN toBoolean(b) AS b;
 +----------+
 | b        |
@@ -1339,75 +1341,75 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
 | false    |
 | __NULL__ |
 +----------+
-</code></pre>
-<h2 id="tofloat">toFloat()</h2>
+</code></pre></div>
+<h2 id="tofloat">toFloat()<a class="headerlink" href="#tofloat" title="Permanent link">&para;</a></h2>
 <p>toFloat() converts an integer or string value to a floating point number.</p>
 <p>Syntax: <code>toFloat(&lt;value&gt;)</code></p>
 <ul>
 <li>Result type: Float</li>
 </ul>
 <p>Example:</p>
-<pre><code class="language-ngql">nebula&gt; RETURN toFloat(1), toFloat('1.3'), toFloat('1e3'), toFloat('not a number');
+<div class="highlight"><pre><span></span><code>nebula&gt; RETURN toFloat(1), toFloat(&#39;1.3&#39;), toFloat(&#39;1e3&#39;), toFloat(&#39;not a number&#39;);
 +------------+----------------+----------------+-------------------------+
 | toFloat(1) | toFloat(&quot;1.3&quot;) | toFloat(&quot;1e3&quot;) | toFloat(&quot;not a number&quot;) |
 +------------+----------------+----------------+-------------------------+
 | 1.0        | 1.3            | 1000.0         | __NULL__                |
 +------------+----------------+----------------+-------------------------+
-</code></pre>
-<h2 id="tostring">toString()</h2>
+</code></pre></div>
+<h2 id="tostring">toString()<a class="headerlink" href="#tostring" title="Permanent link">&para;</a></h2>
 <p>toString() converts non-compound types of data, such as numbers, booleans, and so on, to strings.</p>
 <p>Syntax: <code>toString(&lt;value&gt;)</code></p>
 <ul>
 <li>Result type: String</li>
 </ul>
 <p>Example:</p>
-<pre><code class="language-ngql">nebula&gt; RETURN toString(9669) AS int2str, toString(null) AS null2str;
+<div class="highlight"><pre><span></span><code>nebula&gt; RETURN toString(9669) AS int2str, toString(null) AS null2str;
 +---------+----------+
 | int2str | null2str |
 +---------+----------+
 | &quot;9669&quot;  | __NULL__ |
 +---------+----------+
-</code></pre>
-<h2 id="tointeger">toInteger()</h2>
+</code></pre></div>
+<h2 id="tointeger">toInteger()<a class="headerlink" href="#tointeger" title="Permanent link">&para;</a></h2>
 <p>toInteger() converts a floating point or string value to an integer value.</p>
 <p>Syntax: <code>toInteger(&lt;value&gt;)</code></p>
 <ul>
 <li>Result type: Int</li>
 </ul>
 <p>Example:</p>
-<pre><code class="language-ngql">nebula&gt; RETURN toInteger(1), toInteger('1'), toInteger('1e3'), toInteger('not a number');
+<div class="highlight"><pre><span></span><code>nebula&gt; RETURN toInteger(1), toInteger(&#39;1&#39;), toInteger(&#39;1e3&#39;), toInteger(&#39;not a number&#39;);
 +--------------+----------------+------------------+---------------------------+
 | toInteger(1) | toInteger(&quot;1&quot;) | toInteger(&quot;1e3&quot;) | toInteger(&quot;not a number&quot;) |
 +--------------+----------------+------------------+---------------------------+
 | 1            | 1              | 1000             | __NULL__                  |
 +--------------+----------------+------------------+---------------------------+
-</code></pre>
-<h2 id="toset">toSet()</h2>
+</code></pre></div>
+<h2 id="toset">toSet()<a class="headerlink" href="#toset" title="Permanent link">&para;</a></h2>
 <p>toSet() converts a list or set value to a set value.</p>
 <p>Syntax: <code>toSet(&lt;value&gt;)</code></p>
 <ul>
 <li>Result type: Set</li>
 </ul>
 <p>Example:</p>
-<pre><code class="language-ngql">nebula&gt; RETURN toSet(list[1,2,3,1,2]) AS list2set;
+<div class="highlight"><pre><span></span><code>nebula&gt; RETURN toSet(list[1,2,3,1,2]) AS list2set;
 +-----------+
 | list2set  |
 +-----------+
 | {3, 1, 2} |
 +-----------+
-</code></pre>
-<h2 id="hash">hash()</h2>
+</code></pre></div>
+<h2 id="hash">hash()<a class="headerlink" href="#hash" title="Permanent link">&para;</a></h2>
 <p>hash() returns the hash value of the argument. The argument can be a number, a string, a list, a boolean, null, or an expression that evaluates to a value of the preceding data types.</p>
 <p>The source code of the <code>hash()</code> function (MurmurHash2), seed (<code>0xc70f6907UL</code>), and other parameters can be found in <a href="https://github.com/vesoft-inc/nebula/blob/master/src/common/base/MurmurHash2.h"><code>MurmurHash2.h</code></a>.</p>
 <p>For Java, the hash function operates as follows.</p>
-<pre><code class="language-Java">MurmurHash2.hash64(&quot;to_be_hashed&quot;.getBytes(),&quot;to_be_hashed&quot;.getBytes().length, 0xc70f6907)
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="n">MurmurHash2</span><span class="p">.</span><span class="na">hash64</span><span class="p">(</span><span class="s">&quot;to_be_hashed&quot;</span><span class="p">.</span><span class="na">getBytes</span><span class="p">(),</span><span class="s">&quot;to_be_hashed&quot;</span><span class="p">.</span><span class="na">getBytes</span><span class="p">().</span><span class="na">length</span><span class="p">,</span><span class="w"> </span><span class="mh">0xc70f6907</span><span class="p">)</span>
+</code></pre></div>
 <p>Syntax: <code>hash(&lt;string&gt;)</code></p>
 <ul>
 <li>Result type: Int</li>
 </ul>
 <p>Example:</p>
-<pre><code class="language-ngql">nebula&gt; RETURN hash(&quot;abcde&quot;);
+<div class="highlight"><pre><span></span><code>nebula&gt; RETURN hash(&quot;abcde&quot;);
 +--------------------+
 | hash(&quot;abcde&quot;)      |
 +--------------------+
@@ -1431,7 +1433,7 @@ nebula&gt; YIELD hash(toLower(&quot;HELLO NEBULA&quot;));
 +-------------------------------+
 | -8481157362655072082          |
 +-------------------------------+
-</code></pre>
+</code></pre></div>
 
 
 

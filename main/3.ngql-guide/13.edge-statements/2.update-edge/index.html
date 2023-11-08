@@ -44,6 +44,8 @@
       
     
     
+      <link rel="stylesheet" href="../../../stylesheets/note.css">
+    
     <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -73,7 +75,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#update-edge" class="md-skip">
+        <a href="#update_edge" class="md-skip">
           Skip to content
         </a>
       
@@ -1291,16 +1293,16 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
   
 
 
-<h1 id="update-edge">UPDATE EDGE</h1>
+<h1 id="update_edge">UPDATE EDGE<a class="headerlink" href="#update_edge" title="Permanent link">&para;</a></h1>
 <p>The <code>UPDATE EDGE</code> statement updates properties on an edge.</p>
 <p>In NebulaGraph, <code>UPDATE EDGE</code> supports compare-and-swap (CAS).</p>
-<h2 id="syntax">Syntax</h2>
-<pre><code class="language-ngql">UPDATE EDGE ON &lt;edge_type&gt;
+<h2 id="syntax">Syntax<a class="headerlink" href="#syntax" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code>UPDATE EDGE ON &lt;edge_type&gt;
 &lt;src_vid&gt; -&gt; &lt;dst_vid&gt; [@&lt;rank&gt;]
 SET &lt;update_prop&gt;
 [WHEN &lt;condition&gt;]
 [YIELD &lt;output&gt;]
-</code></pre>
+</code></pre></div>
 <table>
 <thead>
 <tr>
@@ -1355,9 +1357,9 @@ SET &lt;update_prop&gt;
 </tr>
 </tbody>
 </table>
-<h2 id="example">Example</h2>
+<h2 id="example">Example<a class="headerlink" href="#example" title="Permanent link">&para;</a></h2>
 <p>The following example checks the properties of the edge with the GO statement.</p>
-<pre><code class="language-ngql">nebula&gt; GO FROM &quot;player100&quot; \
+<div class="highlight"><pre><span></span><code>nebula&gt; GO FROM &quot;player100&quot; \
         OVER serve \
         YIELD properties(edge).start_year, properties(edge).end_year;
 +-----------------------------+---------------------------+
@@ -1365,9 +1367,9 @@ SET &lt;update_prop&gt;
 +-----------------------------+---------------------------+
 | 1997                        | 2016                      |
 +-----------------------------+---------------------------+
-</code></pre>
+</code></pre></div>
 <p>The following example updates the <code>start_year</code> property and returns the <code>end_year</code> and the new <code>start_year</code>.</p>
-<pre><code class="language-ngql">nebula&gt; UPDATE EDGE on serve &quot;player100&quot; -&gt; &quot;team204&quot;@0 \
+<div class="highlight"><pre><span></span><code>nebula&gt; UPDATE EDGE on serve &quot;player100&quot; -&gt; &quot;team204&quot;@0 \
         SET start_year = start_year + 1 \
         WHEN end_year &gt; 2010 \
         YIELD start_year, end_year;
@@ -1376,7 +1378,7 @@ SET &lt;update_prop&gt;
 +------------+----------+
 | 1998       | 2016     |
 +------------+----------+
-</code></pre>
+</code></pre></div>
 
 
 

@@ -44,6 +44,8 @@
       
     
     
+      <link rel="stylesheet" href="../../../stylesheets/note.css">
+    
     <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -73,7 +75,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#comparison-operators" class="md-skip">
+        <a href="#comparison_operators" class="md-skip">
           Skip to content
         </a>
       
@@ -1260,7 +1262,7 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#opencypher-compatibility" class="md-nav__link">
+  <a href="#opencypher_compatibility" class="md-nav__link">
     OpenCypher compatibility
   </a>
   
@@ -1317,14 +1319,14 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
 </li>
         
           <li class="md-nav__item">
-  <a href="#is-not-null" class="md-nav__link">
+  <a href="#is_not_null" class="md-nav__link">
     IS [NOT] NULL
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#is-not-empty" class="md-nav__link">
+  <a href="#is_not_empty" class="md-nav__link">
     IS [NOT] EMPTY
   </a>
   
@@ -1353,7 +1355,7 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
   
 
 
-<h1 id="comparison-operators">Comparison operators</h1>
+<h1 id="comparison_operators">Comparison operators<a class="headerlink" href="#comparison_operators" title="Permanent link">&para;</a></h1>
 <p>NebulaGraph supports the following comparison operators.</p>
 <table>
 <thead>
@@ -1406,35 +1408,40 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
 </tbody>
 </table>
 <p>The result of the comparison operation is <code>true</code> or <code>false</code>.</p>
-<p>!!! note</p>
-<pre><code>- Comparability between values of different types is often undefined. The result could be `NULL` or others.
-
-- `EMPTY` is currently used only for checking, and does not support functions or operations such as `GROUP BY`, `count()`, `sum()`, `max()`, `hash()`, ` collect()`, `+` or `*`.
-</code></pre>
-<h2 id="opencypher-compatibility">OpenCypher compatibility</h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul>
+<li>Comparability between values of different types is often undefined. The result could be <code>NULL</code> or others.</li>
+</ul>
+<ul>
+<li><code>EMPTY</code> is currently used only for checking, and does not support functions or operations such as <code>GROUP BY</code>, <code>count()</code>, <code>sum()</code>, <code>max()</code>, <code>hash()</code>, <code>collect()</code>, <code>+</code> or <code>*</code>.</li>
+</ul>
+</div>
+<h2 id="opencypher_compatibility">OpenCypher compatibility<a class="headerlink" href="#opencypher_compatibility" title="Permanent link">&para;</a></h2>
 <p>openCypher does not have <code>EMPTY</code>. Thus <code>EMPTY</code> is not supported in MATCH statements.</p>
-<h2 id="examples">Examples</h2>
-<h3 id="_1"><code>==</code></h3>
+<h2 id="examples">Examples<a class="headerlink" href="#examples" title="Permanent link">&para;</a></h2>
+<h3 id="_1"><code>==</code><a class="headerlink" href="#_1" title="Permanent link">&para;</a></h3>
 <p>String comparisons are case-sensitive. Values of different types are not equal.</p>
-<p>!!! note</p>
-<pre><code>The equal operator is `==` in nGQL, while in openCypher it is `=`.
-</code></pre>
-<pre><code class="language-ngql">nebula&gt; RETURN 'A' == 'a', toUpper('A') == toUpper('a'), toLower('A') == toLower('a');
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The equal operator is <code>==</code> in nGQL, while in openCypher it is <code>=</code>.</p>
+</div>
+<div class="highlight"><pre><span></span><code>nebula&gt; RETURN &#39;A&#39; == &#39;a&#39;, toUpper(&#39;A&#39;) == toUpper(&#39;a&#39;), toLower(&#39;A&#39;) == toLower(&#39;a&#39;);
 +------------+------------------------------+------------------------------+
 | (&quot;A&quot;==&quot;a&quot;) | (toUpper(&quot;A&quot;)==toUpper(&quot;a&quot;)) | (toLower(&quot;A&quot;)==toLower(&quot;a&quot;)) |
 +------------+------------------------------+------------------------------+
 | false      | true                         | true                         |
 +------------+------------------------------+------------------------------+
 
-nebula&gt; RETURN '2' == 2, toInteger('2') == 2;
+nebula&gt; RETURN &#39;2&#39; == 2, toInteger(&#39;2&#39;) == 2;
 +----------+---------------------+
 | (&quot;2&quot;==2) | (toInteger(&quot;2&quot;)==2) |
 +----------+---------------------+
 | false    | true                |
 +----------+---------------------+
-</code></pre>
-<h3 id="_2"><code>&gt;</code></h3>
-<pre><code class="language-ngql">nebula&gt; RETURN 3 &gt; 2;
+</code></pre></div>
+<h3 id="_2"><code>&gt;</code><a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>nebula&gt; RETURN 3 &gt; 2;
 +-------+
 | (3&gt;2) |
 +-------+
@@ -1448,41 +1455,41 @@ nebula&gt; WITH 4 AS one, 3 AS two \
 +--------+
 | true   |
 +--------+
-</code></pre>
-<h3 id="_3"><code>&gt;=</code></h3>
-<pre><code class="language-ngql">nebula&gt; RETURN 2 &gt;= &quot;2&quot;, 2 &gt;= 2;
+</code></pre></div>
+<h3 id="_3"><code>&gt;=</code><a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>nebula&gt; RETURN 2 &gt;= &quot;2&quot;, 2 &gt;= 2;
 +----------+--------+
 | (2&gt;=&quot;2&quot;) | (2&gt;=2) |
 +----------+--------+
 | __NULL__ | true   |
 +----------+--------+
-</code></pre>
-<h3 id="_4"><code>&lt;</code></h3>
-<pre><code class="language-ngql">nebula&gt; YIELD 2.0 &lt; 1.9;
+</code></pre></div>
+<h3 id="_4"><code>&lt;</code><a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>nebula&gt; YIELD 2.0 &lt; 1.9;
 +---------+
 | (2&lt;1.9) |
 +---------+
 | false   |
 +---------+
-</code></pre>
-<h3 id="_5"><code>&lt;=</code></h3>
-<pre><code class="language-ngql">nebula&gt; YIELD 0.11 &lt;= 0.11;
+</code></pre></div>
+<h3 id="_5"><code>&lt;=</code><a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>nebula&gt; YIELD 0.11 &lt;= 0.11;
 +--------------+
 | (0.11&lt;=0.11) |
 +--------------+
 | true         |
 +--------------+
-</code></pre>
-<h3 id="_6"><code>!=</code></h3>
-<pre><code class="language-ngql">nebula&gt; YIELD 1 != '1';
+</code></pre></div>
+<h3 id="_6"><code>!=</code><a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>nebula&gt; YIELD 1 != &#39;1&#39;;
 +----------+
 | (1!=&quot;1&quot;) |
 +----------+
 | true     |
 +----------+
-</code></pre>
-<h3 id="is-not-null"><code>IS [NOT] NULL</code></h3>
-<pre><code class="language-ngql">nebula&gt; RETURN null IS NULL AS value1, null == null AS value2, null != null AS value3;
+</code></pre></div>
+<h3 id="is_not_null"><code>IS [NOT] NULL</code><a class="headerlink" href="#is_not_null" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>nebula&gt; RETURN null IS NULL AS value1, null == null AS value2, null != null AS value3;
 +--------+----------+----------+
 | value1 | value2   | value3   |
 +--------+----------+----------+
@@ -1504,7 +1511,7 @@ nebula&gt; WITH {name: null} AS `map` \
 | false                |
 +----------------------+
 
-nebula&gt; WITH {name: 'Mats', name2: 'Pontus'} AS map1, \
+nebula&gt; WITH {name: &#39;Mats&#39;, name2: &#39;Pontus&#39;} AS map1, \
         {name: null} AS map2, {notName: 0, notName2: null } AS map3 \
         RETURN map1.name IS NULL, map2.name IS NOT NULL, map3.name IS NULL;
 +-------------------+-----------------------+-------------------+
@@ -1521,9 +1528,9 @@ nebula&gt; MATCH (n:player) \
 | false                | true                      | true                   |
 | false                | true                      | true                   |
 ...
-</code></pre>
-<h3 id="is-not-empty"><code>IS [NOT] EMPTY</code></h3>
-<pre><code class="language-ngql">nebula&gt; RETURN null IS EMPTY;
+</code></pre></div>
+<h3 id="is_not_empty"><code>IS [NOT] EMPTY</code><a class="headerlink" href="#is_not_empty" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>nebula&gt; RETURN null IS EMPTY;
 +---------------+
 | NULL IS EMPTY |
 +---------------+
@@ -1545,8 +1552,7 @@ nebula&gt; GO FROM &quot;player100&quot; OVER * WHERE properties($$).name IS NOT
 | &quot;player101&quot; |
 | &quot;player125&quot; |
 +-------------+
-
-</code></pre>
+</code></pre></div>
 
 
 

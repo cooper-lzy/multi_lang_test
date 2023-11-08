@@ -44,6 +44,8 @@
       
     
     
+      <link rel="stylesheet" href="../../../../stylesheets/note.css">
+    
     <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -73,7 +75,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#show-queries" class="md-skip">
+        <a href="#show_queries" class="md-skip">
           Skip to content
         </a>
       
@@ -1298,25 +1300,24 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
   
 
 
-<h1 id="show-queries">SHOW QUERIES</h1>
+<h1 id="show_queries">SHOW QUERIES<a class="headerlink" href="#show_queries" title="Permanent link">&para;</a></h1>
 <p>The <code>SHOW QUERIES</code> statement shows the information of working queries in the current session.</p>
-<p>!!! note</p>
-<pre><code>To terminate queries, see [Kill Query](../../17.query-tuning-statements/6.kill-query.md).
-</code></pre>
-<h2 id="precautions">Precautions</h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>To terminate queries, see <a href="../../../17.query-tuning-statements/6.kill-query/">Kill Query</a>.</p>
+</div>
+<h2 id="precautions">Precautions<a class="headerlink" href="#precautions" title="Permanent link">&para;</a></h2>
 <ul>
-<li>
-<p>The <code>SHOW LOCAL QUERIES</code> statement gets the status of queries in the current session from the local cache with almost no latency.</p>
-</li>
-<li>
-<p>The <code>SHOW QUERIES</code> statement gets the information of queries in all the sessions from the Meta Service. The information will be synchronized to the Meta Service according to the interval defined by <code>session_reclaim_interval_secs</code>. Therefore the information that you get from the client may belong to the last synchronization interval.</p>
-</li>
+<li>The <code>SHOW LOCAL QUERIES</code> statement gets the status of queries in the current session from the local cache with almost no latency.</li>
 </ul>
-<h2 id="syntax">Syntax</h2>
-<pre><code class="language-ngql">SHOW [LOCAL] QUERIES;
-</code></pre>
-<h2 id="examples">Examples</h2>
-<pre><code class="language-ngql">nebula&gt; SHOW LOCAL QUERIES;
+<ul>
+<li>The <code>SHOW QUERIES</code> statement gets the information of queries in all the sessions from the Meta Service. The information will be synchronized to the Meta Service according to the interval defined by <code>session_reclaim_interval_secs</code>. Therefore the information that you get from the client may belong to the last synchronization interval.</li>
+</ul>
+<h2 id="syntax">Syntax<a class="headerlink" href="#syntax" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code>SHOW [LOCAL] QUERIES;
+</code></pre></div>
+<h2 id="examples">Examples<a class="headerlink" href="#examples" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code>nebula&gt; SHOW LOCAL QUERIES;
 +------------------+-----------------+--------+----------------------+----------------------------+----------------+-----------+-----------------------+
 | SessionID        | ExecutionPlanID | User   | Host                 | StartTime                  | DurationInUSec | Status    | Query                 |
 +------------------+-----------------+--------+----------------------+----------------------------+----------------+-----------+-----------------------+
@@ -1338,7 +1339,7 @@ nebula&gt; SHOW QUERIES | ORDER BY $-.DurationInUSec DESC | LIMIT 10;
 | 1625471375320831 | 98              | &quot;user2&quot; | &quot;&quot;192.168.x.x&quot;:9669&quot; | 2021-07-05T07:50:24.461779 | 2608176        | &quot;RUNNING&quot; | &quot;MATCH (v:player)-[*1..4]-(v2) RETURN v2 AS Friends;&quot; |
 | 1625456037718757 | 99              | &quot;user1&quot; | &quot;&quot;192.168.x.x&quot;:9669&quot; | 2021-07-05T07:50:24.910616 | 2159333        | &quot;RUNNING&quot; | &quot;MATCH (v:player)-[*1..4]-(v2) RETURN v2 AS Friends;&quot; |
 +------------------+-----------------+---------+----------------------+----------------------------+----------------+-----------+-------------------------------------------------------+
-</code></pre>
+</code></pre></div>
 <p>The descriptions are as follows.</p>
 <table>
 <thead>

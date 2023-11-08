@@ -44,6 +44,8 @@
       
     
     
+      <link rel="stylesheet" href="../../../../stylesheets/note.css">
+    
     <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -73,7 +75,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#show-stats" class="md-skip">
+        <a href="#show_stats" class="md-skip">
           Skip to content
         </a>
       
@@ -1298,7 +1300,7 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
   
 
 
-<h1 id="show-stats">SHOW STATS</h1>
+<h1 id="show_stats">SHOW STATS<a class="headerlink" href="#show_stats" title="Permanent link">&para;</a></h1>
 <p>The <code>SHOW STATS</code> statement shows the statistics of the graph space collected by the latest <code>SUBMIT JOB STATS</code> job.</p>
 <p>The statistics include the following information:</p>
 <ul>
@@ -1307,19 +1309,21 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
 <li>The number of vertices of each tag</li>
 <li>The number of edges of each edge type</li>
 </ul>
-<p>!!! warning</p>
-<pre><code>The data returned by `SHOW STATS` is not real-time. The returned data is collected by the latest [SUBMIT JOB STATS](../../4.job-statements.md) job and may include [TTL-expired](../../8.clauses-and-options/ttl-options.md) data. The expired data will be deleted and not included in the statistics the next time the [Compaction operation ](../../../8.service-tuning/compaction.md) is performed.
-</code></pre>
-<h2 id="prerequisites">Prerequisites</h2>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The data returned by <code>SHOW STATS</code> is not real-time. The returned data is collected by the latest <a href="../../../4.job-statements/">SUBMIT JOB STATS</a> job and may include <a href="../../../8.clauses-and-options/ttl-options/">TTL-expired</a> data. The expired data will be deleted and not included in the statistics the next time the <a href="../../../8.service-tuning/compaction.md">Compaction operation </a> is performed.</p>
+</div>
+<h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h2>
 <p>You have to run the <code>SUBMIT JOB STATS</code> statement in the graph space where you want to collect statistics. For more information, see <a href="../../../4.job-statements/">SUBMIT JOB STATS</a>.</p>
-<p>!!! caution</p>
-<pre><code>The result of the `SHOW STATS` statement is based on the last executed `SUBMIT JOB STATS` statement. If you want to update the result, run `SUBMIT JOB STATS` again. Otherwise the statistics will be wrong.
-</code></pre>
-<h2 id="syntax">Syntax</h2>
-<pre><code class="language-ngql">SHOW STATS;
-</code></pre>
-<h2 id="examples">Examples</h2>
-<pre><code class="language-ngql"># Choose a graph space.
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<p>The result of the <code>SHOW STATS</code> statement is based on the last executed <code>SUBMIT JOB STATS</code> statement. If you want to update the result, run <code>SUBMIT JOB STATS</code> again. Otherwise the statistics will be wrong.</p>
+</div>
+<h2 id="syntax">Syntax<a class="headerlink" href="#syntax" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code>SHOW STATS;
+</code></pre></div>
+<h2 id="examples">Examples<a class="headerlink" href="#examples" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code># Choose a graph space.
 nebula&gt; USE basketballplayer;
 
 # Start SUBMIT JOB STATS.
@@ -1354,7 +1358,7 @@ nebula&gt; SHOW STATS;
 | &quot;Space&quot; | &quot;vertices&quot; | 81    |
 | &quot;Space&quot; | &quot;edges&quot;    | 233   |
 +---------+------------+-------+
-</code></pre>
+</code></pre></div>
 
 
 

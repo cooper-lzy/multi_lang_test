@@ -44,6 +44,8 @@
       
     
     
+      <link rel="stylesheet" href="../../../stylesheets/note.css">
+    
     <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -1260,14 +1262,14 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#opencypher-compatibility" class="md-nav__link">
+  <a href="#opencypher_compatibility" class="md-nav__link">
     OpenCypher compatibility
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#combine-statements-and-form-a-composite-query" class="md-nav__link">
+  <a href="#combine_statements_and_form_a_composite_query" class="md-nav__link">
     Combine statements and form a composite query
   </a>
   
@@ -1275,14 +1277,14 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#example-1" class="md-nav__link">
+  <a href="#example_1" class="md-nav__link">
     Example 1
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#example-2" class="md-nav__link">
+  <a href="#example_2" class="md-nav__link">
     Example 2
   </a>
   
@@ -1294,21 +1296,21 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
 </li>
       
         <li class="md-nav__item">
-  <a href="#filter-composite-queries" class="md-nav__link">
+  <a href="#filter_composite_queries" class="md-nav__link">
     Filter composite queries
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#process-the-output-before-using-collect" class="md-nav__link">
+  <a href="#process_the_output_before_using_collect" class="md-nav__link">
     Process the output before using collect()
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#use-with-return" class="md-nav__link">
+  <a href="#use_with_return" class="md-nav__link">
     Use with RETURN
   </a>
   
@@ -1332,16 +1334,17 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
   
 
 
-<h1 id="with">WITH</h1>
+<h1 id="with">WITH<a class="headerlink" href="#with" title="Permanent link">&para;</a></h1>
 <p>The <code>WITH</code> clause can retrieve the output from a query part, process it, and pass it to the next query part as the input.</p>
-<h2 id="opencypher-compatibility">OpenCypher compatibility</h2>
+<h2 id="opencypher_compatibility">OpenCypher compatibility<a class="headerlink" href="#opencypher_compatibility" title="Permanent link">&para;</a></h2>
 <p>This topic applies to openCypher syntax only.</p>
-<p>!!! Note</p>
-<pre><code>`WITH` has a similar function with the [Pipe](../5.operators/4.pipe.md) symbol in native nGQL, but they work in different ways. DO NOT use pipe symbols in the openCypher syntax or use `WITH` in native nGQL statements.
-</code></pre>
-<h2 id="combine-statements-and-form-a-composite-query">Combine statements and form a composite query</h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><code>WITH</code> has a similar function with the <a href="../../5.operators/4.pipe/">Pipe</a> symbol in native nGQL, but they work in different ways. DO NOT use pipe symbols in the openCypher syntax or use <code>WITH</code> in native nGQL statements.</p>
+</div>
+<h2 id="combine_statements_and_form_a_composite_query">Combine statements and form a composite query<a class="headerlink" href="#combine_statements_and_form_a_composite_query" title="Permanent link">&para;</a></h2>
 <p>Use a <code>WITH</code> clause to combine statements and transfer the output of a statement as the input of another statement.</p>
-<h3 id="example-1">Example 1</h3>
+<h3 id="example_1">Example 1<a class="headerlink" href="#example_1" title="Permanent link">&para;</a></h3>
 <p>The following statement:</p>
 <ol>
 <li>Matches a path.</li>
@@ -1349,7 +1352,7 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
 <li>Unwinds the list into rows.</li>
 <li>Removes duplicated vertices and returns a set of distinct vertices.</li>
 </ol>
-<pre><code class="language-ngql">nebula&gt; MATCH p=(v:player{name:&quot;Tim Duncan&quot;})--() \
+<div class="highlight"><pre><span></span><code>nebula&gt; MATCH p=(v:player{name:&quot;Tim Duncan&quot;})--() \
         WITH nodes(p) AS n \
         UNWIND n AS n1 \
         RETURN DISTINCT n1;
@@ -1362,15 +1365,15 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
 | (&quot;player102&quot; :player{age: 33, name: &quot;LaMarcus Aldridge&quot;}) |
 | (&quot;player125&quot; :player{age: 41, name: &quot;Manu Ginobili&quot;})     |
 | (&quot;player104&quot; :player{age: 32, name: &quot;Marco Belinelli&quot;})   |
-| (&quot;player144&quot; :player{age: 47, name: &quot;Shaquille O'Neal&quot;})  |
+| (&quot;player144&quot; :player{age: 47, name: &quot;Shaquille O&#39;Neal&quot;})  |
 | (&quot;player105&quot; :player{age: 31, name: &quot;Danny Green&quot;})       |
 | (&quot;player113&quot; :player{age: 29, name: &quot;Dejounte Murray&quot;})   |
 | (&quot;player107&quot; :player{age: 32, name: &quot;Aron Baynes&quot;})       |
 | (&quot;player109&quot; :player{age: 34, name: &quot;Tiago Splitter&quot;})    |
 | (&quot;player108&quot; :player{age: 36, name: &quot;Boris Diaw&quot;})        |
 +-----------------------------------------------------------+
-</code></pre>
-<h3 id="example-2">Example 2</h3>
+</code></pre></div>
+<h3 id="example_2">Example 2<a class="headerlink" href="#example_2" title="Permanent link">&para;</a></h3>
 <p>The following statement:</p>
 <ol>
 <li>Matches the vertex with the VID <code>player100</code>.</li>
@@ -1378,7 +1381,7 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
 <li>Unwinds the list into rows.</li>
 <li>Returns the output.</li>
 </ol>
-<pre><code class="language-ngql">nebula&gt; MATCH (v) \
+<div class="highlight"><pre><span></span><code>nebula&gt; MATCH (v) \
         WHERE id(v)==&quot;player100&quot; \
         WITH labels(v) AS tags_unf \
         UNWIND tags_unf AS tags_f \
@@ -1388,10 +1391,10 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
 +----------+
 | &quot;player&quot; |
 +----------+
-</code></pre>
-<h2 id="filter-composite-queries">Filter composite queries</h2>
+</code></pre></div>
+<h2 id="filter_composite_queries">Filter composite queries<a class="headerlink" href="#filter_composite_queries" title="Permanent link">&para;</a></h2>
 <p><code>WITH</code> can work as a filter in the middle of a composite query.</p>
-<pre><code class="language-ngql">nebula&gt; MATCH (v:player)--&gt;(v2:player) \
+<div class="highlight"><pre><span></span><code>nebula&gt; MATCH (v:player)--&gt;(v2:player) \
         WITH DISTINCT v2 AS v2, v2.player.age AS Age \
         ORDER BY Age \
         WHERE Age&lt;25 \
@@ -1403,10 +1406,10 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
 | &quot;Ben Simmons&quot;        | 22  |
 | &quot;Kristaps Porzingis&quot; | 23  |
 +----------------------+-----+
-</code></pre>
-<h2 id="process-the-output-before-using-collect">Process the output before using collect()</h2>
+</code></pre></div>
+<h2 id="process_the_output_before_using_collect">Process the output before using collect()<a class="headerlink" href="#process_the_output_before_using_collect" title="Permanent link">&para;</a></h2>
 <p>Use a <code>WITH</code> clause to sort and limit the output before using <code>collect()</code> to transform the output into a list.</p>
-<pre><code class="language-ngql">nebula&gt; MATCH (v:player) \
+<div class="highlight"><pre><span></span><code>nebula&gt; MATCH (v:player) \
         WITH v.player.name AS Name \
         ORDER BY Name DESC \
         LIMIT 3 \
@@ -1416,10 +1419,10 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
 +-----------------------------------------------+
 | [&quot;Yao Ming&quot;, &quot;Vince Carter&quot;, &quot;Tracy McGrady&quot;] |
 +-----------------------------------------------+
-</code></pre>
-<h2 id="use-with-return">Use with RETURN</h2>
+</code></pre></div>
+<h2 id="use_with_return">Use with RETURN<a class="headerlink" href="#use_with_return" title="Permanent link">&para;</a></h2>
 <p>Set an alias using a <code>WITH</code> clause, and then output the result through a <code>RETURN</code> clause.</p>
-<pre><code class="language-ngql">nebula&gt; WITH [1, 2, 3] AS `list` RETURN 3 IN `list` AS r;
+<div class="highlight"><pre><span></span><code>nebula&gt; WITH [1, 2, 3] AS `list` RETURN 3 IN `list` AS r;
 +------+
 | r    |
 +------+
@@ -1432,7 +1435,7 @@ nebula&gt; WITH 4 AS one, 3 AS two RETURN one &gt; two AS result;
 +--------+
 | true   |
 +--------+
-</code></pre>
+</code></pre></div>
 
 
 

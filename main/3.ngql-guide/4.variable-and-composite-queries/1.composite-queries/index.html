@@ -44,6 +44,8 @@
       
     
     
+      <link rel="stylesheet" href="../../../stylesheets/note.css">
+    
     <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -73,7 +75,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#composite-queries-clause-structure" class="md-skip">
+        <a href="#composite_queries_clause_structure" class="md-skip">
           Skip to content
         </a>
       
@@ -1260,14 +1262,14 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#opencypher-compatibility" class="md-nav__link">
+  <a href="#opencypher_compatibility" class="md-nav__link">
     OpenCypher compatibility
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#composite-queries-are-not-transactional-queries-as-in-sqlcypher" class="md-nav__link">
+  <a href="#composite_queries_are_not_transactional_queries_as_in_sqlcypher" class="md-nav__link">
     Composite queries are not transactional queries (as in SQL/Cypher)
   </a>
   
@@ -1298,73 +1300,66 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
   
 
 
-<h1 id="composite-queries-clause-structure">Composite queries (clause structure)</h1>
+<h1 id="composite_queries_clause_structure">Composite queries (clause structure)<a class="headerlink" href="#composite_queries_clause_structure" title="Permanent link">&para;</a></h1>
 <p>Composite queries put data from different queries together. They then use filters, group-bys, or sorting before returning the combined return results.</p>
 <p>Nebula Graph supports three methods to run composite queries (or sub-queries):</p>
 <ul>
-<li>
-<p>(openCypher) Clauses are chained together, and they feed intermediate result sets between each other.</p>
-</li>
-<li>
-<p>(Native nGQL) More than one query can be batched together, separated by semicolons (;). The result of the last query is returned as the result of the batch.</p>
-</li>
-<li>
-<p>(Native nGQL) Queries can be piped together by using the pipe (<code>|</code>). The result of the previous query can be used as the input of the next query.</p>
-</li>
+<li>(openCypher) Clauses are chained together, and they feed intermediate result sets between each other.</li>
 </ul>
-<h2 id="opencypher-compatibility">OpenCypher compatibility</h2>
+<ul>
+<li>(Native nGQL) More than one query can be batched together, separated by semicolons (;). The result of the last query is returned as the result of the batch.</li>
+</ul>
+<ul>
+<li>(Native nGQL) Queries can be piped together by using the pipe (<code>|</code>). The result of the previous query can be used as the input of the next query.</li>
+</ul>
+<h2 id="opencypher_compatibility">OpenCypher compatibility<a class="headerlink" href="#opencypher_compatibility" title="Permanent link">&para;</a></h2>
 <p>In a composite query, <strong>do not</strong> put together openCypher and native nGQL clauses in one statement. For example, this statement is undefined: <code>MATCH ... | GO ... | YIELD ...</code>.</p>
 <ul>
-<li>
-<p>If you are in the openCypher way (<code>MATCH</code>, <code>RETURN</code>, <code>WITH</code>, etc), do not introduce any pipe or semicolons to combine the sub-clauses.</p>
-</li>
-<li>
-<p>If you are in the native nGQL way (<code>FETCH</code>, <code>GO</code>, <code>LOOKUP</code>, etc), you must use pipe or semicolons to combine the sub-clauses.</p>
-</li>
+<li>If you are in the openCypher way (<code>MATCH</code>, <code>RETURN</code>, <code>WITH</code>, etc), do not introduce any pipe or semicolons to combine the sub-clauses.</li>
 </ul>
-<h2 id="composite-queries-are-not-transactional-queries-as-in-sqlcypher">Composite queries are not <code>transactional</code> queries (as in SQL/Cypher)</h2>
-<p>For example, a query is composed of three sub-queries: <code>A B C</code>, <code>A | B | C</code> or <code>A; B; C</code>. In that A is a read operation, B is a computation operation, and C is a write operation. If any part fails in the execution, the whole result will be undefined. There is no rollback. What is written depends on the query executor.</p>
-<p>!!! note</p>
-<pre><code>OpenCypher has no requirement of `transaction`.
-</code></pre>
-<h2 id="examples">Examples</h2>
 <ul>
-<li>
-<p>OpenCypher compatibility statement</p>
-<p>```ngql</p>
-<h1 id="connect-multiple-queries-with-clauses">Connect multiple queries with clauses.</h1>
-<p>nebula&gt; MATCH p=(v:player{name:"Tim Duncan"})--() \
+<li>If you are in the native nGQL way (<code>FETCH</code>, <code>GO</code>, <code>LOOKUP</code>, etc), you must use pipe or semicolons to combine the sub-clauses.</li>
+</ul>
+<h2 id="composite_queries_are_not_transactional_queries_as_in_sqlcypher">Composite queries are not <code>transactional</code> queries (as in SQL/Cypher)<a class="headerlink" href="#composite_queries_are_not_transactional_queries_as_in_sqlcypher" title="Permanent link">&para;</a></h2>
+<p>For example, a query is composed of three sub-queries: <code>A B C</code>, <code>A | B | C</code> or <code>A; B; C</code>. In that A is a read operation, B is a computation operation, and C is a write operation. If any part fails in the execution, the whole result will be undefined. There is no rollback. What is written depends on the query executor.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>OpenCypher has no requirement of <code>transaction</code>.</p>
+</div>
+<h2 id="examples">Examples<a class="headerlink" href="#examples" title="Permanent link">&para;</a></h2>
+<ul>
+<li>OpenCypher compatibility statement<div class="highlight"><pre><span></span><code># Connect multiple queries with clauses.
+nebula&gt; MATCH p=(v:player{name:&quot;Tim Duncan&quot;})--() \
         WITH nodes(p) AS n \
         UNWIND n AS n1 \
         RETURN DISTINCT n1;
-```</p>
+</code></pre></div>
 </li>
-<li>
-<p>Native nGQL (Semicolon queries)</p>
-<p>```ngql</p>
-<h1 id="only-return-edges">Only return edges.</h1>
-<p>nebula&gt; SHOW TAGS; SHOW EDGES;</p>
-<h1 id="insert-multiple-vertices">Insert multiple vertices.</h1>
-<p>nebula&gt; INSERT VERTEX player(name, age) VALUES "player100":("Tim Duncan", 42); \
-        INSERT VERTEX player(name, age) VALUES "player101":("Tony Parker", 36); \
-        INSERT VERTEX player(name, age) VALUES "player102":("LaMarcus Aldridge", 33);
-```</p>
+</ul>
+<ul>
+<li>Native nGQL (Semicolon queries)<div class="highlight"><pre><span></span><code># Only return edges.
+nebula&gt; SHOW TAGS; SHOW EDGES;
+
+# Insert multiple vertices.
+nebula&gt; INSERT VERTEX player(name, age) VALUES &quot;player100&quot;:(&quot;Tim Duncan&quot;, 42); \
+        INSERT VERTEX player(name, age) VALUES &quot;player101&quot;:(&quot;Tony Parker&quot;, 36); \
+        INSERT VERTEX player(name, age) VALUES &quot;player102&quot;:(&quot;LaMarcus Aldridge&quot;, 33);
+</code></pre></div>
 </li>
-<li>
-<p>Native nGQL (Pipe queries)</p>
-<p>```ngql</p>
-<h1 id="connect-multiple-queries-with-pipes">Connect multiple queries with pipes.</h1>
-<p>nebula&gt; GO FROM "player100" OVER follow YIELD dst(edge) AS id | \
+</ul>
+<ul>
+<li>Native nGQL (Pipe queries)<div class="highlight"><pre><span></span><code># Connect multiple queries with pipes.
+nebula&gt; GO FROM &quot;player100&quot; OVER follow YIELD dst(edge) AS id | \
         GO FROM $-.id OVER serve YIELD properties($$).name AS Team, \
         properties($^).name AS Player;
 +-----------+-----------------+
 | Team      | Player          |
 +-----------+-----------------+
-| "Spurs"   | "Tony Parker"   |
-| "Hornets" | "Tony Parker"   |
-| "Spurs"   | "Manu Ginobili" |
+| &quot;Spurs&quot;   | &quot;Tony Parker&quot;   |
+| &quot;Hornets&quot; | &quot;Tony Parker&quot;   |
+| &quot;Spurs&quot;   | &quot;Manu Ginobili&quot; |
 +-----------+-----------------+
-```</p>
+</code></pre></div>
 </li>
 </ul>
 

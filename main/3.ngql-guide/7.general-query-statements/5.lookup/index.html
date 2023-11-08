@@ -44,6 +44,8 @@
       
     
     
+      <link rel="stylesheet" href="../../../stylesheets/note.css">
+    
     <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -1260,7 +1262,7 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#opencypher-compatibility" class="md-nav__link">
+  <a href="#opencypher_compatibility" class="md-nav__link">
     OpenCypher compatibility
   </a>
   
@@ -1288,35 +1290,35 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
 </li>
       
         <li class="md-nav__item">
-  <a href="#limitations-of-using-where-in-lookup" class="md-nav__link">
+  <a href="#limitations_of_using_where_in_lookup" class="md-nav__link">
     Limitations of using WHERE in LOOKUP
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#retrieve-vertices" class="md-nav__link">
+  <a href="#retrieve_vertices" class="md-nav__link">
     Retrieve vertices
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#retrieve-edges" class="md-nav__link">
+  <a href="#retrieve_edges" class="md-nav__link">
     Retrieve edges
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#list-vertices-or-edges-with-a-tag-or-an-edge-type" class="md-nav__link">
+  <a href="#list_vertices_or_edges_with_a_tag_or_an_edge_type" class="md-nav__link">
     List vertices or edges with a tag or an edge type
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#count-the-numbers-of-vertices-or-edges" class="md-nav__link">
+  <a href="#count_the_numbers_of_vertices_or_edges" class="md-nav__link">
     Count the numbers of vertices or edges
   </a>
   
@@ -1340,64 +1342,61 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
   
 
 
-<h1 id="lookup">LOOKUP</h1>
+<h1 id="lookup">LOOKUP<a class="headerlink" href="#lookup" title="Permanent link">&para;</a></h1>
 <!-- This topic needs to be modified after compulsory use of YIELD in 3.0. Refer to https://confluence.nebula-graph.io/pages/viewpage.action?pageId=10723963 -->
 
 <p>The <code>LOOKUP</code> statement traverses data based on indexes. You can use <code>LOOKUP</code> for the following purposes:</p>
 <ul>
-<li>
-<p>Search for the specific data based on conditions defined by the <code>WHERE</code> clause.</p>
-</li>
-<li>
-<p>List vertices with a tag: retrieve the VID of all vertices with a tag.</p>
-</li>
-<li>
-<p>List edges with an edge type: retrieve the source vertex IDs, destination vertex IDs, and ranks of all edges with an edge type.</p>
-</li>
-<li>
-<p>Count the number of vertices or edges with a tag or an edge type.</p>
-</li>
+<li>Search for the specific data based on conditions defined by the <code>WHERE</code> clause.</li>
 </ul>
-<h2 id="opencypher-compatibility">OpenCypher compatibility</h2>
+<ul>
+<li>List vertices with a tag: retrieve the VID of all vertices with a tag.</li>
+</ul>
+<ul>
+<li>List edges with an edge type: retrieve the source vertex IDs, destination vertex IDs, and ranks of all edges with an edge type.</li>
+</ul>
+<ul>
+<li>Count the number of vertices or edges with a tag or an edge type.</li>
+</ul>
+<h2 id="opencypher_compatibility">OpenCypher compatibility<a class="headerlink" href="#opencypher_compatibility" title="Permanent link">&para;</a></h2>
 <p>This topic applies to native nGQL only.</p>
-<h2 id="precautions">Precautions</h2>
+<h2 id="precautions">Precautions<a class="headerlink" href="#precautions" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Correct use of indexes can speed up queries, but indexes can dramatically reduce the write performance. The performance can be greatly reduced<!-- as much as 90% or even more-->. <strong>DO NOT</strong> use indexes in production environments unless you are fully aware of their influences on your service.</li>
+</ul>
 <ul>
 <li>
-<p>Correct use of indexes can speed up queries, but indexes can dramatically reduce the write performance. The performance can be greatly reduced<!-- as much as 90% or even more-->. <strong>DO NOT</strong> use indexes in production environments unless you are fully aware of their influences on your service.</p>
-</li>
-<li>
 <p>If the specified property is not indexed when using the <code>LOOKUP</code> statement, NebulaGraph randomly selects one of the available indexes.</p>
+<p>For example, the tag <code>player</code> has two properties, <code>name</code> and <code>age</code>. Both the tag <code>player</code> itself and the property <code>name</code> have indexes, but the property <code>age</code> has no indexes. When running <code>LOOKUP ON player WHERE player.age == 36 YIELD player.name;</code>, NebulaGraph randomly uses one of the indexes of the tag <code>player</code> and the property <code>name</code>. You can use the <code>EXPLAIN</code> statement to check the selected index.</p>
+<div class="admonition compatibility">
+<p class="admonition-title">Legacy version compatibility</p>
+<p>Before the release 2.5.0, if the specified property is not indexed when using the <code>LOOKUP</code> statement, NebulaGraph reports an error and does not use other indexes.</p>
+</div>
 </li>
 </ul>
-<p>For example, the tag <code>player</code> has two properties, <code>name</code> and <code>age</code>. Both the tag <code>player</code> itself and the property <code>name</code> have indexes, but the property <code>age</code> has no indexes. When running <code>LOOKUP ON player WHERE player.age == 36 YIELD player.name;</code>, NebulaGraph randomly uses one of the indexes of the tag <code>player</code> and the property <code>name</code>. You can use the <code>EXPLAIN</code> statement to check the selected index.</p>
-<p>!!! compatibility "Legacy version compatibility"</p>
-<pre><code>    Before the release 2.5.0, if the specified property is not indexed when using the `LOOKUP` statement, NebulaGraph reports an error and does not use other indexes.
-</code></pre>
-<h2 id="prerequisites">Prerequisites</h2>
+<h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h2>
 <p>Before using the <code>LOOKUP</code> statement, make sure that at least one index is created. If there are already related vertices, edges, or properties before an index is created, the user must <a href="../../14.native-index-statements/4.rebuild-native-index/">rebuild the index</a> after creating the index to make it valid.</p>
-<h2 id="syntax">Syntax</h2>
-<pre><code class="language-ngql">LOOKUP ON {&lt;vertex_tag&gt; | &lt;edge_type&gt;}
+<h2 id="syntax">Syntax<a class="headerlink" href="#syntax" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code>LOOKUP ON {&lt;vertex_tag&gt; | &lt;edge_type&gt;}
 [WHERE &lt;expression&gt; [AND &lt;expression&gt; ...]]
 YIELD [DISTINCT] &lt;return_list&gt; [AS &lt;alias&gt;];
 
 &lt;return_list&gt;
     &lt;prop_name&gt; [AS &lt;col_alias&gt;] [, &lt;prop_name&gt; [AS &lt;prop_alias&gt;] ...];
-</code></pre>
+</code></pre></div>
 <ul>
-<li>
-<p><code>WHERE &lt;expression&gt;</code>: filters data with specified conditions. Both <code>AND</code> and <code>OR</code> are supported between different expressions. For more information, see <a href="../../8.clauses-and-options/where/">WHERE</a>.</p>
-</li>
-<li>
-<p><code>YIELD</code>: Define the output to be returned. For details, see <a href="../../8.clauses-and-options/yield/"><code>YIELD</code></a>.</p>
-</li>
-<li>
-<p><code>DISTINCT</code>: Aggregate the output results and return the de-duplicated result set.</p>
-</li>
-<li>
-<p><code>AS</code>: Set an alias.</p>
-</li>
+<li><code>WHERE &lt;expression&gt;</code>: filters data with specified conditions. Both <code>AND</code> and <code>OR</code> are supported between different expressions. For more information, see <a href="../../8.clauses-and-options/where/">WHERE</a>.</li>
 </ul>
-<h2 id="limitations-of-using-where-in-lookup">Limitations of using <code>WHERE</code> in <code>LOOKUP</code></h2>
+<ul>
+<li><code>YIELD</code>: Define the output to be returned. For details, see <a href="../../8.clauses-and-options/yield/"><code>YIELD</code></a>.</li>
+</ul>
+<ul>
+<li><code>DISTINCT</code>: Aggregate the output results and return the de-duplicated result set.</li>
+</ul>
+<ul>
+<li><code>AS</code>: Set an alias.</li>
+</ul>
+<h2 id="limitations_of_using_where_in_lookup">Limitations of using <code>WHERE</code> in <code>LOOKUP</code><a class="headerlink" href="#limitations_of_using_where_in_lookup" title="Permanent link">&para;</a></h2>
 <p>The <code>WHERE</code> clause in a <code>LOOKUP</code> statement does not support the following operations:</p>
 <ul>
 <li><code>$-</code> and <code>$^</code>.</li>
@@ -1408,9 +1407,9 @@ YIELD [DISTINCT] &lt;return_list&gt; [AS &lt;alias&gt;];
 <li>String operations other than <code>STARTS WITH</code> are not supported.</li>
 <li>Graph patterns.</li>
 </ul>
-<h2 id="retrieve-vertices">Retrieve vertices</h2>
+<h2 id="retrieve_vertices">Retrieve vertices<a class="headerlink" href="#retrieve_vertices" title="Permanent link">&para;</a></h2>
 <p>The following example returns vertices whose <code>name</code> is <code>Tony Parker</code> and the tag is <code>player</code>.</p>
-<pre><code class="language-ngql">nebula&gt; CREATE TAG INDEX IF NOT EXISTS index_player ON player(name(30), age);
+<div class="highlight"><pre><span></span><code>nebula&gt; CREATE TAG INDEX IF NOT EXISTS index_player ON player(name(30), age);
 
 nebula&gt; REBUILD TAG INDEX index_player;
 +------------+
@@ -1468,10 +1467,10 @@ nebula&gt; LOOKUP ON player \
 +---------------+-----------------------------+---------------------------+---------------------+
 | &quot;Kobe Bryant&quot; | 1996                        | 2016                      | &quot;Lakers&quot;            |
 +---------------+-----------------------------+---------------------------+---------------------+
-</code></pre>
-<h2 id="retrieve-edges">Retrieve edges</h2>
+</code></pre></div>
+<h2 id="retrieve_edges">Retrieve edges<a class="headerlink" href="#retrieve_edges" title="Permanent link">&para;</a></h2>
 <p>The following example returns edges whose <code>degree</code> is <code>90</code> and the edge type is <code>follow</code>.</p>
-<pre><code class="language-ngql">nebula&gt; CREATE EDGE INDEX IF NOT EXISTS index_follow ON follow(degree);
+<div class="highlight"><pre><span></span><code>nebula&gt; CREATE EDGE INDEX IF NOT EXISTS index_follow ON follow(degree);
 
 nebula&gt; REBUILD EDGE INDEX index_follow;
 +------------+
@@ -1513,62 +1512,68 @@ nebula&gt; LOOKUP ON follow \
 | &quot;player105&quot; | 2009                        | 2010                      | &quot;Cavaliers&quot;         |
 | &quot;player105&quot; | 2018                        | 2019                      | &quot;Raptors&quot;           |
 +-------------+-----------------------------+---------------------------+---------------------+
-</code></pre>
-<h2 id="list-vertices-or-edges-with-a-tag-or-an-edge-type">List vertices or edges with a tag or an edge type</h2>
+</code></pre></div>
+<h2 id="list_vertices_or_edges_with_a_tag_or_an_edge_type">List vertices or edges with a tag or an edge type<a class="headerlink" href="#list_vertices_or_edges_with_a_tag_or_an_edge_type" title="Permanent link">&para;</a></h2>
 <p>To list vertices or edges with a tag or an edge type, at least one index must exist on the tag, the edge type, or its property.</p>
 <p>For example, if there is a <code>player</code> tag with a <code>name</code> property and an <code>age</code> property, to retrieve the VID of all vertices tagged with <code>player</code>, there has to be an index on the <code>player</code> tag itself, the <code>name</code> property, or the <code>age</code> property.</p>
 <ul>
-<li>
-<p>The following example shows how to retrieve the VID of all vertices tagged with <code>player</code>.</p>
-<p>```ngql
-nebula&gt; CREATE TAG IF NOT EXISTS player(name string,age int);</p>
-<p>nebula&gt; CREATE TAG INDEX IF NOT EXISTS player_index on player();</p>
-<p>nebula&gt; REBUILD TAG INDEX player_index;
+<li>The following example shows how to retrieve the VID of all vertices tagged with <code>player</code>.<div class="highlight"><pre><span></span><code>nebula&gt; CREATE TAG IF NOT EXISTS player(name string,age int);
+
+nebula&gt; CREATE TAG INDEX IF NOT EXISTS player_index on player();
+
+nebula&gt; REBUILD TAG INDEX player_index;
 +------------+
 | New Job Id |
 +------------+
 | 66         |
-+------------+</p>
-<p>nebula&gt; INSERT VERTEX player(name,age) \
-        VALUES "player100":("Tim Duncan", 42), "player101":("Tony Parker", 36);</p>
-<p>The following statement retrieves the VID of all vertices with the tag <code>player</code>. It is similar to <code>MATCH (n:player) RETURN id(n) /*, n */</code>.</p>
-<p>nebula&gt; LOOKUP ON player YIELD id(vertex);
++------------+
+
+nebula&gt; INSERT VERTEX player(name,age) \
+        VALUES &quot;player100&quot;:(&quot;Tim Duncan&quot;, 42), &quot;player101&quot;:(&quot;Tony Parker&quot;, 36);
+
+The following statement retrieves the VID of all vertices with the tag `player`. It is similar to `MATCH (n:player) RETURN id(n) /*, n */`.
+
+nebula&gt; LOOKUP ON player YIELD id(vertex);
 +-------------+
 | id(VERTEX)  |
 +-------------+
-| "player100" |
-| "player101" |
+| &quot;player100&quot; |
+| &quot;player101&quot; |
 ...
-```</p>
+</code></pre></div>
 </li>
-<li>
-<p>The following example shows how to retrieve the source Vertex IDs, destination vertex IDs, and ranks of all edges of the <code>follow</code> edge type.</p>
-<p>```ngql
-nebula&gt; CREATE EDGE IF NOT EXISTS follow(degree int);</p>
-<p>nebula&gt; CREATE EDGE INDEX IF NOT EXISTS follow_index on follow();</p>
-<p>nebula&gt; REBUILD EDGE INDEX follow_index;
+</ul>
+<ul>
+<li>The following example shows how to retrieve the source Vertex IDs, destination vertex IDs, and ranks of all edges of the <code>follow</code> edge type.<div class="highlight"><pre><span></span><code>nebula&gt; CREATE EDGE IF NOT EXISTS follow(degree int);
+
+nebula&gt; CREATE EDGE INDEX IF NOT EXISTS follow_index on follow();
+
+nebula&gt; REBUILD EDGE INDEX follow_index;
 +------------+
 | New Job Id |
 +------------+
 | 88         |
-+------------+</p>
-<p>nebula&gt; INSERT EDGE follow(degree) \
-        VALUES "player100"-&gt;"player101":(95);</p>
-<p>The following statement retrieves all edges with the edge type <code>follow</code>. It is similar to <code>MATCH (s)-[e:follow]-&gt;(d) RETURN id(s), rank(e), id(d) /*, type(e) */</code>.</p>
-<p>nebula)&gt; LOOKUP ON follow YIELD edge AS e;
++------------+
+
+nebula&gt; INSERT EDGE follow(degree) \
+        VALUES &quot;player100&quot;-&gt;&quot;player101&quot;:(95);
+
+The following statement retrieves all edges with the edge type `follow`. It is similar to `MATCH (s)-[e:follow]-&gt;(d) RETURN id(s), rank(e), id(d) /*, type(e) */`.
+
+nebula)&gt; LOOKUP ON follow YIELD edge AS e;
 +-----------------------------------------------------+
 | e                                                   |
 +-----------------------------------------------------+
-| [:follow "player105"-&gt;"player100" @0 {degree: 70}]  |
-| [:follow "player105"-&gt;"player116" @0 {degree: 80}]  |
-| [:follow "player109"-&gt;"player100" @0 {degree: 80}]  |
+| [:follow &quot;player105&quot;-&gt;&quot;player100&quot; @0 {degree: 70}]  |
+| [:follow &quot;player105&quot;-&gt;&quot;player116&quot; @0 {degree: 80}]  |
+| [:follow &quot;player109&quot;-&gt;&quot;player100&quot; @0 {degree: 80}]  |
 ...
-```</p>
+</code></pre></div>
 </li>
 </ul>
-<h2 id="count-the-numbers-of-vertices-or-edges">Count the numbers of vertices or edges</h2>
+<h2 id="count_the_numbers_of_vertices_or_edges">Count the numbers of vertices or edges<a class="headerlink" href="#count_the_numbers_of_vertices_or_edges" title="Permanent link">&para;</a></h2>
 <p>The following example shows how to count the number of vertices tagged with <code>player</code> and edges of the <code>follow</code> edge type.</p>
-<pre><code class="language-ngql">nebula&gt; LOOKUP ON player YIELD id(vertex)|\
+<div class="highlight"><pre><span></span><code>nebula&gt; LOOKUP ON player YIELD id(vertex)|\
         YIELD COUNT(*) AS Player_Number;
 +---------------+
 | Player_Number |
@@ -1583,10 +1588,11 @@ nebula&gt; LOOKUP ON follow YIELD edge AS e| \
 +---------------+
 | 81            |
 +---------------+
-</code></pre>
-<p>!!! note</p>
-<pre><code>You can also use [`SHOW STATS`](./6.show/14.show-stats.md) to count the numbers of vertices or edges.
-</code></pre>
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You can also use <a href="../6.show/14.show-stats/"><code>SHOW STATS</code></a> to count the numbers of vertices or edges.</p>
+</div>
 
 
 

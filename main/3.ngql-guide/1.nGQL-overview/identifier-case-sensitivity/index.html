@@ -48,6 +48,8 @@
       
     
     
+      <link rel="stylesheet" href="../../../stylesheets/note.css">
+    
     <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -77,7 +79,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#identifier-case-sensitivity" class="md-skip">
+        <a href="#identifier_case_sensitivity" class="md-skip">
           Skip to content
         </a>
       
@@ -1076,21 +1078,21 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#identifiers-are-case-sensitive" class="md-nav__link">
+  <a href="#identifiers_are_case-sensitive" class="md-nav__link">
     Identifiers are Case-Sensitive
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#keywords-and-reserved-words-are-case-insensitive" class="md-nav__link">
+  <a href="#keywords_and_reserved_words_are_case-insensitive" class="md-nav__link">
     Keywords and Reserved Words are Case-Insensitive
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#functions-are-case-insensitive" class="md-nav__link">
+  <a href="#functions_are_case-insensitive" class="md-nav__link">
     Functions are Case-Insensitive
   </a>
   
@@ -1333,21 +1335,21 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#identifiers-are-case-sensitive" class="md-nav__link">
+  <a href="#identifiers_are_case-sensitive" class="md-nav__link">
     Identifiers are Case-Sensitive
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#keywords-and-reserved-words-are-case-insensitive" class="md-nav__link">
+  <a href="#keywords_and_reserved_words_are_case-insensitive" class="md-nav__link">
     Keywords and Reserved Words are Case-Insensitive
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#functions-are-case-insensitive" class="md-nav__link">
+  <a href="#functions_are_case-insensitive" class="md-nav__link">
     Functions are Case-Insensitive
   </a>
   
@@ -1371,23 +1373,23 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
   
 
 
-<h1 id="identifier-case-sensitivity">Identifier case sensitivity</h1>
-<h2 id="identifiers-are-case-sensitive">Identifiers are Case-Sensitive</h2>
+<h1 id="identifier_case_sensitivity">Identifier case sensitivity<a class="headerlink" href="#identifier_case_sensitivity" title="Permanent link">&para;</a></h1>
+<h2 id="identifiers_are_case-sensitive">Identifiers are Case-Sensitive<a class="headerlink" href="#identifiers_are_case-sensitive" title="Permanent link">&para;</a></h2>
 <p>The following statements will not work because they refer to two different spaces, i.e. <code>my_space</code> and <code>MY_SPACE</code>.</p>
-<pre><code class="language-ngql">nebula&gt; CREATE SPACE IF NOT EXISTS my_space (vid_type=FIXED_STRING(30));
+<div class="highlight"><pre><span></span><code>nebula&gt; CREATE SPACE IF NOT EXISTS my_space (vid_type=FIXED_STRING(30));
 nebula&gt; use MY_SPACE;
 [ERROR (-1005)]: SpaceNotFound:
-</code></pre>
-<h2 id="keywords-and-reserved-words-are-case-insensitive">Keywords and Reserved Words are Case-Insensitive</h2>
+</code></pre></div>
+<h2 id="keywords_and_reserved_words_are_case-insensitive">Keywords and Reserved Words are Case-Insensitive<a class="headerlink" href="#keywords_and_reserved_words_are_case-insensitive" title="Permanent link">&para;</a></h2>
 <p>The following statements are equivalent since <code>show</code> and <code>spaces</code> are keywords.</p>
-<pre><code class="language-ngql">nebula&gt; show spaces;  
+<div class="highlight"><pre><span></span><code>nebula&gt; show spaces;  
 nebula&gt; SHOW SPACES;
 nebula&gt; SHOW spaces;
 nebula&gt; show SPACES;
-</code></pre>
-<h2 id="functions-are-case-insensitive">Functions are Case-Insensitive</h2>
+</code></pre></div>
+<h2 id="functions_are_case-insensitive">Functions are Case-Insensitive<a class="headerlink" href="#functions_are_case-insensitive" title="Permanent link">&para;</a></h2>
 <p>Functions are case-insensitive. For example, <code>count()</code>, <code>COUNT()</code>, and <code>couNT()</code> are equivalent.</p>
-<pre><code class="language-ngql">nebula&gt; WITH [NULL, 1, 1, 2, 2] As a \
+<div class="highlight"><pre><span></span><code>nebula&gt; WITH [NULL, 1, 1, 2, 2] As a \
         UNWIND a AS b \
         RETURN count(b), COUNT(*), couNT(DISTINCT b);
 +----------+----------+-------------------+
@@ -1395,7 +1397,7 @@ nebula&gt; show SPACES;
 +----------+----------+-------------------+
 | 4        | 5        | 2                 |
 +----------+----------+-------------------+
-</code></pre>
+</code></pre></div>
 
 
 

@@ -44,6 +44,8 @@
       
     
     
+      <link rel="stylesheet" href="../../../stylesheets/note.css">
+    
     <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -73,7 +75,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#drop-edge" class="md-skip">
+        <a href="#drop_edge" class="md-skip">
           Skip to content
         </a>
       
@@ -1298,34 +1300,30 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
   
 
 
-<h1 id="drop-edge">DROP EDGE</h1>
+<h1 id="drop_edge">DROP EDGE<a class="headerlink" href="#drop_edge" title="Permanent link">&para;</a></h1>
 <p><code>DROP EDGE</code> drops an edge type with the given name in a graph space.</p>
 <p>An edge can have only one edge type. After you drop it, the edge <strong>CANNOT</strong> be accessed. The edge will be deleted in the next compaction.</p>
 <p>This operation only deletes the Schema data. All the files or directories in the disk will not be deleted directly until the next compaction.</p>
-<h2 id="prerequisites">Prerequisites</h2>
+<h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h2>
 <ul>
-<li>
-<p>Running the <code>DROP EDGE</code> statement requires some <a href="../../7.data-security/1.authentication/3.role-list.md">privileges</a> for the graph space. Otherwise, NebulaGraph throws an error.</p>
-</li>
-<li>
-<p>Before you drop an edge type, make sure that the edge type does not have any indexes. Otherwise, the conflict error (<code>[ERROR (-1005)]: Conflict!</code>) will be returned. To drop an index, see <a href="../../14.native-index-statements/6.drop-native-index/">DROP INDEX</a>.</p>
-</li>
+<li>Running the <code>DROP EDGE</code> statement requires some <a href="../../7.data-security/1.authentication/3.role-list.md">privileges</a> for the graph space. Otherwise, NebulaGraph throws an error.</li>
 </ul>
-<h2 id="syntax">Syntax</h2>
-<pre><code class="language-ngql">DROP EDGE [IF EXISTS] &lt;edge_type_name&gt;
-</code></pre>
 <ul>
-<li>
-<p><code>IF NOT EXISTS</code>: Detects if the edge type that you want to drop exists. Only when it exists will it be dropped.</p>
-</li>
-<li>
-<p><code>edge_type_name</code>: Specifies the edge type name that you want to drop. You can drop only one edge type in one statement.</p>
-</li>
+<li>Before you drop an edge type, make sure that the edge type does not have any indexes. Otherwise, the conflict error (<code>[ERROR (-1005)]: Conflict!</code>) will be returned. To drop an index, see <a href="../../14.native-index-statements/6.drop-native-index/">DROP INDEX</a>.</li>
 </ul>
-<h2 id="example">Example</h2>
-<pre><code class="language-ngql">nebula&gt; CREATE EDGE IF NOT EXISTS e1(p1 string, p2 int);
+<h2 id="syntax">Syntax<a class="headerlink" href="#syntax" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code>DROP EDGE [IF EXISTS] &lt;edge_type_name&gt;
+</code></pre></div>
+<ul>
+<li><code>IF NOT EXISTS</code>: Detects if the edge type that you want to drop exists. Only when it exists will it be dropped.</li>
+</ul>
+<ul>
+<li><code>edge_type_name</code>: Specifies the edge type name that you want to drop. You can drop only one edge type in one statement.</li>
+</ul>
+<h2 id="example">Example<a class="headerlink" href="#example" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code>nebula&gt; CREATE EDGE IF NOT EXISTS e1(p1 string, p2 int);
 nebula&gt; DROP EDGE e1;
-</code></pre>
+</code></pre></div>
 
 
 

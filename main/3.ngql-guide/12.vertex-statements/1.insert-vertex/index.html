@@ -44,6 +44,8 @@
       
     
     
+      <link rel="stylesheet" href="../../../stylesheets/note.css">
+    
     <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -73,7 +75,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#insert-vertex" class="md-skip">
+        <a href="#insert_vertex" class="md-skip">
           Skip to content
         </a>
       
@@ -1298,12 +1300,12 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
   
 
 
-<h1 id="insert-vertex">INSERT VERTEX</h1>
+<h1 id="insert_vertex">INSERT VERTEX<a class="headerlink" href="#insert_vertex" title="Permanent link">&para;</a></h1>
 <p>The <code>INSERT VERTEX</code> statement inserts one or more vertices into a graph space in NebulaGraph.</p>
-<h2 id="prerequisites">Prerequisites</h2>
+<h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h2>
 <p>Running the <code>INSERT VERTEX</code> statement requires some <a href="../../7.data-security/1.authentication/3.role-list.md">privileges</a> for the graph space. Otherwise, NebulaGraph throws an error.</p>
-<h2 id="syntax">Syntax</h2>
-<pre><code class="language-ngql">INSERT VERTEX [IF NOT EXISTS] [tag_props, [tag_props] ...]
+<h2 id="syntax">Syntax<a class="headerlink" href="#syntax" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code>INSERT VERTEX [IF NOT EXISTS] [tag_props, [tag_props] ...]
 VALUES VID: ([prop_value_list])
 
 tag_props:
@@ -1314,12 +1316,11 @@ prop_name_list:
 
 prop_value_list:
    [prop_value [, prop_value] ...] 
-</code></pre>
+</code></pre></div>
 <!---
 
 // Ignore existing indexes to insert vertex.
-
-<pre><code class="language-ngql">INSERT VERTEX [IF NOT EXISTS] [IGNORE_EXISTED_INDEX] [tag_props, [tag_props] ...]
+<div class="highlight"><pre><span></span><code>INSERT VERTEX [IF NOT EXISTS] [IGNORE_EXISTED_INDEX] [tag_props, [tag_props] ...]
 VALUES VID: ([prop_value_list])
 tag_props:
   tag_name ([prop_name_list])
@@ -1327,8 +1328,7 @@ prop_name_list:
    [prop_name [, prop_name] ...]
 prop_value_list:
    [prop_value [, prop_value] ...]   
-</code></pre>
-
+</code></pre></div>
 - `IGNORE_EXISTED_INDEX`：Indexes will not be updated after a vertex is inserted. We recommend using `IGNORE_EXISTED_INDEX` on the first import, which can greatly improve performance.
 
   !!! danger
@@ -1338,81 +1338,89 @@ prop_value_list:
 --->
 
 <ul>
-<li><code>IF NOT EXISTS</code> detects if the VID that you want to insert exists. If it does not exist, a new one will be inserted.</li>
-</ul>
-<p>!!! Note</p>
-<pre><code>  - `IF NOT EXISTS` only compares the names of the VID and the tag (excluding properties).
-  - `IF NOT EXISTS` will read to check whether the data exists, which will have a significant impact on performance.
-</code></pre>
+<li>
+<p><code>IF NOT EXISTS</code> detects if the VID that you want to insert exists. If it does not exist, a new one will be inserted.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
 <ul>
-<li><code>tag_name</code> denotes the tag (vertex type), which must be created before <code>INSERT VERTEX</code>. For more information, see <a href="../../10.tag-statements/1.create-tag/">CREATE TAG</a>.</li>
+<li><code>IF NOT EXISTS</code> only compares the names of the VID and the tag (excluding properties).</li>
+<li><code>IF NOT EXISTS</code> will read to check whether the data exists, which will have a significant impact on performance.</li>
 </ul>
-<p>!!! caution</p>
-<pre><code>    NebulaGraph 3.6.0 supports inserting vertices without tags.
-</code></pre>
-<p>!!! Compatibility</p>
-<pre><code>    In NebulaGraph 3.6.0, inserting vertex without tag is not supported by default. If you want to use the vertex without tags, add `--graph_use_vertex_key=true` to the configuration files (`nebula-graphd.conf`) of all Graph services in the cluster, add `--use_vertex_key=true` to the configuration files (`nebula-storaged.conf`) of all Storage services in the cluster. An example of a command to insert a vertex without tag is `INSERT VERTEX VALUES "1":();`.
-</code></pre>
+</div>
+</li>
+</ul>
 <ul>
 <li>
-<p><code>prop_name_list</code> contains the names of the properties on the tag.</p>
-</li>
-<li>
-<p><code>VID</code> is the vertex ID. In NebulaGraph 2.0, string and integer VID types are supported. The VID type is set when a graph space is created. For more information, see <a href="../../9.space-statements/1.create-space/">CREATE SPACE</a>.</p>
-</li>
-<li>
-<p><code>prop_value_list</code> must provide the property values according to the <code>prop_name_list</code>. When the <code>NOT NULL</code> constraint is set for a given property, an error is returned if no property is given. When the default value for a property is <code>NULL</code>, you can omit to specify the property value. For details, see <a href="../../10.tag-statements/1.create-tag/">CREATE TAG</a>.</p>
+<p><code>tag_name</code> denotes the tag (vertex type), which must be created before <code>INSERT VERTEX</code>. For more information, see <a href="../../10.tag-statements/1.create-tag/">CREATE TAG</a>.</p>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<p>NebulaGraph 3.6.0 supports inserting vertices without tags.</p>
+</div>
+<div class="admonition compatibility">
+<p class="admonition-title">Compatibility</p>
+<p>In NebulaGraph 3.6.0, inserting vertex without tag is not supported by default. If you want to use the vertex without tags, add <code>--graph_use_vertex_key=true</code> to the configuration files (<code>nebula-graphd.conf</code>) of all Graph services in the cluster, add <code>--use_vertex_key=true</code> to the configuration files (<code>nebula-storaged.conf</code>) of all Storage services in the cluster. An example of a command to insert a vertex without tag is <code>INSERT VERTEX VALUES "1":();</code>.</p>
+</div>
 </li>
 </ul>
-<p>!!! caution</p>
-<pre><code>`INSERT VERTEX` and `CREATE` have different semantics.
-
-- The semantics of `INSERT VERTEX` is closer to that of INSERT in NoSQL (key-value), or `UPSERT` (`UPDATE` or `INSERT`) in SQL.
-- When two INSERT statements (neither uses `IF NOT EXISTS`) with the same `VID` and `TAG` are operated at the same time, the latter INSERT will overwrite the former.
-- When two INSERT statements with the same `VID` but different `TAGS` are operated at the same time, the operation of different tags will not overwrite each other.
-</code></pre>
+<ul>
+<li><code>prop_name_list</code> contains the names of the properties on the tag.</li>
+</ul>
+<ul>
+<li><code>VID</code> is the vertex ID. In NebulaGraph 2.0, string and integer VID types are supported. The VID type is set when a graph space is created. For more information, see <a href="../../9.space-statements/1.create-space/">CREATE SPACE</a>.</li>
+</ul>
+<ul>
+<li><code>prop_value_list</code> must provide the property values according to the <code>prop_name_list</code>. When the <code>NOT NULL</code> constraint is set for a given property, an error is returned if no property is given. When the default value for a property is <code>NULL</code>, you can omit to specify the property value. For details, see <a href="../../10.tag-statements/1.create-tag/">CREATE TAG</a>.</li>
+</ul>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<p><code>INSERT VERTEX</code> and <code>CREATE</code> have different semantics.</p>
+<ul>
+<li>The semantics of <code>INSERT VERTEX</code> is closer to that of INSERT in NoSQL (key-value), or <code>UPSERT</code> (<code>UPDATE</code> or <code>INSERT</code>) in SQL.</li>
+<li>When two INSERT statements (neither uses <code>IF NOT EXISTS</code>) with the same <code>VID</code> and <code>TAG</code> are operated at the same time, the latter INSERT will overwrite the former.</li>
+<li>When two INSERT statements with the same <code>VID</code> but different <code>TAGS</code> are operated at the same time, the operation of different tags will not overwrite each other.</li>
+</ul>
+</div>
 <p>Examples are as follows.</p>
-<h2 id="examples">Examples</h2>
-<pre><code class="language-ngql"># Insert a vertex without tag.
+<h2 id="examples">Examples<a class="headerlink" href="#examples" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code># Insert a vertex without tag.
 nebula&gt; INSERT VERTEX VALUES &quot;1&quot;:();
 
 # The following examples create tag t1 with no property and inserts vertex &quot;10&quot; with no property.
 nebula&gt; CREATE TAG IF NOT EXISTS t1();                   
 nebula&gt; INSERT VERTEX t1() VALUES &quot;10&quot;:(); 
-</code></pre>
+</code></pre></div>
 <!---
- ```ngql
- # Insert vertices, the VIDs of which are "100" and "200", the value of the property id is "1".
- nebula> INSERT VERTEX person(id) VALUES "100":(1), "200":(1);
- # Query vertices, the value of the property id is "1", both 100 and 200 will be returned.
- nebula> LOOKUP ON person WHERE person.id == 1 YIELD id(vertex) as id;
- +-------------+
- | id          |
- +-------------+
- | "100"       |
- | "200"       |
- +-------------+
- # Insert a vertex with `IGNORE_EXISTED_INDEX`. The VID of the vertex is "200" and the value of the property id is with "2".
- nebula> INSERT VERTEX IGNORE_EXISTED_INDEX person(id) VALUES "200":(2);
- # Query vertices, the value of the property id is "1", both 100 and 200 will be returned.
- nebula> LOOKUP ON person WHERE person.id == 1 YIELD id(vertex) as id;
- +-------------+
- | id          |
- +-------------+
- | "100"       |
- | "200"       |
- +-------------+
- # Query vertices, the value of the property id is "2", only 200 will be returned.
- nebula> LOOKUP ON person WHERE person.id == 2 YIELD id(vertex) as id;
- +-------+
- | id    |
- +-------+
- | "200" |
- +-------+
- ```
+ <div class="highlight"><pre><span></span><code># Insert vertices, the VIDs of which are &quot;100&quot; and &quot;200&quot;, the value of the property id is &quot;1&quot;.
+nebula&gt; INSERT VERTEX person(id) VALUES &quot;100&quot;:(1), &quot;200&quot;:(1);
+# Query vertices, the value of the property id is &quot;1&quot;, both 100 and 200 will be returned.
+nebula&gt; LOOKUP ON person WHERE person.id == 1 YIELD id(vertex) as id;
++-------------+
+| id          |
++-------------+
+| &quot;100&quot;       |
+| &quot;200&quot;       |
++-------------+
+# Insert a vertex with `IGNORE_EXISTED_INDEX`. The VID of the vertex is &quot;200&quot; and the value of the property id is with &quot;2&quot;.
+nebula&gt; INSERT VERTEX IGNORE_EXISTED_INDEX person(id) VALUES &quot;200&quot;:(2);
+# Query vertices, the value of the property id is &quot;1&quot;, both 100 and 200 will be returned.
+nebula&gt; LOOKUP ON person WHERE person.id == 1 YIELD id(vertex) as id;
++-------------+
+| id          |
++-------------+
+| &quot;100&quot;       |
+| &quot;200&quot;       |
++-------------+
+# Query vertices, the value of the property id is &quot;2&quot;, only 200 will be returned.
+nebula&gt; LOOKUP ON person WHERE person.id == 2 YIELD id(vertex) as id;
++-------+
+| id    |
++-------+
+| &quot;200&quot; |
++-------+
+</code></pre></div>
  --->
 
-<pre><code class="language-ngql">nebula&gt; CREATE TAG IF NOT EXISTS t2 (name string, age int);                
+<div class="highlight"><pre><span></span><code>nebula&gt; CREATE TAG IF NOT EXISTS t2 (name string, age int);                
 nebula&gt; INSERT VERTEX t2 (name, age) VALUES &quot;11&quot;:(&quot;n1&quot;, 12);
 
 #  In the following example, the insertion fails because &quot;a13&quot; is not int.
@@ -1420,15 +1428,15 @@ nebula&gt; INSERT VERTEX t2 (name, age) VALUES &quot;12&quot;:(&quot;n1&quot;, &
 
 # The following example inserts two vertices at one time.
 nebula&gt; INSERT VERTEX t2 (name, age) VALUES &quot;13&quot;:(&quot;n3&quot;, 12), &quot;14&quot;:(&quot;n4&quot;, 8); 
-</code></pre>
-<pre><code class="language-ngql">nebula&gt; CREATE TAG IF NOT EXISTS t3(p1 int);
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>nebula&gt; CREATE TAG IF NOT EXISTS t3(p1 int);
 nebula&gt; CREATE TAG IF NOT EXISTS t4(p2 string);
 
 # The following example inserts vertex &quot;21&quot; with two tags.
 nebula&gt; INSERT VERTEX t3 (p1), t4(p2) VALUES &quot;21&quot;: (321, &quot;hello&quot;);
-</code></pre>
+</code></pre></div>
 <p>A vertex can be inserted/written with new values multiple times. Only the last written values can be read.</p>
-<pre><code class="language-ngql"># The following examples insert vertex &quot;11&quot; with new values for multiple times.
+<div class="highlight"><pre><span></span><code># The following examples insert vertex &quot;11&quot; with new values for multiple times.
 nebula&gt; INSERT VERTEX t2 (name, age) VALUES &quot;11&quot;:(&quot;n2&quot;, 13);
 nebula&gt; INSERT VERTEX t2 (name, age) VALUES &quot;11&quot;:(&quot;n3&quot;, 14);
 nebula&gt; INSERT VERTEX t2 (name, age) VALUES &quot;11&quot;:(&quot;n4&quot;, 15);
@@ -1438,13 +1446,13 @@ nebula&gt; FETCH PROP ON t2 &quot;11&quot; YIELD properties(vertex);
 +-----------------------+
 | {age: 15, name: &quot;n4&quot;} |
 +-----------------------+
-</code></pre>
-<pre><code class="language-ngql">nebula&gt; CREATE TAG IF NOT EXISTS t5(p1 fixed_string(5) NOT NULL, p2 int, p3 int DEFAULT NULL);
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>nebula&gt; CREATE TAG IF NOT EXISTS t5(p1 fixed_string(5) NOT NULL, p2 int, p3 int DEFAULT NULL);
 nebula&gt; INSERT VERTEX t5(p1, p2, p3) VALUES &quot;001&quot;:(&quot;Abe&quot;, 2, 3);
 
 # In the following example, the insertion fails because the value of p1 cannot be NULL.
 nebula&gt; INSERT VERTEX t5(p1, p2, p3) VALUES &quot;002&quot;:(NULL, 4, 5);
-[ERROR (-1009)]: SemanticError: No schema found for `t5'
+[ERROR (-1009)]: SemanticError: No schema found for `t5&#39;
 
 # In the following example, the value of p3 is the default NULL.
 nebula&gt; INSERT VERTEX t5(p1, p2) VALUES &quot;003&quot;:(&quot;cd&quot;, 5);
@@ -1463,9 +1471,9 @@ nebula&gt; FETCH PROP on t5 &quot;004&quot; YIELD properties(vertex);
 +------------------------------------+
 | {p1: &quot;shala&quot;, p2: 4, p3: __NULL__} |
 +------------------------------------+
-</code></pre>
+</code></pre></div>
 <p>If you insert a vertex that already exists with <code>IF NOT EXISTS</code>, there will be no modification.</p>
-<pre><code class="language-ngql"># The following example inserts vertex &quot;1&quot;.
+<div class="highlight"><pre><span></span><code># The following example inserts vertex &quot;1&quot;.
 nebula&gt; INSERT VERTEX t2 (name, age) VALUES &quot;1&quot;:(&quot;n2&quot;, 13);
 # Modify vertex &quot;1&quot; with IF NOT EXISTS. But there will be no modification as vertex &quot;1&quot; already exists.
 nebula&gt; INSERT VERTEX IF NOT EXISTS t2 (name, age) VALUES &quot;1&quot;:(&quot;n3&quot;, 14);
@@ -1475,7 +1483,7 @@ nebula&gt; FETCH PROP ON t2 &quot;1&quot; YIELD properties(vertex);
 +-----------------------+
 | {age: 13, name: &quot;n2&quot;} |
 +-----------------------+
-</code></pre>
+</code></pre></div>
 
 
 

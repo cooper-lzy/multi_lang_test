@@ -44,6 +44,8 @@
       
     
     
+      <link rel="stylesheet" href="../../../stylesheets/note.css">
+    
     <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -1260,7 +1262,7 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#opencypher-compatibility" class="md-nav__link">
+  <a href="#opencypher_compatibility" class="md-nav__link">
     OpenCypher compatibility
   </a>
   
@@ -1291,21 +1293,19 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
   
 
 
-<h1 id="maps">Maps</h1>
+<h1 id="maps">Maps<a class="headerlink" href="#maps" title="Permanent link">&para;</a></h1>
 <p>The map is a composite data type. Maps are unordered collections of key-value pairs. In maps, the key is a string. The value can have any data type. You can get the map element by using <code>map['key']</code>.</p>
 <p>A map starts with a left curly bracket <code>{</code> and ends with a right curly bracket <code>}</code>. A map contains zero, one, or more key-value pairs. Map elements are separated from each other with commas (<code>,</code>). Whitespace around elements is ignored in the map, thus line breaks, tab stops, and blanks can be used for formatting.</p>
-<h2 id="opencypher-compatibility">OpenCypher compatibility</h2>
+<h2 id="opencypher_compatibility">OpenCypher compatibility<a class="headerlink" href="#opencypher_compatibility" title="Permanent link">&para;</a></h2>
 <ul>
-<li>
-<p>A composite data type (i.e. set, map, and list) <strong>CANNOT</strong> be stored as properties of vertices or edges.</p>
-</li>
-<li>
-<p>Map projection is not supported.</p>
-</li>
+<li>A composite data type (i.e. set, map, and list) <strong>CANNOT</strong> be stored as properties of vertices or edges.</li>
 </ul>
-<h2 id="examples">Examples</h2>
-<pre><code class="language-ngql"># The following query returns the simple map.
-nebula&gt; YIELD map{key1: 'Value1', Key2: 'Value2'} as a;
+<ul>
+<li>Map projection is not supported.</li>
+</ul>
+<h2 id="examples">Examples<a class="headerlink" href="#examples" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code># The following query returns the simple map.
+nebula&gt; YIELD map{key1: &#39;Value1&#39;, Key2: &#39;Value2&#39;} as a;
 +----------------------------------+
 | a                                |
 +----------------------------------+
@@ -1313,7 +1313,7 @@ nebula&gt; YIELD map{key1: 'Value1', Key2: 'Value2'} as a;
 +----------------------------------+
 
 # The following query returns the list type map.
-nebula&gt; YIELD map{listKey: [{inner: 'Map1'}, {inner: 'Map2'}]} as a;
+nebula&gt; YIELD map{listKey: [{inner: &#39;Map1&#39;}, {inner: &#39;Map2&#39;}]} as a;
 +-----------------------------------------------+
 | a                                             |
 +-----------------------------------------------+
@@ -1343,7 +1343,7 @@ nebula&gt; RETURN &quot;a&quot; IN MAP{a:1, b:2} AS a;
 +------+
 | true |
 +------+
-</code></pre>
+</code></pre></div>
 
 
 

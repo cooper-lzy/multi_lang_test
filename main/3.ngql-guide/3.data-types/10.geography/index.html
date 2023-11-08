@@ -44,6 +44,8 @@
       
     
     
+      <link rel="stylesheet" href="../../../stylesheets/note.css">
+    
     <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -1260,7 +1262,7 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#type-description" class="md-nav__link">
+  <a href="#type_description" class="md-nav__link">
     Type description
   </a>
   
@@ -1291,13 +1293,14 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
   
 
 
-<h1 id="geography">Geography</h1>
+<h1 id="geography">Geography<a class="headerlink" href="#geography" title="Permanent link">&para;</a></h1>
 <p>Geography is a data type composed of latitude and longitude that represents geospatial information. NebulaGraph currently supports Point, LineString, and Polygon in <a href="https://en.wikipedia.org/wiki/Simple_Features">Simple Features</a> and some functions in <a href="https://www.techrepublic.com/index.php/resource-library/whitepapers/sql-mm-spatial-the-standard-to-manage-spatial-data-in-relational-database-systems/">SQL-MM 3</a>, such as part of the core geo parsing, construction, formatting, conversion, predicates, and dimensions.</p>
-<h2 id="type-description">Type description</h2>
+<h2 id="type_description">Type description<a class="headerlink" href="#type_description" title="Permanent link">&para;</a></h2>
 <p>A point is the basic data type of geography, which is determined by a latitude and a longitude. For example, <code>"POINT(3 8)"</code> means that the longitude is <code>3°</code> and the latitude is <code>8°</code>. Multiple points can form a linestring or a polygon.</p>
-<p>!!! note</p>
-<pre><code>You cannot directly insert geographic data of the following types, such as `INSERT VERTEX any_shape(geo) VALUES "1":("POINT(1 1)")`. Instead, you need to use a [geography function](../6.functions-and-expressions/14.geo.md) to specify the data type before inserting, such as `INSERT VERTEX any_shape(geo) VALUES "1":(ST_GeogFromText("POINT(1 1)"));`.
-</code></pre>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You cannot directly insert geographic data of the following types, such as <code>INSERT VERTEX any_shape(geo) VALUES "1":("POINT(1 1)")</code>. Instead, you need to use a <a href="../../6.functions-and-expressions/14.geo/">geography function</a> to specify the data type before inserting, such as <code>INSERT VERTEX any_shape(geo) VALUES "1":(ST_GeogFromText("POINT(1 1)"));</code>.</p>
+</div>
 <table>
 <thead>
 <tr>
@@ -1329,14 +1332,12 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
 
 When creating an index for the geography type data, you can specify the covering options of the [S2 Cell](https://s2geometry.io/devguide/s2cell_hierarchy).
 
-
-<pre><code class="language-ngql">CREATE TAG INDEX &lt;index_name&gt; ON &lt;tag_name&gt;(&lt;geo_prop_name&gt;) s2_min_level = &lt;int&gt;, s2_max_level = &lt;int&gt;, s2_max_cells = &lt;int&gt;;
-</code></pre>
-
+<div class="highlight"><pre><span></span><code>CREATE TAG INDEX &lt;index_name&gt; ON &lt;tag_name&gt;(&lt;geo_prop_name&gt;) s2_min_level = &lt;int&gt;, s2_max_level = &lt;int&gt;, s2_max_cells = &lt;int&gt;;
+</code></pre></div>
 -->
 
-<h2 id="examples">Examples</h2>
-<pre><code class="language-ngql">//Create a Tag to allow storing any geography data type.
+<h2 id="examples">Examples<a class="headerlink" href="#examples" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code>//Create a Tag to allow storing any geography data type.
 nebula&gt; CREATE TAG IF NOT EXISTS any_shape(geo geography);
 
 //Create a Tag to allow storing a point only.
@@ -1382,7 +1383,7 @@ nebula&gt; LOOKUP ON any_shape YIELD ST_ASText(any_shape.geo);
 +---------------------------------+
 | &quot;POLYGON((0 1, 1 2, 2 3, 0 1))&quot; |
 +---------------------------------+
-</code></pre>
+</code></pre></div>
 <p>When creating an index for geography properties, you can specify the parameters for the index.</p>
 <!--https://www.cockroachlabs.com/docs/stable/spatial-indexes.html-->
 
@@ -1407,11 +1408,12 @@ nebula&gt; LOOKUP ON any_shape YIELD ST_ASText(any_shape.geo);
 </tr>
 </tbody>
 </table>
-<p>!!! note</p>
-<pre><code>Specifying the above two parameters does not affect the Point type of property. The `s2_max_level` value of the Point type is forced to be `30`.
-</code></pre>
-<pre><code class="language-ngql">nebula&gt; CREATE TAG INDEX IF NOT EXISTS any_shape_geo_index ON any_shape(geo) with (s2_max_level=30, s2_max_cells=8);
-</code></pre>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Specifying the above two parameters does not affect the Point type of property. The <code>s2_max_level</code> value of the Point type is forced to be <code>30</code>.</p>
+</div>
+<div class="highlight"><pre><span></span><code>nebula&gt; CREATE TAG INDEX IF NOT EXISTS any_shape_geo_index ON any_shape(geo) with (s2_max_level=30, s2_max_cells=8);
+</code></pre></div>
 <p>For more index information, see <a href="../../14.native-index-statements/">Index overview</a>.</p>
 
 

@@ -44,6 +44,8 @@
       
     
     
+      <link rel="stylesheet" href="../../../stylesheets/note.css">
+    
     <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -1260,14 +1262,14 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#opencypher-compatibility" class="md-nav__link">
+  <a href="#opencypher_compatibility" class="md-nav__link">
     OpenCypher compatibility
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#list-operations" class="md-nav__link">
+  <a href="#list_operations" class="md-nav__link">
     List operations
   </a>
   
@@ -1275,7 +1277,7 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#index-syntax" class="md-nav__link">
+  <a href="#index_syntax" class="md-nav__link">
     Index syntax
   </a>
   
@@ -1294,7 +1296,7 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
 </li>
       
         <li class="md-nav__item">
-  <a href="#opencypher-compatibility_1" class="md-nav__link">
+  <a href="#opencypher_compatibility_1" class="md-nav__link">
     OpenCypher compatibility
   </a>
   
@@ -1318,19 +1320,19 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
   
 
 
-<h1 id="lists">Lists</h1>
+<h1 id="lists">Lists<a class="headerlink" href="#lists" title="Permanent link">&para;</a></h1>
 <p>The list is a composite data type. A list is a sequence of values. Individual elements in a list can be accessed by their positions.</p>
 <p>A list starts with a left square bracket <code>[</code> and ends with a right square bracket <code>]</code>. A list contains zero, one, or more expressions. List elements are separated from each other with commas (<code>,</code>). Whitespace around elements is ignored in the list, thus line breaks, tab stops, and blanks can be used for formatting.</p>
-<h2 id="opencypher-compatibility">OpenCypher compatibility</h2>
+<h2 id="opencypher_compatibility">OpenCypher compatibility<a class="headerlink" href="#opencypher_compatibility" title="Permanent link">&para;</a></h2>
 <p>A composite data type (i.e. set, map, and list) <strong>CANNOT</strong> be stored as properties of vertices or edges.</p>
-<h2 id="list-operations">List operations</h2>
+<h2 id="list_operations">List operations<a class="headerlink" href="#list_operations" title="Permanent link">&para;</a></h2>
 <p>You can use the preset <a href="../../6.functions-and-expressions/6.list/">list function</a> to operate the list, or use the index to filter the elements in the list.</p>
-<h3 id="index-syntax">Index syntax</h3>
-<pre><code class="language-ngql">[M]
+<h3 id="index_syntax">Index syntax<a class="headerlink" href="#index_syntax" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>[M]
 [M..N]
 [M..]
 [..N]
-</code></pre>
+</code></pre></div>
 <p>The index of nGQL supports queries from front to back, starting from 0. 0 means the first element, 1 means the second element, and so on. It also supports queries from back to front, starting from -1. -1 means the last element, -2 means the penultimate element, and so on.</p>
 <ul>
 <li>[M]: represents the element whose index is M.</li>
@@ -1338,13 +1340,16 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
 <li>[M..]: represents the elements whose indexes are <code>greater or equal to M</code>.</li>
 <li>[..N]: represents the elements whose indexes are <code>smaller than N</code>. Return empty when <code>N</code> is 0.</li>
 </ul>
-<p>!!! note</p>
-<pre><code>- Return empty if the index is out of bounds, while return normally if the index is within the bound.
-- Return empty if `M`≥`N`.
-- When querying a single element, if `M` is null, return `BAD_TYPE`. When conducting a range query, if `M` or `N` is null, return `null`.
-</code></pre>
-<h2 id="examples">Examples</h2>
-<pre><code class="language-ngql"># The following query returns the list [1,2,3].
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul>
+<li>Return empty if the index is out of bounds, while return normally if the index is within the bound.</li>
+<li>Return empty if <code>M</code>≥<code>N</code>.</li>
+<li>When querying a single element, if <code>M</code> is null, return <code>BAD_TYPE</code>. When conducting a range query, if <code>M</code> or <code>N</code> is null, return <code>null</code>.</li>
+</ul>
+</div>
+<h2 id="examples">Examples<a class="headerlink" href="#examples" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code># The following query returns the list [1,2,3].
 nebula&gt; RETURN list[1, 2, 3] AS a;
 +-----------+
 | a         |
@@ -1509,24 +1514,24 @@ nebula&gt; MATCH p = (n:player{name:&quot;Tim Duncan&quot;})-[:follow]-&gt;(m) \
 | [142, 136] |
 | [142, 141] |
 +------------+
-</code></pre>
-<h2 id="opencypher-compatibility_1">OpenCypher compatibility</h2>
+</code></pre></div>
+<h2 id="opencypher_compatibility_1">OpenCypher compatibility<a class="headerlink" href="#opencypher_compatibility_1" title="Permanent link">&para;</a></h2>
 <ul>
-<li>
-<p>In openCypher, return <code>null</code> when querying a single out-of-bound element. However, in nGQL, return <code>OUT_OF_RANGE</code> when querying a single out-of-bound element.</p>
-<p><code>ngql
-nebula&gt; RETURN range(0,5)[-12];
+<li>In openCypher, return <code>null</code> when querying a single out-of-bound element. However, in nGQL, return <code>OUT_OF_RANGE</code> when querying a single out-of-bound element.<div class="highlight"><pre><span></span><code>nebula&gt; RETURN range(0,5)[-12];
 +-------------------+
 | range(0,5)[-(12)] |
 +-------------------+
 | OUT_OF_RANGE      |
-+-------------------+</code></p>
-</li>
-<li>
-<p>A composite data type (i.e., set, map, and list) <strong>CAN NOT</strong> be stored as properties for vertices or edges.</p>
++-------------------+
+</code></pre></div>
 </li>
 </ul>
+<ul>
+<li>
+<p>A composite data type (i.e., set, map, and list) <strong>CAN NOT</strong> be stored as properties for vertices or edges.</p>
 <p>It is recommended to modify the graph modeling method. The composite data type should be modeled as an adjacent edge of a vertex, rather than its property. Each adjacent edge can be dynamically added or deleted. The rank values of the adjacent edges can be used for sequencing.</p>
+</li>
+</ul>
 <ul>
 <li>Patterns are not supported in the list. For example, <code>[(src)-[]-&gt;(m) | m.name]</code>.</li>
 </ul>

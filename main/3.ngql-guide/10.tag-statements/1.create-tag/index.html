@@ -44,6 +44,8 @@
       
     
     
+      <link rel="stylesheet" href="../../../stylesheets/note.css">
+    
     <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -73,7 +75,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#create-tag" class="md-skip">
+        <a href="#create_tag" class="md-skip">
           Skip to content
         </a>
       
@@ -1260,7 +1262,7 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#opencypher-compatibility" class="md-nav__link">
+  <a href="#opencypher_compatibility" class="md-nav__link">
     OpenCypher compatibility
   </a>
   
@@ -1294,7 +1296,7 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
 </li>
       
         <li class="md-nav__item">
-  <a href="#implementation-of-the-operation" class="md-nav__link">
+  <a href="#implementation_of_the_operation" class="md-nav__link">
     Implementation of the operation
   </a>
   
@@ -1318,27 +1320,27 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
   
 
 
-<h1 id="create-tag">CREATE TAG</h1>
+<h1 id="create_tag">CREATE TAG<a class="headerlink" href="#create_tag" title="Permanent link">&para;</a></h1>
 <p><code>CREATE TAG</code> creates a tag with the given name in a graph space.</p>
-<h2 id="opencypher-compatibility">OpenCypher compatibility</h2>
+<h2 id="opencypher_compatibility">OpenCypher compatibility<a class="headerlink" href="#opencypher_compatibility" title="Permanent link">&para;</a></h2>
 <p>Tags in nGQL are similar to labels in openCypher. But they are also quite different. For example, the ways to create them are different.</p>
 <ul>
 <li>In openCypher, labels are created together with vertices in <code>CREATE</code> statements.</li>
 <li>In nGQL, tags are created separately using <code>CREATE TAG</code> statements. Tags in nGQL are more like tables in MySQL.</li>
 </ul>
-<h2 id="prerequisites">Prerequisites</h2>
+<h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h2>
 <p>Running the <code>CREATE TAG</code> statement requires some <a href="../../7.data-security/1.authentication/3.role-list.md">privileges</a> for the graph space. Otherwise, NebulaGraph throws an error.</p>
-<h2 id="syntax">Syntax</h2>
+<h2 id="syntax">Syntax<a class="headerlink" href="#syntax" title="Permanent link">&para;</a></h2>
 <p>To create a tag in a specific graph space, you must specify the current working space with the <code>USE</code> statement.</p>
-<pre><code class="language-ngql">CREATE TAG [IF NOT EXISTS] &lt;tag_name&gt;
+<div class="highlight"><pre><span></span><code>CREATE TAG [IF NOT EXISTS] &lt;tag_name&gt;
     (
-      &lt;prop_name&gt; &lt;data_type&gt; [NULL | NOT NULL] [DEFAULT &lt;default_value&gt;] [COMMENT '&lt;comment&gt;']
-      [{, &lt;prop_name&gt; &lt;data_type&gt; [NULL | NOT NULL] [DEFAULT &lt;default_value&gt;] [COMMENT '&lt;comment&gt;']} ...] 
+      &lt;prop_name&gt; &lt;data_type&gt; [NULL | NOT NULL] [DEFAULT &lt;default_value&gt;] [COMMENT &#39;&lt;comment&gt;&#39;]
+      [{, &lt;prop_name&gt; &lt;data_type&gt; [NULL | NOT NULL] [DEFAULT &lt;default_value&gt;] [COMMENT &#39;&lt;comment&gt;&#39;]} ...] 
     )
     [TTL_DURATION = &lt;ttl_duration&gt;]
     [TTL_COL = &lt;prop_name&gt;]
-    [COMMENT = '&lt;comment&gt;'];
-</code></pre>
+    [COMMENT = &#39;&lt;comment&gt;&#39;];
+</code></pre></div>
 <table>
 <thead>
 <tr>
@@ -1385,8 +1387,8 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
 </tr>
 </tbody>
 </table>
-<h3 id="examples">Examples</h3>
-<pre><code class="language-ngql">nebula&gt; CREATE TAG IF NOT EXISTS player(name string, age int);
+<h3 id="examples">Examples<a class="headerlink" href="#examples" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>nebula&gt; CREATE TAG IF NOT EXISTS player(name string, age int);
 
 # The following example creates a tag with no properties.
 nebula&gt; CREATE TAG IF NOT EXISTS no_property(); 
@@ -1398,8 +1400,8 @@ nebula&gt; CREATE TAG IF NOT EXISTS player_with_default(name string, age int DEF
 nebula&gt; CREATE TAG IF NOT EXISTS woman(name string, age int, \
         married bool, salary double, create_time timestamp) \
         TTL_DURATION = 100, TTL_COL = &quot;create_time&quot;;
-</code></pre>
-<h2 id="implementation-of-the-operation">Implementation of the operation</h2>
+</code></pre></div>
+<h2 id="implementation_of_the_operation">Implementation of the operation<a class="headerlink" href="#implementation_of_the_operation" title="Permanent link">&para;</a></h2>
 <p>Trying to use a newly created tag may fail because the creation of the tag is implemented asynchronously. To make sure the follow-up operations work as expected, Wait for two heartbeat cycles, i.e., 20 seconds.</p>
 <p>To change the heartbeat interval, modify the <code>heartbeat_interval_secs</code> parameter in the <a href="../../5.configurations-and-logs/1.configurations/1.configurations.md">configuration files</a> for all services.</p>
 

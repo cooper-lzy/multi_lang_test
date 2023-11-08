@@ -48,6 +48,8 @@
       
     
     
+      <link rel="stylesheet" href="../../stylesheets/note.css">
+    
     <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -77,7 +79,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#connect-dashboard" class="md-skip">
+        <a href="#connect_dashboard" class="md-skip">
           Skip to content
         </a>
       
@@ -1353,34 +1355,30 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
   
 
 
-<h1 id="connect-dashboard">Connect Dashboard</h1>
+<h1 id="connect_dashboard">Connect Dashboard<a class="headerlink" href="#connect_dashboard" title="Permanent link">&para;</a></h1>
 <p>After Dashboard is deployed, you can log in and use Dashboard on the browser.</p>
-<h2 id="prerequisites">Prerequisites</h2>
+<h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h2>
 <ul>
-<li>
-<p>The Dashboard services are started. For more information, see <a href="../2.deploy-dashboard/">Deploy Dashboard</a>.</p>
-</li>
-<li>
-<p>We recommend you to use the Chrome browser of the version above 89. Otherwise, there may be compatibility issues.</p>
-</li>
+<li>The Dashboard services are started. For more information, see <a href="../2.deploy-dashboard/">Deploy Dashboard</a>.</li>
 </ul>
-<h2 id="procedures">Procedures</h2>
+<ul>
+<li>We recommend you to use the Chrome browser of the version above 89. Otherwise, there may be compatibility issues.</li>
+</ul>
+<h2 id="procedures">Procedures<a class="headerlink" href="#procedures" title="Permanent link">&para;</a></h2>
 <ol>
 <li>
 <p>Confirm the IP address of the machine where the Dashboard service is installed. Enter <code>&lt;IP&gt;:7003</code> in the browser to open the login page.</p>
 </li>
 <li>
 <p>Enter the username and the passwords of the NebulaGraph database.</p>
-</li>
-<li>
-<p>If authentication is enabled, you can log in with the created accounts.</p>
-</li>
-<li>
-<p>If authentication is not enabled, you can only log in using <code>root</code> as the username and random characters as the password.</p>
-</li>
-</ol>
+<ul>
+<li>If authentication is enabled, you can log in with the created accounts.</li>
+</ul>
+<ul>
+<li>If authentication is not enabled, you can only log in using <code>root</code> as the username and random characters as the password.</li>
+</ul>
 <p>To enable authentication, see <a href="../7.data-security/1.authentication/1.authentication.md">Authentication</a>.</p>
-<ol>
+</li>
 <li>
 <p>Select the NebulaGraph version to be used.</p>
 </li>

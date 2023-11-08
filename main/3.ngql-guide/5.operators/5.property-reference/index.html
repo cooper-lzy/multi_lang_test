@@ -44,6 +44,8 @@
       
     
     
+      <link rel="stylesheet" href="../../../stylesheets/note.css">
+    
     <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -73,7 +75,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#reference-operators" class="md-skip">
+        <a href="#reference_operators" class="md-skip">
           Skip to content
         </a>
       
@@ -1260,14 +1262,14 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#opencypher-compatibility" class="md-nav__link">
+  <a href="#opencypher_compatibility" class="md-nav__link">
     OpenCypher compatibility
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#reference-operator-list" class="md-nav__link">
+  <a href="#reference_operator_list" class="md-nav__link">
     Reference operator List
   </a>
   
@@ -1298,11 +1300,11 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
   
 
 
-<h1 id="reference-operators">Reference operators</h1>
+<h1 id="reference_operators">Reference operators<a class="headerlink" href="#reference_operators" title="Permanent link">&para;</a></h1>
 <p>NGQL provides reference operators to represent a property in a <code>WHERE</code> or <code>YIELD</code> clause, or the output of the statement before the pipe operator in a composite query.</p>
-<h2 id="opencypher-compatibility">OpenCypher compatibility</h2>
+<h2 id="opencypher_compatibility">OpenCypher compatibility<a class="headerlink" href="#opencypher_compatibility" title="Permanent link">&para;</a></h2>
 <p>Reference operators apply to native nGQL only.</p>
-<h2 id="reference-operator-list">Reference operator List</h2>
+<h2 id="reference_operator_list">Reference operator List<a class="headerlink" href="#reference_operator_list" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
 <tr>
@@ -1325,8 +1327,8 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
 </tr>
 </tbody>
 </table>
-<h2 id="examples">Examples</h2>
-<pre><code class="language-ngql"># The following example returns the age of the source vertex and the destination vertex.
+<h2 id="examples">Examples<a class="headerlink" href="#examples" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code># The following example returns the age of the source vertex and the destination vertex.
 nebula&gt; GO FROM &quot;player100&quot; OVER follow YIELD properties($^).age AS SrcAge, properties($$).age AS DestAge;
 +--------+---------+
 | SrcAge | DestAge |
@@ -1347,7 +1349,7 @@ nebula&gt; GO FROM &quot;player100&quot; OVER follow \
 | &quot;Tony Parker&quot;   | &quot;Hornets&quot; |
 | &quot;Manu Ginobili&quot; | &quot;Spurs&quot;   |
 +-----------------+-----------+
-</code></pre>
+</code></pre></div>
 
 
 

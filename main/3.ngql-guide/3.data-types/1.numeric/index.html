@@ -44,6 +44,8 @@
       
     
     
+      <link rel="stylesheet" href="../../../stylesheets/note.css">
+    
     <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -73,7 +75,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#numeric-types" class="md-skip">
+        <a href="#numeric_types" class="md-skip">
           Skip to content
         </a>
       
@@ -1267,14 +1269,14 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
 </li>
       
         <li class="md-nav__item">
-  <a href="#floating-point-number" class="md-nav__link">
+  <a href="#floating-point_number" class="md-nav__link">
     Floating-point number
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#reading-and-writing-of-data-values" class="md-nav__link">
+  <a href="#reading_and_writing_of_data_values" class="md-nav__link">
     Reading and writing of data values
   </a>
   
@@ -1298,9 +1300,9 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
   
 
 
-<h1 id="numeric-types">Numeric types</h1>
+<h1 id="numeric_types">Numeric types<a class="headerlink" href="#numeric_types" title="Permanent link">&para;</a></h1>
 <p>nGQL supports both integer and floating-point number.</p>
-<h2 id="integer">Integer</h2>
+<h2 id="integer">Integer<a class="headerlink" href="#integer" title="Permanent link">&para;</a></h2>
 <p>Signed 64-bit integer (INT64), 32-bit integer (INT32), 16-bit integer (INT16), and 8-bit integer (INT8) are supported.</p>
 <table>
 <thead>
@@ -1333,7 +1335,7 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
 </tr>
 </tbody>
 </table>
-<h2 id="floating-point-number">Floating-point number</h2>
+<h2 id="floating-point_number">Floating-point number<a class="headerlink" href="#floating-point_number" title="Permanent link">&para;</a></h2>
 <p>Both single-precision floating-point format (FLOAT) and double-precision floating-point format (DOUBLE) are supported.</p>
 <table>
 <thead>
@@ -1360,10 +1362,11 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
 </tbody>
 </table>
 <p>Scientific notation is also supported, such as <code>1e2</code>, <code>1.1e2</code>, <code>.3e4</code>, <code>1.e4</code>, and <code>-1234E-10</code>.</p>
-<p>!!! note</p>
-<pre><code>The data type of DECIMAL in MySQL is not supported.
-</code></pre>
-<h2 id="reading-and-writing-of-data-values">Reading and writing of data values</h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The data type of DECIMAL in MySQL is not supported.</p>
+</div>
+<h2 id="reading_and_writing_of_data_values">Reading and writing of data values<a class="headerlink" href="#reading_and_writing_of_data_values" title="Permanent link">&para;</a></h2>
 <p>When writing and reading different types of data, nGQL complies with the following rules:</p>
 <table>
 <thead>
@@ -1417,15 +1420,15 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
 <ul>
 <li>
 <p>Multiple formats are supported:</p>
-</li>
-<li>
-<p>Decimal, such as <code>123456</code>.</p>
-</li>
+<ul>
+<li>Decimal, such as <code>123456</code>.</li>
 <li>Hexadecimal, such as <code>0x1e240</code>.</li>
 <li>Octal, such as <code>0361100</code>.</li>
 </ul>
 <p>However, NebulaGraph will parse the written non-decimal value into a decimal value and save it. The value read is decimal.</p>
 <p>For example, the type of the property <code>score</code> is <code>INT</code>. The value of <code>0xb</code> is assigned to it through the INSERT statement. If querying the property value with statements such as FETCH, you will get the result <code>11</code>, which is the decimal result of the hexadecimal <code>0xb</code>.</p>
+</li>
+</ul>
 <ul>
 <li>Round a FLOAT/DOUBLE value when inserting it to an INT column.</li>
 </ul>

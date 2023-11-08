@@ -44,6 +44,8 @@
       
     
     
+      <link rel="stylesheet" href="../../../stylesheets/note.css">
+    
     <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -73,7 +75,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#schema-related-functions" class="md-skip">
+        <a href="#schema-related_functions" class="md-skip">
           Skip to content
         </a>
       
@@ -1260,7 +1262,7 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#for-ngql-statements" class="md-nav__link">
+  <a href="#for_ngql_statements" class="md-nav__link">
     For nGQL statements
   </a>
   
@@ -1357,7 +1359,7 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
 </li>
       
         <li class="md-nav__item">
-  <a href="#for-statements-compatible-with-opencypher" class="md-nav__link">
+  <a href="#for_statements_compatible_with_opencypher" class="md-nav__link">
     For statements compatible with openCypher
   </a>
   
@@ -1372,7 +1374,7 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
 </li>
         
           <li class="md-nav__item">
-  <a href="#tags-and-labels" class="md-nav__link">
+  <a href="#tags_and_labels" class="md-nav__link">
     tags() and labels()
   </a>
   
@@ -1457,65 +1459,65 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
   
 
 
-<h1 id="schema-related-functions">Schema-related functions</h1>
+<h1 id="schema-related_functions">Schema-related functions<a class="headerlink" href="#schema-related_functions" title="Permanent link">&para;</a></h1>
 <p>This topic describes the schema-related functions supported by NebulaGraph. There are two types of schema-related functions, one for native nGQL statements and the other for openCypher-compatible statements.</p>
-<h2 id="for-ngql-statements">For nGQL statements</h2>
+<h2 id="for_ngql_statements">For nGQL statements<a class="headerlink" href="#for_ngql_statements" title="Permanent link">&para;</a></h2>
 <p>The following functions are available in <code>YIELD</code> and <code>WHERE</code> clauses of nGQL statements.</p>
-<p>!!! note</p>
-<pre><code>Since vertex, edge, vertices, edges, and path are keywords, you need to use `AS &lt;alias&gt;` to set the alias, such as `GO FROM "player100" OVER follow YIELD edge AS e;`.
-</code></pre>
-<h3 id="idvertex">id(vertex)</h3>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Since vertex, edge, vertices, edges, and path are keywords, you need to use <code>AS &lt;alias&gt;</code> to set the alias, such as <code>GO FROM "player100" OVER follow YIELD edge AS e;</code>.</p>
+</div>
+<h3 id="idvertex">id(vertex)<a class="headerlink" href="#idvertex" title="Permanent link">&para;</a></h3>
 <p>id(vertex) returns the ID of a vertex.</p>
 <p>Syntax: <code>id(vertex)</code></p>
 <ul>
 <li>Result type: Same as the vertex ID.</li>
 </ul>
 <p>Example:</p>
-<pre><code class="language-ngql">nebula&gt; LOOKUP ON player WHERE player.age  &gt; 45 YIELD id(vertex);
+<div class="highlight"><pre><span></span><code>nebula&gt; LOOKUP ON player WHERE player.age  &gt; 45 YIELD id(vertex);
 +-------------+
 | id(VERTEX)  |
 +-------------+
 | &quot;player144&quot; |
 | &quot;player140&quot; |
 +-------------+
-</code></pre>
-<h3 id="propertiesvertex">properties(vertex)</h3>
+</code></pre></div>
+<h3 id="propertiesvertex">properties(vertex)<a class="headerlink" href="#propertiesvertex" title="Permanent link">&para;</a></h3>
 <p>properties(vertex) returns the properties of a vertex.</p>
 <p>Syntax: <code>properties(vertex)</code></p>
 <ul>
 <li>Result type: Map</li>
 </ul>
 <p>Example:</p>
-<pre><code class="language-ngql">nebula&gt; LOOKUP ON player WHERE player.age  &gt; 45 \
+<div class="highlight"><pre><span></span><code>nebula&gt; LOOKUP ON player WHERE player.age  &gt; 45 \
         YIELD properties(vertex);
 +-------------------------------------+
 | properties(VERTEX)                  |
 +-------------------------------------+
-| {age: 47, name: &quot;Shaquille O'Neal&quot;} |
+| {age: 47, name: &quot;Shaquille O&#39;Neal&quot;} |
 | {age: 46, name: &quot;Grant Hill&quot;}       |
 +-------------------------------------+
-</code></pre>
+</code></pre></div>
 <p>You can also use the property reference symbols (<code>$^</code> and <code>$$</code>) instead of the <code>vertex</code> field in the <code>properties()</code> function to get all properties of a vertex.</p>
 <ul>
-<li>
-<p><code>$^</code> represents the data of the starting vertex at the beginning of exploration. For example, in <code>GO FROM "player100" OVER follow reversely YIELD properties($^)</code>, <code>$^</code> refers to the vertex <code>player100</code>.</p>
-</li>
-<li>
-<p><code>$$</code> represents the data of the end vertex at the end of exploration.</p>
-</li>
+<li><code>$^</code> represents the data of the starting vertex at the beginning of exploration. For example, in <code>GO FROM "player100" OVER follow reversely YIELD properties($^)</code>, <code>$^</code> refers to the vertex <code>player100</code>.</li>
+</ul>
+<ul>
+<li><code>$$</code> represents the data of the end vertex at the end of exploration.</li>
 </ul>
 <p><code>properties($^)</code> and <code>properties($$)</code> are generally used in <code>GO</code> statements. For more information, see <a href="../../5.operators/5.property-reference/">Property reference</a>.</p>
-<p>!!! caution</p>
-<pre><code>You can use `properties().&lt;property_name&gt;` to get a specific property of a vertex. However, it is not recommended to use this method to obtain specific properties because the `properties()` function returns all properties, which can decrease query performance.
-</code></pre>
-<h3 id="propertiesedge">properties(edge)</h3>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<p>You can use <code>properties().&lt;property_name&gt;</code> to get a specific property of a vertex. However, it is not recommended to use this method to obtain specific properties because the <code>properties()</code> function returns all properties, which can decrease query performance.</p>
+</div>
+<h3 id="propertiesedge">properties(edge)<a class="headerlink" href="#propertiesedge" title="Permanent link">&para;</a></h3>
 <p>properties(edge) returns the properties of an edge.</p>
 <p>Syntax: <code>properties(edge)</code></p>
 <ul>
 <li>Result type: Map</li>
 </ul>
 <p>Example:</p>
-<pre><code class="language-ngql">nebula&gt; GO FROM &quot;player100&quot; OVER follow \
+<div class="highlight"><pre><span></span><code>nebula&gt; GO FROM &quot;player100&quot; OVER follow \
         YIELD properties(edge);
 +------------------+
 | properties(EDGE) |
@@ -1523,18 +1525,19 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
 | {degree: 95}     |
 | {degree: 95}     |
 +------------------+
-</code></pre>
-<p>!!! caution</p>
-<pre><code>You can use `properties(edge).&lt;property_name&gt;` to get a specific property of an edge. However, it is not recommended to use this method to obtain specific properties because the `properties(edge)` function returns all properties, which can decrease query performance.
-</code></pre>
-<h3 id="typeedge">type(edge)</h3>
+</code></pre></div>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<p>You can use <code>properties(edge).&lt;property_name&gt;</code> to get a specific property of an edge. However, it is not recommended to use this method to obtain specific properties because the <code>properties(edge)</code> function returns all properties, which can decrease query performance.</p>
+</div>
+<h3 id="typeedge">type(edge)<a class="headerlink" href="#typeedge" title="Permanent link">&para;</a></h3>
 <p>type(edge) returns the edge type of an edge.</p>
 <p>Syntax: <code>type(edge)</code></p>
 <ul>
 <li>Result type: String</li>
 </ul>
 <p>Example:</p>
-<pre><code class="language-ngql">nebula&gt; GO FROM &quot;player100&quot; OVER follow \
+<div class="highlight"><pre><span></span><code>nebula&gt; GO FROM &quot;player100&quot; OVER follow \
         YIELD src(edge), dst(edge), type(edge), rank(edge);
 +-------------+-------------+------------+------------+
 | src(EDGE)   | dst(EDGE)   | type(EDGE) | rank(EDGE) |
@@ -1542,15 +1545,15 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
 | &quot;player100&quot; | &quot;player101&quot; | &quot;follow&quot;   | 0          |
 | &quot;player100&quot; | &quot;player125&quot; | &quot;follow&quot;   | 0          |
 +-------------+-------------+------------+------------+
-</code></pre>
-<h3 id="srcedge">src(edge)</h3>
+</code></pre></div>
+<h3 id="srcedge">src(edge)<a class="headerlink" href="#srcedge" title="Permanent link">&para;</a></h3>
 <p>src(edge) returns the source vertex ID of an edge.</p>
 <p>Syntax: <code>src(edge)</code></p>
 <ul>
 <li>Result type: Same as the vertex ID.</li>
 </ul>
 <p>Example:</p>
-<pre><code class="language-ngql">nebula&gt; GO FROM &quot;player100&quot; OVER follow \
+<div class="highlight"><pre><span></span><code>nebula&gt; GO FROM &quot;player100&quot; OVER follow \
         YIELD src(edge), dst(edge);
 +-------------+-------------+
 | src(EDGE)   | dst(EDGE)   |
@@ -1558,18 +1561,19 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
 | &quot;player100&quot; | &quot;player101&quot; |
 | &quot;player100&quot; | &quot;player125&quot; |
 +-------------+-------------+
-</code></pre>
-<p>!!! note</p>
-<pre><code>The semantics of the query for the starting vertex with src(edge) and [properties(`$^`)](../5.operators/5.property-reference.md) are different. src(edge) indicates the starting vertex ID of the edge in the graph database, while properties(`$^`) indicates the data of the starting vertex where you start to expand the graph, such as the data of the starting vertex `player100` in the above GO statement.
-</code></pre>
-<h3 id="dstedge">dst(edge)</h3>
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The semantics of the query for the starting vertex with src(edge) and <a href="../../5.operators/5.property-reference/">properties(<code>$^</code>)</a> are different. src(edge) indicates the starting vertex ID of the edge in the graph database, while properties(<code>$^</code>) indicates the data of the starting vertex where you start to expand the graph, such as the data of the starting vertex <code>player100</code> in the above GO statement. </p>
+</div>
+<h3 id="dstedge">dst(edge)<a class="headerlink" href="#dstedge" title="Permanent link">&para;</a></h3>
 <p>dst(edge) returns the destination vertex ID of an edge.</p>
 <p>Syntax: <code>dst(edge)</code></p>
 <ul>
 <li>Result type: Same as the vertex ID.</li>
 </ul>
 <p>Example:</p>
-<pre><code class="language-ngql">nebula&gt; GO FROM &quot;player100&quot; OVER follow \
+<div class="highlight"><pre><span></span><code>nebula&gt; GO FROM &quot;player100&quot; OVER follow \
         YIELD src(edge), dst(edge);
 +-------------+-------------+
 | src(EDGE)   | dst(EDGE)   |
@@ -1577,18 +1581,19 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
 | &quot;player100&quot; | &quot;player101&quot; |
 | &quot;player100&quot; | &quot;player125&quot; |
 +-------------+-------------+
-</code></pre>
-<p>!!! note</p>
-<pre><code>dst(edge) indicates the destination vertex ID of the edge in the graph database.
-</code></pre>
-<h3 id="rankedge">rank(edge)</h3>
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>dst(edge) indicates the destination vertex ID of the edge in the graph database.</p>
+</div>
+<h3 id="rankedge">rank(edge)<a class="headerlink" href="#rankedge" title="Permanent link">&para;</a></h3>
 <p>rank(edge) returns the rank value of an edge.</p>
 <p>Syntax: <code>rank(edge)</code></p>
 <ul>
 <li>Result type: Int</li>
 </ul>
 <p>Example:</p>
-<pre><code class="language-ngql">nebula&gt; GO FROM &quot;player100&quot; OVER follow \
+<div class="highlight"><pre><span></span><code>nebula&gt; GO FROM &quot;player100&quot; OVER follow \
         YIELD src(edge), dst(edge), rank(edge);
 +-------------+-------------+------------+
 | src(EDGE)   | dst(EDGE)   | rank(EDGE) |
@@ -1596,47 +1601,47 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
 | &quot;player100&quot; | &quot;player101&quot; | 0          |
 | &quot;player100&quot; | &quot;player125&quot; | 0          |
 +-------------+-------------+------------+
-</code></pre>
-<h3 id="vertex">vertex</h3>
+</code></pre></div>
+<h3 id="vertex">vertex<a class="headerlink" href="#vertex" title="Permanent link">&para;</a></h3>
 <p>vertex returns the information of vertices, including VIDs, tags, properties, and values. You need to use <code>AS &lt;alias&gt;</code> to set the alias.</p>
 <p>Syntax: <code>vertex</code></p>
 <p>Example:</p>
-<pre><code class="language-ngql">nebula&gt; LOOKUP ON player WHERE player.age &gt; 45 YIELD vertex AS v;
+<div class="highlight"><pre><span></span><code>nebula&gt; LOOKUP ON player WHERE player.age &gt; 45 YIELD vertex AS v;
 +----------------------------------------------------------+
 | v                                                        |
 +----------------------------------------------------------+
-| (&quot;player144&quot; :player{age: 47, name: &quot;Shaquille O'Neal&quot;}) |
+| (&quot;player144&quot; :player{age: 47, name: &quot;Shaquille O&#39;Neal&quot;}) |
 | (&quot;player140&quot; :player{age: 46, name: &quot;Grant Hill&quot;})       |
 +----------------------------------------------------------+
-</code></pre>
-<h3 id="edge">edge</h3>
+</code></pre></div>
+<h3 id="edge">edge<a class="headerlink" href="#edge" title="Permanent link">&para;</a></h3>
 <p>edge returns the information of edges, including edge types, source vertices, destination vertices, ranks, properties, and values. You need to use <code>AS &lt;alias&gt;</code> to set the alias.</p>
 <p>Syntax: <code>edge</code></p>
 <p>Example:</p>
-<pre><code class="language-ngql">nebula&gt; GO FROM &quot;player100&quot; OVER follow YIELD edge AS e;
+<div class="highlight"><pre><span></span><code>nebula&gt; GO FROM &quot;player100&quot; OVER follow YIELD edge AS e;
 +----------------------------------------------------+
 | e                                                  |
 +----------------------------------------------------+
 | [:follow &quot;player100&quot;-&gt;&quot;player101&quot; @0 {degree: 95}] |
 | [:follow &quot;player100&quot;-&gt;&quot;player125&quot; @0 {degree: 95}] |
 +----------------------------------------------------+
-</code></pre>
-<h3 id="vertices">vertices</h3>
+</code></pre></div>
+<h3 id="vertices">vertices<a class="headerlink" href="#vertices" title="Permanent link">&para;</a></h3>
 <p>vertices returns the information of vertices in a subgraph. For more information, see <a href="../../16.subgraph-and-path/1.get-subgraph/">GET SUBGRAPH</a>.</p>
-<h3 id="edges">edges</h3>
+<h3 id="edges">edges<a class="headerlink" href="#edges" title="Permanent link">&para;</a></h3>
 <p>edges returns the information of edges in a subgraph. For more information, see <a href="../../16.subgraph-and-path/1.get-subgraph/">GET SUBGRAPH</a>.</p>
-<h3 id="path">path</h3>
+<h3 id="path">path<a class="headerlink" href="#path" title="Permanent link">&para;</a></h3>
 <p>path returns the information of a path. For more information, see <a href="../../16.subgraph-and-path/2.find-path/">FIND PATH</a>.</p>
-<h2 id="for-statements-compatible-with-opencypher">For statements compatible with openCypher</h2>
+<h2 id="for_statements_compatible_with_opencypher">For statements compatible with openCypher<a class="headerlink" href="#for_statements_compatible_with_opencypher" title="Permanent link">&para;</a></h2>
 <p>The following functions are available in <code>RETURN</code> and <code>WHERE</code> clauses of openCypher-compatible statements.</p>
-<h3 id="id">id()</h3>
+<h3 id="id">id()<a class="headerlink" href="#id" title="Permanent link">&para;</a></h3>
 <p>id() returns the ID of a vertex.</p>
 <p>Syntax: <code>id(&lt;vertex&gt;)</code></p>
 <ul>
 <li>Result type: Same as the vertex ID.</li>
 </ul>
 <p>Example:</p>
-<pre><code class="language-ngql">nebula&gt; MATCH (v:player) RETURN id(v); 
+<div class="highlight"><pre><span></span><code>nebula&gt; MATCH (v:player) RETURN id(v); 
 +-------------+
 | id(v)       |
 +-------------+
@@ -1645,46 +1650,46 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
 | &quot;player106&quot; |
 | &quot;player102&quot; |
 ...
-</code></pre>
-<h3 id="tags-and-labels">tags() and labels()</h3>
+</code></pre></div>
+<h3 id="tags_and_labels">tags() and labels()<a class="headerlink" href="#tags_and_labels" title="Permanent link">&para;</a></h3>
 <p>tags() and labels() return the Tag of a vertex.</p>
 <p>Syntax: <code>tags(&lt;vertex&gt;)</code>, <code>labels(&lt;vertex&gt;)</code></p>
 <ul>
 <li>Result type: List</li>
 </ul>
 <p>Example:</p>
-<pre><code class="language-ngql">nebula&gt; MATCH (v) WHERE id(v) == &quot;player100&quot; \
+<div class="highlight"><pre><span></span><code>nebula&gt; MATCH (v) WHERE id(v) == &quot;player100&quot; \
         RETURN tags(v);
 +------------+
 | tags(v)    |
 +------------+
 | [&quot;player&quot;] |
 +------------+
-</code></pre>
-<h3 id="properties">properties()</h3>
+</code></pre></div>
+<h3 id="properties">properties()<a class="headerlink" href="#properties" title="Permanent link">&para;</a></h3>
 <p>properties() returns the properties of a vertex or an edge.</p>
 <p>Syntax: <code>properties(&lt;vertex_or_edge&gt;)</code></p>
 <ul>
 <li>Result type: Map</li>
 </ul>
 <p>Example:</p>
-<pre><code class="language-ngql">nebula&gt; MATCH (v:player)-[e:follow]-() RETURN properties(v),properties(e);
+<div class="highlight"><pre><span></span><code>nebula&gt; MATCH (v:player)-[e:follow]-() RETURN properties(v),properties(e);
 +---------------------------------------+---------------+
 | properties(v)                         | properties(e) |
 +---------------------------------------+---------------+
 | {age: 31, name: &quot;Stephen Curry&quot;}      | {degree: 90}  |
-| {age: 47, name: &quot;Shaquille O'Neal&quot;}   | {degree: 100} |
+| {age: 47, name: &quot;Shaquille O&#39;Neal&quot;}   | {degree: 100} |
 | {age: 34, name: &quot;LeBron James&quot;}       | {degree: 13}  |
 ...
-</code></pre>
-<h3 id="type">type()</h3>
+</code></pre></div>
+<h3 id="type">type()<a class="headerlink" href="#type" title="Permanent link">&para;</a></h3>
 <p>type() returns the edge type of an edge.</p>
 <p>Syntax: <code>type(&lt;edge&gt;)</code></p>
 <ul>
 <li>Result type: String</li>
 </ul>
 <p>Example:</p>
-<pre><code class="language-ngql">nebula&gt; MATCH (v:player{name:&quot;Tim Duncan&quot;})-[e]-&gt;() \
+<div class="highlight"><pre><span></span><code>nebula&gt; MATCH (v:player{name:&quot;Tim Duncan&quot;})-[e]-&gt;() \
         RETURN type(e);
 +----------+
 | type(e)  |
@@ -1693,15 +1698,15 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
 | &quot;follow&quot; |
 | &quot;follow&quot; |
 +----------+
-</code></pre>
-<h3 id="typeid">typeid()</h3>
+</code></pre></div>
+<h3 id="typeid">typeid()<a class="headerlink" href="#typeid" title="Permanent link">&para;</a></h3>
 <p>typeid() returns the internal ID value of the Edge type of the edge, which can be used to determine the direction by positive or negative.</p>
 <p>Syntax: <code>typeid(&lt;edge&gt;)</code></p>
 <ul>
 <li>Result type: Int</li>
 </ul>
 <p>Example:</p>
-<pre><code class="language-ngql">nebula&gt; MATCH (v:player)-[e:follow]-(v2) RETURN e,typeid(e), \
+<div class="highlight"><pre><span></span><code>nebula&gt; MATCH (v:player)-[e:follow]-(v2) RETURN e,typeid(e), \
         CASE WHEN typeid(e) &gt; 0 \
         THEN &quot;Forward&quot; ELSE &quot;Reverse&quot; END AS direction \
         LIMIT 5;
@@ -1714,15 +1719,15 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
 | [:follow &quot;player147&quot;-&gt;&quot;player136&quot; @0 {degree: 90}] | 5         | &quot;Forward&quot; |
 | [:follow &quot;player136&quot;-&gt;&quot;player147&quot; @0 {degree: 90}] | -5        | &quot;Reverse&quot; |
 +----------------------------------------------------+-----------+-----------+
-</code></pre>
-<h3 id="src">src()</h3>
+</code></pre></div>
+<h3 id="src">src()<a class="headerlink" href="#src" title="Permanent link">&para;</a></h3>
 <p>src() returns the source vertex ID of an edge.</p>
 <p>Syntax: <code>src(&lt;edge&gt;)</code></p>
 <ul>
 <li>Result type: Same as the vertex ID.</li>
 </ul>
 <p>Example:</p>
-<pre><code class="language-ngql">nebula&gt; MATCH ()-[e]-&gt;(v:player{name:&quot;Tim Duncan&quot;}) \
+<div class="highlight"><pre><span></span><code>nebula&gt; MATCH ()-[e]-&gt;(v:player{name:&quot;Tim Duncan&quot;}) \
         RETURN src(e);
 +-------------+
 | src(e)      |
@@ -1731,15 +1736,15 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
 | &quot;player113&quot; |
 | &quot;player102&quot; |
 ...
-</code></pre>
-<h3 id="dst">dst()</h3>
+</code></pre></div>
+<h3 id="dst">dst()<a class="headerlink" href="#dst" title="Permanent link">&para;</a></h3>
 <p>dst() returns the destination vertex ID of an edge.</p>
 <p>Syntax: <code>dst(&lt;edge&gt;)</code></p>
 <ul>
 <li>Result type: Same as the vertex ID.</li>
 </ul>
 <p>Example:</p>
-<pre><code class="language-ngql">nebula&gt; MATCH (v:player{name:&quot;Tim Duncan&quot;})-[e]-&gt;() \
+<div class="highlight"><pre><span></span><code>nebula&gt; MATCH (v:player{name:&quot;Tim Duncan&quot;})-[e]-&gt;() \
         RETURN dst(e);
 +-------------+
 | dst(e)      |
@@ -1748,39 +1753,39 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
 | &quot;player101&quot; |
 | &quot;player125&quot; |
 +-------------+
-</code></pre>
-<h3 id="startnode">startNode()</h3>
+</code></pre></div>
+<h3 id="startnode">startNode()<a class="headerlink" href="#startnode" title="Permanent link">&para;</a></h3>
 <p>startNode() visits a path and returns its information of source vertex ID, including VIDs, tags, properties, and values.</p>
 <p>Syntax: <code>startNode(&lt;path&gt;)</code></p>
 <p>Example:</p>
-<pre><code class="language-ngql">nebula&gt; MATCH p = (a :player {name : &quot;Tim Duncan&quot;})-[r:serve]-(t) \
+<div class="highlight"><pre><span></span><code>nebula&gt; MATCH p = (a :player {name : &quot;Tim Duncan&quot;})-[r:serve]-(t) \
         RETURN startNode(p);
 +----------------------------------------------------+
 | startNode(p)                                       |
 +----------------------------------------------------+
 | (&quot;player100&quot; :player{age: 42, name: &quot;Tim Duncan&quot;}) |
 +----------------------------------------------------+
-</code></pre>
-<h3 id="endnode">endNode()</h3>
+</code></pre></div>
+<h3 id="endnode">endNode()<a class="headerlink" href="#endnode" title="Permanent link">&para;</a></h3>
 <p>endNode() visits a path and returns its information of destination vertex ID, including VIDs, tags, properties, and values.</p>
 <p>Syntax: <code>endNode(&lt;path&gt;)</code></p>
 <p>Example:</p>
-<pre><code class="language-ngql">nebula&gt; MATCH p = (a :player {name : &quot;Tim Duncan&quot;})-[r:serve]-(t) \
+<div class="highlight"><pre><span></span><code>nebula&gt; MATCH p = (a :player {name : &quot;Tim Duncan&quot;})-[r:serve]-(t) \
         RETURN endNode(p);
 +----------------------------------+
 | endNode(p)                       |
 +----------------------------------+
 | (&quot;team204&quot; :team{name: &quot;Spurs&quot;}) |
 +----------------------------------+
-</code></pre>
-<h3 id="rank">rank()</h3>
+</code></pre></div>
+<h3 id="rank">rank()<a class="headerlink" href="#rank" title="Permanent link">&para;</a></h3>
 <p>rank() returns the rank value of an edge.</p>
 <p>Syntax: <code>rank(&lt;edge&gt;)</code></p>
 <ul>
 <li>Result type: Int</li>
 </ul>
 <p>Example:</p>
-<pre><code class="language-ngql">nebula&gt; MATCH (v:player{name:&quot;Tim Duncan&quot;})-[e]-&gt;() \
+<div class="highlight"><pre><span></span><code>nebula&gt; MATCH (v:player{name:&quot;Tim Duncan&quot;})-[e]-&gt;() \
         RETURN rank(e);
 +---------+
 | rank(e) |
@@ -1789,7 +1794,7 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
 | 0       |
 | 0       |
 +---------+
-</code></pre>
+</code></pre></div>
 
 
 

@@ -48,6 +48,8 @@
       
     
     
+      <link rel="stylesheet" href="../../../stylesheets/note.css">
+    
     <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -77,7 +79,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#ngql-style-guide" class="md-skip">
+        <a href="#ngql_style_guide" class="md-skip">
           Skip to content
         </a>
       
@@ -1123,7 +1125,7 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
 </li>
       
         <li class="md-nav__item">
-  <a href="#identifier-naming" class="md-nav__link">
+  <a href="#identifier_naming" class="md-nav__link">
     Identifier naming
   </a>
   
@@ -1144,7 +1146,7 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
 </li>
       
         <li class="md-nav__item">
-  <a href="#statement-termination" class="md-nav__link">
+  <a href="#statement_termination" class="md-nav__link">
     Statement termination
   </a>
   
@@ -1354,7 +1356,7 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
 </li>
       
         <li class="md-nav__item">
-  <a href="#identifier-naming" class="md-nav__link">
+  <a href="#identifier_naming" class="md-nav__link">
     Identifier naming
   </a>
   
@@ -1375,7 +1377,7 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
 </li>
       
         <li class="md-nav__item">
-  <a href="#statement-termination" class="md-nav__link">
+  <a href="#statement_termination" class="md-nav__link">
     Statement termination
   </a>
   
@@ -1399,197 +1401,206 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
   
 
 
-<h1 id="ngql-style-guide">nGQL style guide</h1>
+<h1 id="ngql_style_guide">nGQL style guide<a class="headerlink" href="#ngql_style_guide" title="Permanent link">&para;</a></h1>
 <p>nGQL does not have strict formatting requirements, but creating nGQL statements according to an appropriate and uniform style can improve readability and avoid ambiguity. Using the same nGQL style in the same organization or project helps reduce maintenance costs and avoid problems caused by format confusion or misunderstanding. This topic will provide a style guide for writing nGQL statements.</p>
-<p>!!! compatibility</p>
-<pre><code>The styles of nGQL and [Cypher Style Guide](https://s3.amazonaws.com/artifacts.opencypher.org/M15/docs/style-guide.pdf) are different.
-</code></pre>
-<h2 id="newline">Newline</h2>
+<div class="admonition compatibility">
+<p class="admonition-title">Compatibility</p>
+<p>The styles of nGQL and <a href="https://s3.amazonaws.com/artifacts.opencypher.org/M15/docs/style-guide.pdf">Cypher Style Guide</a> are different.</p>
+</div>
+<h2 id="newline">Newline<a class="headerlink" href="#newline" title="Permanent link">&para;</a></h2>
 <ol>
-<li>Start a new line to write a clause.</li>
-</ol>
+<li>
+<p>Start a new line to write a clause.</p>
 <p>Not recommended:</p>
-<p><code>ngql
-  GO FROM "player100" OVER follow REVERSELY YIELD src(edge) AS id;</code></p>
+<div class="highlight"><pre><span></span><code>GO FROM &quot;player100&quot; OVER follow REVERSELY YIELD src(edge) AS id;
+</code></pre></div>
 <p>Recommended:</p>
-<p><code>ngql
-  GO FROM "player100" \
-  OVER follow REVERSELY \
-  YIELD src(edge) AS id;</code></p>
-<ol>
-<li>Start a new line to write different statements in a composite statement.</li>
-</ol>
+<div class="highlight"><pre><span></span><code>GO FROM &quot;player100&quot; \
+OVER follow REVERSELY \
+YIELD src(edge) AS id;
+</code></pre></div>
+</li>
+<li>
+<p>Start a new line to write different statements in a composite statement.</p>
 <p>Not recommended:</p>
-<p><code>ngql
-  GO FROM "player100" OVER follow REVERSELY YIELD src(edge) AS id | GO FROM $-.id \
-  OVER serve WHERE properties($^).age &gt; 20 YIELD properties($^).name AS FriendOf, properties($$).name AS Team;</code></p>
+<div class="highlight"><pre><span></span><code>GO FROM &quot;player100&quot; OVER follow REVERSELY YIELD src(edge) AS id | GO FROM $-.id \
+OVER serve WHERE properties($^).age &gt; 20 YIELD properties($^).name AS FriendOf, properties($$).name AS Team;
+</code></pre></div>
 <p>Recommended:</p>
-<p><code>ngql
-  GO FROM "player100" \
-  OVER follow REVERSELY \
-  YIELD src(edge) AS id | \
-  GO FROM $-.id OVER serve \
-  WHERE properties($^).age &gt; 20 \
-  YIELD properties($^).name AS FriendOf, properties($$).name AS Team;</code></p>
-<ol>
-<li>If the clause exceeds 80 characters, start a new line at the appropriate place.</li>
-</ol>
+<div class="highlight"><pre><span></span><code>GO FROM &quot;player100&quot; \
+OVER follow REVERSELY \
+YIELD src(edge) AS id | \
+GO FROM $-.id OVER serve \
+WHERE properties($^).age &gt; 20 \
+YIELD properties($^).name AS FriendOf, properties($$).name AS Team;
+</code></pre></div>
+</li>
+<li>
+<p>If the clause exceeds 80 characters, start a new line at the appropriate place.</p>
 <p>Not recommended:</p>
-<p><code>ngql
-  MATCH (v:player{name:"Tim Duncan"})-[e]-&gt;(v2) \
-  WHERE (v2.player.name STARTS WITH "Y" AND v2.player.age &gt; 35 AND v2.player.age &lt; v.player.age) OR (v2.player.name STARTS WITH "T" AND v2.player.age &lt; 45 AND v2.player.age &gt; v.player.age) \
-  RETURN v2;</code></p>
+<div class="highlight"><pre><span></span><code>MATCH (v:player{name:&quot;Tim Duncan&quot;})-[e]-&gt;(v2) \
+WHERE (v2.player.name STARTS WITH &quot;Y&quot; AND v2.player.age &gt; 35 AND v2.player.age &lt; v.player.age) OR (v2.player.name STARTS WITH &quot;T&quot; AND v2.player.age &lt; 45 AND v2.player.age &gt; v.player.age) \
+RETURN v2;
+</code></pre></div>
 <p>Recommended:</p>
-<p><code>ngql
-  MATCH (v:player{name:"Tim Duncan"})-[e]-&gt;(v2) \
-  WHERE (v2.player.name STARTS WITH "Y" AND v2.player.age &gt; 35 AND v2.player.age &lt; v.player.age) \
-  OR (v2.player.name STARTS WITH "T" AND v2.player.age &lt; 45 AND v2.player.age &gt; v.player.age) \
-  RETURN v2;</code></p>
-<p>!!! note</p>
-<pre><code>If needed, you can also start a new line for better understanding, even if the clause does not exceed 80 characters.
-</code></pre>
-<h2 id="identifier-naming">Identifier naming</h2>
+<div class="highlight"><pre><span></span><code>MATCH (v:player{name:&quot;Tim Duncan&quot;})-[e]-&gt;(v2) \
+WHERE (v2.player.name STARTS WITH &quot;Y&quot; AND v2.player.age &gt; 35 AND v2.player.age &lt; v.player.age) \
+OR (v2.player.name STARTS WITH &quot;T&quot; AND v2.player.age &lt; 45 AND v2.player.age &gt; v.player.age) \
+RETURN v2;
+</code></pre></div>
+</li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If needed, you can also start a new line for better understanding, even if the clause does not exceed 80 characters. </p>
+</div>
+<h2 id="identifier_naming">Identifier naming<a class="headerlink" href="#identifier_naming" title="Permanent link">&para;</a></h2>
 <p>In nGQL statements, characters other than keywords, punctuation marks, and blanks are all identifiers. Recommended methods to name the identifiers are as follows.</p>
 <ol>
-<li>Use singular nouns to name tags, and use the base form of verbs or verb phrases to form Edge types.</li>
-</ol>
+<li>
+<p>Use singular nouns to name tags, and use the base form of verbs or verb phrases to form Edge types.</p>
 <p>Not recommended:</p>
-<p><code>ngql
-  MATCH p=(v:players)-[e:are_following]-(v2) \
-  RETURN nodes(p);</code></p>
+<div class="highlight"><pre><span></span><code>MATCH p=(v:players)-[e:are_following]-(v2) \
+RETURN nodes(p);
+</code></pre></div>
 <p>Recommended:</p>
-<p><code>ngql
-  MATCH p=(v:player)-[e:follow]-(v2) \
-  RETURN nodes(p);</code></p>
+<div class="highlight"><pre><span></span><code>MATCH p=(v:player)-[e:follow]-(v2) \
+RETURN nodes(p);
+</code></pre></div>
+</li>
+<li>
+<p>Use the snake case to name identifiers, and connect words with underscores (_) with all the letters lowercase.</p>
+<p>Not recommended:</p>
+<div class="highlight"><pre><span></span><code>MATCH (v:basketballTeam) \
+RETURN v;
+</code></pre></div>
+<p>Recommended:</p>
+<div class="highlight"><pre><span></span><code>MATCH (v:basketball_team) \
+RETURN v;
+</code></pre></div>
+</li>
+<li>
+<p>Use uppercase keywords and lowercase variables.</p>
+<p>Not recommended:</p>
+<div class="highlight"><pre><span></span><code>match (V:player) return V limit 5;
+</code></pre></div>
+<p>Recommended:</p>
+<div class="highlight"><pre><span></span><code>MATCH (v:player) RETURN v LIMIT 5;
+</code></pre></div>
+</li>
+</ol>
+<h2 id="pattern">Pattern<a class="headerlink" href="#pattern" title="Permanent link">&para;</a></h2>
 <ol>
-<li>Use the snake case to name identifiers, and connect words with underscores (_) with all the letters lowercase.</li>
-</ol>
+<li>
+<p>Start a new line on the right side of the arrow indicating an edge when writing patterns.</p>
 <p>Not recommended:</p>
-<p><code>ngql
-  MATCH (v:basketballTeam) \
-  RETURN v;</code></p>
+<div class="highlight"><pre><span></span><code>MATCH (v:player{name: &quot;Tim Duncan&quot;, age: 42}) \
+-[e:follow]-&gt;()-[e:serve]-&gt;()&lt;--(v2) \
+RETURN v, e, v2;
+</code></pre></div>
 <p>Recommended:</p>
-<p><code>ngql
-  MATCH (v:basketball_team) \
-  RETURN v;</code></p>
-<ol>
-<li>Use uppercase keywords and lowercase variables.</li>
-</ol>
+<div class="highlight"><pre><span></span><code>MATCH (v:player{name: &quot;Tim Duncan&quot;, age: 42})-[e:follow]-&gt; \
+()-[e:serve]-&gt;()&lt;--(v2) \
+RETURN v, e, v2;
+</code></pre></div>
+</li>
+<li>
+<p>Anonymize the vertices and edges that do not need to be queried.</p>
 <p>Not recommended:</p>
-<p><code>ngql
-  match (V:player) return V limit 5;</code></p>
+<div class="highlight"><pre><span></span><code>MATCH (v:player)-[e:follow]-&gt;(v2) \
+RETURN v;
+</code></pre></div>
 <p>Recommended:</p>
-<p><code>ngql
-  MATCH (v:player) RETURN v LIMIT 5;</code></p>
-<h2 id="pattern">Pattern</h2>
-<ol>
-<li>Start a new line on the right side of the arrow indicating an edge when writing patterns.</li>
-</ol>
+<div class="highlight"><pre><span></span><code>MATCH (v:player)-[:follow]-&gt;() \
+RETURN v;
+</code></pre></div>
+</li>
+<li>
+<p>Place named vertices in front of anonymous vertices.</p>
 <p>Not recommended:</p>
-<p><code>ngql
-  MATCH (v:player{name: "Tim Duncan", age: 42}) \
-  -[e:follow]-&gt;()-[e:serve]-&gt;()&lt;--(v2) \
-  RETURN v, e, v2;</code></p>
+<div class="highlight"><pre><span></span><code>MATCH ()-[:follow]-&gt;(v) \
+RETURN v;
+</code></pre></div>
 <p>Recommended:</p>
-<p><code>ngql
-  MATCH (v:player{name: "Tim Duncan", age: 42})-[e:follow]-&gt; \
-  ()-[e:serve]-&gt;()&lt;--(v2) \
-  RETURN v, e, v2;</code></p>
-<ol>
-<li>Anonymize the vertices and edges that do not need to be queried.</li>
+<div class="highlight"><pre><span></span><code>MATCH (v)&lt;-[:follow]-() \
+RETURN v;
+</code></pre></div>
+</li>
 </ol>
-<p>Not recommended:</p>
-<p><code>ngql
-  MATCH (v:player)-[e:follow]-&gt;(v2) \
-  RETURN v;</code></p>
-<p>Recommended:</p>
-<p><code>ngql
-  MATCH (v:player)-[:follow]-&gt;() \
-  RETURN v;</code></p>
-<ol>
-<li>Place named vertices in front of anonymous vertices.</li>
-</ol>
-<p>Not recommended:</p>
-<p><code>ngql
-  MATCH ()-[:follow]-&gt;(v) \
-  RETURN v;</code></p>
-<p>Recommended:</p>
-<p><code>ngql
-  MATCH (v)&lt;-[:follow]-() \
-  RETURN v;</code></p>
-<h2 id="string">String</h2>
+<h2 id="string">String<a class="headerlink" href="#string" title="Permanent link">&para;</a></h2>
 <p>The strings should be surrounded by double quotes.</p>
 <p>Not recommended:</p>
-<p><code>ngql
-  RETURN 'Hello Nebula!';</code></p>
+<div class="highlight"><pre><span></span><code>RETURN &#39;Hello Nebula!&#39;;
+</code></pre></div>
 <p>Recommended:</p>
-<p><code>ngql
-  RETURN "Hello Nebula!\"123\"";</code></p>
-<p>!!! note</p>
-<pre><code>When single or double quotes need to be nested in a string, use a backslash (\) to escape. For example:
-
-```ngql
-RETURN "\"NebulaGraph is amazing,\" the user says.";
-```
-</code></pre>
+<div class="highlight"><pre><span></span><code>RETURN &quot;Hello Nebula!\&quot;123\&quot;&quot;;
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>When single or double quotes need to be nested in a string, use a backslash () to escape. For example:</p>
+<div class="highlight"><pre><span></span><code>RETURN &quot;\&quot;NebulaGraph is amazing,\&quot; the user says.&quot;;
+</code></pre></div>
+</div>
 <!--## 空格 TODO-->
 
-<h2 id="statement-termination">Statement termination</h2>
+<h2 id="statement_termination">Statement termination<a class="headerlink" href="#statement_termination" title="Permanent link">&para;</a></h2>
 <ol>
-<li>End the nGQL statements with an English semicolon (;).</li>
-</ol>
+<li>
+<p>End the nGQL statements with an English semicolon (;).</p>
 <p>Not recommended:</p>
-<p><code>ngql
-  FETCH PROP ON player "player100" YIELD properties(vertex)</code></p>
+<div class="highlight"><pre><span></span><code>FETCH PROP ON player &quot;player100&quot; YIELD properties(vertex)
+</code></pre></div>
 <p>Recommended:</p>
-<p><code>ngql
-  FETCH PROP ON player "player100" YIELD properties(vertex);</code></p>
-<ol>
-<li>Use a pipe (|) to separate a composite statement, and end the statement with an English semicolon at the end of the last line. Using an English semicolon before a pipe will cause the statement to fail.</li>
-</ol>
+<div class="highlight"><pre><span></span><code>FETCH PROP ON player &quot;player100&quot; YIELD properties(vertex);
+</code></pre></div>
+</li>
+<li>
+<p>Use a pipe (|) to separate a composite statement, and end the statement with an English semicolon at the end of the last line. Using an English semicolon before a pipe will cause the statement to fail.</p>
 <p>Not supported:</p>
-<p><code>ngql
-  GO FROM "player100" \
-  OVER follow \
-  YIELD dst(edge) AS id; | \
-  GO FROM $-.id \
-  OVER serve \
-  YIELD properties($$).name AS Team, properties($^).name AS Player;</code></p>
+<div class="highlight"><pre><span></span><code>GO FROM &quot;player100&quot; \
+OVER follow \
+YIELD dst(edge) AS id; | \
+GO FROM $-.id \
+OVER serve \
+YIELD properties($$).name AS Team, properties($^).name AS Player;
+</code></pre></div>
 <p>Supported:</p>
-<p><code>ngql
-  GO FROM "player100" \
-  OVER follow \
-  YIELD dst(edge) AS id | \
-  GO FROM $-.id \
-  OVER serve \
-  YIELD properties($$).name AS Team, properties($^).name AS Player;</code></p>
-<ol>
-<li>In a composite statement that contains user-defined variables, use an English semicolon to end the statements that define the variables. If you do not follow the rules to add a semicolon or use a pipe to end the composite statement, the execution will fail.</li>
-</ol>
+<div class="highlight"><pre><span></span><code>GO FROM &quot;player100&quot; \
+OVER follow \
+YIELD dst(edge) AS id | \
+GO FROM $-.id \
+OVER serve \
+YIELD properties($$).name AS Team, properties($^).name AS Player;
+</code></pre></div>
+</li>
+<li>
+<p>In a composite statement that contains user-defined variables, use an English semicolon to end the statements that define the variables. If you do not follow the rules to add a semicolon or use a pipe to end the composite statement, the execution will fail.</p>
 <p>Not supported:</p>
-<p><code>ngql
-  $var = GO FROM "player100" \
-  OVER follow \
-  YIELD follow._dst AS id \
-  GO FROM $var.id \
-  OVER serve \
-  YIELD $$.team.name AS Team, $^.player.name AS Player;</code></p>
+<div class="highlight"><pre><span></span><code>$var = GO FROM &quot;player100&quot; \
+OVER follow \
+YIELD follow._dst AS id \
+GO FROM $var.id \
+OVER serve \
+YIELD $$.team.name AS Team, $^.player.name AS Player;
+</code></pre></div>
 <p>Not supported:</p>
-<p><code>ngql
-  $var = GO FROM "player100" \
-  OVER follow \
-  YIELD follow._dst AS id | \
-  GO FROM $var.id \
-  OVER serve \
-  YIELD $$.team.name AS Team, $^.player.name AS Player;</code></p>
+<div class="highlight"><pre><span></span><code>$var = GO FROM &quot;player100&quot; \
+OVER follow \
+YIELD follow._dst AS id | \
+GO FROM $var.id \
+OVER serve \
+YIELD $$.team.name AS Team, $^.player.name AS Player;
+</code></pre></div>
 <p>Supported:</p>
-<p><code>ngql
-  $var = GO FROM "player100" \
-  OVER follow \
-  YIELD follow._dst AS id; \
-  GO FROM $var.id \
-  OVER serve \
-  YIELD $$.team.name AS Team, $^.player.name AS Player;</code></p>
+<div class="highlight"><pre><span></span><code>$var = GO FROM &quot;player100&quot; \
+OVER follow \
+YIELD follow._dst AS id; \
+GO FROM $var.id \
+OVER serve \
+YIELD $$.team.name AS Team, $^.player.name AS Player;
+</code></pre></div>
+</li>
+</ol>
 
 
 

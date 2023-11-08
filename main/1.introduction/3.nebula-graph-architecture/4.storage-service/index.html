@@ -48,6 +48,8 @@
       
     
     
+      <link rel="stylesheet" href="../../../stylesheets/note.css">
+    
     <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -77,7 +79,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#storage-service" class="md-skip">
+        <a href="#storage_service" class="md-skip">
           Skip to content
         </a>
       
@@ -681,14 +683,14 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
 </li>
       
         <li class="md-nav__item">
-  <a href="#the-architecture-of-the-storage-service" class="md-nav__link">
+  <a href="#the_architecture_of_the_storage_service" class="md-nav__link">
     The architecture of the Storage Service
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#storage-writing-process" class="md-nav__link">
+  <a href="#storage_writing_process" class="md-nav__link">
     Storage writing process
   </a>
   
@@ -702,7 +704,7 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
 </li>
       
         <li class="md-nav__item">
-  <a href="#data-storage-structure" class="md-nav__link">
+  <a href="#data_storage_structure" class="md-nav__link">
     Data storage structure
   </a>
   
@@ -710,7 +712,7 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#property-descriptions" class="md-nav__link">
+  <a href="#property_descriptions" class="md-nav__link">
     Property descriptions
   </a>
   
@@ -722,7 +724,7 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
 </li>
       
         <li class="md-nav__item">
-  <a href="#data-partitioning" class="md-nav__link">
+  <a href="#data_partitioning" class="md-nav__link">
     Data partitioning
   </a>
   
@@ -730,14 +732,14 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#edge-partitioning-and-storage-amplification" class="md-nav__link">
+  <a href="#edge_partitioning_and_storage_amplification" class="md-nav__link">
     Edge partitioning and storage amplification
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#partition-algorithm" class="md-nav__link">
+  <a href="#partition_algorithm" class="md-nav__link">
     Partition algorithm
   </a>
   
@@ -757,14 +759,14 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#raft-implementation" class="md-nav__link">
+  <a href="#raft_implementation" class="md-nav__link">
     Raft implementation
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#multi-group-raft" class="md-nav__link">
+  <a href="#multi_group_raft" class="md-nav__link">
     Multi Group Raft
   </a>
   
@@ -778,14 +780,14 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
 </li>
         
           <li class="md-nav__item">
-  <a href="#transfer-leadership" class="md-nav__link">
+  <a href="#transfer_leadership" class="md-nav__link">
     Transfer Leadership
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#peer-changes" class="md-nav__link">
+  <a href="#peer_changes" class="md-nav__link">
     Peer changes
   </a>
   
@@ -797,7 +799,7 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
 </li>
       
         <li class="md-nav__item">
-  <a href="#differences-with-hdfs" class="md-nav__link">
+  <a href="#differences_with_hdfs" class="md-nav__link">
     Differences with HDFS
   </a>
   
@@ -1447,14 +1449,14 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
 </li>
       
         <li class="md-nav__item">
-  <a href="#the-architecture-of-the-storage-service" class="md-nav__link">
+  <a href="#the_architecture_of_the_storage_service" class="md-nav__link">
     The architecture of the Storage Service
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#storage-writing-process" class="md-nav__link">
+  <a href="#storage_writing_process" class="md-nav__link">
     Storage writing process
   </a>
   
@@ -1468,7 +1470,7 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
 </li>
       
         <li class="md-nav__item">
-  <a href="#data-storage-structure" class="md-nav__link">
+  <a href="#data_storage_structure" class="md-nav__link">
     Data storage structure
   </a>
   
@@ -1476,7 +1478,7 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#property-descriptions" class="md-nav__link">
+  <a href="#property_descriptions" class="md-nav__link">
     Property descriptions
   </a>
   
@@ -1488,7 +1490,7 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
 </li>
       
         <li class="md-nav__item">
-  <a href="#data-partitioning" class="md-nav__link">
+  <a href="#data_partitioning" class="md-nav__link">
     Data partitioning
   </a>
   
@@ -1496,14 +1498,14 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#edge-partitioning-and-storage-amplification" class="md-nav__link">
+  <a href="#edge_partitioning_and_storage_amplification" class="md-nav__link">
     Edge partitioning and storage amplification
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#partition-algorithm" class="md-nav__link">
+  <a href="#partition_algorithm" class="md-nav__link">
     Partition algorithm
   </a>
   
@@ -1523,14 +1525,14 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#raft-implementation" class="md-nav__link">
+  <a href="#raft_implementation" class="md-nav__link">
     Raft implementation
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#multi-group-raft" class="md-nav__link">
+  <a href="#multi_group_raft" class="md-nav__link">
     Multi Group Raft
   </a>
   
@@ -1544,14 +1546,14 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
 </li>
         
           <li class="md-nav__item">
-  <a href="#transfer-leadership" class="md-nav__link">
+  <a href="#transfer_leadership" class="md-nav__link">
     Transfer Leadership
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#peer-changes" class="md-nav__link">
+  <a href="#peer_changes" class="md-nav__link">
     Peer changes
   </a>
   
@@ -1563,7 +1565,7 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
 </li>
       
         <li class="md-nav__item">
-  <a href="#differences-with-hdfs" class="md-nav__link">
+  <a href="#differences_with_hdfs" class="md-nav__link">
     Differences with HDFS
   </a>
   
@@ -1587,111 +1589,131 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
   
 
 
-<h1 id="storage-service">Storage Service</h1>
+<h1 id="storage_service">Storage Service<a class="headerlink" href="#storage_service" title="Permanent link">&para;</a></h1>
 <p>The persistent data of NebulaGraph have two parts. One is the <a href="../2.meta-service/">Meta Service</a> that stores the meta-related data.</p>
 <p>The other is the Storage Service that stores the data, which is run by the nebula-storaged process. This topic will describe the architecture of the Storage Service.</p>
-<h2 id="advantages">Advantages</h2>
+<h2 id="advantages">Advantages<a class="headerlink" href="#advantages" title="Permanent link">&para;</a></h2>
 <ul>
-<li>
-<p>High performance (Customized built-in KVStore)</p>
-</li>
-<li>
-<p>Great scalability (Shared-nothing architecture, not rely on NAS/SAN-like devices)</p>
-</li>
-<li>
-<p>Strong consistency (Raft)</p>
-</li>
-<li>
-<p>High availability (Raft)</p>
-</li>
-<li>
-<p>Supports synchronizing with the third party systems, such as <a href="../../4.deployment-and-installation/6.deploy-text-based-index/2.deploy-es.md">Elasticsearch</a>.</p>
-</li>
+<li>High performance (Customized built-in KVStore)</li>
 </ul>
-<h2 id="the-architecture-of-the-storage-service">The architecture of the Storage Service</h2>
+<ul>
+<li>Great scalability (Shared-nothing architecture, not rely on NAS/SAN-like devices)</li>
+</ul>
+<ul>
+<li>Strong consistency (Raft)</li>
+</ul>
+<ul>
+<li>High availability (Raft)</li>
+</ul>
+<ul>
+<li>Supports synchronizing with the third party systems, such as <a href="../../4.deployment-and-installation/6.deploy-text-based-index/2.deploy-es.md">Elasticsearch</a>.</li>
+</ul>
+<h2 id="the_architecture_of_the_storage_service">The architecture of the Storage Service<a class="headerlink" href="#the_architecture_of_the_storage_service" title="Permanent link">&para;</a></h2>
 <p><img alt="image" src="https://www-cdn.nebula-graph.com.cn/nebula-blog/nebula-reading-storage-architecture.png" /></p>
 <p>The Storage Service is run by the nebula-storaged process. Users can deploy nebula-storaged processes on different occasions. For example, users can deploy 1 nebula-storaged process in a test environment and deploy 3 nebula-storaged processes in a production environment.</p>
 <p>All the nebula-storaged processes consist of a Raft-based cluster. There are three layers in the Storage Service:</p>
 <ul>
-<li>Storage interface</li>
-</ul>
+<li>
+<p>Storage interface</p>
 <p>The top layer is the storage interface. It defines a set of APIs that are related to the graph concepts. These API requests will be translated into a set of KV operations targeting the corresponding <a href="#data_partitioning">Partition</a>. For example:</p>
 <ul>
-<li>
-<p><code>getNeighbors</code>: queries the in-edge or out-edge of a set of vertices, returns the edges and the corresponding properties, and supports conditional filtering.</p>
-</li>
-<li>
-<p><code>insert vertex/edge</code>: inserts a vertex or edge and its properties.</p>
-</li>
-<li>
-<p><code>getProps</code>: gets the properties of a vertex or an edge.</p>
-</li>
+<li><code>getNeighbors</code>: queries the in-edge or out-edge of a set of vertices, returns the edges and the corresponding properties, and supports conditional filtering.</li>
+</ul>
+<ul>
+<li><code>insert vertex/edge</code>: inserts a vertex or edge and its properties.</li>
+</ul>
+<ul>
+<li><code>getProps</code>: gets the properties of a vertex or an edge.</li>
 </ul>
 <p>It is this layer that makes the Storage Service a real graph storage. Otherwise, it is just a KV storage.</p>
-<ul>
-<li>Consensus</li>
+</li>
 </ul>
+<ul>
+<li>
+<p>Consensus</p>
 <p>Below the storage interface is the consensus layer that implements <a href="#multi_group_raft">Multi Group Raft</a>, which ensures the strong consistency and high availability of the Storage Service.</p>
-<ul>
-<li>Store engine</li>
+</li>
 </ul>
+<ul>
+<li>
+<p>Store engine</p>
 <p>The bottom layer is the local storage engine library, providing operations like <code>get</code>, <code>put</code>, and <code>scan</code> on local disks. The related interfaces are stored in <code>KVStore.h</code> and <code>KVEngine.h</code> files. You can develop your own local store plugins based on your needs.</p>
+</li>
+</ul>
 <p>The following will describe some features of the Storage Service based on the above architecture.</p>
-<h2 id="storage-writing-process">Storage writing process</h2>
+<h2 id="storage_writing_process">Storage writing process<a class="headerlink" href="#storage_writing_process" title="Permanent link">&para;</a></h2>
 <p><img alt="image" src="https://docs-cdn.nebula-graph.com.cn/figures/storage_write_process.png" /></p>
-<h2 id="kvstore">KVStore</h2>
+<h2 id="kvstore">KVStore<a class="headerlink" href="#kvstore" title="Permanent link">&para;</a></h2>
 <p>NebulaGraph develops and customizes its built-in KVStore for the following reasons.</p>
 <ul>
-<li>
-<p>It is a high-performance KVStore.</p>
-</li>
-<li>
-<p>It is provided as a (kv) library and can be easily developed for the filter pushdown purpose. As a strong-typed database, how to provide Schema during pushdown is the key to efficiency for NebulaGraph.</p>
-</li>
-<li>
-<p>It has strong data consistency.</p>
-</li>
+<li>It is a high-performance KVStore.</li>
+</ul>
+<ul>
+<li>It is provided as a (kv) library and can be easily developed for the filter pushdown purpose. As a strong-typed database, how to provide Schema during pushdown is the key to efficiency for NebulaGraph.</li>
+</ul>
+<ul>
+<li>It has strong data consistency.</li>
 </ul>
 <p>Therefore, NebulaGraph develops its own KVStore with RocksDB as the local storage engine. The advantages are as follows.</p>
 <ul>
-<li>
-<p>For multiple local hard disks, NebulaGraph can make full use of its concurrent capacities through deploying multiple data directories.</p>
-</li>
+<li>For multiple local hard disks, NebulaGraph can make full use of its concurrent capacities through deploying multiple data directories.</li>
+</ul>
+<ul>
 <li>
 <p>The Meta Service manages all the Storage servers. All the partition distribution data and current machine status can be found in the meta service. Accordingly, users can execute a manual load balancing plan in meta service.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>NebulaGraph does not support auto load balancing because auto data transfer will affect online business.</p>
+</div>
 </li>
 </ul>
-<p>!!! Note</p>
-<pre><code>    NebulaGraph does not support auto load balancing because auto data transfer will affect online business.
-</code></pre>
 <ul>
-<li>
-<p>NebulaGraph provides its own WAL mode so one can customize the WAL. Each partition owns its WAL.</p>
-</li>
-<li>
-<p>One NebulaGraph KVStore cluster supports multiple graph spaces, and each graph space has its own partition number and replica copies. Different graph spaces are isolated physically from each other in the same cluster.</p>
-</li>
+<li>NebulaGraph provides its own WAL mode so one can customize the WAL. Each partition owns its WAL.</li>
 </ul>
-<h2 id="data-storage-structure">Data storage structure</h2>
+<ul>
+<li>One NebulaGraph KVStore cluster supports multiple graph spaces, and each graph space has its own partition number and replica copies. Different graph spaces are isolated physically from each other in the same cluster.</li>
+</ul>
+<h2 id="data_storage_structure">Data storage structure<a class="headerlink" href="#data_storage_structure" title="Permanent link">&para;</a></h2>
 <p>Graphs consist of vertices and edges. NebulaGraph uses key-value pairs to store vertices, edges, and their properties. Vertices and edges are stored in keys and their properties are stored in values. Such structure enables efficient property filtering.</p>
 <ul>
-<li>The storage structure of vertices</li>
-</ul>
-<p>Different from NebulaGraph version 2.x, version 3.x added a new key for each vertex. Compared to the old key that still exists, the new key has no <code>TagID</code> field and no value. Vertices in NebulaGraph can now live without tags owing to the new key.</p>
-<pre><code>![The vertex structure of NebulaGraph](https://docs-cdn.nebula-graph.com.cn/figures/3.0-vertex-key.png)
-
-|Field|Description|
-|:---|:---|
-|`Type`|One byte, used to indicate the key type.|
-|`PartID`|Three bytes, used to indicate the sharding partition and to scan the partition data based on the prefix when re-balancing the partition.|
-|`VertexID`|The vertex ID. For an integer VertexID, it occupies eight bytes. However, for a string VertexID, it is changed to `fixed_string` of a fixed length which needs to be specified by users when they create the space.|
-|`TagID`|Four bytes, used to indicate the tags that vertex relate with.|
-|`SerializedValue`|The serialized value of the key. It stores the property information of the vertex.|
-</code></pre>
-<ul>
 <li>
-<p>The storage structure of edges</p>
-<p><img alt="The edge structure of NebulaGraph" src="https://docs-cdn.nebula-graph.com.cn/figures/3.0-edge-key.png" /></p>
+<p>The storage structure of vertices</p>
+<p>Different from NebulaGraph version 2.x, version 3.x added a new key for each vertex. Compared to the old key that still exists, the new key has no <code>TagID</code> field and no value. Vertices in NebulaGraph can now live without tags owing to the new key.</p>
+<p><img alt="The vertex structure of NebulaGraph" src="https://docs-cdn.nebula-graph.com.cn/figures/3.0-vertex-key.png" /></p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Field</th>
+<th style="text-align: left;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>Type</code></td>
+<td style="text-align: left;">One byte, used to indicate the key type.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>PartID</code></td>
+<td style="text-align: left;">Three bytes, used to indicate the sharding partition and to scan the partition data based on the prefix when re-balancing the partition.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>VertexID</code></td>
+<td style="text-align: left;">The vertex ID. For an integer VertexID, it occupies eight bytes. However, for a string VertexID, it is changed to <code>fixed_string</code> of a fixed length which needs to be specified by users when they create the space.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>TagID</code></td>
+<td style="text-align: left;">Four bytes, used to indicate the tags that vertex relate with.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>SerializedValue</code></td>
+<td style="text-align: left;">The serialized value of the key. It stores the property information of the vertex.</td>
+</tr>
+</tbody>
+</table>
+</li>
+</ul>
+<ul>
+<li>The storage structure of edges<p><img alt="The edge structure of NebulaGraph" src="https://docs-cdn.nebula-graph.com.cn/figures/3.0-edge-key.png" /></p>
 <table>
 <thead>
 <tr>
@@ -1732,41 +1754,40 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
 </table>
 </li>
 </ul>
-<h3 id="property-descriptions">Property descriptions</h3>
+<h3 id="property_descriptions">Property descriptions<a class="headerlink" href="#property_descriptions" title="Permanent link">&para;</a></h3>
 <p>NebulaGraph uses strong-typed Schema.</p>
 <p>NebulaGraph will store the properties of vertex and edges in order after encoding them. Since the length of fixed-length properties is fixed, queries can be made in no time according to offset. Before decoding, NebulaGraph needs to get (and cache) the schema information in the Meta Service. In addition, when encoding properties, NebulaGraph will add the corresponding schema version to support online schema change.</p>
-<h2 id="data-partitioning">Data partitioning</h2>
+<h2 id="data_partitioning">Data partitioning<a class="headerlink" href="#data_partitioning" title="Permanent link">&para;</a></h2>
 <p>Since in an ultra-large-scale relational network, vertices can be as many as tens to hundreds of billions, and edges are even more than trillions. Even if only vertices and edges are stored, the storage capacity of both exceeds that of ordinary servers. Therefore, NebulaGraph uses hash to shard the graph elements and store them in different partitions.</p>
 <p><img alt="data partitioning" src="https://www-cdn.nebula-graph.com.cn/nebula-blog/DataModel02.png" /></p>
-<h3 id="edge-partitioning-and-storage-amplification">Edge partitioning and storage amplification</h3>
+<h3 id="edge_partitioning_and_storage_amplification">Edge partitioning and storage amplification<a class="headerlink" href="#edge_partitioning_and_storage_amplification" title="Permanent link">&para;</a></h3>
 <p>In NebulaGraph, an edge corresponds to two key-value pairs on the hard disk. When there are lots of edges and each has many properties, storage amplification will be obvious. The storage format of edges is shown in the figure below.</p>
 <p><img alt="partitioning by edge" src="https://docs-cdn.nebula-graph.com.cn/figures/edge-division.png" /></p>
 <p>In this example, SrcVertex connects DstVertex via EdgeA, forming the path of <code>(SrcVertex)-[EdgeA]-&gt;(DstVertex)</code>. SrcVertex, DstVertex, and EdgeA will all be stored in Partition x and Partition y as four key-value pairs in the storage layer. Details are as follows:</p>
 <ul>
-<li>
-<p>The key value of SrcVertex is stored in Partition x. Key fields include Type, PartID(x), VID(Src), and TagID. SerializedValue, namely Value, refers to serialized vertex properties.</p>
-</li>
-<li>
-<p>The first key value of EdgeA, namely EdgeA_Out, is stored in the same partition as the SrcVertex. Key fields include Type, PartID(x), VID(Src), EdgeType(+ means out-edge), Rank(0), VID(Dst), and PlaceHolder. SerializedValue, namely Value, refers to serialized edge properties.</p>
-</li>
-<li>
-<p>The key value of DstVertex is stored in Partition y. Key fields include Type, PartID(y), VID(Dst), and TagID. SerializedValue, namely Value, refers to serialized vertex properties.</p>
-</li>
-<li>
-<p>The second key value of EdgeA, namely EdgeA_In, is stored in the same partition as the DstVertex. Key fields include Type, PartID(y), VID(Dst), EdgeType(- means in-edge), Rank(0), VID(Src), and PlaceHolder. SerializedValue, namely Value, refers to serialized edge properties, which is exactly the same as that in EdgeA_Out.</p>
-</li>
+<li>The key value of SrcVertex is stored in Partition x. Key fields include Type, PartID(x), VID(Src), and TagID. SerializedValue, namely Value, refers to serialized vertex properties.</li>
+</ul>
+<ul>
+<li>The first key value of EdgeA, namely EdgeA_Out, is stored in the same partition as the SrcVertex. Key fields include Type, PartID(x), VID(Src), EdgeType(+ means out-edge), Rank(0), VID(Dst), and PlaceHolder. SerializedValue, namely Value, refers to serialized edge properties.</li>
+</ul>
+<ul>
+<li>The key value of DstVertex is stored in Partition y. Key fields include Type, PartID(y), VID(Dst), and TagID. SerializedValue, namely Value, refers to serialized vertex properties.</li>
+</ul>
+<ul>
+<li>The second key value of EdgeA, namely EdgeA_In, is stored in the same partition as the DstVertex. Key fields include Type, PartID(y), VID(Dst), EdgeType(- means in-edge), Rank(0), VID(Src), and PlaceHolder. SerializedValue, namely Value, refers to serialized edge properties, which is exactly the same as that in EdgeA_Out.</li>
 </ul>
 <p>EdgeA_Out and EdgeA_In are stored in storage layer with opposite directions, constituting EdgeA logically. EdgeA_Out is used for traversal requests starting from SrcVertex, such as <code>(a)-[]-&gt;()</code>; EdgeA_In is used for traversal requests starting from DstVertex, such as <code>()-[]-&gt;(a)</code>.</p>
 <p>Like EdgeA_Out and EdgeA_In, NebulaGraph redundantly stores the information of each edge, which doubles the actual capacities needed for edge storage. The key corresponding to the edge occupies a small hard disk space, but the space occupied by Value is proportional to the length and amount of the property value. Therefore, it will occupy a relatively large hard disk space if the property value of the edge is large or there are many edge property values.</p>
-<h3 id="partition-algorithm">Partition algorithm</h3>
+<h3 id="partition_algorithm">Partition algorithm<a class="headerlink" href="#partition_algorithm" title="Permanent link">&para;</a></h3>
 <p>NebulaGraph uses a <strong>static Hash</strong> strategy to shard data through a modulo operation on vertex ID. All the out-keys, in-keys, and tag data will be placed in the same partition. In this way, query efficiency is increased dramatically.</p>
-<p>!!! Note</p>
-<pre><code>The number of partitions needs to be determined when users are creating a graph space since it cannot be changed afterward. Users are supposed to take into consideration the demands of future business when setting it.
-</code></pre>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The number of partitions needs to be determined when users are creating a graph space since it cannot be changed afterward. Users are supposed to take into consideration the demands of future business when setting it.</p>
+</div>
 <p>When inserting into NebulaGraph, vertices and edges are distributed across different partitions. And the partitions are located on different machines. The number of partitions is set in the CREATE SPACE statement and cannot be changed afterward.</p>
 <p>If certain vertices need to be placed on the same partition (i.e., on the same machine), see <a href="https://github.com/vesoft-inc/nebula-common/blob/master/src/common/clients/meta/MetaClient.cpp">Formula/code</a>.</p>
 <p>The following code will briefly describe the relationship between VID and partition.</p>
-<pre><code>// If VertexID occupies 8 bytes, it will be stored in int64 to be compatible with the version 1.0.
+<div class="highlight"><pre><span></span><code>// If VertexID occupies 8 bytes, it will be stored in int64 to be compatible with the version 1.0.
 uint64_t vid = 0;
 if (id.size() == 8) {
     memcpy(static_cast&lt;void*&gt;(&amp;vid), id.data(), 8);
@@ -1775,10 +1796,10 @@ if (id.size() == 8) {
     vid = hash(id.data());
 }
 PartitionID pId = vid % numParts + 1;
-</code></pre>
+</code></pre></div>
 <p>Roughly speaking, after hashing a fixed string to int64, (the hashing of int64 is the number itself), do modulo, and then plus one, namely:</p>
-<pre><code class="language-C++">pId = vid % numParts + 1;
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="n">pId</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">vid</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="n">numParts</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+</code></pre></div>
 <p>Parameters and descriptions of the preceding formula are as follows:</p>
 <table>
 <thead>
@@ -1803,35 +1824,41 @@ PartitionID pId = vid % numParts + 1;
 </tbody>
 </table>
 <p>Suppose there are 100 partitions, the vertices with <code>VID</code> 1, 101, and 1001 will be stored on the same partition. But, the mapping between the partition ID and the machine address is random. Therefore, we cannot assume that any two partitions are located on the same machine.</p>
-<h2 id="raft">Raft</h2>
-<h3 id="raft-implementation">Raft implementation</h3>
+<h2 id="raft">Raft<a class="headerlink" href="#raft" title="Permanent link">&para;</a></h2>
+<h3 id="raft_implementation">Raft implementation<a class="headerlink" href="#raft_implementation" title="Permanent link">&para;</a></h3>
 <p>In a distributed system, one data usually has multiple replicas so that the system can still run normally even if a few copies fail. It requires certain technical means to ensure consistency between replicas.</p>
 <p>Basic principle: Raft is designed to ensure consistency between replicas. Raft uses election between replicas, and the (candidate) replica that wins more than half of the votes will become the Leader, providing external services on behalf of all replicas. The rest Followers will play backups. When the Leader fails (due to communication failure, operation and maintenance commands, etc.), the rest Followers will conduct a new round of elections and vote for a new Leader. The Leader and Followers will detect each other's survival through heartbeats and write them to the hard disk in Raft-wal mode. Replicas that do not respond to more than multiple heartbeats will be considered faulty.</p>
-<p>!!! Note</p>
-<pre><code>Raft-wal needs to be written into the hard disk periodically. If hard disk bottlenecks to write, Raft will fail to send a heartbeat and conduct a new round of elections. If the hard disk IO is severely blocked, there will be no Leader for a long time.
-</code></pre>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Raft-wal needs to be written into the hard disk periodically. If hard disk bottlenecks to write, Raft will fail to send a heartbeat and conduct a new round of elections. If the hard disk IO is severely blocked, there will be no Leader for a long time.</p>
+</div>
 <p>Read and write: For every writing request of the clients, the Leader will initiate a Raft-wal and synchronize it with the Followers. Only after over half replicas have received the Raft-wal will it return to the clients successfully. For every reading request of the clients, it will get to the Leader directly, while Followers will not be involved.</p>
 <p>Failure: Scenario 1: Take a (space) cluster of a single replica as an example. If the system has only one replica, the Leader will be itself. If failure happens, the system will be completely unavailable. Scenario 2: Take a (space) cluster of three replicas as an example. If the system has three replicas, one of them will be the Leader and the rest will be the Followers. If the Leader fails, the rest two can still vote for a new Leader (and a Follower), and the system is still available. But if any of the two Followers fails again, the system will be completely unavailable due to inadequate voters.</p>
-<p>!!! Note</p>
-<pre><code>Raft and HDFS have different modes of duplication. Raft is based on a quorum vote, so the number of replicas cannot be even.
-</code></pre>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Raft and HDFS have different modes of duplication. Raft is based on a quorum vote, so the number of replicas cannot be even.</p>
+</div>
 <!--
 Listener: As is a special role in Raft, it cannot vote or keep data consistency. In NebulaGraph, it reads Raft-wal from the Leader and synchronizes it to ElasticSearch cluster.
 -->
 
-<h3 id="multi-group-raft">Multi Group Raft</h3>
+<h3 id="multi_group_raft">Multi Group Raft<a class="headerlink" href="#multi_group_raft" title="Permanent link">&para;</a></h3>
 <p>The Storage Service supports a distributed cluster architecture, so NebulaGraph implements Multi Group Raft according to Raft protocol. Each Raft group stores all the replicas of each partition. One replica is the leader, while others are followers. In this way, NebulaGraph achieves strong consistency and high availability. The functions of Raft are as follows.</p>
 <p>NebulaGraph uses Multi Group Raft to improve performance when there are many partitions because Raft-wal cannot be NULL. When there are too many partitions, costs will increase, such as storing information in Raft group, WAL files, or batch operation in low load.</p>
 <p>There are two key points to implement the Multi Raft Group:</p>
 <ul>
-<li>To share transport layer</li>
-</ul>
+<li>
+<p>To share transport layer</p>
 <p>Each Raft Group sends messages to its corresponding peers. So if the transport layer cannot be shared, the connection costs will be very high.</p>
-<ul>
-<li>To share thread pool</li>
+</li>
 </ul>
+<ul>
+<li>
+<p>To share thread pool</p>
 <p>Raft Groups share the same thread pool to prevent starting too many threads and a high context switch cost.</p>
-<h3 id="batch">Batch</h3>
+</li>
+</ul>
+<h3 id="batch">Batch<a class="headerlink" href="#batch" title="Permanent link">&para;</a></h3>
 <p>For each partition, it is necessary to do a batch to improve throughput when writing the WAL serially. As NebulaGraph uses WAL to implement some special functions, batches need to be grouped, which is a feature of NebulaGraph.</p>
 <p>For example, lock-free CAS operations will execute after all the previous WALs are committed. So for a batch, if there are several WALs in CAS type, we need to divide this batch into several smaller groups and make sure they are committed serially.</p>
 <!--
@@ -1844,10 +1871,10 @@ The Listener will write into the command WAL. If the leader finds a command of `
 Raft listener can write the data into Elasticsearch cluster after receiving them from Learner to implement full-text search. For more information, see [Deploy Raft Listener](../../4.deployment-and-installation/6.deploy-text-based-index/3.deploy-listener.md). 
 -->
 
-<h3 id="transfer-leadership">Transfer Leadership</h3>
+<h3 id="transfer_leadership">Transfer Leadership<a class="headerlink" href="#transfer_leadership" title="Permanent link">&para;</a></h3>
 <p>Transfer leadership is extremely important for balance. When moving a partition from one machine to another, NebulaGraph first checks if the source is a leader. If so, it should be moved to another peer. After data migration is completed, it is important to <a href="../../8.service-tuning/load-balance.md">balance leader distribution</a> again.</p>
 <p>When a transfer leadership command is committed, the leader will abandon its leadership and the followers will start a leader election.</p>
-<h3 id="peer-changes">Peer changes</h3>
+<h3 id="peer_changes">Peer changes<a class="headerlink" href="#peer_changes" title="Permanent link">&para;</a></h3>
 <p>To avoid split-brain, when members in a Raft Group change, an intermediate state is required. In such a state, the quorum of the old group and new group always have an overlap. Thus it prevents the old or new group from making decisions unilaterally. To make it even simpler, in his doctoral thesis Diego Ongaro suggests adding or removing a peer once to ensure the overlap between the quorum of the new group and the old group. NebulaGraph also uses this approach, except that the way to add or remove a member is different. For details, please refer to addPeer/removePeer in the Raft Part class.</p>
 <!-- open after fully tested, add macro since it is an enterprise feature
 
@@ -1860,21 +1887,19 @@ You can query the cache stats through the cURL command `curl "http://[storaged I
 
  -->
 
-<h2 id="differences-with-hdfs">Differences with HDFS</h2>
+<h2 id="differences_with_hdfs">Differences with HDFS<a class="headerlink" href="#differences_with_hdfs" title="Permanent link">&para;</a></h2>
 <p>The Storage Service is a Raft-based distributed architecture, which has certain differences with that of HDFS. For example:</p>
 <ul>
-<li>
-<p>The Storage Service ensures consistency through Raft. Usually, the number of its replicas is odd to elect a leader. However, DataNode used by HDFS ensures consistency through NameNode, which has no limit on the number of replicas.</p>
-</li>
-<li>
-<p>In the Storage Service, only the replicas of the leader can read and write, while in HDFS all the replicas can do so.</p>
-</li>
-<li>
-<p>In the Storage Service, the number of replicas needs to be determined when creating a space, since it cannot be changed afterward. But in HDFS, the number of replicas can be changed freely.</p>
-</li>
-<li>
-<p>The Storage Service can access the file system directly. While the applications of HDFS (such as HBase) have to access HDFS before the file system, which requires more RPC times.</p>
-</li>
+<li>The Storage Service ensures consistency through Raft. Usually, the number of its replicas is odd to elect a leader. However, DataNode used by HDFS ensures consistency through NameNode, which has no limit on the number of replicas.</li>
+</ul>
+<ul>
+<li>In the Storage Service, only the replicas of the leader can read and write, while in HDFS all the replicas can do so.</li>
+</ul>
+<ul>
+<li>In the Storage Service, the number of replicas needs to be determined when creating a space, since it cannot be changed afterward. But in HDFS, the number of replicas can be changed freely.</li>
+</ul>
+<ul>
+<li>The Storage Service can access the file system directly. While the applications of HDFS (such as HBase) have to access HDFS before the file system, which requires more RPC times.</li>
 </ul>
 <p>In a word, the Storage Service is more lightweight with some functions simplified and its architecture is simpler than HDFS, which can effectively improve the read and write performance of a smaller block of data.</p>
 

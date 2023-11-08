@@ -46,6 +46,8 @@
       
     
     
+      <link rel="stylesheet" href="../../stylesheets/note.css">
+    
     <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -1327,7 +1329,7 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
 </li>
         
           <li class="md-nav__item">
-  <a href="#metric-methods" class="md-nav__link">
+  <a href="#metric_methods" class="md-nav__link">
     Metric methods
   </a>
   
@@ -1355,7 +1357,7 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
 </li>
         
           <li class="md-nav__item">
-  <a href="#graph-space" class="md-nav__link">
+  <a href="#graph_space" class="md-nav__link">
     Graph space
   </a>
   
@@ -1472,7 +1474,7 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
 </li>
         
           <li class="md-nav__item">
-  <a href="#metric-methods" class="md-nav__link">
+  <a href="#metric_methods" class="md-nav__link">
     Metric methods
   </a>
   
@@ -1500,7 +1502,7 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
 </li>
         
           <li class="md-nav__item">
-  <a href="#graph-space" class="md-nav__link">
+  <a href="#graph_space" class="md-nav__link">
     Graph space
   </a>
   
@@ -1529,15 +1531,18 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
   
 
 
-<h1 id="metrics">Metrics</h1>
+<h1 id="metrics">Metrics<a class="headerlink" href="#metrics" title="Permanent link">&para;</a></h1>
 <p>This topic will describe the monitoring metrics in NebulaGraph Dashboard.</p>
-<h2 id="machine">Machine</h2>
-<p>!!! note</p>
-<pre><code>- All the machine metrics listed below are for the Linux operating system.
-- The default unit in **Disk** and **Network** is byte. The unit will change with the data magnitude as the page displays. For example, when the flow is less than 1 KB/s, the unit will be Bytes/s.
-- For versions of Dashboard Community Edition greater than v1.0.2, the memory occupied by Buff and Cache will not be counted in the memory usage.
-</code></pre>
-<h3 id="cpu">CPU</h3>
+<h2 id="machine">Machine<a class="headerlink" href="#machine" title="Permanent link">&para;</a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul>
+<li>All the machine metrics listed below are for the Linux operating system.</li>
+<li>The default unit in <strong>Disk</strong> and <strong>Network</strong> is byte. The unit will change with the data magnitude as the page displays. For example, when the flow is less than 1 KB/s, the unit will be Bytes/s.</li>
+<li>For versions of Dashboard Community Edition greater than v1.0.2, the memory occupied by Buff and Cache will not be counted in the memory usage.</li>
+</ul>
+</div>
+<h3 id="cpu">CPU<a class="headerlink" href="#cpu" title="Permanent link">&para;</a></h3>
 <table>
 <thead>
 <tr>
@@ -1568,7 +1573,7 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
 </tr>
 </tbody>
 </table>
-<h3 id="memory">Memory</h3>
+<h3 id="memory">Memory<a class="headerlink" href="#memory" title="Permanent link">&para;</a></h3>
 <table>
 <thead>
 <tr>
@@ -1591,7 +1596,7 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
 </tr>
 </tbody>
 </table>
-<h3 id="load">Load</h3>
+<h3 id="load">Load<a class="headerlink" href="#load" title="Permanent link">&para;</a></h3>
 <table>
 <thead>
 <tr>
@@ -1614,7 +1619,7 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
 </tr>
 </tbody>
 </table>
-<h3 id="disk">Disk</h3>
+<h3 id="disk">Disk<a class="headerlink" href="#disk" title="Permanent link">&para;</a></h3>
 <table>
 <thead>
 <tr>
@@ -1657,7 +1662,7 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
 </tr>
 </tbody>
 </table>
-<h3 id="network">Network</h3>
+<h3 id="network">Network<a class="headerlink" href="#network" title="Permanent link">&para;</a></h3>
 <table>
 <thead>
 <tr>
@@ -1692,10 +1697,10 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
 </tr>
 </tbody>
 </table>
-<h2 id="service">Service</h2>
-<h3 id="period">Period</h3>
+<h2 id="service">Service<a class="headerlink" href="#service" title="Permanent link">&para;</a></h2>
+<h3 id="period">Period<a class="headerlink" href="#period" title="Permanent link">&para;</a></h3>
 <p>The period is the time range of counting metrics. It currently supports 5 seconds, 60 seconds, 600 seconds, and 3600 seconds, which respectively represent the last 5 seconds, the last 1 minute, the last 10 minutes, and the last 1 hour.</p>
-<h3 id="metric-methods">Metric methods</h3>
+<h3 id="metric_methods">Metric methods<a class="headerlink" href="#metric_methods" title="Permanent link">&para;</a></h3>
 <table>
 <thead>
 <tr>
@@ -1734,10 +1739,11 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
 </tr>
 </tbody>
 </table>
-<p>!!! note</p>
-<pre><code>Dashboard collects the following metrics from the NebulaGraph core, but only shows the metrics that are important to it.
-</code></pre>
-<h3 id="graph">Graph</h3>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Dashboard collects the following metrics from the NebulaGraph core, but only shows the metrics that are important to it. </p>
+</div>
+<h3 id="graph">Graph<a class="headerlink" href="#graph" title="Permanent link">&para;</a></h3>
 <table>
 <thead>
 <tr>
@@ -1848,7 +1854,7 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
 </tr>
 </tbody>
 </table>
-<h3 id="meta">Meta</h3>
+<h3 id="meta">Meta<a class="headerlink" href="#meta" title="Permanent link">&para;</a></h3>
 <table>
 <thead>
 <tr>
@@ -1915,7 +1921,7 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
 </tr>
 </tbody>
 </table>
-<h3 id="storage">Storage</h3>
+<h3 id="storage">Storage<a class="headerlink" href="#storage" title="Permanent link">&para;</a></h3>
 <table>
 <thead>
 <tr>
@@ -2202,10 +2208,11 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
 </tr>
 </tbody>
 </table>
-<h3 id="graph-space">Graph space</h3>
-<p>!!! note</p>
-<pre><code>Space-level metrics are created dynamically, so that only when the behavior is triggered in the graph space, the corresponding metric is created and can be queried by the user.
-</code></pre>
+<h3 id="graph_space">Graph space<a class="headerlink" href="#graph_space" title="Permanent link">&para;</a></h3>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Space-level metrics are created dynamically, so that only when the behavior is triggered in the graph space, the corresponding metric is created and can be queried by the user.</p>
+</div>
 <table>
 <thead>
 <tr>

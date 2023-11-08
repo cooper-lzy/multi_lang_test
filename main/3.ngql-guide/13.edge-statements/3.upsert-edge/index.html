@@ -44,6 +44,8 @@
       
     
     
+      <link rel="stylesheet" href="../../../stylesheets/note.css">
+    
     <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -73,7 +75,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#upsert-edge" class="md-skip">
+        <a href="#upsert_edge" class="md-skip">
           Skip to content
         </a>
       
@@ -1267,14 +1269,14 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
 </li>
       
         <li class="md-nav__item">
-  <a href="#insert-an-edge-if-it-does-not-exist" class="md-nav__link">
+  <a href="#insert_an_edge_if_it_does_not_exist" class="md-nav__link">
     Insert an edge if it does not exist
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#update-an-edge-if-it-exists" class="md-nav__link">
+  <a href="#update_an_edge_if_it_exists" class="md-nav__link">
     Update an edge if it exists
   </a>
   
@@ -1298,19 +1300,20 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
   
 
 
-<h1 id="upsert-edge">UPSERT EDGE</h1>
+<h1 id="upsert_edge">UPSERT EDGE<a class="headerlink" href="#upsert_edge" title="Permanent link">&para;</a></h1>
 <p>The <code>UPSERT</code> statement is a combination of <code>UPDATE</code> and <code>INSERT</code>. You can use <code>UPSERT EDGE</code> to update the properties of an edge if it exists or insert a new edge if it does not exist.</p>
 <p>The performance of <code>UPSERT</code> is much lower than that of <code>INSERT</code> because <code>UPSERT</code> is a read-modify-write serialization operation at the partition level.</p>
-<p>!!! danger</p>
-<pre><code>Do not use `UPSERT` for scenarios with highly concurrent writes. You can use `UPDATE` or `INSERT` instead.
-</code></pre>
-<h2 id="syntax">Syntax</h2>
-<pre><code class="language-ngql">UPSERT EDGE ON &lt;edge_type&gt;
+<div class="admonition danger">
+<p class="admonition-title">Danger</p>
+<p>Do not use <code>UPSERT</code> for scenarios with highly concurrent writes. You can use <code>UPDATE</code> or <code>INSERT</code> instead.</p>
+</div>
+<h2 id="syntax">Syntax<a class="headerlink" href="#syntax" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code>UPSERT EDGE ON &lt;edge_type&gt;
 &lt;src_vid&gt; -&gt; &lt;dst_vid&gt; [@rank]
 SET &lt;update_prop&gt;
 [WHEN &lt;condition&gt;]
 [YIELD &lt;properties&gt;]
-</code></pre>
+</code></pre></div>
 <table>
 <thead>
 <tr>
@@ -1365,24 +1368,20 @@ SET &lt;update_prop&gt;
 </tr>
 </tbody>
 </table>
-<h2 id="insert-an-edge-if-it-does-not-exist">Insert an edge if it does not exist</h2>
+<h2 id="insert_an_edge_if_it_does_not_exist">Insert an edge if it does not exist<a class="headerlink" href="#insert_an_edge_if_it_does_not_exist" title="Permanent link">&para;</a></h2>
 <p>If an edge does not exist, it is created no matter the conditions in the <code>WHEN</code> clause are met or not, and the <code>SET</code> clause takes effect. The property values of the new edge depend on:</p>
 <ul>
-<li>
-<p>How the <code>SET</code> clause is defined.</p>
-</li>
-<li>
-<p>Whether the property has a default value.</p>
-</li>
+<li>How the <code>SET</code> clause is defined.</li>
+</ul>
+<ul>
+<li>Whether the property has a default value.</li>
 </ul>
 <p>For example, if:</p>
 <ul>
-<li>
-<p>The edge to be inserted will have properties <code>start_year</code> and <code>end_year</code> based on the edge type <code>serve</code>.</p>
-</li>
-<li>
-<p>The <code>SET</code> clause specifies that <code>end_year = 2021</code>.</p>
-</li>
+<li>The edge to be inserted will have properties <code>start_year</code> and <code>end_year</code> based on the edge type <code>serve</code>.</li>
+</ul>
+<ul>
+<li>The <code>SET</code> clause specifies that <code>end_year = 2021</code>.</li>
 </ul>
 <p>Then the property values in different cases are listed as follows:</p>
 <table>
@@ -1422,7 +1421,7 @@ SET &lt;update_prop&gt;
 </tbody>
 </table>
 <p>Here are some examples:</p>
-<pre><code class="language-ngql">// This example checks if the following three vertices have any outgoing serve edge. The result &quot;Empty set&quot; indicates that such an edge does not exist.
+<div class="highlight"><pre><span></span><code>// This example checks if the following three vertices have any outgoing serve edge. The result &quot;Empty set&quot; indicates that such an edge does not exist.
 nebula&gt; GO FROM &quot;player666&quot;, &quot;player667&quot;, &quot;player668&quot; \
         OVER serve \
         YIELD properties(edge).start_year, properties(edge).end_year;
@@ -1473,9 +1472,9 @@ nebula&gt; UPSERT EDGE on serve \
 +------------+----------+
 | 2000       | __NULL__ |
 +------------+----------+
-</code></pre>
+</code></pre></div>
 <p>In the last query of the preceding example, since <code>end_year</code> has no default value, when the edge is created, <code>end_year</code> is <code>NULL</code>, and <code>end_year = end_year + 1</code> does not take effect. But if <code>end_year</code> has a default value, <code>end_year = end_year + 1</code> will take effect. For example:</p>
-<pre><code class="language-ngql">nebula&gt; CREATE EDGE IF NOT EXISTS serve_with_default(start_year int, end_year int DEFAULT 2010);
+<div class="highlight"><pre><span></span><code>nebula&gt; CREATE EDGE IF NOT EXISTS serve_with_default(start_year int, end_year int DEFAULT 2010);
 Execution succeeded
 
 nebula&gt; UPSERT EDGE on serve_with_default \
@@ -1487,10 +1486,10 @@ nebula&gt; UPSERT EDGE on serve_with_default \
 +------------+----------+
 | __NULL__   | 2011     |
 +------------+----------+
-</code></pre>
-<h2 id="update-an-edge-if-it-exists">Update an edge if it exists</h2>
+</code></pre></div>
+<h2 id="update_an_edge_if_it_exists">Update an edge if it exists<a class="headerlink" href="#update_an_edge_if_it_exists" title="Permanent link">&para;</a></h2>
 <p>If the edge exists and the <code>WHEN</code> conditions are met, the edge is updated.</p>
-<pre><code class="language-ngql">nebula&gt; MATCH (v:player{name:&quot;Ben Simmons&quot;})-[e:serve]-(v2) \
+<div class="highlight"><pre><span></span><code>nebula&gt; MATCH (v:player{name:&quot;Ben Simmons&quot;})-[e:serve]-(v2) \
         RETURN e;
 +-----------------------------------------------------------------------+
 | e                                                                     |
@@ -1508,9 +1507,9 @@ nebula&gt; UPSERT EDGE on serve \
 +------------+----------+
 | 2016       | 2020     |
 +------------+----------+
-</code></pre>
+</code></pre></div>
 <p>If the edge exists and the <code>WHEN</code> conditions are not met, the update does not take effect.</p>
-<pre><code class="language-ngql">nebula&gt; MATCH (v:player{name:&quot;Ben Simmons&quot;})-[e:serve]-(v2) \
+<div class="highlight"><pre><span></span><code>nebula&gt; MATCH (v:player{name:&quot;Ben Simmons&quot;})-[e:serve]-(v2) \
         RETURN e;
 +-----------------------------------------------------------------------+
 | e                                                                     |
@@ -1529,7 +1528,7 @@ nebula&gt; UPSERT EDGE on serve \
 +------------+----------+
 | 2016       | 2020     |
 +------------+----------+
-</code></pre>
+</code></pre></div>
 
 
 

@@ -44,6 +44,8 @@
       
     
     
+      <link rel="stylesheet" href="../../../../stylesheets/note.css">
+    
     <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -73,7 +75,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#show-parts" class="md-skip">
+        <a href="#show_parts" class="md-skip">
           Skip to content
         </a>
       
@@ -1291,13 +1293,13 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
   
 
 
-<h1 id="show-parts">SHOW PARTS</h1>
+<h1 id="show_parts">SHOW PARTS<a class="headerlink" href="#show_parts" title="Permanent link">&para;</a></h1>
 <p>The <code>SHOW PARTS</code> statement shows the information of a specified partition or all partitions in a graph space.</p>
-<h2 id="syntax">Syntax</h2>
-<pre><code class="language-ngql">SHOW PARTS [&lt;part_id&gt;];
-</code></pre>
-<h2 id="examples">Examples</h2>
-<pre><code class="language-ngql">nebula&gt; SHOW PARTS;
+<h2 id="syntax">Syntax<a class="headerlink" href="#syntax" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code>SHOW PARTS [&lt;part_id&gt;];
+</code></pre></div>
+<h2 id="examples">Examples<a class="headerlink" href="#examples" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code>nebula&gt; SHOW PARTS;
 +--------------+--------------------+--------------------+-------+
 | Partition ID | Leader             | Peers              | Losts |
 +--------------+--------------------+--------------------+-------+
@@ -1319,7 +1321,7 @@ nebula&gt; SHOW PARTS 1;
 +--------------+--------------------+--------------------+-------+
 | 1            | &quot;192.168.2.1:9779&quot; | &quot;192.168.2.1:9779&quot; | &quot;&quot;    |
 +--------------+--------------------+--------------------+-------+
-</code></pre>
+</code></pre></div>
 <p>The descriptions are as follows.</p>
 <table>
 <thead>

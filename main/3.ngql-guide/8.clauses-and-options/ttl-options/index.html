@@ -44,6 +44,8 @@
       
     
     
+      <link rel="stylesheet" href="../../../stylesheets/note.css">
+    
     <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -1260,7 +1262,7 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#opencypher-compatibility" class="md-nav__link">
+  <a href="#opencypher_compatibility" class="md-nav__link">
     OpenCypher Compatibility
   </a>
   
@@ -1274,14 +1276,14 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
 </li>
       
         <li class="md-nav__item">
-  <a href="#ttl-options" class="md-nav__link">
+  <a href="#ttl_options" class="md-nav__link">
     TTL options
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#use-ttl-options" class="md-nav__link">
+  <a href="#use_ttl_options" class="md-nav__link">
     Use TTL options
   </a>
   
@@ -1289,14 +1291,14 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#set-a-timeout-if-a-tag-or-an-edge-type-exists" class="md-nav__link">
+  <a href="#set_a_timeout_if_a_tag_or_an_edge_type_exists" class="md-nav__link">
     Set a timeout if a tag or an edge type exists
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#set-a-timeout-when-creating-a-tag-or-an-edge-type" class="md-nav__link">
+  <a href="#set_a_timeout_when_creating_a_tag_or_an_edge_type" class="md-nav__link">
     Set a timeout when creating a tag or an edge type
   </a>
   
@@ -1308,7 +1310,7 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
 </li>
       
         <li class="md-nav__item">
-  <a href="#data-expiration-and-deletion" class="md-nav__link">
+  <a href="#data_expiration_and_deletion" class="md-nav__link">
     Data expiration and deletion
   </a>
   
@@ -1316,21 +1318,21 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#vertex-property-expiration" class="md-nav__link">
+  <a href="#vertex_property_expiration" class="md-nav__link">
     Vertex property expiration
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#edge-property-expiration" class="md-nav__link">
+  <a href="#edge_property_expiration" class="md-nav__link">
     Edge property expiration
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#data-deletion" class="md-nav__link">
+  <a href="#data_deletion" class="md-nav__link">
     Data deletion
   </a>
   
@@ -1342,7 +1344,7 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
 </li>
       
         <li class="md-nav__item">
-  <a href="#remove-a-timeout" class="md-nav__link">
+  <a href="#remove_a_timeout" class="md-nav__link">
     Remove a timeout
   </a>
   
@@ -1366,26 +1368,26 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
   
 
 
-<h1 id="ttl">TTL</h1>
+<h1 id="ttl">TTL<a class="headerlink" href="#ttl" title="Permanent link">&para;</a></h1>
 <p>TTL (Time To Live) is a mechanism in NebulaGraph that defines the lifespan of data. Once the data reaches its predefined lifespan, it is automatically deleted from the database. This feature is particularly suitable for data that only needs temporary storage, such as temporary sessions or cached data.</p>
-<h2 id="opencypher-compatibility">OpenCypher Compatibility</h2>
+<h2 id="opencypher_compatibility">OpenCypher Compatibility<a class="headerlink" href="#opencypher_compatibility" title="Permanent link">&para;</a></h2>
 <p>This topic applies to native nGQL only.</p>
-<h2 id="precautions">Precautions</h2>
+<h2 id="precautions">Precautions<a class="headerlink" href="#precautions" title="Permanent link">&para;</a></h2>
+<ul>
+<li>You CANNOT modify a property schema with TTL options on it.</li>
+</ul>
 <ul>
 <li>
-<p>You CANNOT modify a property schema with TTL options on it.</p>
-</li>
-<li>
 <p>TTL options and indexes have coexistence issues.</p>
-</li>
-<li>
-<p>TTL options and indexes CANNOT coexist on a tag or an edge type. If there is an index on a property, you cannot set TTL options on other properties.</p>
-</li>
-<li>
-<p>If there are TTL options on a tag, an edge type, or a property, you can still add an index on them.</p>
+<ul>
+<li>TTL options and indexes CANNOT coexist on a tag or an edge type. If there is an index on a property, you cannot set TTL options on other properties.</li>
+</ul>
+<ul>
+<li>If there are TTL options on a tag, an edge type, or a property, you can still add an index on them.</li>
+</ul>
 </li>
 </ul>
-<h2 id="ttl-options">TTL options</h2>
+<h2 id="ttl_options">TTL options<a class="headerlink" href="#ttl_options" title="Permanent link">&para;</a></h2>
 <p>The native nGQL TTL feature has the following options.</p>
 <table>
 <thead>
@@ -1405,18 +1407,22 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
 </tr>
 </tbody>
 </table>
-<p>!!! caution</p>
-<pre><code>- Before setting `ttl_use_ms` to `true`, make sure that no TTL has been set for any property, as shortening the expiration time may cause data to be erroneously deleted.
-
-- After setting `ttl_use_ms` to `true`, which sets the default TTL unit to milliseconds, the data type of the property specified by `ttl_col` must be `int`, and the property value needs to be manually converted to milliseconds. For example, when setting `ttl_col` to `a`, you need to convert the value of `a` to milliseconds, such as when the value of `a` is `now()`, you need to set the value of `a` to `now() * 1000`.
-</code></pre>
-<h2 id="use-ttl-options">Use TTL options</h2>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<ul>
+<li>Before setting <code>ttl_use_ms</code> to <code>true</code>, make sure that no TTL has been set for any property, as shortening the expiration time may cause data to be erroneously deleted.</li>
+</ul>
+<ul>
+<li>After setting <code>ttl_use_ms</code> to <code>true</code>, which sets the default TTL unit to milliseconds, the data type of the property specified by <code>ttl_col</code> must be <code>int</code>, and the property value needs to be manually converted to milliseconds. For example, when setting <code>ttl_col</code> to <code>a</code>, you need to convert the value of <code>a</code> to milliseconds, such as when the value of <code>a</code> is <code>now()</code>, you need to set the value of <code>a</code> to <code>now() * 1000</code>.</li>
+</ul>
+</div>
+<h2 id="use_ttl_options">Use TTL options<a class="headerlink" href="#use_ttl_options" title="Permanent link">&para;</a></h2>
 <p>You must use the TTL options together to set a lifespan on a property.</p>
 <p>Before using the TTL feature, you must first create a timestamp or integer property and specify it in the TTL options. NebulaGraph will not automatically create or manage this timestamp property for you.</p>
 <p>When inserting the value of the timestamp or integer property, it is recommended to use the <code>now()</code> function or the current timestamp to represent the present time.</p>
-<h3 id="set-a-timeout-if-a-tag-or-an-edge-type-exists">Set a timeout if a tag or an edge type exists</h3>
+<h3 id="set_a_timeout_if_a_tag_or_an_edge_type_exists">Set a timeout if a tag or an edge type exists<a class="headerlink" href="#set_a_timeout_if_a_tag_or_an_edge_type_exists" title="Permanent link">&para;</a></h3>
 <p>If a tag or an edge type is already created, to set a timeout on a property bound to the tag or edge type, use <code>ALTER</code> to update the tag or edge type.</p>
-<pre><code class="language-ngql"># Create a tag.
+<div class="highlight"><pre><span></span><code># Create a tag.
 nebula&gt; CREATE TAG IF NOT EXISTS t1 (a timestamp);
 
 # Use ALTER to update the tag and set the TTL options.
@@ -1424,55 +1430,55 @@ nebula&gt; ALTER TAG t1 TTL_COL = &quot;a&quot;, TTL_DURATION = 5;
 
 # Insert a vertex with tag t1. The vertex expires 5 seconds after the insertion.
 nebula&gt; INSERT VERTEX t1(a) VALUES &quot;101&quot;:(now());
-</code></pre>
-<h3 id="set-a-timeout-when-creating-a-tag-or-an-edge-type">Set a timeout when creating a tag or an edge type</h3>
+</code></pre></div>
+<h3 id="set_a_timeout_when_creating_a_tag_or_an_edge_type">Set a timeout when creating a tag or an edge type<a class="headerlink" href="#set_a_timeout_when_creating_a_tag_or_an_edge_type" title="Permanent link">&para;</a></h3>
 <p>Use TTL options in the <code>CREATE</code> statement to set a timeout when creating a tag or an edge type. For more information, see <a href="../../10.tag-statements/1.create-tag/">CREATE TAG</a> and <a href="../../11.edge-type-statements/1.create-edge/">CREATE EDGE</a>.</p>
-<pre><code class="language-ngql"># Create a tag and set the TTL options.
+<div class="highlight"><pre><span></span><code># Create a tag and set the TTL options.
 nebula&gt; CREATE TAG IF NOT EXISTS t2(a int, b int, c string) TTL_DURATION= 100, TTL_COL = &quot;a&quot;;
 
 # Insert a vertex with tag t2. The timeout timestamp is 1648197238 (1648197138 + 100).
 nebula&gt; INSERT VERTEX t2(a, b, c) VALUES &quot;102&quot;:(1648197138, 30, &quot;Hello&quot;);
-</code></pre>
-<h2 id="data-expiration-and-deletion">Data expiration and deletion</h2>
-<p>!!! caution</p>
-<pre><code>- When the TTL options are set for a property of a tag or an edge type and the property's value is `NULL`, the property never expires. 
-- If a property with a default value of `now()` is added to a tag or an edge type and the TTL options are set for the property, the history data related to the tag or the edge type will never expire because the value of that property for the history data is the current timestamp.
-</code></pre>
-<h3 id="vertex-property-expiration">Vertex property expiration</h3>
+</code></pre></div>
+<h2 id="data_expiration_and_deletion">Data expiration and deletion<a class="headerlink" href="#data_expiration_and_deletion" title="Permanent link">&para;</a></h2>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<ul>
+<li>When the TTL options are set for a property of a tag or an edge type and the property's value is <code>NULL</code>, the property never expires. </li>
+<li>If a property with a default value of <code>now()</code> is added to a tag or an edge type and the TTL options are set for the property, the history data related to the tag or the edge type will never expire because the value of that property for the history data is the current timestamp.</li>
+</ul>
+</div>
+<h3 id="vertex_property_expiration">Vertex property expiration<a class="headerlink" href="#vertex_property_expiration" title="Permanent link">&para;</a></h3>
 <p>Vertex property expiration has the following impact.</p>
 <ul>
-<li>
-<p>If a vertex has only one tag, once a property of the vertex expires, the vertex expires.</p>
-</li>
-<li>
-<p>If a vertex has multiple tags, once a property of the vertex expires, properties bound to the same tag with the expired property also expire, but the vertex does not expire and other properties of it remain untouched.</p>
-</li>
+<li>If a vertex has only one tag, once a property of the vertex expires, the vertex expires.</li>
 </ul>
-<h3 id="edge-property-expiration">Edge property expiration</h3>
+<ul>
+<li>If a vertex has multiple tags, once a property of the vertex expires, properties bound to the same tag with the expired property also expire, but the vertex does not expire and other properties of it remain untouched.</li>
+</ul>
+<h3 id="edge_property_expiration">Edge property expiration<a class="headerlink" href="#edge_property_expiration" title="Permanent link">&para;</a></h3>
 <p>Since an edge can have only one edge type, once an edge property expires, the edge expires.</p>
-<h3 id="data-deletion">Data deletion</h3>
+<h3 id="data_deletion">Data deletion<a class="headerlink" href="#data_deletion" title="Permanent link">&para;</a></h3>
 <p>The expired data are still stored on the disk, but queries will filter them out.</p>
 <p>NebulaGraph automatically deletes the expired data and reclaims the disk space during the next <a href="../../8.service-tuning/compaction.md">compaction</a>.</p>
-<p>!!! note</p>
-<pre><code>If TTL is [disabled](#remove_a_timeout), the corresponding data deleted after the last compaction can be queried again.
-</code></pre>
-<h2 id="remove-a-timeout">Remove a timeout</h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If TTL is <a href="#remove_a_timeout">disabled</a>, the corresponding data deleted after the last compaction can be queried again.</p>
+</div>
+<h2 id="remove_a_timeout">Remove a timeout<a class="headerlink" href="#remove_a_timeout" title="Permanent link">&para;</a></h2>
 <p>To disable TTL and remove the timeout on a property, you can use the following approaches.</p>
 <ul>
-<li>
-<p>Drop the property with the timeout.</p>
-<p><code>ngql
-nebula&gt; ALTER TAG t1 DROP (a);</code></p>
+<li>Drop the property with the timeout.<div class="highlight"><pre><span></span><code>nebula&gt; ALTER TAG t1 DROP (a);
+</code></pre></div>
 </li>
-<li>
-<p>Set <code>ttl_col</code> to an empty string.</p>
-<p><code>ngql
-nebula&gt; ALTER TAG t1 TTL_COL = "";</code></p>
+</ul>
+<ul>
+<li>Set <code>ttl_col</code> to an empty string.<div class="highlight"><pre><span></span><code>nebula&gt; ALTER TAG t1 TTL_COL = &quot;&quot;;
+</code></pre></div>
 </li>
-<li>
-<p>Set <code>ttl_duration</code> to <code>0</code>. This operation keeps the TTL options and prevents the property from expiring and the property schema from being modified.</p>
-<p><code>ngql
-nebula&gt; ALTER TAG t1 TTL_DURATION = 0;</code></p>
+</ul>
+<ul>
+<li>Set <code>ttl_duration</code> to <code>0</code>. This operation keeps the TTL options and prevents the property from expiring and the property schema from being modified.<div class="highlight"><pre><span></span><code>nebula&gt; ALTER TAG t1 TTL_DURATION = 0;
+</code></pre></div>
 </li>
 </ul>
 

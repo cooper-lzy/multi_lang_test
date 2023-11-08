@@ -44,6 +44,8 @@
       
     
     
+      <link rel="stylesheet" href="../../../stylesheets/note.css">
+    
     <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -73,7 +75,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#show-create-index" class="md-skip">
+        <a href="#show_create_index" class="md-skip">
           Skip to content
         </a>
       
@@ -1291,14 +1293,14 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
   
 
 
-<h1 id="show-create-index">SHOW CREATE INDEX</h1>
+<h1 id="show_create_index">SHOW CREATE INDEX<a class="headerlink" href="#show_create_index" title="Permanent link">&para;</a></h1>
 <p><code>SHOW CREATE INDEX</code> shows the statement used when creating a tag or an edge type. It contains detailed information about the index, such as its associated properties.</p>
-<h2 id="syntax">Syntax</h2>
-<pre><code class="language-ngql">SHOW CREATE {TAG | EDGE} INDEX &lt;index_name&gt;;
-</code></pre>
-<h2 id="examples">Examples</h2>
+<h2 id="syntax">Syntax<a class="headerlink" href="#syntax" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code>SHOW CREATE {TAG | EDGE} INDEX &lt;index_name&gt;;
+</code></pre></div>
+<h2 id="examples">Examples<a class="headerlink" href="#examples" title="Permanent link">&para;</a></h2>
 <p>You can run <code>SHOW TAG INDEXES</code> to list all tag indexes, and then use <code>SHOW CREATE TAG INDEX</code> to show the information about the creation of the specified index.</p>
-<pre><code class="language-ngql">nebula&gt; SHOW TAG INDEXES;
+<div class="highlight"><pre><span></span><code>nebula&gt; SHOW TAG INDEXES;
 +------------------+----------+----------+
 | Index Name       | By Tag   | Columns  |
 +------------------+----------+----------+
@@ -1314,9 +1316,9 @@ nebula&gt; SHOW CREATE TAG INDEX player_index_1;
 |                  |  `name`(20)                                      |
 |                  | )&quot;                                               |
 +------------------+--------------------------------------------------+
-</code></pre>
+</code></pre></div>
 <p>Edge indexes can be queried through a similar approach.</p>
-<pre><code class="language-ngql">nebula&gt; SHOW EDGE INDEXES;
+<div class="highlight"><pre><span></span><code>nebula&gt; SHOW EDGE INDEXES;
 +----------------+----------+---------+
 | Index Name     | By Edge  | Columns |
 +----------------+----------+---------+
@@ -1330,7 +1332,7 @@ nebula&gt; SHOW CREATE EDGE INDEX follow_index;
 | &quot;follow_index&quot;  | &quot;CREATE EDGE INDEX `follow_index` ON `follow` ( |
 |                 | )&quot;                                              |
 +-----------------+-------------------------------------------------+
-</code></pre>
+</code></pre></div>
 
 
 

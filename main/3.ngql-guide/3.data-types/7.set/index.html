@@ -44,6 +44,8 @@
       
     
     
+      <link rel="stylesheet" href="../../../stylesheets/note.css">
+    
     <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -1260,7 +1262,7 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#opencypher-compatibility" class="md-nav__link">
+  <a href="#opencypher_compatibility" class="md-nav__link">
     OpenCypher compatibility
   </a>
   
@@ -1291,20 +1293,18 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
   
 
 
-<h1 id="sets">Sets</h1>
+<h1 id="sets">Sets<a class="headerlink" href="#sets" title="Permanent link">&para;</a></h1>
 <p>The set is a composite data type. A set is a set of values. Unlike a List, values in a set are unordered and each value must be unique.</p>
 <p>A set starts with a left curly bracket <code>{</code> and ends with a right curly bracket <code>}</code>. A set contains zero, one, or more expressions. Set elements are separated from each other with commas (<code>,</code>). Whitespace around elements is ignored in the set, thus line breaks, tab stops, and blanks can be used for formatting.</p>
-<h2 id="opencypher-compatibility">OpenCypher compatibility</h2>
+<h2 id="opencypher_compatibility">OpenCypher compatibility<a class="headerlink" href="#opencypher_compatibility" title="Permanent link">&para;</a></h2>
 <ul>
-<li>
-<p>A composite data type (i.e. set, map, and list) <strong>CANNOT</strong> be stored as properties of vertices or edges.</p>
-</li>
-<li>
-<p>A set is not a data type in openCypher, but in nGQL, users can use the set.</p>
-</li>
+<li>A composite data type (i.e. set, map, and list) <strong>CANNOT</strong> be stored as properties of vertices or edges.</li>
 </ul>
-<h2 id="examples">Examples</h2>
-<pre><code class="language-ngql"># The following query returns the set {1,2,3}.
+<ul>
+<li>A set is not a data type in openCypher, but in nGQL, users can use the set.</li>
+</ul>
+<h2 id="examples">Examples<a class="headerlink" href="#examples" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code># The following query returns the set {1,2,3}.
 nebula&gt; RETURN set{1, 2, 3} AS a;
 +-----------+
 | a         |
@@ -1345,7 +1345,7 @@ nebula&gt; GO FROM &quot;player100&quot; OVER follow \
 | {36, &quot;Tony Parker&quot;}   |
 | {41, &quot;Manu Ginobili&quot;} |
 +-----------------------+
-</code></pre>
+</code></pre></div>
 
 
 

@@ -44,6 +44,8 @@
       
     
     
+      <link rel="stylesheet" href="../../../stylesheets/note.css">
+    
     <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -73,7 +75,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#user-defined-variables" class="md-skip">
+        <a href="#user-defined_variables" class="md-skip">
           Skip to content
         </a>
       
@@ -1260,14 +1262,14 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#opencypher-compatibility" class="md-nav__link">
+  <a href="#opencypher_compatibility" class="md-nav__link">
     OpenCypher compatibility
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#native-ngql" class="md-nav__link">
+  <a href="#native_ngql" class="md-nav__link">
     Native nGQL
   </a>
   
@@ -1281,7 +1283,7 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
 </li>
       
         <li class="md-nav__item">
-  <a href="#set-operations-and-scope-of-user-defined-variables" class="md-nav__link">
+  <a href="#set_operations_and_scope_of_user-defined_variables" class="md-nav__link">
     Set operations and scope of user-defined variables
   </a>
   
@@ -1305,31 +1307,35 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
   
 
 
-<h1 id="user-defined-variables">User-defined variables</h1>
+<h1 id="user-defined_variables">User-defined variables<a class="headerlink" href="#user-defined_variables" title="Permanent link">&para;</a></h1>
 <p>User-defined variables allow passing the result of one statement to another.</p>
-<h2 id="opencypher-compatibility">OpenCypher compatibility</h2>
+<h2 id="opencypher_compatibility">OpenCypher compatibility<a class="headerlink" href="#opencypher_compatibility" title="Permanent link">&para;</a></h2>
 <p>In openCypher, when you refer to the vertex, edge, or path of a variable, you need to name it first. For example:</p>
-<pre><code class="language-ngql">nebula&gt; MATCH (v:player{name:&quot;Tim Duncan&quot;}) RETURN v;
+<div class="highlight"><pre><span></span><code>nebula&gt; MATCH (v:player{name:&quot;Tim Duncan&quot;}) RETURN v;
 +----------------------------------------------------+
 | v                                                  |
 +----------------------------------------------------+
 | (&quot;player100&quot; :player{name: &quot;Tim Duncan&quot;, age: 42}) |
 +----------------------------------------------------+
-</code></pre>
+</code></pre></div>
 <p>The user-defined variable in the preceding query is <code>v</code>.</p>
-<p>!!! caution</p>
-<pre><code>In a pattern of a MATCH statement, you cannot use the same edge variable repeatedly. For example, `e` cannot be written in the pattern `p=(v1)-[e*2..2]-&gt;(v2)-[e*2..2]-&gt;(v3)`.
-</code></pre>
-<h2 id="native-ngql">Native nGQL</h2>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<p>In a pattern of a MATCH statement, you cannot use the same edge variable repeatedly. For example, <code>e</code> cannot be written in the pattern <code>p=(v1)-[e*2..2]-&gt;(v2)-[e*2..2]-&gt;(v3)</code>.</p>
+</div>
+<h2 id="native_ngql">Native nGQL<a class="headerlink" href="#native_ngql" title="Permanent link">&para;</a></h2>
 <p>User-defined variables are written as <code>$var_name</code>. The <code>var_name</code> consists of letters, numbers, or underline characters. Any other characters are not permitted.</p>
 <p>The user-defined variables are valid only at the current execution (namely, in this composite query). When the execution ends, the user-defined variables will be automatically expired. The user-defined variables in one statement <strong>CANNOT</strong> be used in any other clients, executions, or sessions.</p>
 <p>You can use user-defined variables in composite queries. Details about composite queries, see <a href="../1.composite-queries/">Composite queries</a>.</p>
-<p>!!! note</p>
-<pre><code>- User-defined variables are case-sensitive.
-- To define a user-defined variable in a compound statement, end the statement with a semicolon (;). For details, please refer to the [nGQL Style Guide](../../3.ngql-guide/1.nGQL-overview/ngql-style-guide.md).
-</code></pre>
-<h2 id="example">Example</h2>
-<pre><code class="language-ngql">nebula&gt; $var = GO FROM &quot;player100&quot; OVER follow YIELD dst(edge) AS id; \
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul>
+<li>User-defined variables are case-sensitive.</li>
+<li>To define a user-defined variable in a compound statement, end the statement with a semicolon (;). For details, please refer to the <a href="../../1.nGQL-overview/ngql-style-guide/">nGQL Style Guide</a>.</li>
+</ul>
+</div>
+<h2 id="example">Example<a class="headerlink" href="#example" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code>nebula&gt; $var = GO FROM &quot;player100&quot; OVER follow YIELD dst(edge) AS id; \
         GO FROM $var.id OVER serve YIELD properties($$).name AS Team, \
         properties($^).name AS Player;
 +-----------+-----------------+
@@ -1339,10 +1345,10 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
 | &quot;Hornets&quot; | &quot;Tony Parker&quot;   |
 | &quot;Spurs&quot;   | &quot;Manu Ginobili&quot; |
 +-----------+-----------------+
-</code></pre>
-<h2 id="set-operations-and-scope-of-user-defined-variables">Set operations and scope of user-defined variables</h2>
+</code></pre></div>
+<h2 id="set_operations_and_scope_of_user-defined_variables">Set operations and scope of user-defined variables<a class="headerlink" href="#set_operations_and_scope_of_user-defined_variables" title="Permanent link">&para;</a></h2>
 <p>When assigning variables within a compound statement involving set operations, it is important to enclose the scope of the variable assignment in parentheses. In the example below, the source of the <code>$var</code> assignment is the results of the output of two <code>INTERSECT</code> statements. </p>
-<pre><code class="language-ngql">$var = ( \
+<div class="highlight"><pre><span></span><code>$var = ( \
     GO FROM &quot;player100&quot; OVER follow \
       YIELD dst(edge) AS id \
     INTERSECT \
@@ -1350,7 +1356,7 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
       YIELD dst(edge) AS id \
        ); \
     GO FROM $var.id OVER follow YIELD follow.degree AS degree
-</code></pre>
+</code></pre></div>
 
 
 

@@ -44,6 +44,8 @@
       
     
     
+      <link rel="stylesheet" href="../../../stylesheets/note.css">
+    
     <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -73,7 +75,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#type-conversiontype-coercions" class="md-skip">
+        <a href="#type_conversiontype_coercions" class="md-skip">
           Skip to content
         </a>
       
@@ -1284,11 +1286,11 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
   
 
 
-<h1 id="type-conversiontype-coercions">Type Conversion/Type coercions</h1>
+<h1 id="type_conversiontype_coercions">Type Conversion/Type coercions<a class="headerlink" href="#type_conversiontype_coercions" title="Permanent link">&para;</a></h1>
 <p>Converting an expression of a given type to another type is known as type conversion.</p>
 <p>NebulaGraph supports converting expressions explicit to other types. For details, see <a href="../../6.functions-and-expressions/16.type-conversion/">Type conversion functions</a>.</p>
-<h2 id="examples">Examples</h2>
-<pre><code class="language-ngql">nebula&gt; UNWIND [true, false, 'true', 'false', NULL] AS b \
+<h2 id="examples">Examples<a class="headerlink" href="#examples" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code>nebula&gt; UNWIND [true, false, &#39;true&#39;, &#39;false&#39;, NULL] AS b \
         RETURN toBoolean(b) AS b;
 +----------+
 | b        |
@@ -1300,13 +1302,13 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
 | __NULL__ |
 +----------+
 
-nebula&gt; RETURN toFloat(1), toFloat('1.3'), toFloat('1e3'), toFloat('not a number');
+nebula&gt; RETURN toFloat(1), toFloat(&#39;1.3&#39;), toFloat(&#39;1e3&#39;), toFloat(&#39;not a number&#39;);
 +------------+----------------+----------------+-------------------------+
 | toFloat(1) | toFloat(&quot;1.3&quot;) | toFloat(&quot;1e3&quot;) | toFloat(&quot;not a number&quot;) |
 +------------+----------------+----------------+-------------------------+
 | 1.0        | 1.3            | 1000.0         | __NULL__                |
 +------------+----------------+----------------+-------------------------+
-</code></pre>
+</code></pre></div>
 
 
 

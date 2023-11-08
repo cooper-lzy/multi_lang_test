@@ -44,6 +44,8 @@
       
     
     
+      <link rel="stylesheet" href="../../../stylesheets/note.css">
+    
     <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -73,7 +75,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#order-by" class="md-skip">
+        <a href="#order_by" class="md-skip">
           Skip to content
         </a>
       
@@ -1260,7 +1262,7 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#native-ngql-syntax" class="md-nav__link">
+  <a href="#native_ngql_syntax" class="md-nav__link">
     Native nGQL Syntax
   </a>
   
@@ -1280,7 +1282,7 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
 </li>
       
         <li class="md-nav__item">
-  <a href="#opencypher-syntax" class="md-nav__link">
+  <a href="#opencypher_syntax" class="md-nav__link">
     OpenCypher Syntax
   </a>
   
@@ -1300,7 +1302,7 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
 </li>
       
         <li class="md-nav__item">
-  <a href="#order-of-null-values" class="md-nav__link">
+  <a href="#order_of_null_values" class="md-nav__link">
     Order of NULL values
   </a>
   
@@ -1324,30 +1326,29 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
   
 
 
-<h1 id="order-by">ORDER BY</h1>
+<h1 id="order_by">ORDER BY<a class="headerlink" href="#order_by" title="Permanent link">&para;</a></h1>
 <p>The <code>ORDER BY</code> clause specifies the order of the rows in the output.</p>
 <ul>
-<li>
-<p>Native nGQL: You must use a pipe (<code>|</code>) and an <code>ORDER BY</code> clause after <code>YIELD</code> clause.</p>
-</li>
-<li>
-<p>OpenCypher style: No pipes are permitted. The <code>ORDER BY</code> clause follows a <code>RETURN</code> clause.</p>
-</li>
+<li>Native nGQL: You must use a pipe (<code>|</code>) and an <code>ORDER BY</code> clause after <code>YIELD</code> clause.</li>
+</ul>
+<ul>
+<li>OpenCypher style: No pipes are permitted. The <code>ORDER BY</code> clause follows a <code>RETURN</code> clause.</li>
 </ul>
 <p>There are two order options:</p>
 <ul>
 <li><code>ASC</code>: Ascending. <code>ASC</code> is the default order.</li>
 <li><code>DESC</code>: Descending.</li>
 </ul>
-<h2 id="native-ngql-syntax">Native nGQL Syntax</h2>
-<pre><code class="language-ngql">&lt;YIELD clause&gt;
+<h2 id="native_ngql_syntax">Native nGQL Syntax<a class="headerlink" href="#native_ngql_syntax" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code>&lt;YIELD clause&gt;
 | ORDER BY &lt;expression&gt; [ASC | DESC] [, &lt;expression&gt; [ASC | DESC] ...];
-</code></pre>
-<p>!!! compatibility</p>
-<pre><code>In the native nGQL syntax, `$-.` must be used after `ORDER BY`. But it is not required in releases prior to 2.5.0.
-</code></pre>
-<h3 id="examples">Examples</h3>
-<pre><code class="language-ngql">nebula&gt; FETCH PROP ON player &quot;player100&quot;, &quot;player101&quot;, &quot;player102&quot;, &quot;player103&quot; \
+</code></pre></div>
+<div class="admonition compatibility">
+<p class="admonition-title">Compatibility</p>
+<p>In the native nGQL syntax, <code>$-.</code> must be used after <code>ORDER BY</code>. But it is not required in releases prior to 2.5.0.</p>
+</div>
+<h3 id="examples">Examples<a class="headerlink" href="#examples" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>nebula&gt; FETCH PROP ON player &quot;player100&quot;, &quot;player101&quot;, &quot;player102&quot;, &quot;player103&quot; \
         YIELD player.age AS age, player.name AS name \
         | ORDER BY $-.age ASC, $-.name DESC;
 +-----+---------------------+
@@ -1368,13 +1369,13 @@ nebula&gt; $var = GO FROM &quot;player100&quot; OVER follow \
 | &quot;player125&quot; |
 | &quot;player101&quot; |
 +-------------+
-</code></pre>
-<h2 id="opencypher-syntax">OpenCypher Syntax</h2>
-<pre><code class="language-ngql">&lt;RETURN clause&gt;
+</code></pre></div>
+<h2 id="opencypher_syntax">OpenCypher Syntax<a class="headerlink" href="#opencypher_syntax" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code>&lt;RETURN clause&gt;
 ORDER BY &lt;expression&gt; [ASC | DESC] [, &lt;expression&gt; [ASC | DESC] ...];
-</code></pre>
-<h3 id="examples_1">Examples</h3>
-<pre><code class="language-ngql">nebula&gt; MATCH (v:player) RETURN v.player.name AS Name, v.player.age AS Age  \
+</code></pre></div>
+<h3 id="examples_1">Examples<a class="headerlink" href="#examples_1" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>nebula&gt; MATCH (v:player) RETURN v.player.name AS Name, v.player.age AS Age  \
         ORDER BY Name DESC;
 +-----------------+-----+
 | Name            | Age |
@@ -1393,16 +1394,16 @@ nebula&gt; MATCH (v:player) RETURN v.player.age AS Age, v.player.name AS Name  \
 +-----+-------------------+
 | Age | Name              |
 +-----+-------------------+
-| 47  | &quot;Shaquille O'Neal&quot; |
+| 47  | &quot;Shaquille O&#39;Neal&quot; |
 | 46  | &quot;Grant Hill&quot;      |
 | 45  | &quot;Jason Kidd&quot;      |
 | 45  | &quot;Steve Nash&quot;      |
 +-----+-------------------+
 ...
-</code></pre>
-<h2 id="order-of-null-values">Order of NULL values</h2>
+</code></pre></div>
+<h2 id="order_of_null_values">Order of NULL values<a class="headerlink" href="#order_of_null_values" title="Permanent link">&para;</a></h2>
 <p>nGQL lists NULL values at the end of the output for ascending sorting, and at the start for descending sorting.</p>
-<pre><code class="language-ngql">nebula&gt; MATCH (v:player{name:&quot;Tim Duncan&quot;}) --&gt; (v2) \
+<div class="highlight"><pre><span></span><code>nebula&gt; MATCH (v:player{name:&quot;Tim Duncan&quot;}) --&gt; (v2) \
         RETURN v2.player.name AS Name, v2.player.age AS Age  \
         ORDER BY Age;
 +-----------------+----------+
@@ -1423,7 +1424,7 @@ nebula&gt; MATCH (v:player{name:&quot;Tim Duncan&quot;}) --&gt; (v2) \
 | &quot;Manu Ginobili&quot; | 41       |
 | &quot;Tony Parker&quot;   | 36       |
 +-----------------+----------+
-</code></pre>
+</code></pre></div>
 
 
 

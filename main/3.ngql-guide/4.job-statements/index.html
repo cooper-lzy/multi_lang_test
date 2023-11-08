@@ -44,6 +44,8 @@
       
     
     
+      <link rel="stylesheet" href="../../stylesheets/note.css">
+    
     <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -73,7 +75,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#job-manager-and-the-job-statements" class="md-skip">
+        <a href="#job_manager_and_the_job_statements" class="md-skip">
           Skip to content
         </a>
       
@@ -1260,42 +1262,42 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#submit-job-balance-leader" class="md-nav__link">
+  <a href="#submit_job_balance_leader" class="md-nav__link">
     SUBMIT JOB BALANCE LEADER
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#submit-job-compact" class="md-nav__link">
+  <a href="#submit_job_compact" class="md-nav__link">
     SUBMIT JOB COMPACT
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#submit-job-flush" class="md-nav__link">
+  <a href="#submit_job_flush" class="md-nav__link">
     SUBMIT JOB FLUSH
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#submit-job-stats" class="md-nav__link">
+  <a href="#submit_job_stats" class="md-nav__link">
     SUBMIT JOB STATS
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#submit-job-downloadingest" class="md-nav__link">
+  <a href="#submit_job_downloadingest" class="md-nav__link">
     SUBMIT JOB DOWNLOAD/INGEST
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#show-job" class="md-nav__link">
+  <a href="#show_job" class="md-nav__link">
     SHOW JOB
   </a>
   
@@ -1303,7 +1305,7 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#job-status" class="md-nav__link">
+  <a href="#job_status" class="md-nav__link">
     Job status
   </a>
   
@@ -1315,21 +1317,21 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
 </li>
       
         <li class="md-nav__item">
-  <a href="#show-jobs" class="md-nav__link">
+  <a href="#show_jobs" class="md-nav__link">
     SHOW JOBS
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#stop-job" class="md-nav__link">
+  <a href="#stop_job" class="md-nav__link">
     STOP JOB
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#recover-job" class="md-nav__link">
+  <a href="#recover_job" class="md-nav__link">
     RECOVER JOB
   </a>
   
@@ -1344,7 +1346,7 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#how-to-troubleshoot-job-problems" class="md-nav__link">
+  <a href="#how_to_troubleshoot_job_problems" class="md-nav__link">
     How to troubleshoot job problems?
   </a>
   
@@ -1373,21 +1375,22 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
   
 
 
-<h1 id="job-manager-and-the-job-statements">Job manager and the JOB statements</h1>
+<h1 id="job_manager_and_the_job_statements">Job manager and the JOB statements<a class="headerlink" href="#job_manager_and_the_job_statements" title="Permanent link">&para;</a></h1>
 <p>The long-term tasks run by the Storage Service are called jobs, such as <code>COMPACT</code>, <code>FLUSH</code>, and <code>STATS</code>. These jobs can be time-consuming if the data amount in the graph space is large. The job manager helps you run, show, stop, and recover jobs.</p>
-<p>!!! note</p>
-<pre><code>All job management commands can be executed only after selecting a graph space.
-</code></pre>
-<h2 id="submit-job-balance-leader">SUBMIT JOB BALANCE LEADER</h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>All job management commands can be executed only after selecting a graph space.</p>
+</div>
+<h2 id="submit_job_balance_leader">SUBMIT JOB BALANCE LEADER<a class="headerlink" href="#submit_job_balance_leader" title="Permanent link">&para;</a></h2>
 <p>Starts a job to balance the distribution of all the storage leaders in all graph spaces. It returns the job ID.</p>
 <p>For example:</p>
-<pre><code class="language-ngql">nebula&gt; SUBMIT JOB BALANCE LEADER;
+<div class="highlight"><pre><span></span><code>nebula&gt; SUBMIT JOB BALANCE LEADER;
 +------------+
 | New Job Id |
 +------------+
 | 33         |
 +------------+
-</code></pre>
+</code></pre></div>
 <!-- balance-3.1
 ## SUBMIT JOB BALANCE DATA IN ZONE
 
@@ -1395,15 +1398,13 @@ The `SUBMIT JOB BALANCE DATA IN ZONE` statement starts a job to balance the dist
 
 For example:
 
-
-<pre><code class="language-ngql">nebula&gt; SUBMIT JOB BALANCE DATA IN ZONE REMOVE 192.168.10.102:9779;
+<div class="highlight"><pre><span></span><code>nebula&gt; SUBMIT JOB BALANCE DATA IN ZONE REMOVE 192.168.10.102:9779;
 +------------+
 | New Job Id |
 +------------+
 | 26         |
 +------------+
-</code></pre>
-
+</code></pre></div>
 
 ## SUBMIT JOB BALANCE ACROSS ZONE
 
@@ -1411,57 +1412,56 @@ The `SUBMIT JOB BALANCE ACROSS ZONE` statement starts a job to balance the distr
 
 For example:
 
-
-<pre><code class="language-ngql">nebula&gt; SUBMIT JOB BALANCE ACROSS ZONE REMOVE &quot;zone1&quot;;
+<div class="highlight"><pre><span></span><code>nebula&gt; SUBMIT JOB BALANCE ACROSS ZONE REMOVE &quot;zone1&quot;;
 +------------+
 | New Job Id |
 +------------+
 | 27         |
 +------------+
-</code></pre>
-
+</code></pre></div>
 -->
 
-<h2 id="submit-job-compact">SUBMIT JOB COMPACT</h2>
+<h2 id="submit_job_compact">SUBMIT JOB COMPACT<a class="headerlink" href="#submit_job_compact" title="Permanent link">&para;</a></h2>
 <p>The <code>SUBMIT JOB COMPACT</code> statement triggers the long-term RocksDB <code>compact</code> operation in the current graph space.</p>
 <p>For more information about <code>compact</code> configuration, see <a href="../5.configurations-and-logs/1.configurations/4.storage-config.md">Storage Service configuration</a>.</p>
 <p>For example:</p>
-<pre><code class="language-ngql">nebula&gt; SUBMIT JOB COMPACT;
+<div class="highlight"><pre><span></span><code>nebula&gt; SUBMIT JOB COMPACT;
 +------------+
 | New Job Id |
 +------------+
 | 40         |
 +------------+
-</code></pre>
-<h2 id="submit-job-flush">SUBMIT JOB FLUSH</h2>
+</code></pre></div>
+<h2 id="submit_job_flush">SUBMIT JOB FLUSH<a class="headerlink" href="#submit_job_flush" title="Permanent link">&para;</a></h2>
 <p>The <code>SUBMIT JOB FLUSH</code> statement writes the RocksDB memfile in the memory to the hard disk in the current graph space.</p>
 <p>For example:</p>
-<pre><code class="language-ngql">nebula&gt; SUBMIT JOB FLUSH;
+<div class="highlight"><pre><span></span><code>nebula&gt; SUBMIT JOB FLUSH;
 +------------+
 | New Job Id |
 +------------+
 | 96         |
 +------------+
-</code></pre>
-<h2 id="submit-job-stats">SUBMIT JOB STATS</h2>
+</code></pre></div>
+<h2 id="submit_job_stats">SUBMIT JOB STATS<a class="headerlink" href="#submit_job_stats" title="Permanent link">&para;</a></h2>
 <p>The <code>SUBMIT JOB STATS</code> statement starts a job that makes the statistics of the current graph space. Once this job succeeds, you can use the <code>SHOW STATS</code> statement to list the statistics. For more information, see <a href="../7.general-query-statements/6.show/14.show-stats/">SHOW STATS</a>.</p>
-<p>!!! note</p>
-<pre><code>If the data stored in the graph space changes, in order to get the latest statistics, you have to run `SUBMIT JOB STATS` again.
-</code></pre>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If the data stored in the graph space changes, in order to get the latest statistics, you have to run <code>SUBMIT JOB STATS</code> again.</p>
+</div>
 <p>For example:</p>
-<pre><code class="language-ngql">nebula&gt; SUBMIT JOB STATS;
+<div class="highlight"><pre><span></span><code>nebula&gt; SUBMIT JOB STATS;
 +------------+
 | New Job Id |
 +------------+
 | 9          |
 +------------+
-</code></pre>
-<h2 id="submit-job-downloadingest">SUBMIT JOB DOWNLOAD/INGEST</h2>
+</code></pre></div>
+<h2 id="submit_job_downloadingest">SUBMIT JOB DOWNLOAD/INGEST<a class="headerlink" href="#submit_job_downloadingest" title="Permanent link">&para;</a></h2>
 <p>The <code>SUBMIT JOB DOWNLOAD HDFS</code> and <code>SUBMIT JOB INGEST</code> commands are used to import the SST file into NebulaGraph. For detail, see <a href="../import-export/nebula-exchange/use-exchange/ex-ug-import-from-sst.md">Import data from SST files</a>.</p>
 <p>The <code>SUBMIT JOB DOWNLOAD HDFS</code> command will download the SST file on the specified HDFS.</p>
 <p>The <code>SUBMIT JOB INGEST</code> command will import the downloaded SST file into NebulaGraph.</p>
 <p>For example:</p>
-<pre><code class="language-ngql">nebula&gt; SUBMIT JOB DOWNLOAD HDFS &quot;hdfs://192.168.10.100:9000/sst&quot;;
+<div class="highlight"><pre><span></span><code>nebula&gt; SUBMIT JOB DOWNLOAD HDFS &quot;hdfs://192.168.10.100:9000/sst&quot;;
 +------------+
 | New Job Id |
 +------------+
@@ -1473,12 +1473,12 @@ nebula&gt; SUBMIT JOB INGEST;
 +------------+
 | 11         |
 +------------+
-</code></pre>
-<h2 id="show-job">SHOW JOB</h2>
+</code></pre></div>
+<h2 id="show_job">SHOW JOB<a class="headerlink" href="#show_job" title="Permanent link">&para;</a></h2>
 <p>The Meta Service parses a <code>SUBMIT JOB</code> request into multiple tasks and assigns them to the nebula-storaged processes. The <code>SHOW JOB &lt;job_id&gt;</code> statement shows the information about a specific job and all its tasks in the current graph space.</p>
 <p><code>job_id</code> is returned when you run the <code>SUBMIT JOB</code> statement.</p>
 <p>For example:</p>
-<pre><code class="language-ngql">nebula&gt; SHOW JOB 8;
+<div class="highlight"><pre><span></span><code>nebula&gt; SHOW JOB 8;
 +----------------+-----------------+------------+----------------------------+----------------------------+-------------+
 | Job Id(TaskId) | Command(Dest)   | Status     | Start Time                 | Stop Time                  | Error Code  |
 +----------------+-----------------+------------+----------------------------+----------------------------+-------------+
@@ -1486,7 +1486,7 @@ nebula&gt; SUBMIT JOB INGEST;
 | 0              | &quot;192.168.8.129&quot; | &quot;FINISHED&quot; | 2022-10-18T08:14:45.000000 | 2022-10-18T08:15:13.000000 | &quot;SUCCEEDED&quot; |
 | &quot;Total:1&quot;      | &quot;Succeeded:1&quot;   | &quot;Failed:0&quot; | &quot;In Progress:0&quot;            | &quot;&quot;                         | &quot;&quot;          |
 +----------------+-----------------+------------+----------------------------+----------------------------+-------------+
-</code></pre>
+</code></pre></div>
 <p>The descriptions are as follows.</p>
 <table>
 <thead>
@@ -1522,7 +1522,7 @@ nebula&gt; SUBMIT JOB INGEST;
 </tr>
 </tbody>
 </table>
-<h3 id="job-status">Job status</h3>
+<h3 id="job_status">Job status<a class="headerlink" href="#job_status" title="Permanent link">&para;</a></h3>
 <p>The descriptions are as follows.</p>
 <table>
 <thead>
@@ -1559,17 +1559,17 @@ nebula&gt; SUBMIT JOB INGEST;
 </tbody>
 </table>
 <p>The description of switching the status is described as follows.</p>
-<pre><code class="language-ngql">Queue -- running -- finished -- removed
+<div class="highlight"><pre><span></span><code>Queue -- running -- finished -- removed
      \          \                /
       \          \ -- failed -- /
        \          \            /
         \ ---------- stopped -/
-</code></pre>
-<h2 id="show-jobs">SHOW JOBS</h2>
+</code></pre></div>
+<h2 id="show_jobs">SHOW JOBS<a class="headerlink" href="#show_jobs" title="Permanent link">&para;</a></h2>
 <p>The <code>SHOW JOBS</code> statement lists all the unexpired jobs in the current graph space.</p>
 <p>The default job expiration interval is one week. You can change it by modifying the <code>job_expired_secs</code> parameter of the Meta Service. For how to modify <code>job_expired_secs</code>, see <a href="../5.configurations-and-logs/1.configurations/2.meta-config.md">Meta Service configuration</a>.</p>
 <p>For example:</p>
-<pre><code class="language-ngql">nebula&gt; SHOW JOBS;
+<div class="highlight"><pre><span></span><code>nebula&gt; SHOW JOBS;
 +--------+---------------------+------------+----------------------------+----------------------------+
 | Job Id | Command             | Status     | Start Time                 | Stop Time                  |
 +--------+---------------------+------------+----------------------------+----------------------------+
@@ -1579,32 +1579,32 @@ nebula&gt; SUBMIT JOB INGEST;
 | 31     | &quot;REBUILD_TAG_INDEX&quot; | &quot;FINISHED&quot; | 2021-10-29T05:39:16.000000 | 2021-10-29T05:39:17.000000 |
 | 10     | &quot;COMPACT&quot;           | &quot;FINISHED&quot; | 2021-10-26T02:27:05.000000 | 2021-10-26T02:27:05.000000 |
 +--------+---------------------+------------+----------------------------+----------------------------+
-</code></pre>
-<h2 id="stop-job">STOP JOB</h2>
+</code></pre></div>
+<h2 id="stop_job">STOP JOB<a class="headerlink" href="#stop_job" title="Permanent link">&para;</a></h2>
 <p>The <code>STOP JOB &lt;job_id&gt;</code> statement stops jobs that are not finished in the current graph space.</p>
 <p>For example:</p>
-<pre><code class="language-ngql">nebula&gt; STOP JOB 22;
+<div class="highlight"><pre><span></span><code>nebula&gt; STOP JOB 22;
 +---------------+
 | Result        |
 +---------------+
 | &quot;Job stopped&quot; |
 +---------------+
-</code></pre>
-<h2 id="recover-job">RECOVER JOB</h2>
+</code></pre></div>
+<h2 id="recover_job">RECOVER JOB<a class="headerlink" href="#recover_job" title="Permanent link">&para;</a></h2>
 <p>The <code>RECOVER JOB [&lt;job_id&gt;]</code> statement re-executes the jobs that status is <code>FAILED</code> or <code>STOPPED</code> in the current graph space and returns the number of recovered jobs. If <code>&lt;job_id&gt;</code> is not specified, re-execution is performed from the earliest job and the number of jobs that have been recovered is returned.</p>
 <p>For example:</p>
-<pre><code class="language-ngql">nebula&gt; RECOVER JOB;
+<div class="highlight"><pre><span></span><code>nebula&gt; RECOVER JOB;
 +-------------------+
 | Recovered job num |
 +-------------------+
 | 5 job recovered   |
 +-------------------+
-</code></pre>
-<h2 id="faq">FAQ</h2>
-<h3 id="how-to-troubleshoot-job-problems">How to troubleshoot job problems?</h3>
+</code></pre></div>
+<h2 id="faq">FAQ<a class="headerlink" href="#faq" title="Permanent link">&para;</a></h2>
+<h3 id="how_to_troubleshoot_job_problems">How to troubleshoot job problems?<a class="headerlink" href="#how_to_troubleshoot_job_problems" title="Permanent link">&para;</a></h3>
 <p>The <code>SUBMIT JOB</code> operations use the HTTP port. Please check if the HTTP ports on the machines where the Storage Service is running are working well. You can use the following command to debug.</p>
-<pre><code class="language-bash">curl &quot;http://{storaged-ip}:19779/admin?space={space_name}&amp;op=compact&quot;
-</code></pre>
+<div class="highlight"><pre><span></span><code>curl<span class="w"> </span><span class="s2">&quot;http://{storaged-ip}:19779/admin?space={space_name}&amp;op=compact&quot;</span>
+</code></pre></div>
 
 
 

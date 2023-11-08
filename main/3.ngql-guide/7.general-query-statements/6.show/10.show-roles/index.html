@@ -44,6 +44,8 @@
       
     
     
+      <link rel="stylesheet" href="../../../../stylesheets/note.css">
+    
     <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -73,7 +75,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#show-roles" class="md-skip">
+        <a href="#show_roles" class="md-skip">
           Skip to content
         </a>
       
@@ -1291,32 +1293,30 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
   
 
 
-<h1 id="show-roles">SHOW ROLES</h1>
+<h1 id="show_roles">SHOW ROLES<a class="headerlink" href="#show_roles" title="Permanent link">&para;</a></h1>
 <p>The <code>SHOW ROLES</code> statement shows the roles that are assigned to a user account.</p>
 <p>The return message differs according to the role of the user who is running this statement:</p>
 <ul>
-<li>
-<p>If the user is a <code>GOD</code> or <code>ADMIN</code> and is granted access to the specified graph space, NebulaGraph shows all roles in this graph space except for <code>GOD</code>.</p>
-</li>
-<li>
-<p>If the user is a <code>DBA</code>, <code>USER</code>, or <code>GUEST</code> and is granted access to the specified graph space, NebulaGraph shows the user's own role in this graph space.</p>
-</li>
-<li>
-<p>If the user does not have access to the specified graph space, NebulaGraph returns <code>PermissionError</code>.</p>
-</li>
+<li>If the user is a <code>GOD</code> or <code>ADMIN</code> and is granted access to the specified graph space, NebulaGraph shows all roles in this graph space except for <code>GOD</code>.</li>
+</ul>
+<ul>
+<li>If the user is a <code>DBA</code>, <code>USER</code>, or <code>GUEST</code> and is granted access to the specified graph space, NebulaGraph shows the user's own role in this graph space.</li>
+</ul>
+<ul>
+<li>If the user does not have access to the specified graph space, NebulaGraph returns <code>PermissionError</code>.</li>
 </ul>
 <p>For more information about roles, see <a href="../../../7.data-security/1.authentication/3.role-list.md">Roles and privileges</a>.</p>
-<h2 id="syntax">Syntax</h2>
-<pre><code class="language-ngql">SHOW ROLES IN &lt;space_name&gt;;
-</code></pre>
-<h2 id="example">Example</h2>
-<pre><code class="language-ngql">nebula&gt; SHOW ROLES in basketballplayer;
+<h2 id="syntax">Syntax<a class="headerlink" href="#syntax" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code>SHOW ROLES IN &lt;space_name&gt;;
+</code></pre></div>
+<h2 id="example">Example<a class="headerlink" href="#example" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code>nebula&gt; SHOW ROLES in basketballplayer;
 +---------+-----------+
 | Account | Role Type |
 +---------+-----------+
 | &quot;user1&quot; | &quot;ADMIN&quot;   |
 +---------+-----------+
-</code></pre>
+</code></pre></div>
 
 
 

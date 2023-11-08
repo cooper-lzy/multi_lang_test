@@ -44,6 +44,8 @@
       
     
     
+      <link rel="stylesheet" href="../../../stylesheets/note.css">
+    
     <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -73,7 +75,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#list-functions" class="md-skip">
+        <a href="#list_functions" class="md-skip">
           Skip to content
         </a>
       
@@ -1322,7 +1324,7 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
 </li>
       
         <li class="md-nav__item">
-  <a href="#for-ngql-statements" class="md-nav__link">
+  <a href="#for_ngql_statements" class="md-nav__link">
     For nGQL statements
   </a>
   
@@ -1349,7 +1351,7 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
 </li>
       
         <li class="md-nav__item">
-  <a href="#for-statements-compatible-with-opencypher" class="md-nav__link">
+  <a href="#for_statements_compatible_with_opencypher" class="md-nav__link">
     For statements compatible with openCypher
   </a>
   
@@ -1407,118 +1409,115 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
   
 
 
-<h1 id="list-functions">List functions</h1>
+<h1 id="list_functions">List functions<a class="headerlink" href="#list_functions" title="Permanent link">&para;</a></h1>
 <p>This topic describes the list functions supported by NebulaGraph. Some of the functions have different syntax in native nGQL statements and openCypher-compatible statements.</p>
-<h2 id="precautions">Precautions</h2>
+<h2 id="precautions">Precautions<a class="headerlink" href="#precautions" title="Permanent link">&para;</a></h2>
 <p>Like SQL, the position index in nGQL starts from <code>1</code>, while in the C language it starts from <code>0</code>.</p>
-<h2 id="general">General</h2>
-<h3 id="range">range()</h3>
+<h2 id="general">General<a class="headerlink" href="#general" title="Permanent link">&para;</a></h2>
+<h3 id="range">range()<a class="headerlink" href="#range" title="Permanent link">&para;</a></h3>
 <p>range() returns the list containing all the fixed-length steps in <code>[start,end]</code>.</p>
 <p>Syntax: <code>range(start, end [, step])</code></p>
 <ul>
-<li>
-<p><code>step</code>: Optional parameters. <code>step</code> is 1 by default.</p>
-</li>
-<li>
-<p>Result type: List</p>
-</li>
+<li><code>step</code>: Optional parameters. <code>step</code> is 1 by default.</li>
+</ul>
+<ul>
+<li>Result type: List</li>
 </ul>
 <p>Example:</p>
-<pre><code class="language-ngql">nebula&gt; RETURN range(1,9,2);
+<div class="highlight"><pre><span></span><code>nebula&gt; RETURN range(1,9,2);
 +-----------------+
 | range(1,9,2)    |
 +-----------------+
 | [1, 3, 5, 7, 9] |
 +-----------------+
-</code></pre>
-<h3 id="reverse">reverse()</h3>
+</code></pre></div>
+<h3 id="reverse">reverse()<a class="headerlink" href="#reverse" title="Permanent link">&para;</a></h3>
 <p>reverse() returns the list reversing the order of all elements in the original list.</p>
 <p>Syntax: <code>reverse(&lt;list&gt;)</code></p>
 <ul>
 <li>Result type: List</li>
 </ul>
 <p>Example:</p>
-<pre><code class="language-ngql">nebula&gt; WITH [NULL, 4923, 'abc', 521, 487] AS ids \
+<div class="highlight"><pre><span></span><code>nebula&gt; WITH [NULL, 4923, &#39;abc&#39;, 521, 487] AS ids \
         RETURN reverse(ids);
 +-----------------------------------+
 | reverse(ids)                      |
 +-----------------------------------+
 | [487, 521, &quot;abc&quot;, 4923, __NULL__] |
 +-----------------------------------+
-</code></pre>
-<h3 id="tail">tail()</h3>
+</code></pre></div>
+<h3 id="tail">tail()<a class="headerlink" href="#tail" title="Permanent link">&para;</a></h3>
 <p>tail() returns all the elements of the original list, excluding the first one.</p>
 <p>Syntax: <code>tail(&lt;list&gt;)</code></p>
 <ul>
 <li>Result type: List</li>
 </ul>
 <p>Example:</p>
-<pre><code class="language-ngql">nebula&gt; WITH [NULL, 4923, 'abc', 521, 487] AS ids \
+<div class="highlight"><pre><span></span><code>nebula&gt; WITH [NULL, 4923, &#39;abc&#39;, 521, 487] AS ids \
         RETURN tail(ids);
 +-------------------------+
 | tail(ids)               |
 +-------------------------+
 | [4923, &quot;abc&quot;, 521, 487] |
 +-------------------------+
-</code></pre>
-<h3 id="head">head()</h3>
+</code></pre></div>
+<h3 id="head">head()<a class="headerlink" href="#head" title="Permanent link">&para;</a></h3>
 <p>head() returns the first element of a list.</p>
 <p>Syntax: <code>head(&lt;list&gt;)</code></p>
 <ul>
 <li>Result type: Same as the element in the original list.</li>
 </ul>
 <p>Example:</p>
-<pre><code class="language-ngql">nebula&gt; WITH [NULL, 4923, 'abc', 521, 487] AS ids \
+<div class="highlight"><pre><span></span><code>nebula&gt; WITH [NULL, 4923, &#39;abc&#39;, 521, 487] AS ids \
         RETURN head(ids);
 +-----------+
 | head(ids) |
 +-----------+
 | __NULL__  |
 +-----------+
-</code></pre>
-<h3 id="last">last()</h3>
+</code></pre></div>
+<h3 id="last">last()<a class="headerlink" href="#last" title="Permanent link">&para;</a></h3>
 <p>last() returns the last element of a list.</p>
 <p>Syntax: <code>last(&lt;list&gt;)</code></p>
 <ul>
 <li>Result type: Same as the element in the original list.</li>
 </ul>
 <p>Example:</p>
-<pre><code class="language-ngql">nebula&gt; WITH [NULL, 4923, 'abc', 521, 487] AS ids \
+<div class="highlight"><pre><span></span><code>nebula&gt; WITH [NULL, 4923, &#39;abc&#39;, 521, 487] AS ids \
         RETURN last(ids);
 +-----------+
 | last(ids) |
 +-----------+
 | 487       |
 +-----------+
-</code></pre>
-<h3 id="reduce">reduce()</h3>
+</code></pre></div>
+<h3 id="reduce">reduce()<a class="headerlink" href="#reduce" title="Permanent link">&para;</a></h3>
 <p>reduce() applies an expression to each element in a list one by one, chains the result to the next iteration by taking it as the initial value, and returns the final result. This function iterates each element <code>e</code> in the given list, runs the expression on <code>e</code>, accumulates the result with the initial value, and store the new result in the accumulator as the initial value of the next iteration. It works like the fold or reduce method in functional languages such as Lisp and Scala.</p>
-<p>!!! compatibility "openCypher compatibility"</p>
-<pre><code>In openCypher, the `reduce()` function is not defined. nGQL will implement the `reduce()` function in the Cypher way.
-</code></pre>
+<div class="admonition compatibility">
+<p class="admonition-title">openCypher compatibility</p>
+<p>In openCypher, the <code>reduce()</code> function is not defined. nGQL will implement the <code>reduce()</code> function in the Cypher way.</p>
+</div>
 <p>Syntax: <code>reduce(&lt;accumulator&gt; = &lt;initial&gt;, &lt;variable&gt; IN &lt;list&gt; | &lt;expression&gt;)</code></p>
 <ul>
-<li>
-<p><code>accumulator</code>: A variable that will hold the accumulated results as the list is iterated.</p>
-</li>
-<li>
-<p><code>initial</code>: An expression that runs once to give an initial value to the <code>accumulator</code>.</p>
-</li>
-<li>
-<p><code>variable</code>: A variable in the list that will be applied to the expression successively.</p>
-</li>
-<li>
-<p><code>list</code>: A list or a list of expressions.</p>
-</li>
-<li>
-<p><code>expression</code>: This expression will be run on each element in the list once and store the result value in the <code>accumulator</code>.</p>
-</li>
-<li>
-<p>Result type: Depends on the parameters provided, along with the semantics of the expression.</p>
-</li>
+<li><code>accumulator</code>: A variable that will hold the accumulated results as the list is iterated.</li>
+</ul>
+<ul>
+<li><code>initial</code>: An expression that runs once to give an initial value to the <code>accumulator</code>.</li>
+</ul>
+<ul>
+<li><code>variable</code>: A variable in the list that will be applied to the expression successively.</li>
+</ul>
+<ul>
+<li><code>list</code>: A list or a list of expressions.</li>
+</ul>
+<ul>
+<li><code>expression</code>: This expression will be run on each element in the list once and store the result value in the <code>accumulator</code>.</li>
+</ul>
+<ul>
+<li>Result type: Depends on the parameters provided, along with the semantics of the expression.</li>
 </ul>
 <p>Example:</p>
-<pre><code class="language-ngql">nebula&gt; RETURN reduce(totalNum = -4 * 5, n IN [1, 2] | totalNum + n * 2) AS r;
+<div class="highlight"><pre><span></span><code>nebula&gt; RETURN reduce(totalNum = -4 * 5, n IN [1, 2] | totalNum + n * 2) AS r;
 +-----+
 | r   |
 +-----+
@@ -1550,16 +1549,16 @@ nebula&gt; LOOKUP ON player WHERE player.name == &quot;Tony Parker&quot; YIELD i
 | &quot;LaMarcus Aldridge&quot; | 33  | 90     |
 | &quot;Manu Ginobili&quot;     | 41  | 95     |
 +---------------------+-----+--------+
-</code></pre>
-<h2 id="for-ngql-statements">For nGQL statements</h2>
-<h3 id="keys">keys()</h3>
+</code></pre></div>
+<h2 id="for_ngql_statements">For nGQL statements<a class="headerlink" href="#for_ngql_statements" title="Permanent link">&para;</a></h2>
+<h3 id="keys">keys()<a class="headerlink" href="#keys" title="Permanent link">&para;</a></h3>
 <p>keys() returns a list containing the string representations for all the property names of vertices or edges.</p>
 <p>Syntax: <code>keys({vertex | edge})</code></p>
 <ul>
 <li>Result type: List</li>
 </ul>
 <p>Example:</p>
-<pre><code class="language-ngql">nebula&gt; LOOKUP ON player \
+<div class="highlight"><pre><span></span><code>nebula&gt; LOOKUP ON player \
         WHERE player.age  &gt; 45 \
         YIELD keys(vertex);
 +-----------------+
@@ -1568,15 +1567,15 @@ nebula&gt; LOOKUP ON player WHERE player.name == &quot;Tony Parker&quot; YIELD i
 | [&quot;age&quot;, &quot;name&quot;] |
 | [&quot;age&quot;, &quot;name&quot;] |
 +-----------------+
-</code></pre>
-<h3 id="labels">labels()</h3>
+</code></pre></div>
+<h3 id="labels">labels()<a class="headerlink" href="#labels" title="Permanent link">&para;</a></h3>
 <p>labels() returns the list containing all the tags of a vertex.</p>
 <p>Syntax: <code>labels(verte)</code></p>
 <ul>
 <li>Result type: List</li>
 </ul>
 <p>Example:</p>
-<pre><code class="language-ngql">nebula&gt; FETCH PROP ON * &quot;player101&quot;, &quot;player102&quot;, &quot;team204&quot; \
+<div class="highlight"><pre><span></span><code>nebula&gt; FETCH PROP ON * &quot;player101&quot;, &quot;player102&quot;, &quot;team204&quot; \
         YIELD labels(vertex);
 +----------------+
 | labels(VERTEX) |
@@ -1585,16 +1584,16 @@ nebula&gt; LOOKUP ON player WHERE player.name == &quot;Tony Parker&quot; YIELD i
 | [&quot;player&quot;]     |
 | [&quot;team&quot;]       |
 +----------------+
-</code></pre>
-<h2 id="for-statements-compatible-with-opencypher">For statements compatible with openCypher</h2>
-<h3 id="keys_1">keys()</h3>
+</code></pre></div>
+<h2 id="for_statements_compatible_with_opencypher">For statements compatible with openCypher<a class="headerlink" href="#for_statements_compatible_with_opencypher" title="Permanent link">&para;</a></h2>
+<h3 id="keys_1">keys()<a class="headerlink" href="#keys_1" title="Permanent link">&para;</a></h3>
 <p>keys() returns a list containing the string representations for all the property names of vertices, edges, or maps.</p>
 <p>Syntax: <code>keys(&lt;vertex_or_edge&gt;)</code></p>
 <ul>
 <li>Result type: List</li>
 </ul>
 <p>Example:</p>
-<pre><code class="language-ngql">nebula&gt; MATCH (v:player{name:&quot;Tim Duncan&quot;})-[e]-&gt;() \
+<div class="highlight"><pre><span></span><code>nebula&gt; MATCH (v:player{name:&quot;Tim Duncan&quot;})-[e]-&gt;() \
         RETURN keys(e);
 +----------------------------+
 | keys(e)                    |
@@ -1603,15 +1602,15 @@ nebula&gt; LOOKUP ON player WHERE player.name == &quot;Tony Parker&quot; YIELD i
 | [&quot;degree&quot;]                 |
 | [&quot;degree&quot;]                 |
 +----------------------------+
-</code></pre>
-<h3 id="labels_1">labels()</h3>
+</code></pre></div>
+<h3 id="labels_1">labels()<a class="headerlink" href="#labels_1" title="Permanent link">&para;</a></h3>
 <p>labels() returns the list containing all the tags of a vertex.</p>
 <p>Syntax: <code>labels(&lt;vertex&gt;)</code></p>
 <ul>
 <li>Result type: List</li>
 </ul>
 <p>Example:</p>
-<pre><code class="language-ngql">nebula&gt; MATCH (v)-[e:serve]-&gt;() \
+<div class="highlight"><pre><span></span><code>nebula&gt; MATCH (v)-[e:serve]-&gt;() \
         WHERE id(v)==&quot;player100&quot; \
         RETURN labels(v);
 +------------+
@@ -1619,15 +1618,15 @@ nebula&gt; LOOKUP ON player WHERE player.name == &quot;Tony Parker&quot; YIELD i
 +------------+
 | [&quot;player&quot;] |
 +------------+
-</code></pre>
-<h3 id="nodes">nodes()</h3>
+</code></pre></div>
+<h3 id="nodes">nodes()<a class="headerlink" href="#nodes" title="Permanent link">&para;</a></h3>
 <p>nodes() returns the list containing all the vertices in a path.</p>
 <p>Syntax: <code>nodes(&lt;path&gt;)</code></p>
 <ul>
 <li>Result type: List</li>
 </ul>
 <p>Example:</p>
-<pre><code class="language-ngql">nebula&gt; MATCH p=(v:player{name:&quot;Tim Duncan&quot;})--&gt;(v2) \
+<div class="highlight"><pre><span></span><code>nebula&gt; MATCH p=(v:player{name:&quot;Tim Duncan&quot;})--&gt;(v2) \
         RETURN nodes(p);
 +-------------------------------------------------------------------------------------------------------------+
 | nodes(p)                                                                                                    |
@@ -1636,15 +1635,15 @@ nebula&gt; LOOKUP ON player WHERE player.name == &quot;Tony Parker&quot; YIELD i
 | [(&quot;player100&quot; :player{age: 42, name: &quot;Tim Duncan&quot;}), (&quot;player101&quot; :player{age: 36, name: &quot;Tony Parker&quot;})]   |
 | [(&quot;player100&quot; :player{age: 42, name: &quot;Tim Duncan&quot;}), (&quot;player125&quot; :player{age: 41, name: &quot;Manu Ginobili&quot;})] |
 +-------------------------------------------------------------------------------------------------------------+
-</code></pre>
-<h3 id="relationships">relationships()</h3>
+</code></pre></div>
+<h3 id="relationships">relationships()<a class="headerlink" href="#relationships" title="Permanent link">&para;</a></h3>
 <p>relationships() returns the list containing all the relationships in a path.</p>
 <p>Syntax: <code>relationships(&lt;path&gt;)</code></p>
 <ul>
 <li>Result type: List</li>
 </ul>
 <p>Example:</p>
-<pre><code class="language-ngql">nebula&gt; MATCH p=(v:player{name:&quot;Tim Duncan&quot;})--&gt;(v2) \
+<div class="highlight"><pre><span></span><code>nebula&gt; MATCH p=(v:player{name:&quot;Tim Duncan&quot;})--&gt;(v2) \
         RETURN relationships(p);
 +-------------------------------------------------------------------------+
 | relationships(p)                                                        |
@@ -1653,7 +1652,7 @@ nebula&gt; LOOKUP ON player WHERE player.name == &quot;Tony Parker&quot; YIELD i
 | [[:follow &quot;player100&quot;-&gt;&quot;player101&quot; @0 {degree: 95}]]                    |
 | [[:follow &quot;player100&quot;-&gt;&quot;player125&quot; @0 {degree: 95}]]                    |
 +-------------------------------------------------------------------------+
-</code></pre>
+</code></pre></div>
 
 
 

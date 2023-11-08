@@ -44,6 +44,8 @@
       
     
     
+      <link rel="stylesheet" href="../../../stylesheets/note.css">
+    
     <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -1274,7 +1276,7 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
 </li>
       
         <li class="md-nav__item">
-  <a href="#using-patterns-in-match-statements" class="md-nav__link">
+  <a href="#using_patterns_in_match_statements" class="md-nav__link">
     Using patterns in MATCH statements
   </a>
   
@@ -1282,112 +1284,112 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#match-vertices" class="md-nav__link">
+  <a href="#match_vertices" class="md-nav__link">
     Match vertices
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#match-tags" class="md-nav__link">
+  <a href="#match_tags" class="md-nav__link">
     Match tags
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#match-vertex-properties" class="md-nav__link">
+  <a href="#match_vertex_properties" class="md-nav__link">
     Match vertex properties
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#match-vids" class="md-nav__link">
+  <a href="#match_vids" class="md-nav__link">
     Match VIDs
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#match-connected-vertices" class="md-nav__link">
+  <a href="#match_connected_vertices" class="md-nav__link">
     Match connected vertices
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#match-paths" class="md-nav__link">
+  <a href="#match_paths" class="md-nav__link">
     Match paths
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#match-edges" class="md-nav__link">
+  <a href="#match_edges" class="md-nav__link">
     Match edges
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#match-edge-types" class="md-nav__link">
+  <a href="#match_edge_types" class="md-nav__link">
     Match edge types
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#match-edge-type-properties" class="md-nav__link">
+  <a href="#match_edge_type_properties" class="md-nav__link">
     Match edge type properties
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#match-multiple-edge-types" class="md-nav__link">
+  <a href="#match_multiple_edge_types" class="md-nav__link">
     Match multiple edge types
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#match-multiple-edges" class="md-nav__link">
+  <a href="#match_multiple_edges" class="md-nav__link">
     Match multiple edges
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#match-fixed-length-paths" class="md-nav__link">
+  <a href="#match_fixed-length_paths" class="md-nav__link">
     Match fixed-length paths
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#match-variable-length-paths" class="md-nav__link">
+  <a href="#match_variable-length_paths" class="md-nav__link">
     Match variable-length paths
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#match-variable-length-paths-with-multiple-edge-types" class="md-nav__link">
+  <a href="#match_variable-length_paths_with_multiple_edge_types" class="md-nav__link">
     Match variable-length paths with multiple edge types
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#match-multiple-patterns" class="md-nav__link">
+  <a href="#match_multiple_patterns" class="md-nav__link">
     Match multiple patterns
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#match-shortest-paths" class="md-nav__link">
+  <a href="#match_shortest_paths" class="md-nav__link">
     Match shortest paths
   </a>
   
@@ -1399,14 +1401,14 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
 </li>
       
         <li class="md-nav__item">
-  <a href="#retrieve-with-multiple-match" class="md-nav__link">
+  <a href="#retrieve_with_multiple_match" class="md-nav__link">
     Retrieve with multiple match
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#retrieve-with-optional-match" class="md-nav__link">
+  <a href="#retrieve_with_optional_match" class="md-nav__link">
     Retrieve with optional match
   </a>
   
@@ -1430,49 +1432,48 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
   
 
 
-<h1 id="match">MATCH</h1>
+<h1 id="match">MATCH<a class="headerlink" href="#match" title="Permanent link">&para;</a></h1>
 <p>The <code>MATCH</code> statement provides pattern-based search functionality, allowing you to retrieve data that matches one or more patterns in NebulaGraph. By defining one or more patterns, you can search for data that matches the patterns in NebulaGraph. Once the matching data is retrieved, you can use the <code>RETURN</code> clause to return it as a result.</p>
 <p>The examples in this topic use the <a href="../../1.nGQL-overview/1.overview/#example_data_basketballplayer">basketballplayer</a> dataset as the sample dataset.</p>
-<h2 id="syntax">Syntax</h2>
+<h2 id="syntax">Syntax<a class="headerlink" href="#syntax" title="Permanent link">&para;</a></h2>
 <p>The syntax of <code>MATCH</code> is relatively more flexible compared with that of other query statements such as <code>GO</code> or <code>LOOKUP</code>. The path type of the <code>MATCH</code> statement is <code>trail</code>. That is, only vertices can be repeatedly visited in the graph traversal. Edges cannot be repeatedly visited. For details, see <a href="../../../1.introduction/2.1.path/">path</a>. But generally, it can be summarized as follows.</p>
-<pre><code class="language-ngql">MATCH &lt;pattern&gt; [&lt;clause_1&gt;] RETURN &lt;output&gt; [&lt;clause_2&gt;];
-</code></pre>
+<div class="highlight"><pre><span></span><code>MATCH &lt;pattern&gt; [&lt;clause_1&gt;] RETURN &lt;output&gt; [&lt;clause_2&gt;];
+</code></pre></div>
 <ul>
-<li>
-<p><code>pattern</code>: The <code>MATCH</code> statement supports matching one or multiple patterns. Multiple patterns are separated by commas (,). For example: <code>(a)-[]-&gt;(b),(c)-[]-&gt;(d)</code>. For the detailed description of patterns, see <a href="../../1.nGQL-overview/3.graph-patterns/">Patterns</a>. </p>
-</li>
-<li>
-<p><code>clause_1</code>: The <code>WHERE</code>, <code>WITH</code>, <code>UNWIND</code>, and <code>OPTIONAL MATCH</code> clauses are supported, and the <code>MATCH</code> clause can also be used.</p>
-</li>
-<li>
-<p><code>output</code>: Define the list name for the output results to be returned. You can use <code>AS</code> to set an alias for the list.</p>
-</li>
-<li>
-<p><code>clause_2</code>: The <code>ORDER BY</code> and <code>LIMIT</code> clauses are supported.</p>
-</li>
+<li><code>pattern</code>: The <code>MATCH</code> statement supports matching one or multiple patterns. Multiple patterns are separated by commas (,). For example: <code>(a)-[]-&gt;(b),(c)-[]-&gt;(d)</code>. For the detailed description of patterns, see <a href="../../1.nGQL-overview/3.graph-patterns/">Patterns</a>. </li>
 </ul>
-<p>!!! compatibility "Legacy version compatibility"</p>
-<pre><code>- Starting from version 3.5.0, the `MATCH` statement supports full table scans. It can traverse vertices or edges in the graph without using any indexes or filter conditions. In previous versions, the `MATCH` statement required an index for certain queries or needed to use `LIMIT` to restrict the number of output results.
-
-
-- Starting from NebulaGraph version 3.0.0, in order to distinguish the properties of different tags, you need to specify a tag name when querying properties. The original statement `RETURN &lt;variable_name&gt;.&lt;property_name&gt;` is changed to `RETURN &lt;variable_name&gt;.&lt;tag_name&gt;.&lt;property_name&gt;`.
-</code></pre>
-<h2 id="notes">Notes</h2>
 <ul>
-<li>
-<p>Avoid full table scans, as they may result in decreased query performance, and if there is insufficient memory during a full table scan, the query may fail, and the system will report an error. It is recommended to use queries with filter conditions or specifying tags and edge types, such as <code>v:player</code> and <code>v.player.name</code> in the statement <code>MATCH (v:player) RETURN v.player.name AS Name</code>.</p>
-</li>
-<li>
-<p>You can create an index for a tag, edge type, or a specific property of a tag or edge type to improve query performance. For example, you can create an index for the <code>player</code> tag or the name property of the <code>player</code> tag. For more information about the usage and considerations for indexes, see <a href="../../14.native-index-statements/1.create-native-index/">Must-read for using indexes</a>.</p>
-</li>
-<li>
-<p>The <code>MATCH</code> statement cannot query dangling edges.</p>
-</li>
+<li><code>clause_1</code>: The <code>WHERE</code>, <code>WITH</code>, <code>UNWIND</code>, and <code>OPTIONAL MATCH</code> clauses are supported, and the <code>MATCH</code> clause can also be used.</li>
 </ul>
-<h2 id="using-patterns-in-match-statements">Using patterns in MATCH statements</h2>
-<h3 id="match-vertices">Match vertices</h3>
+<ul>
+<li><code>output</code>: Define the list name for the output results to be returned. You can use <code>AS</code> to set an alias for the list.</li>
+</ul>
+<ul>
+<li><code>clause_2</code>: The <code>ORDER BY</code> and <code>LIMIT</code> clauses are supported.</li>
+</ul>
+<div class="admonition compatibility">
+<p class="admonition-title">Legacy version compatibility</p>
+<ul>
+<li>Starting from version 3.5.0, the <code>MATCH</code> statement supports full table scans. It can traverse vertices or edges in the graph without using any indexes or filter conditions. In previous versions, the <code>MATCH</code> statement required an index for certain queries or needed to use <code>LIMIT</code> to restrict the number of output results.</li>
+</ul>
+<ul>
+<li>Starting from NebulaGraph version 3.0.0, in order to distinguish the properties of different tags, you need to specify a tag name when querying properties. The original statement <code>RETURN &lt;variable_name&gt;.&lt;property_name&gt;</code> is changed to <code>RETURN &lt;variable_name&gt;.&lt;tag_name&gt;.&lt;property_name&gt;</code>.</li>
+</ul>
+</div>
+<h2 id="notes">Notes<a class="headerlink" href="#notes" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Avoid full table scans, as they may result in decreased query performance, and if there is insufficient memory during a full table scan, the query may fail, and the system will report an error. It is recommended to use queries with filter conditions or specifying tags and edge types, such as <code>v:player</code> and <code>v.player.name</code> in the statement <code>MATCH (v:player) RETURN v.player.name AS Name</code>.</li>
+</ul>
+<ul>
+<li>You can create an index for a tag, edge type, or a specific property of a tag or edge type to improve query performance. For example, you can create an index for the <code>player</code> tag or the name property of the <code>player</code> tag. For more information about the usage and considerations for indexes, see <a href="../../14.native-index-statements/1.create-native-index/">Must-read for using indexes</a>.</li>
+</ul>
+<ul>
+<li>The <code>MATCH</code> statement cannot query dangling edges.</li>
+</ul>
+<h2 id="using_patterns_in_match_statements">Using patterns in MATCH statements<a class="headerlink" href="#using_patterns_in_match_statements" title="Permanent link">&para;</a></h2>
+<h3 id="match_vertices">Match vertices<a class="headerlink" href="#match_vertices" title="Permanent link">&para;</a></h3>
 <p>You can use a user-defined variable in a pair of parentheses to represent a vertex in a pattern. For example: <code>(v)</code>.</p>
-<pre><code class="language-ngql">nebula&gt; MATCH (v) \
+<div class="highlight"><pre><span></span><code>nebula&gt; MATCH (v) \
         RETURN v \
         LIMIT 3;
 +-----------------------------------------------------------+
@@ -1482,17 +1483,22 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
 | (&quot;player106&quot; :player{age: 25, name: &quot;Kyle Anderson&quot;})     |
 | (&quot;player115&quot; :player{age: 40, name: &quot;Kobe Bryant&quot;})       |
 +-----------------------------------------------------------+
-</code></pre>
-<h3 id="match-tags">Match tags</h3>
-<p>!!! compatibility "Legacy version compatibility"</p>
-<pre><code>- In NebulaGraph versions earlier than 3.0.0, the prerequisite for matching a tag is that the tag itself has an index or a certain property of the tag has an index.
-
-- Starting from NebulaGraph 3.0.0, you can match tags without creating an index, but you need to use `LIMIT` to restrict the number of output results.
-
-- Starting from NebulaGraph 3.5.0, the `MATCH` statement supports full table scans. There is no need to create an index for a tag or a specific property of a tag, nor use `LIMIT` to restrict the number of output results in order to execute the `MATCH` statement.
-</code></pre>
+</code></pre></div>
+<h3 id="match_tags">Match tags<a class="headerlink" href="#match_tags" title="Permanent link">&para;</a></h3>
+<div class="admonition compatibility">
+<p class="admonition-title">Legacy version compatibility</p>
+<ul>
+<li>In NebulaGraph versions earlier than 3.0.0, the prerequisite for matching a tag is that the tag itself has an index or a certain property of the tag has an index. </li>
+</ul>
+<ul>
+<li>Starting from NebulaGraph 3.0.0, you can match tags without creating an index, but you need to use <code>LIMIT</code> to restrict the number of output results.</li>
+</ul>
+<ul>
+<li>Starting from NebulaGraph 3.5.0, the <code>MATCH</code> statement supports full table scans. There is no need to create an index for a tag or a specific property of a tag, nor use <code>LIMIT</code> to restrict the number of output results in order to execute the <code>MATCH</code> statement.</li>
+</ul>
+</div>
 <p>You can specify a tag with <code>:&lt;tag_name&gt;</code> after the vertex in a pattern.</p>
-<pre><code class="language-ngql">nebula&gt; MATCH (v:player) \
+<div class="highlight"><pre><span></span><code>nebula&gt; MATCH (v:player) \
         RETURN v;
 +---------------------------------------------------------------+
 | v                                                             |
@@ -1501,9 +1507,9 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
 | (&quot;player109&quot; :player{age: 34, name: &quot;Tiago Splitter&quot;})        |
 | (&quot;player111&quot; :player{age: 38, name: &quot;David West&quot;})            |
 ...
-</code></pre>
+</code></pre></div>
 <p>To match vertices with multiple tags, use colons (:).</p>
-<pre><code class="language-ngql">nebula&gt; CREATE TAG actor (name string, age int);
+<div class="highlight"><pre><span></span><code>nebula&gt; CREATE TAG actor (name string, age int);
 nebula&gt; INSERT VERTEX actor(name, age) VALUES &quot;player100&quot;:(&quot;Tim Duncan&quot;, 42);
 nebula&gt; MATCH (v:player:actor) \
         RETURN v \
@@ -1512,13 +1518,14 @@ nebula&gt; MATCH (v:player:actor) \
 +----------------------------------------------------------------------------------------+
 | (&quot;player100&quot; :actor{age: 42, name: &quot;Tim Duncan&quot;} :player{age: 42, name: &quot;Tim Duncan&quot;}) |
 +----------------------------------------------------------------------------------------+
-</code></pre>
-<h3 id="match-vertex-properties">Match vertex properties</h3>
-<p>!!! Note</p>
-<pre><code>The prerequisite for matching a vertex property is that the tag itself has an index of the corresponding property. Otherwise, you cannot execute the `MATCH` statement to match the property.
-</code></pre>
+</code></pre></div>
+<h3 id="match_vertex_properties">Match vertex properties<a class="headerlink" href="#match_vertex_properties" title="Permanent link">&para;</a></h3>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The prerequisite for matching a vertex property is that the tag itself has an index of the corresponding property. Otherwise, you cannot execute the <code>MATCH</code> statement to match the property.</p>
+</div>
 <p>You can specify a vertex property with <code>{&lt;prop_name&gt;: &lt;prop_value&gt;}</code> after the tag in a pattern.</p>
-<pre><code class="language-ngql"># The following example uses the name property to match a vertex.
+<div class="highlight"><pre><span></span><code># The following example uses the name property to match a vertex.
 nebula&gt; MATCH (v:player{name:&quot;Tim Duncan&quot;}) \
         RETURN v;
 +----------------------------------------------------+
@@ -1526,9 +1533,9 @@ nebula&gt; MATCH (v:player{name:&quot;Tim Duncan&quot;}) \
 +----------------------------------------------------+
 | (&quot;player100&quot; :player{age: 42, name: &quot;Tim Duncan&quot;}) |
 +----------------------------------------------------+
-</code></pre>
+</code></pre></div>
 <p>The <code>WHERE</code> clause can do the same thing:</p>
-<pre><code class="language-ngql">nebula&gt; MATCH (v:player) \
+<div class="highlight"><pre><span></span><code>nebula&gt; MATCH (v:player) \
         WHERE v.player.name == &quot;Tim Duncan&quot; \
         RETURN v;
 +----------------------------------------------------+
@@ -1536,12 +1543,13 @@ nebula&gt; MATCH (v:player{name:&quot;Tim Duncan&quot;}) \
 +----------------------------------------------------+
 | (&quot;player100&quot; :player{age: 42, name: &quot;Tim Duncan&quot;}) |
 +----------------------------------------------------+
-</code></pre>
-<p>!!! note "OpenCypher compatibility"</p>
-<pre><code>In openCypher 9, `=` is the equality operator. However, in nGQL, `==` is the equality operator and `=` is the assignment operator (as in C++ or Java).
-</code></pre>
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">OpenCypher compatibility</p>
+<p>In openCypher 9, <code>=</code> is the equality operator. However, in nGQL, <code>==</code> is the equality operator and <code>=</code> is the assignment operator (as in C++ or Java).</p>
+</div>
 <p>Use the <code>WHERE</code> clause to directly get all the vertices with the vertex property value Tim Duncan.</p>
-<pre><code class="language-ngql">nebula&gt; MATCH (v) \
+<div class="highlight"><pre><span></span><code>nebula&gt; MATCH (v) \
         WITH v, properties(v) as props, keys(properties(v)) as kk \
         WHERE [i in kk where props[i] == &quot;Tim Duncan&quot;] \
         RETURN v;
@@ -1551,7 +1559,7 @@ nebula&gt; MATCH (v:player{name:&quot;Tim Duncan&quot;}) \
 | (&quot;player100&quot; :player{age: 42, name: &quot;Tim Duncan&quot;}) |
 +----------------------------------------------------+
 
-nebula&gt; WITH ['Tim Duncan', 'Yao Ming'] AS names \
+nebula&gt; WITH [&#39;Tim Duncan&#39;, &#39;Yao Ming&#39;] AS names \
         MATCH (v1:player)--&gt;(v2:player) \
         WHERE v1.player.name in names \
         return v1, v2;
@@ -1559,24 +1567,24 @@ nebula&gt; WITH ['Tim Duncan', 'Yao Ming'] AS names \
 | v1                                                 | v2                                                       |
 +----------------------------------------------------+----------------------------------------------------------+
 | (&quot;player133&quot; :player{age: 38, name: &quot;Yao Ming&quot;})   | (&quot;player114&quot; :player{age: 39, name: &quot;Tracy McGrady&quot;})    |
-| (&quot;player133&quot; :player{age: 38, name: &quot;Yao Ming&quot;})   | (&quot;player144&quot; :player{age: 47, name: &quot;Shaquille O'Neal&quot;}) |
+| (&quot;player133&quot; :player{age: 38, name: &quot;Yao Ming&quot;})   | (&quot;player144&quot; :player{age: 47, name: &quot;Shaquille O&#39;Neal&quot;}) |
 | (&quot;player100&quot; :player{age: 42, name: &quot;Tim Duncan&quot;}) | (&quot;player101&quot; :player{age: 36, name: &quot;Tony Parker&quot;})      |
 | (&quot;player100&quot; :player{age: 42, name: &quot;Tim Duncan&quot;}) | (&quot;player125&quot; :player{age: 41, name: &quot;Manu Ginobili&quot;})    |
 +----------------------------------------------------+----------------------------------------------------------+
-</code></pre>
-<h3 id="match-vids">Match VIDs</h3>
+</code></pre></div>
+<h3 id="match_vids">Match VIDs<a class="headerlink" href="#match_vids" title="Permanent link">&para;</a></h3>
 <p>You can use the VID to match a vertex. The <code>id()</code> function can retrieve the VID of a vertex.</p>
-<pre><code class="language-ngql">nebula&gt; MATCH (v) \
-        WHERE id(v) == 'player101' \
+<div class="highlight"><pre><span></span><code>nebula&gt; MATCH (v) \
+        WHERE id(v) == &#39;player101&#39; \
         RETURN v;
 +-----------------------------------------------------+
 | v                                                   |
 +-----------------------------------------------------+
 | (&quot;player101&quot; :player{age: 36, name: &quot;Tony Parker&quot;}) |
 +-----------------------------------------------------+
-</code></pre>
+</code></pre></div>
 <p>To match multiple VIDs, use <code>WHERE id(v) IN [vid_list]</code> or <code>WHERE id(v) IN {vid_list}</code>.</p>
-<pre><code class="language-ngql">nebula&gt; MATCH (v:player { name: 'Tim Duncan' })--(v2) \
+<div class="highlight"><pre><span></span><code>nebula&gt; MATCH (v:player { name: &#39;Tim Duncan&#39; })--(v2) \
         WHERE id(v2) IN [&quot;player101&quot;, &quot;player102&quot;] \
         RETURN v2;
 +-----------------------------------------------------------+
@@ -1595,13 +1603,14 @@ nebula&gt; MATCH (v) WHERE id(v) IN {&quot;player100&quot;, &quot;player101&quot
 | &quot;Tony Parker&quot; |
 | &quot;Tim Duncan&quot;  |
 +---------------+
-</code></pre>
-<h3 id="match-connected-vertices">Match connected vertices</h3>
+</code></pre></div>
+<h3 id="match_connected_vertices">Match connected vertices<a class="headerlink" href="#match_connected_vertices" title="Permanent link">&para;</a></h3>
 <p>You can use the <code>--</code> symbol to represent edges of both directions and match vertices connected by these edges.</p>
-<p>!!! compatibility "Legacy version compatibility"</p>
-<pre><code>In nGQL 1.x, the `--` symbol is used for inline comments. Starting from nGQL 2.x, the `--` symbol represents an incoming or outgoing edge.
-</code></pre>
-<pre><code class="language-ngql">nebula&gt; MATCH (v:player{name:&quot;Tim Duncan&quot;})--(v2) \
+<div class="admonition compatibility">
+<p class="admonition-title">Legacy version compatibility</p>
+<p>In nGQL 1.x, the <code>--</code> symbol is used for inline comments. Starting from nGQL 2.x, the <code>--</code> symbol represents an incoming or outgoing edge.</p>
+</div>
+<div class="highlight"><pre><span></span><code>nebula&gt; MATCH (v:player{name:&quot;Tim Duncan&quot;})--(v2) \
         RETURN v2.player.name AS Name;
 +---------------------+
 | Name                |
@@ -1610,10 +1619,10 @@ nebula&gt; MATCH (v) WHERE id(v) IN {&quot;player100&quot;, &quot;player101&quot
 | &quot;Manu Ginobili&quot;     |
 | &quot;Tiago Splitter&quot;    |
 ...
-</code></pre>
+</code></pre></div>
 <p>You can add a <code>&gt;</code> or <code>&lt;</code> to the <code>--</code> symbol to specify the direction of an edge.</p>
 <p>In the following example, <code>--&gt;</code> represents an edge that starts from <code>v</code> and points to <code>v2</code>. To <code>v</code>, this is an outgoing edge, and to <code>v2</code> this is an incoming edge.</p>
-<pre><code class="language-ngql">nebula&gt; MATCH (v:player{name:&quot;Tim Duncan&quot;})--&gt;(v2:player) \
+<div class="highlight"><pre><span></span><code>nebula&gt; MATCH (v:player{name:&quot;Tim Duncan&quot;})--&gt;(v2:player) \
         RETURN v2.player.name AS Name;
 +-----------------+
 | Name            |
@@ -1621,9 +1630,9 @@ nebula&gt; MATCH (v) WHERE id(v) IN {&quot;player100&quot;, &quot;player101&quot
 | &quot;Manu Ginobili&quot; |
 | &quot;Tony Parker&quot;   |
 +-----------------+
-</code></pre>
+</code></pre></div>
 <p>To query the properties of the target vertices, use the <code>CASE</code> expression.</p>
-<pre><code class="language-ngql">nebula&gt; MATCH (v:player{name:&quot;Tim Duncan&quot;})--(v2) \
+<div class="highlight"><pre><span></span><code>nebula&gt; MATCH (v:player{name:&quot;Tim Duncan&quot;})--(v2) \
         RETURN \
         CASE WHEN v2.team.name IS NOT NULL \
         THEN v2.team.name  \
@@ -1637,9 +1646,9 @@ nebula&gt; MATCH (v) WHERE id(v) IN {&quot;player100&quot;, &quot;player101&quot
 | &quot;Spurs&quot;             |
 | &quot;Dejounte Murray&quot;   |
 ...
-</code></pre>
+</code></pre></div>
 <p>To extend the pattern, you can add more vertices and edges.</p>
-<pre><code class="language-ngql">nebula&gt; MATCH (v:player{name:&quot;Tim Duncan&quot;})--&gt;(v2)&lt;--(v3) \
+<div class="highlight"><pre><span></span><code>nebula&gt; MATCH (v:player{name:&quot;Tim Duncan&quot;})--&gt;(v2)&lt;--(v3) \
         RETURN v3.player.name AS Name;
 +---------------------+
 | Name                |
@@ -1648,9 +1657,9 @@ nebula&gt; MATCH (v) WHERE id(v) IN {&quot;player100&quot;, &quot;player101&quot
 | &quot;LaMarcus Aldridge&quot; |
 | &quot;Marco Belinelli&quot;   |
 ...
-</code></pre>
+</code></pre></div>
 <p>If you do not need to refer to a vertex, you can omit the variable representing it in the parentheses.</p>
-<pre><code class="language-ngql">nebula&gt; MATCH (v:player{name:&quot;Tim Duncan&quot;})--&gt;()&lt;--(v3) \
+<div class="highlight"><pre><span></span><code>nebula&gt; MATCH (v:player{name:&quot;Tim Duncan&quot;})--&gt;()&lt;--(v3) \
         RETURN v3.player.name AS Name;
 +---------------------+
 | Name                |
@@ -1659,10 +1668,10 @@ nebula&gt; MATCH (v) WHERE id(v) IN {&quot;player100&quot;, &quot;player101&quot
 | &quot;LaMarcus Aldridge&quot; |
 | &quot;Marco Belinelli&quot;   |
 ...
-</code></pre>
-<h3 id="match-paths">Match paths</h3>
+</code></pre></div>
+<h3 id="match_paths">Match paths<a class="headerlink" href="#match_paths" title="Permanent link">&para;</a></h3>
 <p>Connected vertices and edges form a path. You can use a user-defined variable to name a path as follows.</p>
-<pre><code class="language-ngql">nebula&gt; MATCH p=(v:player{name:&quot;Tim Duncan&quot;})--&gt;(v2) \
+<div class="highlight"><pre><span></span><code>nebula&gt; MATCH p=(v:player{name:&quot;Tim Duncan&quot;})--&gt;(v2) \
         RETURN p;
 +--------------------------------------------------------------------------------------------------------------------------------------+
 | p                                                                                                                                    |
@@ -1671,12 +1680,13 @@ nebula&gt; MATCH (v) WHERE id(v) IN {&quot;player100&quot;, &quot;player101&quot
 | &lt;(&quot;player100&quot; :player{age: 42, name: &quot;Tim Duncan&quot;})-[:follow@0 {degree: 95}]-&gt;(&quot;player101&quot; :player{age: 36, name: &quot;Tony Parker&quot;})&gt;   |
 | &lt;(&quot;player100&quot; :player{age: 42, name: &quot;Tim Duncan&quot;})-[:follow@0 {degree: 95}]-&gt;(&quot;player125&quot; :player{age: 41, name: &quot;Manu Ginobili&quot;})&gt; |
 +--------------------------------------------------------------------------------------------------------------------------------------+
-</code></pre>
-<p>!!! compatibility "OpenCypher compatibility"</p>
-<pre><code>In nGQL, the `@` symbol represents the rank of an edge, but openCypher has no such concept.
-</code></pre>
-<h3 id="match-edges">Match edges</h3>
-<pre><code class="language-ngql">nebula&gt; MATCH ()&lt;-[e]-() \
+</code></pre></div>
+<div class="admonition compatibility">
+<p class="admonition-title">OpenCypher compatibility</p>
+<p>In nGQL, the <code>@</code> symbol represents the rank of an edge, but openCypher has no such concept.</p>
+</div>
+<h3 id="match_edges">Match edges<a class="headerlink" href="#match_edges" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>nebula&gt; MATCH ()&lt;-[e]-() \
         RETURN e \
         LIMIT 3;
 +----------------------------------------------------+
@@ -1686,17 +1696,22 @@ nebula&gt; MATCH (v) WHERE id(v) IN {&quot;player100&quot;, &quot;player101&quot
 | [:follow &quot;player103&quot;-&gt;&quot;player102&quot; @0 {degree: 70}] |
 | [:follow &quot;player135&quot;-&gt;&quot;player102&quot; @0 {degree: 80}] |
 +----------------------------------------------------+
-</code></pre>
-<h3 id="match-edge-types">Match edge types</h3>
+</code></pre></div>
+<h3 id="match_edge_types">Match edge types<a class="headerlink" href="#match_edge_types" title="Permanent link">&para;</a></h3>
 <p>Just like vertices, you can specify edge types with <code>:&lt;edge_type&gt;</code> in a pattern. For example: <code>-[e:follow]-</code>.</p>
-<p>!!! compatibility "OpenCypher compatibility"</p>
-<pre><code>- In NebulaGraph versions earlier than 3.0.0, the prerequisite for matching a edge type is that the edge type itself has an index or a certain property of the edge type has an index.
-
-- Starting from version 3.0.0, there is no need to create an index for matching a edge type, but you need to use `LIMIT` to limit the number of output results and you must specify the direction of the edge.
-
-- Starting from NebulaGraph 3.5.0, you can use the `MATCH` statement to match edges without creating an index for edge type or using `LIMIT` to restrict the number of output results.
-</code></pre>
-<pre><code class="language-ngql">nebula&gt; MATCH ()-[e:follow]-&gt;() \
+<div class="admonition compatibility">
+<p class="admonition-title">OpenCypher compatibility</p>
+<ul>
+<li>In NebulaGraph versions earlier than 3.0.0, the prerequisite for matching a edge type is that the edge type itself has an index or a certain property of the edge type has an index. </li>
+</ul>
+<ul>
+<li>Starting from version 3.0.0, there is no need to create an index for matching a edge type, but you need to use <code>LIMIT</code> to limit the number of output results and you must specify the direction of the edge.</li>
+</ul>
+<ul>
+<li>Starting from NebulaGraph 3.5.0, you can use the <code>MATCH</code> statement to match edges without creating an index for edge type or using <code>LIMIT</code> to restrict the number of output results.</li>
+</ul>
+</div>
+<div class="highlight"><pre><span></span><code>nebula&gt; MATCH ()-[e:follow]-&gt;() \
         RETURN e;
 +----------------------------------------------------+
 | e                                                  |
@@ -1705,13 +1720,14 @@ nebula&gt; MATCH (v) WHERE id(v) IN {&quot;player100&quot;, &quot;player101&quot
 | [:follow &quot;player102&quot;-&gt;&quot;player101&quot; @0 {degree: 75}] |
 | [:follow &quot;player129&quot;-&gt;&quot;player116&quot; @0 {degree: 90}] |
 ...
-</code></pre>
-<h3 id="match-edge-type-properties">Match edge type properties</h3>
-<p>!!! Note</p>
-<pre><code>The prerequisite for matching an edge type property is that the edge type itself has an index of the corresponding property. Otherwise, you cannot execute the `MATCH` statement to match the property.
-</code></pre>
+</code></pre></div>
+<h3 id="match_edge_type_properties">Match edge type properties<a class="headerlink" href="#match_edge_type_properties" title="Permanent link">&para;</a></h3>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The prerequisite for matching an edge type property is that the edge type itself has an index of the corresponding property. Otherwise, you cannot execute the <code>MATCH</code> statement to match the property.</p>
+</div>
 <p>You can specify edge type properties with <code>{&lt;prop_name&gt;: &lt;prop_value&gt;}</code> in a pattern. For example: <code>[e:follow{likeness:95}]</code>.</p>
-<pre><code class="language-ngql">nebula&gt; MATCH (v:player{name:&quot;Tim Duncan&quot;})-[e:follow{degree:95}]-&gt;(v2) \
+<div class="highlight"><pre><span></span><code>nebula&gt; MATCH (v:player{name:&quot;Tim Duncan&quot;})-[e:follow{degree:95}]-&gt;(v2) \
         RETURN e;
 +--------------------------------------------------------+
 | e                                                      |
@@ -1719,9 +1735,9 @@ nebula&gt; MATCH (v) WHERE id(v) IN {&quot;player100&quot;, &quot;player101&quot
 | [:follow &quot;player100&quot;-&gt;&quot;player101&quot; @0 {degree: 95}]     |
 | [:follow &quot;player100&quot;-&gt;&quot;player125&quot; @0 {degree: 95}]     |
 +--------------------------------------------------------+
-</code></pre>
+</code></pre></div>
 <p>Use the <code>WHERE</code> clause to directly get all the edges with the edge property value 90.</p>
-<pre><code class="language-ngql">nebula&gt; MATCH ()-[e]-&gt;() \
+<div class="highlight"><pre><span></span><code>nebula&gt; MATCH ()-[e]-&gt;() \
         WITH e, properties(e) as props, keys(properties(e)) as kk \
         WHERE [i in kk where props[i] == 90] \
         RETURN e;
@@ -1734,10 +1750,10 @@ nebula&gt; MATCH (v) WHERE id(v) IN {&quot;player100&quot;, &quot;player101&quot
 | [:follow &quot;player133&quot;-&gt;&quot;player114&quot; @0 {degree: 90}] |
 ...
 +----------------------------------------------------+
-</code></pre>
-<h3 id="match-multiple-edge-types">Match multiple edge types</h3>
+</code></pre></div>
+<h3 id="match_multiple_edge_types">Match multiple edge types<a class="headerlink" href="#match_multiple_edge_types" title="Permanent link">&para;</a></h3>
 <p>The <code>|</code> symbol can help matching multiple edge types. For example: <code>[e:follow|:serve]</code>. The English colon (:) before the first edge type cannot be omitted, but the English colon before the subsequent edge type can be omitted, such as <code>[e:follow|serve]</code>.</p>
-<pre><code class="language-ngql">nebula&gt; MATCH (v:player{name:&quot;Tim Duncan&quot;})-[e:follow|:serve]-&gt;(v2) \
+<div class="highlight"><pre><span></span><code>nebula&gt; MATCH (v:player{name:&quot;Tim Duncan&quot;})-[e:follow|:serve]-&gt;(v2) \
         RETURN e;
 +---------------------------------------------------------------------------+
 | e                                                                         |
@@ -1746,10 +1762,10 @@ nebula&gt; MATCH (v) WHERE id(v) IN {&quot;player100&quot;, &quot;player101&quot
 | [:follow &quot;player100&quot;-&gt;&quot;player125&quot; @0 {degree: 95}]                        |
 | [:serve &quot;player100&quot;-&gt;&quot;team204&quot; @0 {end_year: 2016, start_year: 1997}]     |
 +---------------------------------------------------------------------------+
-</code></pre>
-<h3 id="match-multiple-edges">Match multiple edges</h3>
+</code></pre></div>
+<h3 id="match_multiple_edges">Match multiple edges<a class="headerlink" href="#match_multiple_edges" title="Permanent link">&para;</a></h3>
 <p>You can extend a pattern to match multiple edges in a path.</p>
-<pre><code class="language-ngql">nebula&gt; MATCH (v:player{name:&quot;Tim Duncan&quot;})-[]-&gt;(v2)&lt;-[e:serve]-(v3) \
+<div class="highlight"><pre><span></span><code>nebula&gt; MATCH (v:player{name:&quot;Tim Duncan&quot;})-[]-&gt;(v2)&lt;-[e:serve]-(v3) \
         RETURN v2, v3;
 +----------------------------------+-----------------------------------------------------------+
 | v2                               | v3                                                        |
@@ -1758,10 +1774,10 @@ nebula&gt; MATCH (v) WHERE id(v) IN {&quot;player100&quot;, &quot;player101&quot
 | (&quot;team204&quot; :team{name: &quot;Spurs&quot;}) | (&quot;player101&quot; :player{age: 36, name: &quot;Tony Parker&quot;})       |
 | (&quot;team204&quot; :team{name: &quot;Spurs&quot;}) | (&quot;player102&quot; :player{age: 33, name: &quot;LaMarcus Aldridge&quot;}) |
 ...
-</code></pre>
-<h3 id="match-fixed-length-paths">Match fixed-length paths</h3>
+</code></pre></div>
+<h3 id="match_fixed-length_paths">Match fixed-length paths<a class="headerlink" href="#match_fixed-length_paths" title="Permanent link">&para;</a></h3>
 <p>You can use the <code>:&lt;edge_type&gt;*&lt;hop&gt;</code> pattern to match a fixed-length path. <code>hop</code> must be a non-negative integer.</p>
-<pre><code class="language-ngql">nebula&gt; MATCH p=(v:player{name:&quot;Tim Duncan&quot;})-[e:follow*2]-&gt;(v2) \
+<div class="highlight"><pre><span></span><code>nebula&gt; MATCH p=(v:player{name:&quot;Tim Duncan&quot;})-[e:follow*2]-&gt;(v2) \
         RETURN DISTINCT v2 AS Friends;
 +-----------------------------------------------------------+
 | Friends                                                   |
@@ -1770,53 +1786,47 @@ nebula&gt; MATCH (v) WHERE id(v) IN {&quot;player100&quot;, &quot;player101&quot
 | (&quot;player125&quot; :player{age: 41, name: &quot;Manu Ginobili&quot;})     |
 | (&quot;player102&quot; :player{age: 33, name: &quot;LaMarcus Aldridge&quot;}) |
 +-----------------------------------------------------------+
-</code></pre>
+</code></pre></div>
 <p>If <code>hop</code> is 0, the pattern will match the source vertex of the path.</p>
-<pre><code class="language-ngql">nebula&gt; MATCH (v:player{name:&quot;Tim Duncan&quot;}) -[*0]-&gt; (v2) \
+<div class="highlight"><pre><span></span><code>nebula&gt; MATCH (v:player{name:&quot;Tim Duncan&quot;}) -[*0]-&gt; (v2) \
         RETURN v2;
 +----------------------------------------------------+
 | v2                                                 |
 +----------------------------------------------------+
 | (&quot;player100&quot; :player{age: 42, name: &quot;Tim Duncan&quot;}) |
 +----------------------------------------------------+
-</code></pre>
-<p>!!! Note</p>
-<pre><code>When you conditionally filter on multi-hop edges, such as `-[e:follow*2]-&gt;`, note that the `e` is a list of edges instead of a single edge.
-
-For example, the following statement is correct from the syntax point of view which may not get your expected query result, because the `e` is a list without the `.degree` property.
-
-```ngql
-nebula&gt; MATCH p=(v:player{name:"Tim Duncan"})-[e:follow*2]-&gt;(v2) \
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>When you conditionally filter on multi-hop edges, such as <code>-[e:follow*2]-&gt;</code>, note that the <code>e</code> is a list of edges instead of a single edge. </p>
+<p>For example, the following statement is correct from the syntax point of view which may not get your expected query result, because the <code>e</code> is a list without the <code>.degree</code> property. </p>
+<div class="highlight"><pre><span></span><code>nebula&gt; MATCH p=(v:player{name:&quot;Tim Duncan&quot;})-[e:follow*2]-&gt;(v2) \
         WHERE e.degree &gt; 1 \
         RETURN DISTINCT v2 AS Friends;
-```
-
-The correct statement is as follows:
-
-```ngql
-nebula&gt; MATCH p=(v:player{name:"Tim Duncan"})-[e:follow*2]-&gt;(v2) \
+</code></pre></div>
+<p>The correct statement is as follows:</p>
+<div class="highlight"><pre><span></span><code>nebula&gt; MATCH p=(v:player{name:&quot;Tim Duncan&quot;})-[e:follow*2]-&gt;(v2) \
         WHERE ALL(e_ in e WHERE e_.degree &gt; 0) \
         RETURN DISTINCT v2 AS Friends;
-```
-
-Further, the following statement is for filtering the properties of the first-hop edge in multi-hop edges:
-
-```ngql
-nebula&gt; MATCH p=(v:player{name:"Tim Duncan"})-[e:follow*2]-&gt;(v2) \
+</code></pre></div>
+<p>Further, the following statement is for filtering the properties of the first-hop edge in multi-hop edges:</p>
+<div class="highlight"><pre><span></span><code>nebula&gt; MATCH p=(v:player{name:&quot;Tim Duncan&quot;})-[e:follow*2]-&gt;(v2) \
         WHERE e[0].degree &gt; 98 \
         RETURN DISTINCT v2 AS Friends;
-```
-</code></pre>
-<h3 id="match-variable-length-paths">Match variable-length paths</h3>
+</code></pre></div>
+</div>
+<h3 id="match_variable-length_paths">Match variable-length paths<a class="headerlink" href="#match_variable-length_paths" title="Permanent link">&para;</a></h3>
 <p>You can use the <code>:&lt;edge_type&gt;*[minHop..maxHop]</code> pattern to match variable-length paths.<code>minHop</code> and <code>maxHop</code> are optional and default to 1
 and infinity respectively.</p>
-<p>!!! note</p>
-<pre><code>When setting bounds, at least one of `minHop` and `maxHop` exists.
-</code></pre>
-<p>!!! caution</p>
-<pre><code>If `maxHop` is not set, it may cause the Graph service to OOM, execute this command with caution.
-</code></pre>
-<pre><code class="language-ngql">nebula&gt; MATCH p=(v:player{name:&quot;Tim Duncan&quot;})-[e:follow*]-&gt;(v2) \
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>When setting bounds, at least one of <code>minHop</code> and <code>maxHop</code> exists.</p>
+</div>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<p>If <code>maxHop</code> is not set, it may cause the Graph service to OOM, execute this command with caution.</p>
+</div>
+<div class="highlight"><pre><span></span><code>nebula&gt; MATCH p=(v:player{name:&quot;Tim Duncan&quot;})-[e:follow*]-&gt;(v2) \
         RETURN v2 AS Friends;
 +-----------------------------------------------------------+
 | Friends                                                   |
@@ -1844,9 +1854,9 @@ nebula&gt; MATCH p=(v:player{name:&quot;Tim Duncan&quot;})-[e:follow*1..]-&gt;(v
 | (&quot;player101&quot; :player{age: 36, name: &quot;Tony Parker&quot;})       |
 | (&quot;player100&quot; :player{age: 42, name: &quot;Tim Duncan&quot;})        |
 ...
-</code></pre>
+</code></pre></div>
 <p>You can use the <code>DISTINCT</code> keyword to aggregate duplicate results.</p>
-<pre><code class="language-ngql">nebula&gt; MATCH p=(v:player{name:&quot;Tim Duncan&quot;})-[e:follow*1..3]-&gt;(v2:player) \
+<div class="highlight"><pre><span></span><code>nebula&gt; MATCH p=(v:player{name:&quot;Tim Duncan&quot;})-[e:follow*1..3]-&gt;(v2:player) \
         RETURN DISTINCT v2 AS Friends, count(v2);
 +-----------------------------------------------------------+-----------+
 | Friends                                                   | count(v2) |
@@ -1856,9 +1866,9 @@ nebula&gt; MATCH p=(v:player{name:&quot;Tim Duncan&quot;})-[e:follow*1..]-&gt;(v
 | (&quot;player101&quot; :player{age: 36, name: &quot;Tony Parker&quot;})       | 3         |
 | (&quot;player125&quot; :player{age: 41, name: &quot;Manu Ginobili&quot;})     | 3         |
 +-----------------------------------------------------------+-----------+
-</code></pre>
+</code></pre></div>
 <p>If <code>minHop</code> is <code>0</code>, the pattern will match the source vertex of the path. Compared to the preceding statement, the following example uses <code>0</code> as the <code>minHop</code>. So in the following result set, <code>"Tim Duncan"</code> is counted one more time than it is in the preceding result set because it is the source vertex.</p>
-<pre><code class="language-ngql">nebula&gt; MATCH p=(v:player{name:&quot;Tim Duncan&quot;})-[e:follow*0..3]-&gt;(v2:player) \
+<div class="highlight"><pre><span></span><code>nebula&gt; MATCH p=(v:player{name:&quot;Tim Duncan&quot;})-[e:follow*0..3]-&gt;(v2:player) \
         RETURN DISTINCT v2 AS Friends, count(v2);
 +-----------------------------------------------------------+-----------+
 | Friends                                                   | count(v2) |
@@ -1868,19 +1878,18 @@ nebula&gt; MATCH p=(v:player{name:&quot;Tim Duncan&quot;})-[e:follow*1..]-&gt;(v
 | (&quot;player125&quot; :player{age: 41, name: &quot;Manu Ginobili&quot;})     | 3         |
 | (&quot;player101&quot; :player{age: 36, name: &quot;Tony Parker&quot;})       | 3         |
 +-----------------------------------------------------------+-----------+
-</code></pre>
-<p>!!! note</p>
-<pre><code>When using the variable `e` to match fixed-length or variable-length paths in a pattern, such as `-[e:follow*0..3]-&gt;`, it is not supported to reference `e` in other patterns. For example, the following statement is not supported.
-
-```ngql
-nebula&gt; MATCH (v:player)-[e:like*1..3]-&gt;(n) \
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>When using the variable <code>e</code> to match fixed-length or variable-length paths in a pattern, such as <code>-[e:follow*0..3]-&gt;</code>, it is not supported to reference <code>e</code> in other patterns. For example, the following statement is not supported.</p>
+<div class="highlight"><pre><span></span><code>nebula&gt; MATCH (v:player)-[e:like*1..3]-&gt;(n) \
         WHERE (n)-[e*1..4]-&gt;(:player) \
         RETURN v;
-```
-</code></pre>
-<h3 id="match-variable-length-paths-with-multiple-edge-types">Match variable-length paths with multiple edge types</h3>
+</code></pre></div>
+</div>
+<h3 id="match_variable-length_paths_with_multiple_edge_types">Match variable-length paths with multiple edge types<a class="headerlink" href="#match_variable-length_paths_with_multiple_edge_types" title="Permanent link">&para;</a></h3>
 <p>You can specify multiple edge types in a fixed-length or variable-length pattern. In this case, <code>hop</code>, <code>minHop</code>, and <code>maxHop</code> take effect on all edge types.</p>
-<pre><code class="language-ngql">nebula&gt; MATCH p=(v:player{name:&quot;Tim Duncan&quot;})-[e:follow|serve*2]-&gt;(v2) \
+<div class="highlight"><pre><span></span><code>nebula&gt; MATCH p=(v:player{name:&quot;Tim Duncan&quot;})-[e:follow|serve*2]-&gt;(v2) \
         RETURN DISTINCT v2;
 +-----------------------------------------------------------+
 | v2                                                        |
@@ -1891,10 +1900,10 @@ nebula&gt; MATCH (v:player)-[e:like*1..3]-&gt;(n) \
 | (&quot;player125&quot; :player{age: 41, name: &quot;Manu Ginobili&quot;})     |
 | (&quot;player102&quot; :player{age: 33, name: &quot;LaMarcus Aldridge&quot;}) |
 +-----------------------------------------------------------+
-</code></pre>
-<h3 id="match-multiple-patterns">Match multiple patterns</h3>
+</code></pre></div>
+<h3 id="match_multiple_patterns">Match multiple patterns<a class="headerlink" href="#match_multiple_patterns" title="Permanent link">&para;</a></h3>
 <p>You can separate multiple patterns with commas (,).</p>
-<pre><code class="language-ngql">nebula&gt; CREATE TAG INDEX IF NOT EXISTS team_index ON team(name(20));
+<div class="highlight"><pre><span></span><code>nebula&gt; CREATE TAG INDEX IF NOT EXISTS team_index ON team(name(20));
 nebula&gt; REBUILD TAG INDEX team_index;
 nebula&gt; MATCH (v1:player{name:&quot;Tim Duncan&quot;}), (v2:team{name:&quot;Spurs&quot;}) \
         RETURN v1,v2;
@@ -1903,10 +1912,10 @@ nebula&gt; MATCH (v1:player{name:&quot;Tim Duncan&quot;}), (v2:team{name:&quot;S
 +----------------------------------------------------+----------------------------------+
 | (&quot;player100&quot; :player{age: 42, name: &quot;Tim Duncan&quot;}) | (&quot;team204&quot; :team{name: &quot;Spurs&quot;}) |
 +----------------------------------------------------+----------------------------------+
-</code></pre>
-<h3 id="match-shortest-paths">Match shortest paths</h3>
+</code></pre></div>
+<h3 id="match_shortest_paths">Match shortest paths<a class="headerlink" href="#match_shortest_paths" title="Permanent link">&para;</a></h3>
 <p>The <code>allShortestPaths</code> function can be used to find all shortest paths between two vertices.</p>
-<pre><code>nebula&gt; MATCH p = allShortestPaths((a:player{name:&quot;Tim Duncan&quot;})-[e*..5]-(b:player{name:&quot;Tony Parker&quot;})) \
+<div class="highlight"><pre><span></span><code>nebula&gt; MATCH p = allShortestPaths((a:player{name:&quot;Tim Duncan&quot;})-[e*..5]-(b:player{name:&quot;Tony Parker&quot;})) \
         RETURN p;
 +------------------------------------------------------------------------------------------------------------------------------------+
 | p                                                                                                                                  |
@@ -1914,19 +1923,19 @@ nebula&gt; MATCH (v1:player{name:&quot;Tim Duncan&quot;}), (v2:team{name:&quot;S
 | &lt;(&quot;player100&quot; :player{age: 42, name: &quot;Tim Duncan&quot;})&lt;-[:follow@0 {degree: 95}]-(&quot;player101&quot; :player{age: 36, name: &quot;Tony Parker&quot;})&gt; |
 | &lt;(&quot;player100&quot; :player{age: 42, name: &quot;Tim Duncan&quot;})-[:follow@0 {degree: 95}]-&gt;(&quot;player101&quot; :player{age: 36, name: &quot;Tony Parker&quot;})&gt; |
 +------------------------------------------------------------------------------------------------------------------------------------+
-</code></pre>
+</code></pre></div>
 <p>The <code>shortestPath</code> function can be used to find a single shortest path between two vertices.</p>
-<pre><code>nebula&gt; MATCH p = shortestPath((a:player{name:&quot;Tim Duncan&quot;})-[e*..5]-(b:player{name:&quot;Tony Parker&quot;})) \
+<div class="highlight"><pre><span></span><code>nebula&gt; MATCH p = shortestPath((a:player{name:&quot;Tim Duncan&quot;})-[e*..5]-(b:player{name:&quot;Tony Parker&quot;})) \
         RETURN p;
 +------------------------------------------------------------------------------------------------------------------------------------+
 | p                                                                                                                                  |
 +------------------------------------------------------------------------------------------------------------------------------------+
 | &lt;(&quot;player100&quot; :player{age: 42, name: &quot;Tim Duncan&quot;})&lt;-[:follow@0 {degree: 95}]-(&quot;player101&quot; :player{age: 36, name: &quot;Tony Parker&quot;})&gt; |
 +------------------------------------------------------------------------------------------------------------------------------------+
-</code></pre>
-<h2 id="retrieve-with-multiple-match">Retrieve with multiple match</h2>
+</code></pre></div>
+<h2 id="retrieve_with_multiple_match">Retrieve with multiple match<a class="headerlink" href="#retrieve_with_multiple_match" title="Permanent link">&para;</a></h2>
 <p>Multiple <code>MATCH</code> can be used when different patterns have different filtering criteria and return the rows that exactly match the pattern.</p>
-<pre><code class="language-ngql">nebula&gt; MATCH (m)-[]-&gt;(n) WHERE id(m)==&quot;player100&quot; \
+<div class="highlight"><pre><span></span><code>nebula&gt; MATCH (m)-[]-&gt;(n) WHERE id(m)==&quot;player100&quot; \
         MATCH (n)-[]-&gt;(l) WHERE id(n)==&quot;player125&quot; \
         RETURN id(m),id(n),id(l);
 +-------------+-------------+-------------+
@@ -1935,12 +1944,13 @@ nebula&gt; MATCH (v1:player{name:&quot;Tim Duncan&quot;}), (v2:team{name:&quot;S
 | &quot;player100&quot; | &quot;player125&quot; | &quot;team204&quot;   |
 | &quot;player100&quot; | &quot;player125&quot; | &quot;player100&quot; |
 +-------------+-------------+-------------+
-</code></pre>
-<h2 id="retrieve-with-optional-match">Retrieve with optional match</h2>
+</code></pre></div>
+<h2 id="retrieve_with_optional_match">Retrieve with optional match<a class="headerlink" href="#retrieve_with_optional_match" title="Permanent link">&para;</a></h2>
 <p>See <a href="../optional-match/">OPTIONAL MATCH</a>.</p>
-<p>!!! Performance</p>
-<pre><code>In NebulaGraph, the performance and resource usage of the `MATCH` statement have been optimized. But we still recommend to use `GO`, `LOOKUP`, `|`, and `FETCH` instead of `MATCH` when high performance is required.
-</code></pre>
+<div class="admonition performance">
+<p class="admonition-title">Performance</p>
+<p>In NebulaGraph, the performance and resource usage of the <code>MATCH</code> statement have been optimized. But we still recommend to use <code>GO</code>, <code>LOOKUP</code>, <code>|</code>, and <code>FETCH</code> instead of <code>MATCH</code> when high performance is required.</p>
+</div>
 
 
 

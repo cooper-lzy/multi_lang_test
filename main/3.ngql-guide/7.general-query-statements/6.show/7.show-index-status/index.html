@@ -44,6 +44,8 @@
       
     
     
+      <link rel="stylesheet" href="../../../../stylesheets/note.css">
+    
     <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -73,7 +75,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#show-index-status" class="md-skip">
+        <a href="#show_index_status" class="md-skip">
           Skip to content
         </a>
       
@@ -1274,7 +1276,7 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
 </li>
       
         <li class="md-nav__item">
-  <a href="#related-topics" class="md-nav__link">
+  <a href="#related_topics" class="md-nav__link">
     Related topics
   </a>
   
@@ -1298,13 +1300,13 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
   
 
 
-<h1 id="show-index-status">SHOW INDEX STATUS</h1>
+<h1 id="show_index_status">SHOW INDEX STATUS<a class="headerlink" href="#show_index_status" title="Permanent link">&para;</a></h1>
 <p>The <code>SHOW INDEX STATUS</code> statement shows the status of jobs that rebuild native indexes, which helps check whether a native index is successfully rebuilt or not.</p>
-<h2 id="syntax">Syntax</h2>
-<pre><code class="language-ngql">SHOW {TAG | EDGE} INDEX STATUS;
-</code></pre>
-<h2 id="examples">Examples</h2>
-<pre><code class="language-ngql">nebula&gt; SHOW TAG INDEX STATUS;
+<h2 id="syntax">Syntax<a class="headerlink" href="#syntax" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code>SHOW {TAG | EDGE} INDEX STATUS;
+</code></pre></div>
+<h2 id="examples">Examples<a class="headerlink" href="#examples" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code>nebula&gt; SHOW TAG INDEX STATUS;
 +------------------------------------+--------------+
 | Name                               | Index Status |
 +------------------------------------+--------------+
@@ -1319,8 +1321,8 @@ nebula&gt; SHOW EDGE INDEX STATUS;
 +----------------+--------------+
 | &quot;follow_index&quot; | &quot;FINISHED&quot;   |
 +----------------+--------------+
-</code></pre>
-<h2 id="related-topics">Related topics</h2>
+</code></pre></div>
+<h2 id="related_topics">Related topics<a class="headerlink" href="#related_topics" title="Permanent link">&para;</a></h2>
 <ul>
 <li><a href="../../../4.job-statements/">Job manager and the JOB statements</a></li>
 <li><a href="../../../14.native-index-statements/4.rebuild-native-index/">REBUILD NATIVE INDEX</a></li>

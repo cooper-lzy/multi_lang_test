@@ -44,6 +44,8 @@
       
     
     
+      <link rel="stylesheet" href="../../stylesheets/note.css">
+    
     <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -73,7 +75,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#index-overview" class="md-skip">
+        <a href="#index_overview" class="md-skip">
           Skip to content
         </a>
       
@@ -1260,14 +1262,14 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#usage-instructions" class="md-nav__link">
+  <a href="#usage_instructions" class="md-nav__link">
     Usage Instructions
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#native-indexes" class="md-nav__link">
+  <a href="#native_indexes" class="md-nav__link">
     Native indexes
   </a>
   
@@ -1275,7 +1277,7 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#operations-on-native-indexes" class="md-nav__link">
+  <a href="#operations_on_native_indexes" class="md-nav__link">
     Operations on native indexes
   </a>
   
@@ -1287,21 +1289,21 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
 </li>
       
         <li class="md-nav__item">
-  <a href="#full-text-indexes" class="md-nav__link">
+  <a href="#full-text_indexes" class="md-nav__link">
     Full-text indexes
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#null-values" class="md-nav__link">
+  <a href="#null_values" class="md-nav__link">
     Null values
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#range-queries" class="md-nav__link">
+  <a href="#range_queries" class="md-nav__link">
     Range queries
   </a>
   
@@ -1325,85 +1327,78 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
   
 
 
-<h1 id="index-overview">Index overview</h1>
+<h1 id="index_overview">Index overview<a class="headerlink" href="#index_overview" title="Permanent link">&para;</a></h1>
 <p>Indexes are built to fast process graph queries. Nebula Graph supports two kinds of indexes: native indexes and full-text indexes. This topic introduces the index types and helps choose the right index.</p>
-<h2 id="usage-instructions">Usage Instructions</h2>
+<h2 id="usage_instructions">Usage Instructions<a class="headerlink" href="#usage_instructions" title="Permanent link">&para;</a></h2>
 <ul>
-<li>
-<p>Indexes can improve query performance but may reduce write performance.</p>
-</li>
-<li>
-<p>An index is a prerequisite for locating data when executing a <code>LOOKUP</code>statement. If there is no index, an error will be reported when executing the <code>LOOKUP</code> statement.</p>
-</li>
-<li>
-<p>When using an index, NebulaGraph will automatically select the most optimal index.</p>
-</li>
-<li>
-<p>Indexes with high selectivity, that is, when the ratio of the number of records with unique values in the index column to the total number of records is high (for example, the ratio for <code>ID numbers</code> is <code>1</code>), can significantly improve query performance. For indexes with low selectivity (such as <code>country</code>), query performance might not experience a substantial improvement.</p>
-</li>
+<li>Indexes can improve query performance but may reduce write performance.</li>
 </ul>
-<h2 id="native-indexes">Native indexes</h2>
+<ul>
+<li>An index is a prerequisite for locating data when executing a <code>LOOKUP</code>statement. If there is no index, an error will be reported when executing the <code>LOOKUP</code> statement.</li>
+</ul>
+<ul>
+<li>When using an index, NebulaGraph will automatically select the most optimal index.</li>
+</ul>
+<ul>
+<li>Indexes with high selectivity, that is, when the ratio of the number of records with unique values in the index column to the total number of records is high (for example, the ratio for <code>ID numbers</code> is <code>1</code>), can significantly improve query performance. For indexes with low selectivity (such as <code>country</code>), query performance might not experience a substantial improvement.</li>
+</ul>
+<h2 id="native_indexes">Native indexes<a class="headerlink" href="#native_indexes" title="Permanent link">&para;</a></h2>
 <p>Native indexes allow querying data based on a given property. Features are as follows.</p>
 <ul>
-<li>
-<p>There are two kinds of native indexes: tag index and edge type index.</p>
-</li>
-<li>
-<p>Native indexes must be updated manually. You can use the <code>REBUILD INDEX</code> statement to update native indexes.</p>
-</li>
-<li>
-<p>Native indexes support indexing multiple properties on a tag or an edge type (composite indexes), but do not support indexing across multiple tags or edge types.</p>
-</li>
+<li>There are two kinds of native indexes: tag index and edge type index.</li>
 </ul>
-<h3 id="operations-on-native-indexes">Operations on native indexes</h3>
 <ul>
-<li>
-<p><a href="1.create-native-index/">CREATE INDEX</a></p>
-</li>
-<li>
-<p><a href="2.1.show-create-index/">SHOW CREATE INDEX</a></p>
-</li>
-<li>
-<p><a href="2.show-native-indexes/">SHOW INDEXES</a></p>
-</li>
-<li>
-<p><a href="3.describe-native-index/">DESCRIBE INDEX</a></p>
-</li>
-<li>
-<p><a href="4.rebuild-native-index/">REBUILD INDEX</a></p>
-</li>
-<li>
-<p><a href="5.show-native-index-status/">SHOW INDEX STATUS</a></p>
-</li>
-<li>
-<p><a href="6.drop-native-index/">DROP INDEX</a></p>
-</li>
-<li>
-<p><a href="../7.general-query-statements/5.lookup/">LOOKUP</a></p>
-</li>
-<li>
-<p><a href="../7.general-query-statements/2.match/">MATCH</a></p>
-</li>
-<li>
-<p><a href="../3.data-types/10.geography/">Geography index</a></p>
-</li>
+<li>Native indexes must be updated manually. You can use the <code>REBUILD INDEX</code> statement to update native indexes.</li>
 </ul>
-<h2 id="full-text-indexes">Full-text indexes</h2>
+<ul>
+<li>Native indexes support indexing multiple properties on a tag or an edge type (composite indexes), but do not support indexing across multiple tags or edge types.</li>
+</ul>
+<h3 id="operations_on_native_indexes">Operations on native indexes<a class="headerlink" href="#operations_on_native_indexes" title="Permanent link">&para;</a></h3>
+<ul>
+<li><a href="1.create-native-index/">CREATE INDEX</a></li>
+</ul>
+<ul>
+<li><a href="2.1.show-create-index/">SHOW CREATE INDEX</a></li>
+</ul>
+<ul>
+<li><a href="2.show-native-indexes/">SHOW INDEXES</a></li>
+</ul>
+<ul>
+<li><a href="3.describe-native-index/">DESCRIBE INDEX</a></li>
+</ul>
+<ul>
+<li><a href="4.rebuild-native-index/">REBUILD INDEX</a></li>
+</ul>
+<ul>
+<li><a href="5.show-native-index-status/">SHOW INDEX STATUS</a></li>
+</ul>
+<ul>
+<li><a href="6.drop-native-index/">DROP INDEX</a></li>
+</ul>
+<ul>
+<li><a href="../7.general-query-statements/5.lookup/">LOOKUP</a></li>
+</ul>
+<ul>
+<li><a href="../7.general-query-statements/2.match/">MATCH</a></li>
+</ul>
+<ul>
+<li><a href="../3.data-types/10.geography/">Geography index</a></li>
+</ul>
+<h2 id="full-text_indexes">Full-text indexes<a class="headerlink" href="#full-text_indexes" title="Permanent link">&para;</a></h2>
 <p>Full-text indexes are used to do prefix, wildcard, regexp, and fuzzy search on a string property. Features are as follows.</p>
 <ul>
-<li>
-<p>Full-text indexes allow indexing just one property.</p>
-</li>
-<li>
-<p>Full-text indexes do not support logical operations such as <code>AND</code>, <code>OR</code>, and <code>NOT</code>.</p>
-</li>
+<li>Full-text indexes allow indexing just one property.</li>
 </ul>
-<p>!!! Note</p>
-<pre><code>To do complete string matches, use native indexes.
-</code></pre>
-<h2 id="null-values">Null values</h2>
+<ul>
+<li>Full-text indexes do not support logical operations such as <code>AND</code>, <code>OR</code>, and <code>NOT</code>.</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>To do complete string matches, use native indexes.</p>
+</div>
+<h2 id="null_values">Null values<a class="headerlink" href="#null_values" title="Permanent link">&para;</a></h2>
 <p>Indexes do not support indexing null values.</p>
-<h2 id="range-queries">Range queries</h2>
+<h2 id="range_queries">Range queries<a class="headerlink" href="#range_queries" title="Permanent link">&para;</a></h2>
 <p>In addition to querying single results from native indexes, you can also do range queries. Not all the native indexes support range queries. You can only do range searches for numeric, date, and time type properties.</p>
 
 

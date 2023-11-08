@@ -44,6 +44,8 @@
       
     
     
+      <link rel="stylesheet" href="../../../stylesheets/note.css">
+    
     <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -73,7 +75,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#built-in-string-functions" class="md-skip">
+        <a href="#built-in_string_functions" class="md-skip">
           Skip to content
         </a>
       
@@ -1274,14 +1276,14 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
 </li>
       
         <li class="md-nav__item">
-  <a href="#lower-and-tolower" class="md-nav__link">
+  <a href="#lower_and_tolower" class="md-nav__link">
     lower() and toLower()
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#upper-and-toupper" class="md-nav__link">
+  <a href="#upper_and_toupper" class="md-nav__link">
     upper() and toUpper()
   </a>
   
@@ -1344,7 +1346,7 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
 </li>
       
         <li class="md-nav__item">
-  <a href="#substr-and-substring" class="md-nav__link">
+  <a href="#substr_and_substring" class="md-nav__link">
     substr() and substring()
   </a>
   
@@ -1352,7 +1354,7 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#explanations-for-the-return-of-substr-and-substring" class="md-nav__link">
+  <a href="#explanations_for_the_return_of_substr_and_substring" class="md-nav__link">
     Explanations for the return of substr() and substring()
   </a>
   
@@ -1430,78 +1432,70 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
   
 
 
-<h1 id="built-in-string-functions">Built-in string functions</h1>
+<h1 id="built-in_string_functions">Built-in string functions<a class="headerlink" href="#built-in_string_functions" title="Permanent link">&para;</a></h1>
 <p>This topic describes the built-in string functions supported by NebulaGraph.</p>
-<h2 id="precautions">Precautions</h2>
+<h2 id="precautions">Precautions<a class="headerlink" href="#precautions" title="Permanent link">&para;</a></h2>
 <ul>
-<li>
-<p>A string type is used to store a sequence of characters (text). The literal constant is a sequence of characters of any length surrounded by double or single quotes.</p>
-</li>
-<li>
-<p>Like SQL, the position index of nGQL starts from <code>1</code>, while in C language it starts from <code>0</code>.</p>
-</li>
+<li>A string type is used to store a sequence of characters (text). The literal constant is a sequence of characters of any length surrounded by double or single quotes.</li>
 </ul>
-<h2 id="strcasecmp">strcasecmp()</h2>
+<ul>
+<li>Like SQL, the position index of nGQL starts from <code>1</code>, while in C language it starts from <code>0</code>.</li>
+</ul>
+<h2 id="strcasecmp">strcasecmp()<a class="headerlink" href="#strcasecmp" title="Permanent link">&para;</a></h2>
 <p>strcasecmp() compares string a and b without case sensitivity.</p>
 <p>Syntax: <code>strcasecmp(&lt;string_a&gt;,&lt;string_b&gt;)</code></p>
 <ul>
-<li>
-<p><code>string_a</code>, <code>string_b</code>: Strings to compare.</p>
-</li>
-<li>
-<p>Result type: Int</p>
-</li>
-<li>
-<p>When <code>string_a = string_b</code>, the return value is <code>0</code>. When <code>string_a &gt; string_b</code>, the return value is greater than <code>0</code>. When <code>string_a &lt; string_b</code>, the return value is less than <code>0</code>.</p>
-</li>
+<li><code>string_a</code>, <code>string_b</code>: Strings to compare.</li>
+</ul>
+<ul>
+<li>Result type: Int</li>
+</ul>
+<ul>
+<li>When <code>string_a = string_b</code>, the return value is <code>0</code>. When <code>string_a &gt; string_b</code>, the return value is greater than <code>0</code>. When <code>string_a &lt; string_b</code>, the return value is less than <code>0</code>.</li>
 </ul>
 <p>Example:</p>
-<pre><code class="language-ngql">nebula&gt; RETURN strcasecmp(&quot;a&quot;,&quot;aa&quot;);
+<div class="highlight"><pre><span></span><code>nebula&gt; RETURN strcasecmp(&quot;a&quot;,&quot;aa&quot;);
 +----------------------+
 | strcasecmp(&quot;a&quot;,&quot;aa&quot;) |
 +----------------------+
 | -97                  |
 +----------------------+
-</code></pre>
-<h2 id="lower-and-tolower">lower() and toLower()</h2>
+</code></pre></div>
+<h2 id="lower_and_tolower">lower() and toLower()<a class="headerlink" href="#lower_and_tolower" title="Permanent link">&para;</a></h2>
 <p>lower() and toLower() can both returns the argument in lowercase.</p>
 <p>Syntax: <code>lower(&lt;string&gt;)</code>, <code>toLower(&lt;string&gt;)</code></p>
 <ul>
-<li>
-<p><code>string</code>: A specified string.</p>
-</li>
-<li>
-<p>Result type: String</p>
-</li>
+<li><code>string</code>: A specified string.</li>
+</ul>
+<ul>
+<li>Result type: String</li>
 </ul>
 <p>Example:</p>
-<pre><code class="language-ngql">nebula&gt; RETURN lower(&quot;Basketball_Player&quot;);
+<div class="highlight"><pre><span></span><code>nebula&gt; RETURN lower(&quot;Basketball_Player&quot;);
 +----------------------------+
 | lower(&quot;Basketball_Player&quot;) |
 +----------------------------+
 | &quot;basketball_player&quot;        |
 +----------------------------+
-</code></pre>
-<h2 id="upper-and-toupper">upper() and toUpper()</h2>
+</code></pre></div>
+<h2 id="upper_and_toupper">upper() and toUpper()<a class="headerlink" href="#upper_and_toupper" title="Permanent link">&para;</a></h2>
 <p>upper() and toUpper() can both returns the argument in uppercase.</p>
 <p>Syntax: <code>upper(&lt;string&gt;)</code>, <code>toUpper(&lt;string&gt;)</code></p>
 <ul>
-<li>
-<p><code>string</code>: A specified string.</p>
-</li>
-<li>
-<p>Result type: String</p>
-</li>
+<li><code>string</code>: A specified string.</li>
+</ul>
+<ul>
+<li>Result type: String</li>
 </ul>
 <p>Example:</p>
-<pre><code class="language-ngql">nebula&gt; RETURN upper(&quot;Basketball_Player&quot;);
+<div class="highlight"><pre><span></span><code>nebula&gt; RETURN upper(&quot;Basketball_Player&quot;);
 +----------------------------+
 | upper(&quot;Basketball_Player&quot;) |
 +----------------------------+
 | &quot;BASKETBALL_PLAYER&quot;        |
 +----------------------------+
-</code></pre>
-<h2 id="length">length()</h2>
+</code></pre></div>
+<h2 id="length">length()<a class="headerlink" href="#length" title="Permanent link">&para;</a></h2>
 <p>length() returns the length of the given string in bytes.</p>
 <p>Syntax: <code>length({&lt;string&gt;|&lt;path&gt;})</code></p>
 <ul>
@@ -1510,14 +1504,14 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
 <li>Result type: Int</li>
 </ul>
 <p>Example:</p>
-<pre><code class="language-ngql">nebula&gt; RETURN length(&quot;basketball&quot;);
+<div class="highlight"><pre><span></span><code>nebula&gt; RETURN length(&quot;basketball&quot;);
 +----------------------+
 | length(&quot;basketball&quot;) |
 +----------------------+
 | 10                   |
 +----------------------+
-</code></pre>
-<pre><code class="language-ngql">nebula&gt; MATCH p=(v:player{name:&quot;Tim Duncan&quot;})--&gt;(v2) return length(p);
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>nebula&gt; MATCH p=(v:player{name:&quot;Tim Duncan&quot;})--&gt;(v2) return length(p);
 +-----------+
 | length(p) |
 +-----------+
@@ -1525,127 +1519,115 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
 | 1         |
 | 1         |
 +-----------+
-</code></pre>
-<h2 id="trim">trim()</h2>
+</code></pre></div>
+<h2 id="trim">trim()<a class="headerlink" href="#trim" title="Permanent link">&para;</a></h2>
 <p>trim() removes the spaces at the leading and trailing of the string.</p>
 <p>Syntax: <code>trim(&lt;string&gt;)</code></p>
 <ul>
-<li>
-<p><code>string</code>: A specified string.</p>
-</li>
-<li>
-<p>Result type: String</p>
-</li>
+<li><code>string</code>: A specified string.</li>
+</ul>
+<ul>
+<li>Result type: String</li>
 </ul>
 <p>Example:</p>
-<pre><code class="language-ngql">nebula&gt; RETURN trim(&quot; basketball player &quot;);
+<div class="highlight"><pre><span></span><code>nebula&gt; RETURN trim(&quot; basketball player &quot;);
 +-----------------------------+
 | trim(&quot; basketball player &quot;) |
 +-----------------------------+
 | &quot;basketball player&quot;         |
 +-----------------------------+
-</code></pre>
-<h2 id="ltrim">ltrim()</h2>
+</code></pre></div>
+<h2 id="ltrim">ltrim()<a class="headerlink" href="#ltrim" title="Permanent link">&para;</a></h2>
 <p>ltrim() removes the spaces at the leading of the string.</p>
 <p>Syntax: <code>ltrim(&lt;string&gt;)</code></p>
 <ul>
-<li>
-<p><code>string</code>: A specified string.</p>
-</li>
-<li>
-<p>Result type: String</p>
-</li>
+<li><code>string</code>: A specified string.</li>
+</ul>
+<ul>
+<li>Result type: String</li>
 </ul>
 <p>Example:</p>
-<pre><code class="language-ngql">nebula&gt; RETURN ltrim(&quot; basketball player &quot;);
+<div class="highlight"><pre><span></span><code>nebula&gt; RETURN ltrim(&quot; basketball player &quot;);
 +------------------------------+
 | ltrim(&quot; basketball player &quot;) |
 +------------------------------+
 | &quot;basketball player &quot;         |
 +------------------------------+
-</code></pre>
-<h2 id="rtrim">rtrim()</h2>
+</code></pre></div>
+<h2 id="rtrim">rtrim()<a class="headerlink" href="#rtrim" title="Permanent link">&para;</a></h2>
 <p>rtrim() removes the spaces at the trailing of the string.</p>
 <p>Syntax: <code>rtrim(&lt;string&gt;)</code></p>
 <ul>
-<li>
-<p><code>string</code>: A specified string.</p>
-</li>
-<li>
-<p>Result type: String</p>
-</li>
+<li><code>string</code>: A specified string.</li>
+</ul>
+<ul>
+<li>Result type: String</li>
 </ul>
 <p>Example:</p>
-<pre><code class="language-ngql">nebula&gt; RETURN rtrim(&quot; basketball player &quot;);
+<div class="highlight"><pre><span></span><code>nebula&gt; RETURN rtrim(&quot; basketball player &quot;);
 +------------------------------+
 | rtrim(&quot; basketball player &quot;) |
 +------------------------------+
 | &quot; basketball player&quot;         |
 +------------------------------+
-</code></pre>
-<h2 id="left">left()</h2>
+</code></pre></div>
+<h2 id="left">left()<a class="headerlink" href="#left" title="Permanent link">&para;</a></h2>
 <p>left() returns a substring consisting of several characters from the leading of a string.</p>
 <p>Syntax: <code>left(&lt;string&gt;,&lt;count&gt;)</code></p>
 <ul>
-<li>
-<p><code>string</code>: A specified string.</p>
-</li>
-<li>
-<p><code>count</code>: The number of characters from the leading of the string. If the string is shorter than <code>count</code>, the system returns the string itself.</p>
-</li>
-<li>
-<p>Result type: String</p>
-</li>
+<li><code>string</code>: A specified string.</li>
+</ul>
+<ul>
+<li><code>count</code>: The number of characters from the leading of the string. If the string is shorter than <code>count</code>, the system returns the string itself.</li>
+</ul>
+<ul>
+<li>Result type: String</li>
 </ul>
 <p>Example:</p>
-<pre><code class="language-ngql">nebula&gt; RETURN left(&quot;basketball_player&quot;,6);
+<div class="highlight"><pre><span></span><code>nebula&gt; RETURN left(&quot;basketball_player&quot;,6);
 +-----------------------------+
 | left(&quot;basketball_player&quot;,6) |
 +-----------------------------+
 | &quot;basket&quot;                    |
 +-----------------------------+
-</code></pre>
-<h2 id="right">right()</h2>
+</code></pre></div>
+<h2 id="right">right()<a class="headerlink" href="#right" title="Permanent link">&para;</a></h2>
 <p>right() returns a substring consisting of several characters from the trailing of a string.</p>
 <p>Syntax: <code>right(&lt;string&gt;,&lt;count&gt;)</code></p>
 <ul>
-<li>
-<p><code>string</code>: A specified string.</p>
-</li>
-<li>
-<p><code>count</code>: The number of characters from the trailing of the string. If the string is shorter than <code>count</code>, the system returns the string itself.</p>
-</li>
-<li>
-<p>Result type: String</p>
-</li>
+<li><code>string</code>: A specified string.</li>
+</ul>
+<ul>
+<li><code>count</code>: The number of characters from the trailing of the string. If the string is shorter than <code>count</code>, the system returns the string itself.</li>
+</ul>
+<ul>
+<li>Result type: String</li>
 </ul>
 <p>Example:</p>
-<pre><code class="language-ngql">nebula&gt; RETURN right(&quot;basketball_player&quot;,6);
+<div class="highlight"><pre><span></span><code>nebula&gt; RETURN right(&quot;basketball_player&quot;,6);
 +------------------------------+
 | right(&quot;basketball_player&quot;,6) |
 +------------------------------+
 | &quot;player&quot;                     |
 +------------------------------+
-</code></pre>
-<h2 id="lpad">lpad()</h2>
+</code></pre></div>
+<h2 id="lpad">lpad()<a class="headerlink" href="#lpad" title="Permanent link">&para;</a></h2>
 <p>lpad() pads a specified string from the left-side to the specified length and returns the result string.</p>
 <p>Syntax: <code>lpad(&lt;string&gt;,&lt;count&gt;,&lt;letters&gt;)</code></p>
 <ul>
-<li>
-<p><code>string</code>: A specified string.</p>
-</li>
-<li>
-<p><code>count</code>: The length of the string after it has been left-padded. If the length is less than that of <code>string</code>, only the length of <code>string</code> characters <strong>from front to back</strong> will be returned.</p>
-</li>
-<li>
-<p><code>letters</code>: A string to be padding from the leading.</p>
-</li>
-<li>
-<p>Result type: String</p>
-</li>
+<li><code>string</code>: A specified string.</li>
+</ul>
+<ul>
+<li><code>count</code>: The length of the string after it has been left-padded. If the length is less than that of <code>string</code>, only the length of <code>string</code> characters <strong>from front to back</strong> will be returned.</li>
+</ul>
+<ul>
+<li><code>letters</code>: A string to be padding from the leading.</li>
+</ul>
+<ul>
+<li>Result type: String</li>
 </ul>
 <p>Example:</p>
-<pre><code class="language-ngql">nebula&gt; RETURN lpad(&quot;abcd&quot;,10,&quot;b&quot;);
+<div class="highlight"><pre><span></span><code>nebula&gt; RETURN lpad(&quot;abcd&quot;,10,&quot;b&quot;);
 +---------------------+
 | lpad(&quot;abcd&quot;,10,&quot;b&quot;) |
 +---------------------+
@@ -1657,26 +1639,24 @@ nebula&gt; RETURN lpad(&quot;abcd&quot;,3,&quot;b&quot;);
 +--------------------+
 | &quot;abc&quot;              |
 +--------------------+
-</code></pre>
-<h2 id="rpad">rpad()</h2>
+</code></pre></div>
+<h2 id="rpad">rpad()<a class="headerlink" href="#rpad" title="Permanent link">&para;</a></h2>
 <p>rpad() pads a specified string from the right-side to the specified length and returns the result string.</p>
 <p>Syntax: <code>rpad(&lt;string&gt;,&lt;count&gt;,&lt;letters&gt;)</code></p>
 <ul>
-<li>
-<p><code>string</code>: A specified string.</p>
-</li>
-<li>
-<p><code>count</code>: The length of the string after it has been right-padded. If the length is less than that of <code>string</code>, only the length of <code>string</code> characters <strong>from front to back</strong> will be returned.</p>
-</li>
-<li>
-<p><code>letters</code>: A string to be padding from the trailing.</p>
-</li>
-<li>
-<p>Result type: String</p>
-</li>
+<li><code>string</code>: A specified string.</li>
+</ul>
+<ul>
+<li><code>count</code>: The length of the string after it has been right-padded. If the length is less than that of <code>string</code>, only the length of <code>string</code> characters <strong>from front to back</strong> will be returned.</li>
+</ul>
+<ul>
+<li><code>letters</code>: A string to be padding from the trailing.</li>
+</ul>
+<ul>
+<li>Result type: String</li>
 </ul>
 <p>Example:</p>
-<pre><code class="language-ngql">nebula&gt; RETURN rpad(&quot;abcd&quot;,10,&quot;b&quot;);
+<div class="highlight"><pre><span></span><code>nebula&gt; RETURN rpad(&quot;abcd&quot;,10,&quot;b&quot;);
 +---------------------+
 | rpad(&quot;abcd&quot;,10,&quot;b&quot;) |
 +---------------------+
@@ -1688,50 +1668,47 @@ nebula&gt; RETURN rpad(&quot;abcd&quot;,3,&quot;b&quot;);
 +--------------------+
 | &quot;abc&quot;              |
 +--------------------+
-</code></pre>
-<h2 id="substr-and-substring">substr() and substring()</h2>
+</code></pre></div>
+<h2 id="substr_and_substring">substr() and substring()<a class="headerlink" href="#substr_and_substring" title="Permanent link">&para;</a></h2>
 <p>substr() and substring() return a substring extracting <code>count</code> characters starting from the specified position <code>pos</code> of a specified string.</p>
 <p>Syntax: <code>substr(&lt;string&gt;,&lt;pos&gt;,&lt;count&gt;)</code>, <code>substring(&lt;string&gt;,&lt;pos&gt;,&lt;count&gt;)</code></p>
 <ul>
-<li>
-<p><code>string</code>: A specified string.</p>
-</li>
-<li>
-<p><code>pos</code>: The position of starting extract (character index). Data type is int.</p>
-</li>
-<li>
-<p><code>count</code>: The number of characters extracted from the start position onwards.</p>
-</li>
-<li>
-<p>Result type: String</p>
-</li>
+<li><code>string</code>: A specified string.</li>
 </ul>
-<h3 id="explanations-for-the-return-of-substr-and-substring">Explanations for the return of <code>substr()</code> and <code>substring()</code></h3>
 <ul>
-<li>
-<p>If <code>pos</code> is 0, it extracts from the specified string leading (including the first character).</p>
-</li>
-<li>
-<p>If <code>pos</code> is greater than the maximum string index, an empty string is returned.</p>
-</li>
-<li>
-<p>If <code>pos</code> is a negative number, <code>BAD_DATA</code> is returned.</p>
-</li>
-<li>
-<p>If <code>count</code> is omitted, the function returns the substring starting at the position given by <code>pos</code> and extending to the end of the string.</p>
-</li>
-<li>
-<p>If <code>count</code> is 0, an empty string is returned.</p>
-</li>
-<li>
-<p>Using <code>NULL</code> as any of the argument of <code>substr()</code> will cause <a href="https://github.com/vesoft-inc/nebula-graph/issues/878">an issue</a>.</p>
-</li>
+<li><code>pos</code>: The position of starting extract (character index). Data type is int.</li>
 </ul>
-<p>!!! compatibility "OpenCypher compatibility"</p>
-<pre><code>In openCypher, if `a` is `null`, `null` is returned.
-</code></pre>
+<ul>
+<li><code>count</code>: The number of characters extracted from the start position onwards.</li>
+</ul>
+<ul>
+<li>Result type: String</li>
+</ul>
+<h3 id="explanations_for_the_return_of_substr_and_substring">Explanations for the return of <code>substr()</code> and <code>substring()</code><a class="headerlink" href="#explanations_for_the_return_of_substr_and_substring" title="Permanent link">&para;</a></h3>
+<ul>
+<li>If <code>pos</code> is 0, it extracts from the specified string leading (including the first character).</li>
+</ul>
+<ul>
+<li>If <code>pos</code> is greater than the maximum string index, an empty string is returned.</li>
+</ul>
+<ul>
+<li>If <code>pos</code> is a negative number, <code>BAD_DATA</code> is returned.</li>
+</ul>
+<ul>
+<li>If <code>count</code> is omitted, the function returns the substring starting at the position given by <code>pos</code> and extending to the end of the string.</li>
+</ul>
+<ul>
+<li>If <code>count</code> is 0, an empty string is returned.</li>
+</ul>
+<ul>
+<li>Using <code>NULL</code> as any of the argument of <code>substr()</code> will cause <a href="https://github.com/vesoft-inc/nebula-graph/issues/878">an issue</a>.</li>
+</ul>
+<div class="admonition compatibility">
+<p class="admonition-title">OpenCypher compatibility</p>
+<p>In openCypher, if <code>a</code> is <code>null</code>, <code>null</code> is returned.</p>
+</div>
 <p>Example:</p>
-<pre><code class="language-ngql">nebula&gt; RETURN substr(&quot;abcdefg&quot;,2,4);
+<div class="highlight"><pre><span></span><code>nebula&gt; RETURN substr(&quot;abcdefg&quot;,2,4);
 +-----------------------+
 | substr(&quot;abcdefg&quot;,2,4) |
 +-----------------------+
@@ -1749,89 +1726,81 @@ nebula&gt; RETURN substr(&quot;abcdefg&quot;,2);
 +---------------------+
 | &quot;cdefg&quot;             |
 +---------------------+
-</code></pre>
-<h2 id="reverse">reverse()</h2>
+</code></pre></div>
+<h2 id="reverse">reverse()<a class="headerlink" href="#reverse" title="Permanent link">&para;</a></h2>
 <p>reverse() returns a string in reverse order.</p>
 <p>Syntax: <code>reverse(&lt;string&gt;)</code></p>
 <ul>
-<li>
-<p><code>string</code>: A specified string.</p>
-</li>
-<li>
-<p>Result type: String</p>
-</li>
+<li><code>string</code>: A specified string.</li>
+</ul>
+<ul>
+<li>Result type: String</li>
 </ul>
 <p>Example:</p>
-<pre><code class="language-ngql">nebula&gt; RETURN reverse(&quot;abcdefg&quot;);
+<div class="highlight"><pre><span></span><code>nebula&gt; RETURN reverse(&quot;abcdefg&quot;);
 +--------------------+
 | reverse(&quot;abcdefg&quot;) |
 +--------------------+
 | &quot;gfedcba&quot;          |
 +--------------------+
-</code></pre>
-<h2 id="replace">replace()</h2>
+</code></pre></div>
+<h2 id="replace">replace()<a class="headerlink" href="#replace" title="Permanent link">&para;</a></h2>
 <p>replace() replaces string a in a specified string with string b.</p>
 <p>Syntax: <code>replace(&lt;string&gt;,&lt;substr_a&gt;,&lt;string_b&gt;)</code></p>
 <ul>
-<li>
-<p><code>string</code>: A specified string.</p>
-</li>
-<li>
-<p><code>substr_a</code>: String a.</p>
-</li>
-<li>
-<p><code>string_b</code>: String b.</p>
-</li>
-<li>
-<p>Result type: String</p>
-</li>
+<li><code>string</code>: A specified string.</li>
+</ul>
+<ul>
+<li><code>substr_a</code>: String a.</li>
+</ul>
+<ul>
+<li><code>string_b</code>: String b.</li>
+</ul>
+<ul>
+<li>Result type: String</li>
 </ul>
 <p>Example:</p>
-<pre><code class="language-ngql">nebula&gt; RETURN replace(&quot;abcdefg&quot;,&quot;cd&quot;,&quot;AAAAA&quot;);
+<div class="highlight"><pre><span></span><code>nebula&gt; RETURN replace(&quot;abcdefg&quot;,&quot;cd&quot;,&quot;AAAAA&quot;);
 +---------------------------------+
 | replace(&quot;abcdefg&quot;,&quot;cd&quot;,&quot;AAAAA&quot;) |
 +---------------------------------+
 | &quot;abAAAAAefg&quot;                    |
 +---------------------------------+
-</code></pre>
-<h2 id="split">split()</h2>
+</code></pre></div>
+<h2 id="split">split()<a class="headerlink" href="#split" title="Permanent link">&para;</a></h2>
 <p>split() splits a specified string at string b and returns a list of strings.</p>
 <p>Syntax: <code>split(&lt;string&gt;,&lt;substr&gt;)</code></p>
 <ul>
-<li>
-<p><code>string</code>: A specified string.</p>
-</li>
-<li>
-<p><code>substr</code>: String b.</p>
-</li>
-<li>
-<p>Result type: List</p>
-</li>
+<li><code>string</code>: A specified string.</li>
+</ul>
+<ul>
+<li><code>substr</code>: String b.</li>
+</ul>
+<ul>
+<li>Result type: List</li>
 </ul>
 <p>Example:</p>
-<pre><code class="language-ngql">nebula&gt; RETURN split(&quot;basketballplayer&quot;,&quot;a&quot;);
+<div class="highlight"><pre><span></span><code>nebula&gt; RETURN split(&quot;basketballplayer&quot;,&quot;a&quot;);
 +-------------------------------+
 | split(&quot;basketballplayer&quot;,&quot;a&quot;) |
 +-------------------------------+
 | [&quot;b&quot;, &quot;sketb&quot;, &quot;llpl&quot;, &quot;yer&quot;] |
 +-------------------------------+
-</code></pre>
-<h2 id="concat">concat()</h2>
+</code></pre></div>
+<h2 id="concat">concat()<a class="headerlink" href="#concat" title="Permanent link">&para;</a></h2>
 <p>concat() returns strings concatenated by all strings.</p>
 <p>Syntax: <code>concat(&lt;string1&gt;,&lt;string2&gt;,...)</code></p>
 <ul>
-<li>
-<p>The function requires at least two or more strings. If there is only one string, the string itself is returned.</p>
-</li>
-<li>
-<p>If any one of the strings is <code>NULL</code>, <code>NULL</code> is returned.</p>
-</li>
-<li>
-<p>Result type: String</p>
-</li>
+<li>The function requires at least two or more strings. If there is only one string, the string itself is returned.</li>
+</ul>
+<ul>
+<li>If any one of the strings is <code>NULL</code>, <code>NULL</code> is returned.</li>
+</ul>
+<ul>
+<li>Result type: String</li>
 </ul>
 <p>Example:</p>
-<pre><code class="language-ngql">//This example concatenates 1, 2, and 3.
+<div class="highlight"><pre><span></span><code>//This example concatenates 1, 2, and 3.
 nebula&gt; RETURN concat(&quot;1&quot;,&quot;2&quot;,&quot;3&quot;) AS r;
 +-------+
 | r     |
@@ -1855,26 +1824,24 @@ nebula&gt; GO FROM &quot;player100&quot; over follow \
 | &quot;player10042Tony Parker95&quot;   |
 | &quot;player10042Manu Ginobili95&quot; |
 +------------------------------+
-</code></pre>
-<h2 id="concat_ws">concat_ws()</h2>
+</code></pre></div>
+<h2 id="concat_ws">concat_ws()<a class="headerlink" href="#concat_ws" title="Permanent link">&para;</a></h2>
 <p>concat_ws() returns strings concatenated by all strings that are delimited with a separator.</p>
 <p>Syntax: <code>concat_ws(&lt;separator&gt;,&lt;string1&gt;,&lt;string2&gt;,... )</code></p>
 <ul>
-<li>
-<p>The function requires at least two or more strings.</p>
-</li>
-<li>
-<p>If the separator is <code>NULL</code>, the <code>concat_ws()</code> function returns <code>NULL</code>.</p>
-</li>
-<li>
-<p>If the separator is not <code>NULL</code> and there is only one string, the string itself is returned.</p>
-</li>
-<li>
-<p>If there is a <code>NULL</code> in the strings, <code>NULL</code> is ignored during the concatenation.</p>
-</li>
+<li>The function requires at least two or more strings.</li>
+</ul>
+<ul>
+<li>If the separator is <code>NULL</code>, the <code>concat_ws()</code> function returns <code>NULL</code>.</li>
+</ul>
+<ul>
+<li>If the separator is not <code>NULL</code> and there is only one string, the string itself is returned.</li>
+</ul>
+<ul>
+<li>If there is a <code>NULL</code> in the strings, <code>NULL</code> is ignored during the concatenation.</li>
 </ul>
 <p>Example:</p>
-<pre><code class="language-ngql">//This example concatenates a, b, and c with the separator +.
+<div class="highlight"><pre><span></span><code>//This example concatenates a, b, and c with the separator +.
 nebula&gt; RETURN concat_ws(&quot;+&quot;,&quot;a&quot;,&quot;b&quot;,&quot;c&quot;) AS r;
 +---------+
 | r       |
@@ -1913,8 +1880,8 @@ nebula&gt; GO FROM &quot;player100&quot; over follow \
 | &quot;player100 42 Tony Parker 95&quot;   |
 | &quot;player100 42 Manu Ginobili 95&quot; |
 +---------------------------------+
-</code></pre>
-<h2 id="extract">extract()</h2>
+</code></pre></div>
+<h2 id="extract">extract()<a class="headerlink" href="#extract" title="Permanent link">&para;</a></h2>
 <p>extract() uses regular expression matching to retrieve a single substring or all substrings from a string.</p>
 <p>Syntax: <code>extract(&lt;string&gt;,"&lt;regular_expression&gt;")</code></p>
 <ul>
@@ -1923,7 +1890,7 @@ nebula&gt; GO FROM &quot;player100&quot; over follow \
 <li>Result type: List</li>
 </ul>
 <p>Example:</p>
-<pre><code class="language-ngql">nebula&gt; MATCH (a:player)-[b:serve]-(c:team{name: &quot;Lakers&quot;}) \
+<div class="highlight"><pre><span></span><code>nebula&gt; MATCH (a:player)-[b:serve]-(c:team{name: &quot;Lakers&quot;}) \
         WHERE a.player.age &gt; 45 \
         RETURN extract(a.player.name, &quot;\\w+&quot;) AS result;
 +----------------------------+
@@ -1940,26 +1907,29 @@ nebula&gt; MATCH (a:player)-[b:serve]-(c:team{name: &quot;Lakers&quot;}) \
 +--------+
 | []     |
 +--------+
-</code></pre>
-<h2 id="json_extract">json_extract()</h2>
+</code></pre></div>
+<h2 id="json_extract">json_extract()<a class="headerlink" href="#json_extract" title="Permanent link">&para;</a></h2>
 <p>json_extract() converts the specified JSON string to a map.</p>
 <p>Syntax: <code>extract(&lt;string&gt;)</code></p>
 <ul>
 <li><code>string</code>:A specified string, must be JSON string.</li>
 <li>Result type: Map</li>
 </ul>
-<p>!!! caution</p>
-<pre><code>- Only Bool, Double, Int, String value and NULL are supported.
-- Only depth-1 nested Map is supported now. If nested Map depth is greater than 1, the nested item is left as an empty Map().
-</code></pre>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<ul>
+<li>Only Bool, Double, Int, String value and NULL are supported.</li>
+<li>Only depth-1 nested Map is supported now. If nested Map depth is greater than 1, the nested item is left as an empty Map().</li>
+</ul>
+</div>
 <p>Example:</p>
-<pre><code class="language-ngql">nebula&gt; YIELD json_extract('{&quot;a&quot;: 1, &quot;b&quot;: {}, &quot;c&quot;: {&quot;d&quot;: true}}') AS result;
+<div class="highlight"><pre><span></span><code>nebula&gt; YIELD json_extract(&#39;{&quot;a&quot;: 1, &quot;b&quot;: {}, &quot;c&quot;: {&quot;d&quot;: true}}&#39;) AS result;
 +-----------------------------+
 | result                      |
 +-----------------------------+
 | {a: 1, b: {}, c: {d: true}} |
 +-----------------------------+
-</code></pre>
+</code></pre></div>
 
 
 

@@ -48,6 +48,8 @@
       
     
     
+      <link rel="stylesheet" href="../../stylesheets/note.css">
+    
     <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -77,7 +79,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#quickly-deploy-nebulagraph-using-docker" class="md-skip">
+        <a href="#quickly_deploy_nebulagraph_using_docker" class="md-skip">
           Skip to content
         </a>
       
@@ -1287,10 +1289,10 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
   
 
 
-<h1 id="quickly-deploy-nebulagraph-using-docker">Quickly deploy NebulaGraph using Docker</h1>
+<h1 id="quickly_deploy_nebulagraph_using_docker">Quickly deploy NebulaGraph using Docker<a class="headerlink" href="#quickly_deploy_nebulagraph_using_docker" title="Permanent link">&para;</a></h1>
 <p>You can quickly get started with NebulaGraph by deploying NebulaGraph with Docker Desktop or Docker Compose. </p>
 <p>=== "Using Docker Desktop"</p>
-<pre><code>NebulaGraph is available as a [Docker Extension](https://hub.docker.com/extensions/weygu/nebulagraph-dd-ext) that you can easily install and run on your Docker Desktop. You can quickly deploy NebulaGraph using Docker Desktop with just one click.
+<div class="codehilite"><pre><span></span><code>NebulaGraph is available as a [Docker Extension](https://hub.docker.com/extensions/weygu/nebulagraph-dd-ext) that you can easily install and run on your Docker Desktop. You can quickly deploy NebulaGraph using Docker Desktop with just one click.
 
 1. Install Docker Desktop
 
@@ -1315,10 +1317,11 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
 
 For more information about how to use NebulaGraph with Docker Desktop, see the following video:
 
-&lt;iframe width="560" height="315" src="https://www.youtube.com/embed/8zKer-4RXEg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen&gt;&lt;/iframe&gt;
-</code></pre>
+&lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube.com/embed/8zKer-4RXEg&quot; title=&quot;YouTube video player&quot; frameborder=&quot;0&quot; allow=&quot;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share&quot; allowfullscreen&gt;&lt;/iframe&gt;
+</code></pre></div>
+
 <p>=== "Using Docker Compose"</p>
-<pre><code>Using Docker Compose can quickly deploy NebulaGraph services based on the prepared configuration file. It is only recommended to use this method when testing the functions of NebulaGraph.
+<div class="codehilite"><pre><span></span><code>Using Docker Compose can quickly deploy NebulaGraph services based on the prepared configuration file. It is only recommended to use this method when testing the functions of NebulaGraph.
 
 ## Prerequisites
 
@@ -1392,7 +1395,7 @@ For more information about how to use NebulaGraph with Docker Desktop, see the f
 
 There are two ways to connect to NebulaGraph:
 
-- Connected with Nebula Console outside the container. Because the external mapping port for the Graph service is also fixed as `9669` in the container's configuration file, you can connect directly through the default port. For details, see [Connect to NebulaGraph](../2.quick-start/3.connect-to-nebula-graph.md).
+- Connected with Nebula Console outside the container. Because the external mapping port for the Graph service is also fixed as `9669` in the container&#39;s configuration file, you can connect directly through the default port. For details, see [Connect to NebulaGraph](../2.quick-start/3.connect-to-nebula-graph.md).
 
 - Log into the container installed NebulaGraph Console, then connect to the Graph service. This section describes this approach.
 
@@ -1431,9 +1434,9 @@ There are two ways to connect to NebulaGraph:
   +-------------+------+----------+--------------+----------------------+------------------------+---------+
   | Host        | Port | Status   | Leader count | Leader distribution  | Partition distribution | Version |
   +-------------+------+----------+--------------+----------------------+------------------------+---------+
-  | "storaged0" | 9779 | "ONLINE" | 0            | "No valid partition" | "No valid partition"   | "3.6.0" |
-  | "storaged1" | 9779 | "ONLINE" | 0            | "No valid partition" | "No valid partition"   | "3.6.0" |
-  | "storaged2" | 9779 | "ONLINE" | 0            | "No valid partition" | "No valid partition"   | "3.6.0" |
+  | &quot;storaged0&quot; | 9779 | &quot;ONLINE&quot; | 0            | &quot;No valid partition&quot; | &quot;No valid partition&quot;   | &quot;3.6.0&quot; |
+  | &quot;storaged1&quot; | 9779 | &quot;ONLINE&quot; | 0            | &quot;No valid partition&quot; | &quot;No valid partition&quot;   | &quot;3.6.0&quot; |
+  | &quot;storaged2&quot; | 9779 | &quot;ONLINE&quot; | 0            | &quot;No valid partition&quot; | &quot;No valid partition&quot;   | &quot;3.6.0&quot; |
   +-------------+------+----------+--------------+----------------------+------------------------+---------+
   ```
 
@@ -1469,15 +1472,15 @@ Then you can execute `docker ps` to view the corresponding `CONTAINER ID` (such 
 ```bash
 [nebula-docker-compose]$ docker ps
 CONTAINER ID   IMAGE                               COMMAND                  CREATED          STATUS                    PORTS                                                                                                  NAMES
-2a6c56c405f5   vesoft/nebula-graphd:nightly     "/usr/local/nebula/b…"   36 minutes ago   Up 36 minutes (healthy)   0.0.0.0:49230-&gt;9669/tcp, 0.0.0.0:49229-&gt;19669/tcp, 0.0.0.0:49228-&gt;19670/tcp                            nebula-docker-compose_graphd2_1
-7042e0a8e83d   vesoft/nebula-storaged:nightly   "./bin/nebula-storag…"   36 minutes ago   Up 36 minutes (healthy)   9777-9778/tcp, 9780/tcp, 0.0.0.0:49227-&gt;9779/tcp, 0.0.0.0:49226-&gt;19779/tcp, 0.0.0.0:49225-&gt;19780/tcp   nebula-docker-compose_storaged2_1
-18e3ea63ad65   vesoft/nebula-storaged:nightly   "./bin/nebula-storag…"   36 minutes ago   Up 36 minutes (healthy)   9777-9778/tcp, 9780/tcp, 0.0.0.0:49219-&gt;9779/tcp, 0.0.0.0:49218-&gt;19779/tcp, 0.0.0.0:49217-&gt;19780/tcp   nebula-docker-compose_storaged0_1
-4dcabfe8677a   vesoft/nebula-graphd:nightly     "/usr/local/nebula/b…"   36 minutes ago   Up 36 minutes (healthy)   0.0.0.0:49224-&gt;9669/tcp, 0.0.0.0:49223-&gt;19669/tcp, 0.0.0.0:49222-&gt;19670/tcp                            nebula-docker-compose_graphd1_1
-a74054c6ae25   vesoft/nebula-graphd:nightly     "/usr/local/nebula/b…"   36 minutes ago   Up 36 minutes (healthy)   0.0.0.0:9669-&gt;9669/tcp, 0.0.0.0:49221-&gt;19669/tcp, 0.0.0.0:49220-&gt;19670/tcp                             nebula-docker-compose_graphd_1
-880025a3858c   vesoft/nebula-storaged:nightly   "./bin/nebula-storag…"   36 minutes ago   Up 36 minutes (healthy)   9777-9778/tcp, 9780/tcp, 0.0.0.0:49216-&gt;9779/tcp, 0.0.0.0:49215-&gt;19779/tcp, 0.0.0.0:49214-&gt;19780/tcp   nebula-docker-compose_storaged1_1
-45736a32a23a   vesoft/nebula-metad:nightly      "./bin/nebula-metad …"   36 minutes ago   Up 36 minutes (healthy)   9560/tcp, 0.0.0.0:49213-&gt;9559/tcp, 0.0.0.0:49212-&gt;19559/tcp, 0.0.0.0:49211-&gt;19560/tcp                  nebula-docker-compose_metad0_1
-3b2c90eb073e   vesoft/nebula-metad:nightly      "./bin/nebula-metad …"   36 minutes ago   Up 36 minutes (healthy)   9560/tcp, 0.0.0.0:49207-&gt;9559/tcp, 0.0.0.0:49206-&gt;19559/tcp, 0.0.0.0:49205-&gt;19560/tcp                  nebula-docker-compose_metad2_1
-7bb31b7a5b3f   vesoft/nebula-metad:nightly      "./bin/nebula-metad …"   36 minutes ago   Up 36 minutes (healthy)   9560/tcp, 0.0.0.0:49210-&gt;9559/tcp, 0.0.0.0:49209-&gt;19559/tcp, 0.0.0.0:49208-&gt;19560/tcp                  nebula-docker-compose_metad1_1
+2a6c56c405f5   vesoft/nebula-graphd:nightly     &quot;/usr/local/nebula/b…&quot;   36 minutes ago   Up 36 minutes (healthy)   0.0.0.0:49230-&gt;9669/tcp, 0.0.0.0:49229-&gt;19669/tcp, 0.0.0.0:49228-&gt;19670/tcp                            nebula-docker-compose_graphd2_1
+7042e0a8e83d   vesoft/nebula-storaged:nightly   &quot;./bin/nebula-storag…&quot;   36 minutes ago   Up 36 minutes (healthy)   9777-9778/tcp, 9780/tcp, 0.0.0.0:49227-&gt;9779/tcp, 0.0.0.0:49226-&gt;19779/tcp, 0.0.0.0:49225-&gt;19780/tcp   nebula-docker-compose_storaged2_1
+18e3ea63ad65   vesoft/nebula-storaged:nightly   &quot;./bin/nebula-storag…&quot;   36 minutes ago   Up 36 minutes (healthy)   9777-9778/tcp, 9780/tcp, 0.0.0.0:49219-&gt;9779/tcp, 0.0.0.0:49218-&gt;19779/tcp, 0.0.0.0:49217-&gt;19780/tcp   nebula-docker-compose_storaged0_1
+4dcabfe8677a   vesoft/nebula-graphd:nightly     &quot;/usr/local/nebula/b…&quot;   36 minutes ago   Up 36 minutes (healthy)   0.0.0.0:49224-&gt;9669/tcp, 0.0.0.0:49223-&gt;19669/tcp, 0.0.0.0:49222-&gt;19670/tcp                            nebula-docker-compose_graphd1_1
+a74054c6ae25   vesoft/nebula-graphd:nightly     &quot;/usr/local/nebula/b…&quot;   36 minutes ago   Up 36 minutes (healthy)   0.0.0.0:9669-&gt;9669/tcp, 0.0.0.0:49221-&gt;19669/tcp, 0.0.0.0:49220-&gt;19670/tcp                             nebula-docker-compose_graphd_1
+880025a3858c   vesoft/nebula-storaged:nightly   &quot;./bin/nebula-storag…&quot;   36 minutes ago   Up 36 minutes (healthy)   9777-9778/tcp, 9780/tcp, 0.0.0.0:49216-&gt;9779/tcp, 0.0.0.0:49215-&gt;19779/tcp, 0.0.0.0:49214-&gt;19780/tcp   nebula-docker-compose_storaged1_1
+45736a32a23a   vesoft/nebula-metad:nightly      &quot;./bin/nebula-metad …&quot;   36 minutes ago   Up 36 minutes (healthy)   9560/tcp, 0.0.0.0:49213-&gt;9559/tcp, 0.0.0.0:49212-&gt;19559/tcp, 0.0.0.0:49211-&gt;19560/tcp                  nebula-docker-compose_metad0_1
+3b2c90eb073e   vesoft/nebula-metad:nightly      &quot;./bin/nebula-metad …&quot;   36 minutes ago   Up 36 minutes (healthy)   9560/tcp, 0.0.0.0:49207-&gt;9559/tcp, 0.0.0.0:49206-&gt;19559/tcp, 0.0.0.0:49205-&gt;19560/tcp                  nebula-docker-compose_metad2_1
+7bb31b7a5b3f   vesoft/nebula-metad:nightly      &quot;./bin/nebula-metad …&quot;   36 minutes ago   Up 36 minutes (healthy)   9560/tcp, 0.0.0.0:49210-&gt;9559/tcp, 0.0.0.0:49209-&gt;19559/tcp, 0.0.0.0:49208-&gt;19560/tcp                  nebula-docker-compose_metad1_1
 ```
 
 Use the `CONTAINER ID` to log in the container and troubleshoot.
@@ -1598,7 +1601,7 @@ You have met the rate limit of Docker Hub. Learn more on [Understanding Docker H
 ### How to update the NebulaGraph Console client
 
 The command `docker-compose pull` updates both the NebulaGraph services and the NebulaGraph Console.
-</code></pre>
+</code></pre></div>
 
 
 

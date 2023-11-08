@@ -44,6 +44,8 @@
       
     
     
+      <link rel="stylesheet" href="../../../stylesheets/note.css">
+    
     <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -73,7 +75,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#delete-vertex" class="md-skip">
+        <a href="#delete_vertex" class="md-skip">
           Skip to content
         </a>
       
@@ -1274,7 +1276,7 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
 </li>
       
         <li class="md-nav__item">
-  <a href="#process-of-deleting-vertices" class="md-nav__link">
+  <a href="#process_of_deleting_vertices" class="md-nav__link">
     Process of deleting vertices
   </a>
   
@@ -1298,42 +1300,53 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
   
 
 
-<h1 id="delete-vertex">DELETE VERTEX</h1>
+<h1 id="delete_vertex">DELETE VERTEX<a class="headerlink" href="#delete_vertex" title="Permanent link">&para;</a></h1>
 <p>By default, the <code>DELETE VERTEX</code> statement deletes vertices but the incoming and outgoing edges of the vertices.</p>
-<p>!!! compatibility</p>
-<pre><code>- NebulaGraph 2.x deletes vertices and their incoming and outgoing edges.
-
-- NebulaGraph 3.6.0 only deletes the vertices, and does not delete the related outgoing and incoming edges of the vertices. At this time, there will be dangling edges by default.
-</code></pre>
+<div class="admonition compatibility">
+<p class="admonition-title">Compatibility</p>
+<ul>
+<li>NebulaGraph 2.x deletes vertices and their incoming and outgoing edges.</li>
+</ul>
+<ul>
+<li>NebulaGraph 3.6.0 only deletes the vertices, and does not delete the related outgoing and incoming edges of the vertices. At this time, there will be dangling edges by default.</li>
+</ul>
+</div>
 <p>The <code>DELETE VERTEX</code> statement deletes one vertex or multiple vertices at a time. You can use <code>DELETE VERTEX</code> together with pipes. For more information about pipe, see <a href="../../5.operators/4.pipe/">Pipe operator</a>.</p>
-<p>!!! note</p>
-<pre><code>- `DELETE VERTEX` deletes vertices directly.
-
-- `DELETE TAG` deletes a tag with the given name on a specified vertex.
-</code></pre>
-<h2 id="syntax">Syntax</h2>
-<pre><code class="language-ngql">DELETE VERTEX &lt;vid&gt; [, &lt;vid&gt; ...] [WITH EDGE];
-</code></pre>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul>
+<li><code>DELETE VERTEX</code> deletes vertices directly.</li>
+</ul>
+<ul>
+<li><code>DELETE TAG</code> deletes a tag with the given name on a specified vertex.</li>
+</ul>
+</div>
+<h2 id="syntax">Syntax<a class="headerlink" href="#syntax" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code>DELETE VERTEX &lt;vid&gt; [, &lt;vid&gt; ...] [WITH EDGE];
+</code></pre></div>
 <ul>
 <li>WITH EDGE: deletes vertices and the related incoming and outgoing edges of the vertices.</li>
 </ul>
-<h2 id="examples">Examples</h2>
+<h2 id="examples">Examples<a class="headerlink" href="#examples" title="Permanent link">&para;</a></h2>
 <p>This query deletes the vertex whose ID is "team1".</p>
-<pre><code class="language-ngql"># Delete the vertex whose VID is `team1` but the related incoming and outgoing edges are not deleted.
+<div class="highlight"><pre><span></span><code># Delete the vertex whose VID is `team1` but the related incoming and outgoing edges are not deleted.
 nebula&gt; DELETE VERTEX &quot;team1&quot;;
 
 # Delete the vertex whose VID is `team1` and the related incoming and outgoing edges.
 nebula&gt; DELETE VERTEX &quot;team1&quot; WITH EDGE;
-</code></pre>
+</code></pre></div>
 <p>This query shows that you can use <code>DELETE VERTEX</code> together with pipe to delete vertices.</p>
-<pre><code class="language-ngql">nebula&gt; GO FROM &quot;player100&quot; OVER serve WHERE properties(edge).start_year == &quot;2021&quot; YIELD dst(edge) AS id | DELETE VERTEX $-.id;
-</code></pre>
-<h2 id="process-of-deleting-vertices">Process of deleting vertices</h2>
+<div class="highlight"><pre><span></span><code>nebula&gt; GO FROM &quot;player100&quot; OVER serve WHERE properties(edge).start_year == &quot;2021&quot; YIELD dst(edge) AS id | DELETE VERTEX $-.id;
+</code></pre></div>
+<h2 id="process_of_deleting_vertices">Process of deleting vertices<a class="headerlink" href="#process_of_deleting_vertices" title="Permanent link">&para;</a></h2>
 <p>Once NebulaGraph deletes the vertices, all edges (incoming and outgoing edges) of the target vertex will become dangling edges. When NebulaGraph deletes the vertices <code>WITH EDGE</code>, NebulaGraph traverses the incoming and outgoing edges related to the vertices and deletes them all. Then NebulaGraph deletes the vertices.</p>
-<p>!!! caution</p>
-<pre><code>* Atomic deletion is not supported during the entire process for now. Please retry when a failure occurs to avoid partial deletion, which will cause pendent edges.
-* Deleting a supernode takes a lot of time. To avoid connection timeout before the deletion is complete, you can modify the parameter `--storage_client_timeout_ms` in `nebula-graphd.conf` to extend the timeout period.
-</code></pre>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<ul>
+<li>Atomic deletion is not supported during the entire process for now. Please retry when a failure occurs to avoid partial deletion, which will cause pendent edges.</li>
+<li>Deleting a supernode takes a lot of time. To avoid connection timeout before the deletion is complete, you can modify the parameter <code>--storage_client_timeout_ms</code> in <code>nebula-graphd.conf</code> to extend the timeout period.</li>
+</ul>
+</div>
 
 
 

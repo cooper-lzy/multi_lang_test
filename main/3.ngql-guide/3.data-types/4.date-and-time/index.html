@@ -44,6 +44,8 @@
       
     
     
+      <link rel="stylesheet" href="../../../stylesheets/note.css">
+    
     <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -73,7 +75,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#date-and-time-types" class="md-skip">
+        <a href="#date_and_time_types" class="md-skip">
           Skip to content
         </a>
       
@@ -1267,7 +1269,7 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
 </li>
       
         <li class="md-nav__item">
-  <a href="#opencypher-compatibility" class="md-nav__link">
+  <a href="#opencypher_compatibility" class="md-nav__link">
     OpenCypher Compatibility
   </a>
   
@@ -1333,52 +1335,51 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
   
 
 
-<h1 id="date-and-time-types">Date and time types</h1>
+<h1 id="date_and_time_types">Date and time types<a class="headerlink" href="#date_and_time_types" title="Permanent link">&para;</a></h1>
 <p>This topic will describe the <code>DATE</code>, <code>TIME</code>, <code>DATETIME</code>, <code>TIMESTAMP</code>, and <code>DURATION</code> types.</p>
-<h2 id="precautions">Precautions</h2>
-<ul>
-<li>While inserting time-type property values with <code>DATE</code>, <code>TIME</code>, and <code>DATETIME</code>, NebulaGraph transforms them to a UTC time according to the timezone specified with the <code>timezone_name</code> parameter in the <a href="../../5.configurations-and-logs/1.configurations/1.configurations.md">configuration files</a>. </li>
-</ul>
-<p>!!! note</p>
-<pre><code>    To change the timezone, modify the `timezone_name` value in the configuration files of all NebulaGraph services.
-</code></pre>
+<h2 id="precautions">Precautions<a class="headerlink" href="#precautions" title="Permanent link">&para;</a></h2>
 <ul>
 <li>
-<p><code>date()</code>, <code>time()</code>, and <code>datetime()</code> can convert a time-type property with a specified timezone. For example, <code>datetime("2017-03-04 22:30:40.003000+08:00")</code> or <code>datetime("2017-03-04T22:30:40.003000[Asia/Shanghai]")</code>.</p>
-</li>
-<li>
-<p><code>date()</code>, <code>time()</code>, <code>datetime()</code>, and <code>timestamp()</code> all accept empty parameters to return the current date, time, and datetime.</p>
-</li>
-<li>
-<p><code>date()</code>, <code>time()</code>, and <code>datetime()</code> all accept the property name to return a specific property value of itself. For example, <code>date().month</code> returns the current month, while <code>time("02:59:40").minute</code> returns the minutes of the importing time.</p>
-</li>
-<li>
-<p>For time operations it is recommended to use <code>duration()</code> to calculate the offset of the moment. Addition and subtraction of <code>date()</code> and <code>date()</code>, <code>timestamp()</code> and <code>timestamp()</code> are also supported.</p>
-</li>
-<li>
-<p>When setting the year of the time as a negative number, you need to use Map type data.</p>
+<p>While inserting time-type property values with <code>DATE</code>, <code>TIME</code>, and <code>DATETIME</code>, NebulaGraph transforms them to a UTC time according to the timezone specified with the <code>timezone_name</code> parameter in the <a href="../../5.configurations-and-logs/1.configurations/1.configurations.md">configuration files</a>. </p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>To change the timezone, modify the <code>timezone_name</code> value in the configuration files of all NebulaGraph services.</p>
+</div>
 </li>
 </ul>
-<h2 id="opencypher-compatibility">OpenCypher Compatibility</h2>
+<ul>
+<li><code>date()</code>, <code>time()</code>, and <code>datetime()</code> can convert a time-type property with a specified timezone. For example, <code>datetime("2017-03-04 22:30:40.003000+08:00")</code> or <code>datetime("2017-03-04T22:30:40.003000[Asia/Shanghai]")</code>.</li>
+</ul>
+<ul>
+<li><code>date()</code>, <code>time()</code>, <code>datetime()</code>, and <code>timestamp()</code> all accept empty parameters to return the current date, time, and datetime.</li>
+</ul>
+<ul>
+<li><code>date()</code>, <code>time()</code>, and <code>datetime()</code> all accept the property name to return a specific property value of itself. For example, <code>date().month</code> returns the current month, while <code>time("02:59:40").minute</code> returns the minutes of the importing time.</li>
+</ul>
+<ul>
+<li>For time operations it is recommended to use <code>duration()</code> to calculate the offset of the moment. Addition and subtraction of <code>date()</code> and <code>date()</code>, <code>timestamp()</code> and <code>timestamp()</code> are also supported.</li>
+</ul>
+<ul>
+<li>When setting the year of the time as a negative number, you need to use Map type data.</li>
+</ul>
+<h2 id="opencypher_compatibility">OpenCypher Compatibility<a class="headerlink" href="#opencypher_compatibility" title="Permanent link">&para;</a></h2>
 <p>In nGQL:</p>
 <ul>
-<li>
-<p>Year, month, day, hour, minute, second, millisecond, and microsecond are supported, while the nanosecond is not supported.</p>
-</li>
-<li>
-<p><code>localdatetime()</code> is not supported.</p>
-</li>
-<li>
-<p>Most string time formats are not supported. The exceptions are <code>YYYY-MM-DDThh:mm:ss</code> and <code>YYYY-MM-DD hh:mm:ss</code>.</p>
-</li>
-<li>
-<p>The single-digit string time format is supported. For example, <code>time("1:1:1")</code>.</p>
-</li>
+<li>Year, month, day, hour, minute, second, millisecond, and microsecond are supported, while the nanosecond is not supported.</li>
 </ul>
-<h2 id="date">DATE</h2>
+<ul>
+<li><code>localdatetime()</code> is not supported.</li>
+</ul>
+<ul>
+<li>Most string time formats are not supported. The exceptions are <code>YYYY-MM-DDThh:mm:ss</code> and <code>YYYY-MM-DD hh:mm:ss</code>.</li>
+</ul>
+<ul>
+<li>The single-digit string time format is supported. For example, <code>time("1:1:1")</code>.</li>
+</ul>
+<h2 id="date">DATE<a class="headerlink" href="#date" title="Permanent link">&para;</a></h2>
 <p>The <code>DATE</code> type is used for values with a date part but no time part. Nebula Graph retrieves and displays <code>DATE</code> values in the <code>YYYY-MM-DD</code> format. The supported range is <code>-32768-01-01</code> to <code>32767-12-31</code>.</p>
 <p>The properties of <code>date()</code> include <code>year</code>, <code>month</code>, and <code>day</code>. <code>date()</code> supports the input of <code>YYYYY</code>, <code>YYYYY-MM</code> or <code>YYYYY-MM-DD</code>, and defaults to <code>01</code> for an untyped month or day.</p>
-<pre><code class="language-ngql">nebula&gt; RETURN DATE({year:-123, month:12, day:3});
+<div class="highlight"><pre><span></span><code>nebula&gt; RETURN DATE({year:-123, month:12, day:3});
 +------------------------------------+
 | date({year:-(123),month:12,day:3}) |
 +------------------------------------+
@@ -1398,24 +1399,22 @@ nebula&gt; RETURN DATE(&quot;2023-12-12&quot;) - DATE(&quot;2023-12-11&quot;);
 +-----------------------------------------+
 | 1                                       |
 +-----------------------------------------+
-</code></pre>
-<h2 id="time">TIME</h2>
+</code></pre></div>
+<h2 id="time">TIME<a class="headerlink" href="#time" title="Permanent link">&para;</a></h2>
 <p>The <code>TIME</code> type is used for values with a time part but no date part. Nebula Graph retrieves and displays <code>TIME</code> values in <code>hh:mm:ss.msmsmsususus</code> format. The supported range is <code>00:00:00.000000</code> to <code>23:59:59.999999</code>.</p>
 <p>The properties of <code>time()</code> include <code>hour</code>, <code>minute</code>, and <code>second</code>.</p>
-<h2 id="datetime">DATETIME</h2>
+<h2 id="datetime">DATETIME<a class="headerlink" href="#datetime" title="Permanent link">&para;</a></h2>
 <p>The <code>DATETIME</code> type is used for values that contain both date and time parts. Nebula Graph retrieves and displays <code>DATETIME</code> values in <code>YYYY-MM-DDThh:mm:ss.msmsmsususus</code> format. The supported range is <code>-32768-01-01T00:00:00.000000</code> to <code>32767-12-31T23:59:59.999999</code>.</p>
 <ul>
-<li>
-<p>The properties of <code>datetime()</code> include <code>year</code>, <code>month</code>, <code>day</code>, <code>hour</code>, <code>minute</code>, and <code>second</code>.</p>
-</li>
-<li>
-<p><code>datetime()</code> can convert <code>TIMESTAMP</code> to <code>DATETIME</code>. The value range of <code>TIMESTAMP</code> is <code>0~9223372036</code>.</p>
-</li>
-<li>
-<p><code>datetime()</code> supports an <code>int</code> argument. The <code>int</code> argument specifies a timestamp.</p>
-</li>
+<li>The properties of <code>datetime()</code> include <code>year</code>, <code>month</code>, <code>day</code>, <code>hour</code>, <code>minute</code>, and <code>second</code>.</li>
 </ul>
-<pre><code class="language-ngql"># To get the current date and time.
+<ul>
+<li><code>datetime()</code> can convert <code>TIMESTAMP</code> to <code>DATETIME</code>. The value range of <code>TIMESTAMP</code> is <code>0~9223372036</code>.</li>
+</ul>
+<ul>
+<li><code>datetime()</code> supports an <code>int</code> argument. The <code>int</code> argument specifies a timestamp.</li>
+</ul>
+<div class="highlight"><pre><span></span><code># To get the current date and time.
 nebula&gt; RETURN datetime();
 +----------------------------+
 | datetime()                 |
@@ -1445,31 +1444,29 @@ nebula&gt; RETURN datetime(1625469277);
 +----------------------------+
 | 2021-07-05T07:14:37.000000 |
 +----------------------------+
-</code></pre>
-<h2 id="timestamp">TIMESTAMP</h2>
+</code></pre></div>
+<h2 id="timestamp">TIMESTAMP<a class="headerlink" href="#timestamp" title="Permanent link">&para;</a></h2>
 <p>The <code>TIMESTAMP</code> data type is used for values that contain both date and time parts. It has a range of <code>1970-01-01T00:00:01</code> UTC to <code>2262-04-11T23:47:16</code> UTC.</p>
 <p><code>TIMESTAMP</code> has the following features:</p>
 <ul>
-<li>
-<p>Stored and displayed in the form of a timestamp, such as <code>1615974839</code>, which means <code>2021-03-17T17:53:59</code>.</p>
-</li>
-<li>
-<p>Supported <code>TIMESTAMP</code> querying methods: timestamp and <code>timestamp()</code> function.</p>
-</li>
-<li>
-<p>Supported <code>TIMESTAMP</code> inserting methods: timestamp, <code>timestamp()</code> function, and <code>now()</code> function.</p>
-</li>
-<li>
-<p><code>timestamp()</code> function accepts empty arguments to get the current timestamp. It can pass an integer arguments to identify the integer as a timestamp and the range of passed integer is: <code>0~9223372036</code>。</p>
-</li>
-<li>
-<p><code>timestamp()</code> function can convert <code>DATETIME</code> to <code>TIMESTAMP</code>, and the data type of <code>DATETIME</code> should be a <code>string</code>. </p>
-</li>
-<li>
-<p>The underlying storage data type is <strong>int64</strong>.</p>
-</li>
+<li>Stored and displayed in the form of a timestamp, such as <code>1615974839</code>, which means <code>2021-03-17T17:53:59</code>.</li>
 </ul>
-<pre><code class="language-ngql"># To get the current timestamp.
+<ul>
+<li>Supported <code>TIMESTAMP</code> querying methods: timestamp and <code>timestamp()</code> function.</li>
+</ul>
+<ul>
+<li>Supported <code>TIMESTAMP</code> inserting methods: timestamp, <code>timestamp()</code> function, and <code>now()</code> function.</li>
+</ul>
+<ul>
+<li><code>timestamp()</code> function accepts empty arguments to get the current timestamp. It can pass an integer arguments to identify the integer as a timestamp and the range of passed integer is: <code>0~9223372036</code>。</li>
+</ul>
+<ul>
+<li><code>timestamp()</code> function can convert <code>DATETIME</code> to <code>TIMESTAMP</code>, and the data type of <code>DATETIME</code> should be a <code>string</code>. </li>
+</ul>
+<ul>
+<li>The underlying storage data type is <strong>int64</strong>.</li>
+</ul>
+<div class="highlight"><pre><span></span><code># To get the current timestamp.
 nebula&gt; RETURN timestamp();
 +-------------+
 | timestamp() |
@@ -1492,93 +1489,92 @@ nebula&gt; RETURN timestamp(datetime(&quot;2022-08-29T07:53:10.939000&quot;));
 +---------------------------------------------------+
 | 1661759590                                        |
 +---------------------------------------------------+    
-</code></pre>
-<p>!!! note</p>
-<pre><code>The date and time format string passed into `timestamp()` cannot include any millisecond and microsecond, but the date and time format string passed into `timestamp(datetime())` can include a millisecond and a microsecond.
-</code></pre>
-<h2 id="duration">DURATION</h2>
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The date and time format string passed into <code>timestamp()</code> cannot include any millisecond and microsecond, but the date and time format string passed into <code>timestamp(datetime())</code> can include a millisecond and a microsecond.</p>
+</div>
+<h2 id="duration">DURATION<a class="headerlink" href="#duration" title="Permanent link">&para;</a></h2>
 <p>The <code>DURATION</code> data type is used to indicate a period of time. Map data that are freely combined by <code>years</code>, <code>months</code>, <code>days</code>, <code>hours</code>, <code>minutes</code>, and <code>seconds</code> indicates the <code>DURATION</code>.</p>
 <p><code>DURATION</code> has the following features:</p>
 <ul>
-<li>
-<p>Creating indexes for <code>DURATION</code> is not supported.</p>
-</li>
-<li>
-<p><code>DURATION</code> can be used to calculate the specified time.</p>
-</li>
+<li>Creating indexes for <code>DURATION</code> is not supported.</li>
 </ul>
-<h2 id="examples">Examples</h2>
+<ul>
+<li><code>DURATION</code> can be used to calculate the specified time.</li>
+</ul>
+<h2 id="examples">Examples<a class="headerlink" href="#examples" title="Permanent link">&para;</a></h2>
 <ol>
 <li>
 <p>Create a tag named <code>date1</code> with three properties: <code>DATE</code>, <code>TIME</code>, and <code>DATETIME</code>.</p>
-<p><code>ngql
-nebula&gt; CREATE TAG IF NOT EXISTS date1(p1 date, p2 time, p3 datetime);</code></p>
+<div class="highlight"><pre><span></span><code>nebula&gt; CREATE TAG IF NOT EXISTS date1(p1 date, p2 time, p3 datetime);
+</code></pre></div>
 </li>
 <li>
 <p>Insert a vertex named <code>test1</code>.</p>
-<p><code>ngql
-nebula&gt; INSERT VERTEX date1(p1, p2, p3) VALUES "test1":(date("2021-03-17"), time("17:53:59"), datetime("2017-03-04T22:30:40.003000[Asia/Shanghai]"));</code></p>
+<div class="highlight"><pre><span></span><code>nebula&gt; INSERT VERTEX date1(p1, p2, p3) VALUES &quot;test1&quot;:(date(&quot;2021-03-17&quot;), time(&quot;17:53:59&quot;), datetime(&quot;2017-03-04T22:30:40.003000[Asia/Shanghai]&quot;));
+</code></pre></div>
 </li>
 <li>
 <p>Query whether the value of property <code>p1</code> on the <code>test1</code> tag is <code>2021-03-17</code>.</p>
-<p><code>ngql
-nebula&gt; MATCH (v:date1)  RETURN v.date1.p1 == date("2021-03-17");
+<div class="highlight"><pre><span></span><code>nebula&gt; MATCH (v:date1)  RETURN v.date1.p1 == date(&quot;2021-03-17&quot;);
 +----------------------------------+
-| (v.date1.p1==date("2021-03-17")) |
+| (v.date1.p1==date(&quot;2021-03-17&quot;)) |
 +----------------------------------+
 | true                             |
-+----------------------------------+</code></p>
++----------------------------------+
+</code></pre></div>
 </li>
 <li>
 <p>Return the content of the property <code>p1</code> on <code>test1</code>.</p>
-<p><code>ngql
-nebula&gt; CREATE TAG INDEX IF NOT EXISTS date1_index ON date1(p1);
+<div class="highlight"><pre><span></span><code>nebula&gt; CREATE TAG INDEX IF NOT EXISTS date1_index ON date1(p1);
 nebula&gt; REBUILD TAG INDEX date1_index;
 nebula&gt; MATCH (v:date1) RETURN v.date1.p1;
 +------------------+
 | v.date1.p1.month |
 +------------------+
 | 3                |
-+------------------+</code></p>
++------------------+
+</code></pre></div>
 </li>
 <li>
 <p>Search for vertices with <code>p3</code> property values less than <code>2023-01-01T00:00:00.000000</code>, and return the <code>p3</code> values.</p>
-<p><code>ngql
-nebula&gt; MATCH (v:date1)  \
-WHERE v.date1.p3 &lt; datetime("2023-01-01T00:00:00.000000") \
+<div class="highlight"><pre><span></span><code>nebula&gt; MATCH (v:date1)  \
+WHERE v.date1.p3 &lt; datetime(&quot;2023-01-01T00:00:00.000000&quot;) \
 RETURN v.date1.p3;
 +----------------------------+
 | v.date1.p3                 |
 +----------------------------+
 | 2017-03-04T14:30:40.003000 |
-+----------------------------+</code></p>
++----------------------------+
+</code></pre></div>
 </li>
 <li>
 <p>Create a tag named <code>school</code> with the property of <code>TIMESTAMP</code>.</p>
-<p><code>ngql
-nebula&gt; CREATE TAG IF NOT EXISTS school(name string , found_time timestamp);</code></p>
+<div class="highlight"><pre><span></span><code>nebula&gt; CREATE TAG IF NOT EXISTS school(name string , found_time timestamp);
+</code></pre></div>
 </li>
 <li>
 <p>Insert a vertex named <code>DUT</code> with a found-time timestamp of <code>"1988-03-01T08:00:00"</code>.</p>
-<p>```ngql</p>
-<h1 id="insert-as-a-timestamp-the-corresponding-timestamp-of-1988-03-01t080000-is-573177600-or-573206400-utc">Insert as a timestamp. The corresponding timestamp of 1988-03-01T08:00:00 is 573177600, or 573206400 UTC.</h1>
-<p>nebula&gt; INSERT VERTEX school(name, found_time) VALUES "DUT":("DUT", 573206400);</p>
-<h1 id="insert-in-the-form-of-date-and-time">Insert in the form of date and time.</h1>
-<p>nebula&gt; INSERT VERTEX school(name, found_time) VALUES "DUT":("DUT", timestamp("1988-03-01T08:00:00"));
-```</p>
+<div class="highlight"><pre><span></span><code># Insert as a timestamp. The corresponding timestamp of 1988-03-01T08:00:00 is 573177600, or 573206400 UTC.
+nebula&gt; INSERT VERTEX school(name, found_time) VALUES &quot;DUT&quot;:(&quot;DUT&quot;, 573206400);
+
+# Insert in the form of date and time.
+nebula&gt; INSERT VERTEX school(name, found_time) VALUES &quot;DUT&quot;:(&quot;DUT&quot;, timestamp(&quot;1988-03-01T08:00:00&quot;));
+</code></pre></div>
 </li>
 <li>
 <p>Insert a vertex named <code>dut</code> and store time with <code>now()</code> or <code>timestamp()</code> functions.</p>
-<p>```ngql</p>
-<h1 id="use-now-function-to-store-time">Use now() function to store time</h1>
-<p>nebula&gt; INSERT VERTEX school(name, found_time) VALUES "dut":("dut", now());</p>
-<h1 id="use-timestamp-function-to-store-time">Use timestamp() function to store time</h1>
-<p>nebula&gt; INSERT VERTEX school(name, found_time) VALUES "dut":("dut", timestamp());
-```</p>
+<div class="highlight"><pre><span></span><code># Use now() function to store time
+nebula&gt; INSERT VERTEX school(name, found_time) VALUES &quot;dut&quot;:(&quot;dut&quot;, now());
+
+# Use timestamp() function to store time
+nebula&gt; INSERT VERTEX school(name, found_time) VALUES &quot;dut&quot;:(&quot;dut&quot;, timestamp());
+</code></pre></div>
 </li>
 </ol>
 <p>You can also use <code>WITH</code> statement to set a specific date and time, or to perform calculations. For example:</p>
-<pre><code class="language-ngql">nebula&gt; WITH time({hour: 12, minute: 31, second: 14, millisecond:111, microsecond: 222}) AS d RETURN d;
+<div class="highlight"><pre><span></span><code>nebula&gt; WITH time({hour: 12, minute: 31, second: 14, millisecond:111, microsecond: 222}) AS d RETURN d;
 +-----------------+
 | d               |
 +-----------------+
@@ -1592,14 +1588,14 @@ nebula&gt; WITH date({year: 1984, month: 10, day: 11}) AS x RETURN x + 1;
 | 1984-10-12 |
 +------------+
 
-nebula&gt; WITH date('1984-10-11') as x, duration({years: 12, days: 14, hours: 99, minutes: 12}) as d \
+nebula&gt; WITH date(&#39;1984-10-11&#39;) as x, duration({years: 12, days: 14, hours: 99, minutes: 12}) as d \
         RETURN x + d AS sum, x - d AS diff;
 +------------+------------+
 | sum        | diff       |
 +------------+------------+
 | 1996-10-29 | 1972-09-23 |
 +------------+------------+
-</code></pre>
+</code></pre></div>
 
 
 

@@ -44,6 +44,8 @@
       
     
     
+      <link rel="stylesheet" href="../../../stylesheets/note.css">
+    
     <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -73,7 +75,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#set-operators" class="md-skip">
+        <a href="#set_operators" class="md-skip">
           Skip to content
         </a>
       
@@ -1260,7 +1262,7 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#union-union-distinct-and-union-all" class="md-nav__link">
+  <a href="#union_union_distinct_and_union_all" class="md-nav__link">
     UNION, UNION DISTINCT, and UNION ALL
   </a>
   
@@ -1320,7 +1322,7 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
 </li>
       
         <li class="md-nav__item">
-  <a href="#precedence-of-the-set-operators-and-pipe-operators" class="md-nav__link">
+  <a href="#precedence_of_the_set_operators_and_pipe_operators" class="md-nav__link">
     Precedence of the set operators and pipe operators
   </a>
   
@@ -1357,28 +1359,27 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
   
 
 
-<h1 id="set-operators">Set operators</h1>
+<h1 id="set_operators">Set operators<a class="headerlink" href="#set_operators" title="Permanent link">&para;</a></h1>
 <p>This topic will describe the set operators, including <code>UNION</code>, <code>UNION ALL</code>, <code>INTERSECT</code>, and <code>MINUS</code>. To combine multiple queries, use these set operators.</p>
 <p>All set operators have equal precedence. If a nGQL statement contains multiple set operators, NebulaGraph will evaluate them from left to right unless parentheses explicitly specify another order.</p>
-<p>!!! caution</p>
-<pre><code>The names and order of the variables defined in the query statements before and after the set operator must be consistent. For example, the names and order of `a,b,c` in `RETURN a,b,c UNION RETURN a,b,c` need to be consistent.
-</code></pre>
-<h2 id="union-union-distinct-and-union-all">UNION, UNION DISTINCT, and UNION ALL</h2>
-<pre><code class="language-ngql">&lt;left&gt; UNION [DISTINCT | ALL] &lt;right&gt; [ UNION [DISTINCT | ALL] &lt;right&gt; ...]
-</code></pre>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<p>The names and order of the variables defined in the query statements before and after the set operator must be consistent. For example, the names and order of <code>a,b,c</code> in <code>RETURN a,b,c UNION RETURN a,b,c</code> need to be consistent.</p>
+</div>
+<h2 id="union_union_distinct_and_union_all">UNION, UNION DISTINCT, and UNION ALL<a class="headerlink" href="#union_union_distinct_and_union_all" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code>&lt;left&gt; UNION [DISTINCT | ALL] &lt;right&gt; [ UNION [DISTINCT | ALL] &lt;right&gt; ...]
+</code></pre></div>
 <ul>
-<li>
-<p>Operator <code>UNION DISTINCT</code> (or by short <code>UNION</code>) returns the union of two sets A and B without duplicated elements.</p>
-</li>
-<li>
-<p>Operator <code>UNION ALL</code> returns the union of two sets A and B with duplicated elements.</p>
-</li>
-<li>
-<p>The <code>&lt;left&gt;</code> and <code>&lt;right&gt;</code> must have the same number of columns and data types. Different data types are converted according to the <a href="../../3.data-types/9.type-conversion/">Type Conversion</a>.</p>
-</li>
+<li>Operator <code>UNION DISTINCT</code> (or by short <code>UNION</code>) returns the union of two sets A and B without duplicated elements.</li>
 </ul>
-<h3 id="examples">Examples</h3>
-<pre><code class="language-ngql"># The following statement returns the union of two query results without duplicated elements.
+<ul>
+<li>Operator <code>UNION ALL</code> returns the union of two sets A and B with duplicated elements.</li>
+</ul>
+<ul>
+<li>The <code>&lt;left&gt;</code> and <code>&lt;right&gt;</code> must have the same number of columns and data types. Different data types are converted according to the <a href="../../3.data-types/9.type-conversion/">Type Conversion</a>.</li>
+</ul>
+<h3 id="examples">Examples<a class="headerlink" href="#examples" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code># The following statement returns the union of two query results without duplicated elements.
 nebula&gt; GO FROM &quot;player102&quot; OVER follow YIELD dst(edge) \
         UNION \
         GO FROM &quot;player100&quot; OVER follow YIELD dst(edge);
@@ -1399,7 +1400,7 @@ nebula&gt; MATCH (v:player) \
 +---------------------+
 | n                   |
 +---------------------+
-| &quot;Amar'e Stoudemire&quot; |
+| &quot;Amar&#39;e Stoudemire&quot; |
 | &quot;Aron Baynes&quot;       |
 | &quot;Ben Simmons&quot;       |
 | &quot;Tony Parker&quot;       |
@@ -1427,7 +1428,7 @@ nebula&gt; MATCH (v:player) \
 +---------------------+
 | n                   |
 +---------------------+
-| &quot;Amar'e Stoudemire&quot; |
+| &quot;Amar&#39;e Stoudemire&quot; |
 | &quot;Aron Baynes&quot;       |
 | &quot;Ben Simmons&quot;       |
 | &quot;Tony Parker&quot;       |
@@ -1448,20 +1449,18 @@ nebula&gt; GO FROM &quot;player102&quot; OVER follow \
 | &quot;player101&quot; | 95     | 36  |
 | &quot;player125&quot; | 95     | 41  |
 +-------------+--------+-----+
-</code></pre>
-<h2 id="intersect">INTERSECT</h2>
-<pre><code class="language-ngql">&lt;left&gt; INTERSECT &lt;right&gt;
-</code></pre>
+</code></pre></div>
+<h2 id="intersect">INTERSECT<a class="headerlink" href="#intersect" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code>&lt;left&gt; INTERSECT &lt;right&gt;
+</code></pre></div>
 <ul>
-<li>
-<p>Operator <code>INTERSECT</code> returns the intersection of two sets A and B (denoted by A ⋂ B).</p>
-</li>
-<li>
-<p>Similar to <code>UNION</code>, the <code>left</code> and <code>right</code> must have the same number of columns and data types. Different data types are converted according to the <a href="../../3.data-types/9.type-conversion/">Type Conversion</a>.</p>
-</li>
+<li>Operator <code>INTERSECT</code> returns the intersection of two sets A and B (denoted by A ⋂ B).</li>
 </ul>
-<h3 id="example">Example</h3>
-<pre><code class="language-ngql"># The following statement returns the intersection of two query results.
+<ul>
+<li>Similar to <code>UNION</code>, the <code>left</code> and <code>right</code> must have the same number of columns and data types. Different data types are converted according to the <a href="../../3.data-types/9.type-conversion/">Type Conversion</a>.</li>
+</ul>
+<h3 id="example">Example<a class="headerlink" href="#example" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code># The following statement returns the intersection of two query results.
 nebula&gt; GO FROM &quot;player102&quot; OVER follow \
         YIELD dst(edge) AS id, properties(edge).degree AS Degree, properties($$).age AS Age \
         INTERSECT \
@@ -1494,14 +1493,13 @@ nebula&gt; UNWIND [1,2] AS a RETURN a \
 | 1 |
 | 2 |
 +---+
-
-</code></pre>
-<h2 id="minus">MINUS</h2>
-<pre><code class="language-ngql">&lt;left&gt; MINUS &lt;right&gt;
-</code></pre>
+</code></pre></div>
+<h2 id="minus">MINUS<a class="headerlink" href="#minus" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code>&lt;left&gt; MINUS &lt;right&gt;
+</code></pre></div>
 <p>Operator <code>MINUS</code> returns the subtraction (or difference) of two sets A and B (denoted by <code>A-B</code>). Always pay attention to the order of <code>left</code> and <code>right</code>. The set <code>A-B</code> consists of elements that are in A but not in B.</p>
-<h3 id="example_1">Example</h3>
-<pre><code class="language-ngql"># The following statement returns the elements in the first query result but not in the second query result.
+<h3 id="example_1">Example<a class="headerlink" href="#example_1" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code># The following statement returns the elements in the first query result but not in the second query result.
 nebula&gt; GO FROM &quot;player100&quot; OVER follow YIELD dst(edge) \
         MINUS \
         GO FROM &quot;player102&quot; OVER follow YIELD dst(edge);
@@ -1544,11 +1542,11 @@ nebula&gt; UNWIND [1,2,3] AS a RETURN a \
 | 2 |
 | 3 |
 +---+
-</code></pre>
-<h2 id="precedence-of-the-set-operators-and-pipe-operators">Precedence of the set operators and pipe operators</h2>
+</code></pre></div>
+<h2 id="precedence_of_the_set_operators_and_pipe_operators">Precedence of the set operators and pipe operators<a class="headerlink" href="#precedence_of_the_set_operators_and_pipe_operators" title="Permanent link">&para;</a></h2>
 <p>Please note that when a query contains a pipe <code>|</code> and a set operator, the pipe takes precedence. Refer to <a href="../4.pipe/">Pipe</a> for details. The query <code>GO FROM 1 UNION GO FROM 2 | GO FROM 3</code> is the same as the query <code>GO FROM 1 UNION (GO FROM 2 | GO FROM 3)</code>.</p>
-<h3 id="examples_1">Examples</h3>
-<pre><code class="language-ngql">nebula&gt; GO FROM &quot;player102&quot; OVER follow \
+<h3 id="examples_1">Examples<a class="headerlink" href="#examples_1" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>nebula&gt; GO FROM &quot;player102&quot; OVER follow \
         YIELD dst(edge) AS play_dst  \
         UNION \
         GO FROM &quot;team200&quot; OVER serve REVERSELY \
@@ -1563,17 +1561,17 @@ nebula&gt; UNWIND [1,2,3] AS a RETURN a \
 | &quot;player117&quot; |
 | &quot;player105&quot; |
 +-------------+
-</code></pre>
+</code></pre></div>
 <p><img alt="image" src="https://user-images.githubusercontent.com/42762957/97955863-3a213000-1de2-11eb-8de3-2c78da30747c.png" /></p>
 <p>The above query executes the statements in the red bar first and then executes the statement in the green box.</p>
 <p>The parentheses can change the execution priority. For example:</p>
-<pre><code class="language-ngql">nebula&gt; (GO FROM &quot;player102&quot; OVER follow \
+<div class="highlight"><pre><span></span><code>nebula&gt; (GO FROM &quot;player102&quot; OVER follow \
         YIELD dst(edge) AS play_dst  \
         UNION \
         GO FROM &quot;team200&quot; OVER serve REVERSELY \
         YIELD src(edge) AS play_dst) \
         | GO FROM $-.play_dst OVER follow YIELD dst(edge) AS play_dst;
-</code></pre>
+</code></pre></div>
 <p>In the above query, the statements within the parentheses take precedence. That is, the <code>UNION</code> operation will be executed first, and its output will be executed as the input of the next operation with pipes.</p>
 
 

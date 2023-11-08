@@ -44,6 +44,8 @@
       
     
     
+      <link rel="stylesheet" href="../../../stylesheets/note.css">
+    
     <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -73,7 +75,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#update-vertex" class="md-skip">
+        <a href="#update_vertex" class="md-skip">
           Skip to content
         </a>
       
@@ -1291,18 +1293,19 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
   
 
 
-<h1 id="update-vertex">UPDATE VERTEX</h1>
+<h1 id="update_vertex">UPDATE VERTEX<a class="headerlink" href="#update_vertex" title="Permanent link">&para;</a></h1>
 <p>The <code>UPDATE VERTEX</code> statement updates properties on tags of a vertex.</p>
 <p>In NebulaGraph, <code>UPDATE VERTEX</code> supports compare-and-set (CAS).</p>
-<p>!!! note</p>
-<pre><code>An `UPDATE VERTEX` statement can only update properties on **ONE TAG** of a vertex.
-</code></pre>
-<h2 id="syntax">Syntax</h2>
-<pre><code class="language-ngql">UPDATE VERTEX ON &lt;tag_name&gt; &lt;vid&gt;
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>An <code>UPDATE VERTEX</code> statement can only update properties on <strong>ONE TAG</strong> of a vertex.</p>
+</div>
+<h2 id="syntax">Syntax<a class="headerlink" href="#syntax" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code>UPDATE VERTEX ON &lt;tag_name&gt; &lt;vid&gt;
 SET &lt;update_prop&gt;
 [WHEN &lt;condition&gt;]
 [YIELD &lt;output&gt;]
-</code></pre>
+</code></pre></div>
 <table>
 <thead>
 <tr>
@@ -1345,8 +1348,8 @@ SET &lt;update_prop&gt;
 </tr>
 </tbody>
 </table>
-<h2 id="example">Example</h2>
-<pre><code class="language-ngql">// This query checks the properties of vertex &quot;player101&quot;.
+<h2 id="example">Example<a class="headerlink" href="#example" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code>// This query checks the properties of vertex &quot;player101&quot;.
 nebula&gt; FETCH PROP ON player &quot;player101&quot; YIELD properties(vertex);
 +--------------------------------+
 | properties(VERTEX)             |
@@ -1364,7 +1367,7 @@ nebula&gt; UPDATE VERTEX ON player &quot;player101&quot; \
 +---------------+-----+
 | &quot;Tony Parker&quot; | 38  |
 +---------------+-----+
-</code></pre>
+</code></pre></div>
 
 
 

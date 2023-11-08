@@ -44,6 +44,8 @@
       
     
     
+      <link rel="stylesheet" href="../../stylesheets/note.css">
+    
     <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -1298,76 +1300,72 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
   <h1>Source connect to nebula graph</h1>
 
 <p>This topic provides basic instruction on how to use the native CLI client NebulaGraph Console to connect to NebulaGraph.</p>
-<p>!!! caution</p>
-<pre><code>When connecting to NebulaGraph for the first time, you must [register the Storage Service](../2.quick-start/3.1add-storage-hosts.md) before querying data.
-</code></pre>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<p>When connecting to NebulaGraph for the first time, you must <a href="../../2.quick-start/3.1add-storage-hosts/">register the Storage Service</a> before querying data.</p>
+</div>
 <p>NebulaGraph supports multiple types of clients, including a CLI client, a GUI client, and clients developed in popular programming languages. For more information, see the <a href="../14.client/1.nebula-client.md">client list</a>.</p>
-<h2 id="prerequisites">Prerequisites</h2>
+<h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h2>
+<ul>
+<li>You have started <a href="https://docs.nebula-graph.io/3.6.0/4.deployment-and-installation/manage-service/">NebulaGraph services</a>.<!--Use the external link here because this file is a source for reuse and using internal links creates errors.--></li>
+</ul>
+<ul>
+<li>The machine on which you plan to run NebulaGraph Console has network access to the Graph Service of NebulaGraph.</li>
+</ul>
 <ul>
 <li>
-<p>You have started <a href="https://docs.nebula-graph.io/3.6.0/4.deployment-and-installation/manage-service/">NebulaGraph services</a>.<!--Use the external link here because this file is a source for reuse and using internal links creates errors.--></p>
-</li>
-<li>
-<p>The machine on which you plan to run NebulaGraph Console has network access to the Graph Service of NebulaGraph.</p>
-</li>
-<li>
 <p>The NebulaGraph Console version is compatible with the NebulaGraph version.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>NebulaGraph Console and NebulaGraph of the same version number are the most compatible. There may be compatibility issues when connecting to NebulaGraph with a different version of NebulaGraph Console. The error message <code>incompatible version between client and server</code> is displayed when there is such an issue.</p>
+</div>
 </li>
 </ul>
-<p>!!! note</p>
-<pre><code>    NebulaGraph Console and NebulaGraph of the same version number are the most compatible. There may be compatibility issues when connecting to NebulaGraph with a different version of NebulaGraph Console. The error message `incompatible version between client and server` is displayed when there is such an issue.
-</code></pre>
-<h3 id="steps">Steps</h3>
+<h3 id="steps">Steps<a class="headerlink" href="#steps" title="Permanent link">&para;</a></h3>
 <ol>
-<li>On the NebulaGraph Console <a href="https://github.com/vesoft-inc/nebula-console/releases" title="the nebula-console Releases page">releases page</a>, select a NebulaGraph Console version and click <strong>Assets</strong>.</li>
-</ol>
-<p>!!! note</p>
-<pre><code>    It is recommended to select the **latest** version.
-</code></pre>
-<ol>
+<li>
+<p>On the NebulaGraph Console <a href="https://github.com/vesoft-inc/nebula-console/releases" title="the nebula-console Releases page">releases page</a>, select a NebulaGraph Console version and click <strong>Assets</strong>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>It is recommended to select the <strong>latest</strong> version.</p>
+</div>
+</li>
 <li>
 <p>In the <strong>Assets</strong> area, find the correct binary file for the machine where you want to run NebulaGraph Console and download the file to the machine.</p>
 </li>
 <li>
 <p>(Optional) Rename the binary file to <code>nebula-console</code> for convenience.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For Windows, rename the file to <code>nebula-console.exe</code>.</p>
+</div>
 </li>
-</ol>
-<p>!!! note</p>
-<pre><code>    For Windows, rename the file to `nebula-console.exe`.
-</code></pre>
-<ol>
-<li>On the machine to run NebulaGraph Console, grant the execute permission of the nebula-console binary file to the user.</li>
-</ol>
-<p>!!! note</p>
-<pre><code>    For Windows, skip this step.
-
-```bash
-$ chmod 111 nebula-console
-```
-</code></pre>
-<ol>
+<li>
+<p>On the machine to run NebulaGraph Console, grant the execute permission of the nebula-console binary file to the user.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For Windows, skip this step.</p>
+</div>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>chmod<span class="w"> </span><span class="m">111</span><span class="w"> </span>nebula-console
+</code></pre></div>
+</li>
 <li>
 <p>In the command line interface, change the working directory to the one where the nebula-console binary file is stored.</p>
 </li>
 <li>
 <p>Run the following command to connect to NebulaGraph.</p>
-</li>
-<li>
-<p>For Linux or macOS:</p>
-</li>
-</ol>
-<p><code>bash
-  $ ./nebula-console -addr &lt;ip&gt; -port &lt;port&gt; -u &lt;username&gt; -p &lt;password&gt;
-  [-t 120] [-e "nGQL_statement" | -f filename.nGQL]</code></p>
+<ul>
+<li>For Linux or macOS:</li>
+</ul>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>./nebula-console<span class="w"> </span>-addr<span class="w"> </span>&lt;ip&gt;<span class="w"> </span>-port<span class="w"> </span>&lt;port&gt;<span class="w"> </span>-u<span class="w"> </span>&lt;username&gt;<span class="w"> </span>-p<span class="w"> </span>&lt;password&gt;
+<span class="o">[</span>-t<span class="w"> </span><span class="m">120</span><span class="o">]</span><span class="w"> </span><span class="o">[</span>-e<span class="w"> </span><span class="s2">&quot;nGQL_statement&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>-f<span class="w"> </span>filename.nGQL<span class="o">]</span>
+</code></pre></div>
 <ul>
 <li>For Windows:</li>
 </ul>
-<p>```powershell</p>
-<blockquote>
-<p>nebula-console.exe -addr <ip> -port <port> -u <username> -p <password>
-  [-t 120] [-e "nGQL_statement" | -f filename.nGQL]
-  ```</p>
-</blockquote>
+<div class="highlight"><pre><span></span><code><span class="p">&gt;</span> <span class="n">nebula-console</span><span class="p">.</span><span class="n">exe</span> <span class="n">-addr</span> <span class="p">&lt;</span><span class="n">ip</span><span class="p">&gt;</span> <span class="n">-port</span> <span class="p">&lt;</span><span class="n">port</span><span class="p">&gt;</span> <span class="n">-u</span> <span class="p">&lt;</span><span class="n">username</span><span class="p">&gt;</span> <span class="n">-p</span> <span class="p">&lt;</span><span class="n">password</span><span class="p">&gt;</span>
+<span class="p">[</span><span class="n">-t</span> <span class="n">120</span><span class="p">]</span> <span class="p">[</span><span class="n">-e</span> <span class="s2">&quot;nGQL_statement&quot;</span> <span class="p">|</span> <span class="o">-f</span> <span class="n">filename</span><span class="p">.</span><span class="n">nGQL</span><span class="p">]</span>
+</code></pre></div>
 <p>Parameter descriptions are as follows:</p>
 <table>
 <thead>
@@ -1428,6 +1426,8 @@ $ chmod 111 nebula-console
 </tbody>
 </table>
 <p>For information on more parameters, see the <a href="https://github.com/vesoft-inc/nebula-console/tree/release-3.5">project repository</a>.</p>
+</li>
+</ol>
 
 
 

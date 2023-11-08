@@ -44,6 +44,8 @@
       
     
     
+      <link rel="stylesheet" href="../../../../stylesheets/note.css">
+    
     <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -73,7 +75,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#show-indexes" class="md-skip">
+        <a href="#show_indexes" class="md-skip">
           Skip to content
         </a>
       
@@ -1291,13 +1293,13 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
   
 
 
-<h1 id="show-indexes">SHOW INDEXES</h1>
+<h1 id="show_indexes">SHOW INDEXES<a class="headerlink" href="#show_indexes" title="Permanent link">&para;</a></h1>
 <p>The <code>SHOW INDEXES</code> statement shows the names of existing native indexes.</p>
-<h2 id="syntax">Syntax</h2>
-<pre><code class="language-ngql">SHOW {TAG | EDGE} INDEXES;
-</code></pre>
-<h2 id="examples">Examples</h2>
-<pre><code class="language-ngql">nebula&gt; SHOW TAG INDEXES;
+<h2 id="syntax">Syntax<a class="headerlink" href="#syntax" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code>SHOW {TAG | EDGE} INDEXES;
+</code></pre></div>
+<h2 id="examples">Examples<a class="headerlink" href="#examples" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code>nebula&gt; SHOW TAG INDEXES;
 +------------------+----------+----------+
 | Index Name       | By Tag   | Columns  |
 +------------------+----------+----------+
@@ -1311,10 +1313,11 @@ nebula&gt; SHOW EDGE INDEXES;
 +----------------+----------+---------+
 | &quot;follow_index&quot; | &quot;follow&quot; | []      |
 +----------------+----------+---------+
-</code></pre>
-<p>!!! Compatibility "Legacy version compatibility"</p>
-<pre><code>In NebulaGraph 2.x, `SHOW TAG/EDGE INDEXES` only returns `Names`.
-</code></pre>
+</code></pre></div>
+<div class="admonition compatibility">
+<p class="admonition-title">Legacy version compatibility</p>
+<p>In NebulaGraph 2.x, <code>SHOW TAG/EDGE INDEXES</code> only returns <code>Names</code>.</p>
+</div>
 
 
 

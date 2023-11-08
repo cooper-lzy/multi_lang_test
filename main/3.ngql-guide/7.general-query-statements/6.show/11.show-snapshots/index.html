@@ -44,6 +44,8 @@
       
     
     
+      <link rel="stylesheet" href="../../../../stylesheets/note.css">
+    
     <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -73,7 +75,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#show-snapshots" class="md-skip">
+        <a href="#show_snapshots" class="md-skip">
           Skip to content
         </a>
       
@@ -1260,7 +1262,7 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#role-requirement" class="md-nav__link">
+  <a href="#role_requirement" class="md-nav__link">
     Role requirement
   </a>
   
@@ -1298,23 +1300,23 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
   
 
 
-<h1 id="show-snapshots">SHOW SNAPSHOTS</h1>
+<h1 id="show_snapshots">SHOW SNAPSHOTS<a class="headerlink" href="#show_snapshots" title="Permanent link">&para;</a></h1>
 <p>The <code>SHOW SNAPSHOTS</code> statement shows the information of all the snapshots.</p>
 <p>For how to create a snapshot and backup data, see <a href="../../../backup-and-restore/3.manage-snapshot.md">Snapshot</a>.</p>
-<h2 id="role-requirement">Role requirement</h2>
+<h2 id="role_requirement">Role requirement<a class="headerlink" href="#role_requirement" title="Permanent link">&para;</a></h2>
 <p>Only the <code>root</code> user who has the <code>GOD</code> role can use the <code>SHOW SNAPSHOTS</code> statement.</p>
-<h2 id="syntax">Syntax</h2>
-<pre><code class="language-ngql">SHOW SNAPSHOTS;
-</code></pre>
-<h2 id="example">Example</h2>
-<pre><code class="language-ngql">nebula&gt; SHOW SNAPSHOTS;
+<h2 id="syntax">Syntax<a class="headerlink" href="#syntax" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code>SHOW SNAPSHOTS;
+</code></pre></div>
+<h2 id="example">Example<a class="headerlink" href="#example" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code>nebula&gt; SHOW SNAPSHOTS;
 +--------------------------------+---------+-----------------------------------------------------+
 | Name                           | Status  | Hosts                                               |
 +--------------------------------+---------+-----------------------------------------------------+
 | &quot;SNAPSHOT_2020_12_16_11_13_55&quot; | &quot;VALID&quot; | &quot;storaged0:9779, storaged1:9779, storaged2:9779&quot;    |
 | &quot;SNAPSHOT_2020_12_16_11_14_10&quot; | &quot;VALID&quot; | &quot;storaged0:9779, storaged1:9779, storaged2:9779&quot;    |
 +--------------------------------+---------+-----------------------------------------------------+
-</code></pre>
+</code></pre></div>
 
 
 

@@ -44,6 +44,8 @@
       
     
     
+      <link rel="stylesheet" href="../../../stylesheets/note.css">
+    
     <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -1260,14 +1262,14 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#logical-operations-with-null" class="md-nav__link">
+  <a href="#logical_operations_with_null" class="md-nav__link">
     Logical operations with NULL
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#opencypher-compatibility" class="md-nav__link">
+  <a href="#opencypher_compatibility" class="md-nav__link">
     OpenCypher compatibility
   </a>
   
@@ -1275,14 +1277,14 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#comparisons-with-null" class="md-nav__link">
+  <a href="#comparisons_with_null" class="md-nav__link">
     Comparisons with NULL
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#operations-and-return-with-null" class="md-nav__link">
+  <a href="#operations_and_return_with_null" class="md-nav__link">
     Operations and RETURN with NULL
   </a>
   
@@ -1302,14 +1304,14 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#use-not-null" class="md-nav__link">
+  <a href="#use_not_null" class="md-nav__link">
     Use NOT NULL
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#use-not-null-and-set-the-default" class="md-nav__link">
+  <a href="#use_not_null_and_set_the_default" class="md-nav__link">
     Use NOT NULL and set the default
   </a>
   
@@ -1338,9 +1340,9 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
   
 
 
-<h1 id="null">NULL</h1>
+<h1 id="null">NULL<a class="headerlink" href="#null" title="Permanent link">&para;</a></h1>
 <p>You can set the properties for vertices or edges to <code>NULL</code>. Also, you can set the <code>NOT NULL</code> constraint to make sure that the property values are <code>NOT NULL</code>. If not specified, the property is set to <code>NULL</code> by default.</p>
-<h2 id="logical-operations-with-null">Logical operations with NULL</h2>
+<h2 id="logical_operations_with_null">Logical operations with NULL<a class="headerlink" href="#logical_operations_with_null" title="Permanent link">&para;</a></h2>
 <p>Here is the truth table for <code>AND</code>, <code>OR</code>, <code>XOR</code>, and <code>NOT</code>.</p>
 <table>
 <thead>
@@ -1428,19 +1430,19 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
 </tr>
 </tbody>
 </table>
-<h2 id="opencypher-compatibility">OpenCypher compatibility</h2>
+<h2 id="opencypher_compatibility">OpenCypher compatibility<a class="headerlink" href="#opencypher_compatibility" title="Permanent link">&para;</a></h2>
 <p>The comparisons and operations about NULL are different from openCypher. There may be changes later.</p>
-<h3 id="comparisons-with-null">Comparisons with NULL</h3>
+<h3 id="comparisons_with_null">Comparisons with NULL<a class="headerlink" href="#comparisons_with_null" title="Permanent link">&para;</a></h3>
 <p>The comparison operations with NULL are incompatible with openCypher.</p>
-<h3 id="operations-and-return-with-null">Operations and RETURN with NULL</h3>
+<h3 id="operations_and_return_with_null">Operations and RETURN with NULL<a class="headerlink" href="#operations_and_return_with_null" title="Permanent link">&para;</a></h3>
 <p>The NULL operations and RETURN with NULL are incompatible with openCypher.</p>
-<h2 id="examples">Examples</h2>
-<h3 id="use-not-null">Use NOT NULL</h3>
+<h2 id="examples">Examples<a class="headerlink" href="#examples" title="Permanent link">&para;</a></h2>
+<h3 id="use_not_null">Use NOT NULL<a class="headerlink" href="#use_not_null" title="Permanent link">&para;</a></h3>
 <p>Create a tag named <code>player</code>. Specify the property <code>name</code> as <code>NOT NULL</code>.</p>
-<pre><code class="language-ngql">nebula&gt; CREATE TAG IF NOT EXISTS player(name string NOT NULL, age int);
-</code></pre>
+<div class="highlight"><pre><span></span><code>nebula&gt; CREATE TAG IF NOT EXISTS player(name string NOT NULL, age int);
+</code></pre></div>
 <p>Use <code>SHOW</code> to create tag statements. The property <code>name</code> is <code>NOT NULL</code>. The property <code>age</code> is <code>NULL</code> by default.</p>
-<pre><code class="language-ngql">nebula&gt; SHOW CREATE TAG player;
+<div class="highlight"><pre><span></span><code>nebula&gt; SHOW CREATE TAG player;
 +-----------+-----------------------------------+
 | Tag       | Create Tag                        |
 +-----------+-----------------------------------+
@@ -1449,25 +1451,25 @@ Insider: Document versions starting from 3.6.0 contain Community Edition feature
 |           |  `age` int64 NULL                 |
 |           | ) ttl_duration = 0, ttl_col = &quot;&quot;&quot; |
 +-----------+-----------------------------------+
-</code></pre>
+</code></pre></div>
 <p>Insert the vertex <code>Kobe</code>. The property <code>age</code> can be <code>NULL</code>.</p>
-<pre><code class="language-ngql">nebula&gt; INSERT VERTEX player(name, age) VALUES &quot;Kobe&quot;:(&quot;Kobe&quot;,null);
-</code></pre>
-<h3 id="use-not-null-and-set-the-default">Use NOT NULL and set the default</h3>
+<div class="highlight"><pre><span></span><code>nebula&gt; INSERT VERTEX player(name, age) VALUES &quot;Kobe&quot;:(&quot;Kobe&quot;,null);
+</code></pre></div>
+<h3 id="use_not_null_and_set_the_default">Use NOT NULL and set the default<a class="headerlink" href="#use_not_null_and_set_the_default" title="Permanent link">&para;</a></h3>
 <p>Create a tag named <code>player</code>. Specify the property <code>age</code> as <code>NOT NULL</code>. The default value is <code>18</code>.</p>
-<pre><code class="language-ngql">nebula&gt; CREATE TAG IF NOT EXISTS player(name string, age int NOT NULL DEFAULT 18);
-</code></pre>
+<div class="highlight"><pre><span></span><code>nebula&gt; CREATE TAG IF NOT EXISTS player(name string, age int NOT NULL DEFAULT 18);
+</code></pre></div>
 <p>Insert the vertex <code>Kobe</code>. Specify the property <code>name</code> only.</p>
-<pre><code class="language-ngql">nebula&gt; INSERT VERTEX player(name) VALUES &quot;Kobe&quot;:(&quot;Kobe&quot;);
-</code></pre>
+<div class="highlight"><pre><span></span><code>nebula&gt; INSERT VERTEX player(name) VALUES &quot;Kobe&quot;:(&quot;Kobe&quot;);
+</code></pre></div>
 <p>Query the vertex <code>Kobe</code>. The property <code>age</code> is <code>18</code> by default.</p>
-<pre><code class="language-ngql">nebula&gt; FETCH PROP ON player &quot;Kobe&quot; YIELD properties(vertex);
+<div class="highlight"><pre><span></span><code>nebula&gt; FETCH PROP ON player &quot;Kobe&quot; YIELD properties(vertex);
 +--------------------------+
 | properties(VERTEX)       |
 +--------------------------+
 | {age: 18, name: &quot;Kobe&quot;}  |
 +--------------------------+
-</code></pre>
+</code></pre></div>
 
 
 
