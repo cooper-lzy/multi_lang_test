@@ -57,7 +57,7 @@ nav:
         - Storage Service:  1.introduction/3.nebula-graph-architecture/4.storage-service.md
   
   - Quick start:
-      - Deploy NebulaGraph using Docker: 2.quick-start/1.quick-start-workflow.md
+      - Deploy NebulaGraph using Docker: 2.quick-start/1.quick-start-workflow0.md
       - Deploy NebulaGraph on-premise: 
         - Step 1 Install NebulaGraph: 2.quick-start/2.install-nebula-graph.md
         - Step 2 Manage NebulaGraph Service: 2.quick-start/5.start-stop-service.md
