@@ -1,0 +1,1662 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://chrischen2023.github.io/multi_lang_test/main/2.quick-start/1.quick-start-workflow/">
+      
+      
+        <link rel="prev" href="../../1.introduction/3.nebula-graph-architecture/4.storage-service/">
+      
+      
+        <link rel="next" href="../2.install-nebula-graph/">
+      
+      
+      <link rel="icon" href="https://docs-cdn.nebula-graph.com.cn/figures/favicon.ico">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.4.6">
+    
+    
+      
+        <title>Deploy NebulaGraph using Docker - Chris Docs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.35e1ed30.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.356b1318.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="nebula" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#quickly-deploy-nebulagraph-using-docker" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+        <aside class="md-banner">
+          <div class="md-banner__inner md-grid md-typeset">
+            
+            
+Insider: Document versions starting from 3.6.0 contain Community Edition features only. For Enterprise documentation, please <a href="https://yueshu.com.cn/contact">Contact us</a>. <a href="../../.."> 
+  <strong>Click here to go to latest.</strong>
+</a>
+
+
+          </div>
+          
+        </aside>
+      
+    </div>
+    
+      <div data-md-color-scheme="default" data-md-component="outdated" hidden>
+        
+          <aside class="md-banner md-banner--warning">
+            <div class="md-banner__inner md-grid md-typeset">
+              
+  Insider: You're not viewing the latest version.
+  <a href="../../.."> 
+    <strong>Click here to go to latest.</strong>
+  </a>
+
+            </div>
+            <script>var el=document.querySelector("[data-md-component=outdated]"),outdated=__md_get("__outdated",sessionStorage);!0===outdated&&el&&(el.hidden=!1)</script>
+          </aside>
+        
+      </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Chris Docs" class="md-header__button md-logo" aria-label="Chris Docs" data-md-component="logo">
+      
+  <img src="https://docs-cdn.nebula-graph.com.cn/figures/vesoft-nebula-logo-white22-12-21.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Chris Docs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Deploy NebulaGraph using Docker
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="nebula" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6zm0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4zM7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3Z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/ChrisChen2023/multi_lang_test" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    multi_lang_test
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../1.introduction/1.what-is-nebula-graph/" class="md-tabs__link">
+          
+  
+  Introduction
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="./" class="md-tabs__link">
+          
+  
+  Quick start
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../3.ngql-guide/1.nGQL-overview/1.overview/" class="md-tabs__link">
+          
+  
+  nGQL guide
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../nebula-dashboard/1.what-is-dashboard/" class="md-tabs__link">
+          
+  
+  Dashboard (Community)
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Chris Docs" class="md-nav__button md-logo" aria-label="Chris Docs" data-md-component="logo">
+      
+  <img src="https://docs-cdn.nebula-graph.com.cn/figures/vesoft-nebula-logo-white22-12-21.png" alt="logo">
+
+    </a>
+    Chris Docs
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/ChrisChen2023/multi_lang_test" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    multi_lang_test
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Introduction
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Introduction
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1.introduction/1.what-is-nebula-graph/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    What is NebulaGraph
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1.introduction/2.data-model/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Data model
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1.introduction/2.1.path/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Path
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1.introduction/3.vid/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    VID
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_5" id="__nav_2_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    NebulaGraph architecture
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_5">
+            <span class="md-nav__icon md-icon"></span>
+            NebulaGraph architecture
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1.introduction/3.nebula-graph-architecture/1.architecture-overview/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Architecture overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1.introduction/3.nebula-graph-architecture/2.meta-service/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Meta Service
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1.introduction/3.nebula-graph-architecture/3.graph-service/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Graph Service
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1.introduction/3.nebula-graph-architecture/4.storage-service/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Storage Service
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Quick start
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Quick start
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Deploy NebulaGraph using Docker
+  </span>
+  
+
+      </a>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Deploy NebulaGraph on-premise
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            Deploy NebulaGraph on-premise
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2.install-nebula-graph/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Step 1 Install NebulaGraph
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5.start-stop-service/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Step 2 Manage NebulaGraph Service
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3.connect-to-nebula-graph/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Step 3 Connect to NebulaGraph
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3.1add-storage-hosts/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Step 4 Register the Storage Service
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../4.nebula-graph-crud/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Step 5 Use nGQL (CRUD)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../6.cheatsheet-for-ngql/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    nGQL cheatsheet
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    nGQL guide
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            nGQL guide
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_1" id="__nav_4_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    nGQL overview
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_1">
+            <span class="md-nav__icon md-icon"></span>
+            nGQL overview
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3.ngql-guide/1.nGQL-overview/1.overview/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3.ngql-guide/1.nGQL-overview/3.graph-patterns/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Graph patterns
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3.ngql-guide/1.nGQL-overview/comments/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Comments
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3.ngql-guide/1.nGQL-overview/identifier-case-sensitivity/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Identifier case sensitivity
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3.ngql-guide/1.nGQL-overview/keywords-and-reserved-words/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Keywords
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3.ngql-guide/1.nGQL-overview/ngql-style-guide/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    nGQL style guide
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Dashboard (Community)
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Dashboard (Community)
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../nebula-dashboard/1.what-is-dashboard/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    What is NebulaGraph Dashboard
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../nebula-dashboard/2.deploy-dashboard/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Deploy Dashboard
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../nebula-dashboard/3.connect-dashboard/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Connect to Dashboard
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../nebula-dashboard/4.use-dashboard/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Use Dashboard
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../nebula-dashboard/6.monitor-parameter/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Monitoring metrics
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="quickly-deploy-nebulagraph-using-docker">Quickly deploy NebulaGraph using Docker</h1>
+<p>You can quickly get started with NebulaGraph by deploying NebulaGraph with Docker Desktop or Docker Compose. </p>
+<p>=== "Using Docker Desktop"</p>
+<pre><code>NebulaGraph is available as a [Docker Extension](https://hub.docker.com/extensions/weygu/nebulagraph-dd-ext) that you can easily install and run on your Docker Desktop. You can quickly deploy NebulaGraph using Docker Desktop with just one click.
+
+1. Install Docker Desktop
+
+  - [Install Docker Desktop on Mac](https://docs.docker.com/docker-for-mac/install/)
+  - [Install Docker Desktop on Windows](https://docs.docker.com/docker-for-windows/install/)
+
+  !!! caution
+      To install Docker Desktop, you need to install [WSL 2](https://docs.docker.com/desktop/install/windows-install/#system-requirements) first.
+
+2. In the left sidebar of Docker Desktop, click **Extensions** or **Add Extensions**.
+3. On the Extensions Marketplace, search for NebulaGraph and click **Install**.
+
+  ![docker](https://docs-cdn.nebula-graph.com.cn/figures/docker.png)
+
+  Click **Update** to update NebulaGraph to the latest version when a new version is available.
+
+  ![docker-update](https://docs-cdn.nebula-graph.com.cn/figures/docker-update.png)
+
+4. Click **Open** to navigate to the NebulaGraph extension page.
+
+5. At the top of the page, click **Studio in Browser** to use NebulaGraph.
+
+For more information about how to use NebulaGraph with Docker Desktop, see the following video:
+
+&lt;iframe width="560" height="315" src="https://www.youtube.com/embed/8zKer-4RXEg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen&gt;&lt;/iframe&gt;
+</code></pre>
+<p>=== "Using Docker Compose"</p>
+<pre><code>Using Docker Compose can quickly deploy NebulaGraph services based on the prepared configuration file. It is only recommended to use this method when testing the functions of NebulaGraph.
+
+## Prerequisites
+
+* You have installed the following applications on your host.
+
+  | Application    | Recommended version | Official installation reference                                    |
+  | -------------- | ------------------- | ------------------------------------------------------------------ |
+  | Docker         | Latest              | [Install Docker Engine](https://docs.docker.com/engine/install/)   |
+  | Docker Compose | Latest              | [Install Docker Compose](https://docs.docker.com/compose/install/) |
+  | Git            | Latest              | [Download Git](https://git-scm.com/download/)       |
+
+* If you are deploying NebulaGraph as a non-root user, grant the user with Docker-related privileges. For detailed instructions, see [Manage Docker as a non-root user](https://docs.docker.com/engine/install/linux-postinstall/#manage-docker-as-a-non-root-user).
+
+* You have started the Docker service on your host.
+
+* If you have already deployed another version of NebulaGraph with Docker Compose on your host, to avoid compatibility issues, you need to delete the `nebula-docker-compose/data` directory.
+
+## Deploy NebulaGraph
+
+
+1. Clone the `3.6.0` branch of the `nebula-docker-compose` repository to your host with Git.
+
+  !!! danger
+
+        The `master` branch contains the untested code for the latest NebulaGraph development release. **DO NOT** use this release in a production environment.
+
+    ```bash
+    $ git clone -b release-3.6 https://github.com/vesoft-inc/nebula-docker-compose.git
+    ```
+
+  !!! Note
+
+        The `x.y` version of Docker Compose aligns to the `x.y` version of NebulaGraph. For the NebulaGraph `z` version, Docker Compose does not publish the corresponding `z` version, but pulls the `z` version of the NebulaGraph image.
+
+2. Go to the `nebula-docker-compose` directory.
+
+    ```bash
+    $ cd nebula-docker-compose/
+    ```
+
+3. Run the following command to start all the NebulaGraph services.
+
+
+  !!! Note
+
+        - Update the [NebulaGraph images](#how_to_upgrade_or_update_the_docker_images_of_nebulagraph_services) and [NebulaGraph Console images](#how_to_update_the_nebulagraph_console_client) first if they are out of date.
+        - The return result after executing the command varies depending on the installation directory.
+
+    ```bash
+    [nebula-docker-compose]$ docker-compose up -d
+    Creating nebula-docker-compose_metad0_1 ... done
+    Creating nebula-docker-compose_metad2_1 ... done
+    Creating nebula-docker-compose_metad1_1 ... done
+    Creating nebula-docker-compose_graphd2_1   ... done
+    Creating nebula-docker-compose_graphd_1    ... done
+    Creating nebula-docker-compose_graphd1_1   ... done
+    Creating nebula-docker-compose_storaged0_1 ... done
+    Creating nebula-docker-compose_storaged2_1 ... done
+    Creating nebula-docker-compose_storaged1_1 ... done
+    ```
+
+  !!! compatibility
+
+        Starting from NebulaGraph version 3.1.0, nebula-docker-compose automatically starts a NebulaGraph Console docker container and adds the storage host to the cluster (i.e. `ADD HOSTS` command).
+
+  !!! note
+
+        For more information of the preceding services, see [NebulaGraph architecture](../1.introduction/3.nebula-graph-architecture/1.architecture-overview.md).
+
+## Connect to NebulaGraph
+
+There are two ways to connect to NebulaGraph:
+
+- Connected with Nebula Console outside the container. Because the external mapping port for the Graph service is also fixed as `9669` in the container's configuration file, you can connect directly through the default port. For details, see [Connect to NebulaGraph](../2.quick-start/3.connect-to-nebula-graph.md).
+
+- Log into the container installed NebulaGraph Console, then connect to the Graph service. This section describes this approach.
+
+1. Run the following command to view the name of NebulaGraph Console docker container.
+
+  ```bash
+  $ docker-compose ps
+            Name                         Command             State                 Ports
+  --------------------------------------------------------------------------------------------
+  nebula-docker-compose_console_1     sh -c sleep 3 &amp;&amp;          Up
+                                    nebula-co ...
+  ......
+  ```
+
+2. Run the following command to enter the NebulaGraph Console docker container.
+
+  ```bash
+  docker exec -it nebula-docker-compose_console_1 /bin/sh
+  / #
+  ```
+
+3. Connect to NebulaGraph with NebulaGraph Console.
+
+  ```bash
+  / # ./usr/local/bin/nebula-console -u &lt;user_name&gt; -p &lt;password&gt; --address=graphd --port=9669
+  ```
+
+  !!! Note
+
+        By default, the authentication is off, you can only log in with an existing username (the default is `root`) and any password. To turn it on, see [Enable authentication](../7.data-security/1.authentication/1.authentication.md).
+
+4. Run the following commands to view the cluster state.
+
+  ```bash
+  nebula&gt; SHOW HOSTS;
+  +-------------+------+----------+--------------+----------------------+------------------------+---------+
+  | Host        | Port | Status   | Leader count | Leader distribution  | Partition distribution | Version |
+  +-------------+------+----------+--------------+----------------------+------------------------+---------+
+  | "storaged0" | 9779 | "ONLINE" | 0            | "No valid partition" | "No valid partition"   | "3.6.0" |
+  | "storaged1" | 9779 | "ONLINE" | 0            | "No valid partition" | "No valid partition"   | "3.6.0" |
+  | "storaged2" | 9779 | "ONLINE" | 0            | "No valid partition" | "No valid partition"   | "3.6.0" |
+  +-------------+------+----------+--------------+----------------------+------------------------+---------+
+  ```
+
+Run `exit` twice to switch back to your terminal (shell).
+
+## Check the NebulaGraph service status and ports
+
+Run `docker-compose ps` to list all the services of NebulaGraph and their status and ports.
+
+!!! note
+
+    NebulaGraph provides services to the clients through port `9669` by default. To use other ports, modify the `docker-compose.yaml` file in the `nebula-docker-compose` directory and restart the NebulaGraph services.
+
+```bash
+$ docker-compose ps
+nebula-docker-compose_console_1     sh -c sleep 3 &amp;&amp;                 Up
+                                  nebula-co ...
+nebula-docker-compose_graphd1_1     /usr/local/nebula/bin/nebu ...   Up      0.0.0.0:49174-&gt;19669/tcp,:::49174-&gt;19669/tcp, 0.0.0.0:49171-&gt;19670/tcp,:::49171-&gt;19670/tcp, 0.0.0.0:49177-&gt;9669/tcp,:::49177-&gt;9669/tcp
+nebula-docker-compose_graphd2_1     /usr/local/nebula/bin/nebu ...   Up      0.0.0.0:49175-&gt;19669/tcp,:::49175-&gt;19669/tcp, 0.0.0.0:49172-&gt;19670/tcp,:::49172-&gt;19670/tcp, 0.0.0.0:49178-&gt;9669/tcp,:::49178-&gt;9669/tcp
+nebula-docker-compose_graphd_1      /usr/local/nebula/bin/nebu ...   Up      0.0.0.0:49180-&gt;19669/tcp,:::49180-&gt;19669/tcp, 0.0.0.0:49179-&gt;19670/tcp,:::49179-&gt;19670/tcp, 0.0.0.0:9669-&gt;9669/tcp,:::9669-&gt;9669/tcp
+nebula-docker-compose_metad0_1      /usr/local/nebula/bin/nebu ...   Up      0.0.0.0:49157-&gt;19559/tcp,:::49157-&gt;19559/tcp, 0.0.0.0:49154-&gt;19560/tcp,:::49154-&gt;19560/tcp, 0.0.0.0:49160-&gt;9559/tcp,:::49160-&gt;9559/tcp, 9560/tcp
+nebula-docker-compose_metad1_1      /usr/local/nebula/bin/nebu ...   Up      0.0.0.0:49156-&gt;19559/tcp,:::49156-&gt;19559/tcp, 0.0.0.0:49153-&gt;19560/tcp,:::49153-&gt;19560/tcp, 0.0.0.0:49159-&gt;9559/tcp,:::49159-&gt;9559/tcp, 9560/tcp
+nebula-docker-compose_metad2_1      /usr/local/nebula/bin/nebu ...   Up      0.0.0.0:49158-&gt;19559/tcp,:::49158-&gt;19559/tcp, 0.0.0.0:49155-&gt;19560/tcp,:::49155-&gt;19560/tcp, 0.0.0.0:49161-&gt;9559/tcp,:::49161-&gt;9559/tcp, 9560/tcp
+nebula-docker-compose_storaged0_1   /usr/local/nebula/bin/nebu ...   Up      0.0.0.0:49166-&gt;19779/tcp,:::49166-&gt;19779/tcp, 0.0.0.0:49163-&gt;19780/tcp,:::49163-&gt;19780/tcp, 9777/tcp, 9778/tcp, 0.0.0.0:49169-&gt;9779/tcp,:::49169-&gt;9779/tcp, 9780/tcp
+nebula-docker-compose_storaged1_1   /usr/local/nebula/bin/nebu ...   Up      0.0.0.0:49165-&gt;19779/tcp,:::49165-&gt;19779/tcp, 0.0.0.0:49162-&gt;19780/tcp,:::49162-&gt;19780/tcp, 9777/tcp, 9778/tcp, 0.0.0.0:49168-&gt;9779/tcp,:::49168-&gt;9779/tcp, 9780/tcp
+nebula-docker-compose_storaged2_1   /usr/local/nebula/bin/nebu ...   Up      0.0.0.0:49167-&gt;19779/tcp,:::49167-&gt;19779/tcp, 0.0.0.0:49164-&gt;19780/tcp,:::49164-&gt;19780/tcp, 9777/tcp, 9778/tcp, 0.0.0.0:49170-&gt;9779/tcp,:::49170-&gt;9779/tcp, 9780/tcp
+```
+
+If the service is abnormal, you can first confirm the abnormal container name (such as `nebula-docker-compose_graphd2_1`).
+
+Then you can execute `docker ps` to view the corresponding `CONTAINER ID` (such as `2a6c56c405f5`).
+
+```bash
+[nebula-docker-compose]$ docker ps
+CONTAINER ID   IMAGE                               COMMAND                  CREATED          STATUS                    PORTS                                                                                                  NAMES
+2a6c56c405f5   vesoft/nebula-graphd:nightly     "/usr/local/nebula/b…"   36 minutes ago   Up 36 minutes (healthy)   0.0.0.0:49230-&gt;9669/tcp, 0.0.0.0:49229-&gt;19669/tcp, 0.0.0.0:49228-&gt;19670/tcp                            nebula-docker-compose_graphd2_1
+7042e0a8e83d   vesoft/nebula-storaged:nightly   "./bin/nebula-storag…"   36 minutes ago   Up 36 minutes (healthy)   9777-9778/tcp, 9780/tcp, 0.0.0.0:49227-&gt;9779/tcp, 0.0.0.0:49226-&gt;19779/tcp, 0.0.0.0:49225-&gt;19780/tcp   nebula-docker-compose_storaged2_1
+18e3ea63ad65   vesoft/nebula-storaged:nightly   "./bin/nebula-storag…"   36 minutes ago   Up 36 minutes (healthy)   9777-9778/tcp, 9780/tcp, 0.0.0.0:49219-&gt;9779/tcp, 0.0.0.0:49218-&gt;19779/tcp, 0.0.0.0:49217-&gt;19780/tcp   nebula-docker-compose_storaged0_1
+4dcabfe8677a   vesoft/nebula-graphd:nightly     "/usr/local/nebula/b…"   36 minutes ago   Up 36 minutes (healthy)   0.0.0.0:49224-&gt;9669/tcp, 0.0.0.0:49223-&gt;19669/tcp, 0.0.0.0:49222-&gt;19670/tcp                            nebula-docker-compose_graphd1_1
+a74054c6ae25   vesoft/nebula-graphd:nightly     "/usr/local/nebula/b…"   36 minutes ago   Up 36 minutes (healthy)   0.0.0.0:9669-&gt;9669/tcp, 0.0.0.0:49221-&gt;19669/tcp, 0.0.0.0:49220-&gt;19670/tcp                             nebula-docker-compose_graphd_1
+880025a3858c   vesoft/nebula-storaged:nightly   "./bin/nebula-storag…"   36 minutes ago   Up 36 minutes (healthy)   9777-9778/tcp, 9780/tcp, 0.0.0.0:49216-&gt;9779/tcp, 0.0.0.0:49215-&gt;19779/tcp, 0.0.0.0:49214-&gt;19780/tcp   nebula-docker-compose_storaged1_1
+45736a32a23a   vesoft/nebula-metad:nightly      "./bin/nebula-metad …"   36 minutes ago   Up 36 minutes (healthy)   9560/tcp, 0.0.0.0:49213-&gt;9559/tcp, 0.0.0.0:49212-&gt;19559/tcp, 0.0.0.0:49211-&gt;19560/tcp                  nebula-docker-compose_metad0_1
+3b2c90eb073e   vesoft/nebula-metad:nightly      "./bin/nebula-metad …"   36 minutes ago   Up 36 minutes (healthy)   9560/tcp, 0.0.0.0:49207-&gt;9559/tcp, 0.0.0.0:49206-&gt;19559/tcp, 0.0.0.0:49205-&gt;19560/tcp                  nebula-docker-compose_metad2_1
+7bb31b7a5b3f   vesoft/nebula-metad:nightly      "./bin/nebula-metad …"   36 minutes ago   Up 36 minutes (healthy)   9560/tcp, 0.0.0.0:49210-&gt;9559/tcp, 0.0.0.0:49209-&gt;19559/tcp, 0.0.0.0:49208-&gt;19560/tcp                  nebula-docker-compose_metad1_1
+```
+
+Use the `CONTAINER ID` to log in the container and troubleshoot.
+
+```bash
+nebula-docker-compose]$ docker exec -it 2a6c56c405f5 bash
+[root@2a6c56c405f5 nebula]#
+```
+
+## Check the service data and logs
+
+All the data and logs of NebulaGraph are stored persistently in the `nebula-docker-compose/data` and `nebula-docker-compose/logs` directories.
+
+The structure of the directories is as follows:
+
+```text
+nebula-docker-compose/
+  |-- docker-compose.yaml
+  ├── data
+  │   ├── meta0
+  │   ├── meta1
+  │   ├── meta2
+  │   ├── storage0
+  │   ├── storage1
+  │   └── storage2
+  └── logs
+      ├── graph
+      ├── graph1
+      ├── graph2
+      ├── meta0
+      ├── meta1
+      ├── meta2
+      ├── storage0
+      ├── storage1
+      └── storage2
+```
+
+## Stop the NebulaGraph services
+
+You can run the following command to stop the NebulaGraph services:
+
+```bash
+$ docker-compose down
+```
+
+The following information indicates you have successfully stopped the NebulaGraph services:
+
+```bash
+Stopping nebula-docker-compose_console_1   ... done
+Stopping nebula-docker-compose_graphd1_1   ... done
+Stopping nebula-docker-compose_graphd_1    ... done
+Stopping nebula-docker-compose_graphd2_1   ... done
+Stopping nebula-docker-compose_storaged1_1 ... done
+Stopping nebula-docker-compose_storaged0_1 ... done
+Stopping nebula-docker-compose_storaged2_1 ... done
+Stopping nebula-docker-compose_metad2_1    ... done
+Stopping nebula-docker-compose_metad0_1    ... done
+Stopping nebula-docker-compose_metad1_1    ... done
+Removing nebula-docker-compose_console_1   ... done
+Removing nebula-docker-compose_graphd1_1   ... done
+Removing nebula-docker-compose_graphd_1    ... done
+Removing nebula-docker-compose_graphd2_1   ... done
+Removing nebula-docker-compose_storaged1_1 ... done
+Removing nebula-docker-compose_storaged0_1 ... done
+Removing nebula-docker-compose_storaged2_1 ... done
+Removing nebula-docker-compose_metad2_1    ... done
+Removing nebula-docker-compose_metad0_1    ... done
+Removing nebula-docker-compose_metad1_1    ... done
+Removing network nebula-docker-compose_nebula-net
+```
+
+!!! danger
+
+    The parameter `-v` in the command `docker-compose down -v` will **delete** all your local NebulaGraph storage data. Try this command if you are using the nightly release and having some compatibility issues.
+
+## Modify configurations
+
+The configuration file of NebulaGraph deployed by Docker Compose is `nebula-docker-compose/docker-compose.yaml`. To make the new configuration take effect, modify the configuration in this file and restart the service.
+
+For more instructions, see [Configurations](../5.configurations-and-logs/1.configurations/1.configurations.md).
+
+## FAQ
+
+### How to fix the docker mapping to external ports?
+
+To set the `ports` of corresponding services as fixed mapping, modify the `docker-compose.yaml` in the `nebula-docker-compose` directory. For example:
+
+```bash
+graphd:
+    image: vesoft/nebula-graphd:release-3.6
+    ...
+    ports:
+      - 9669:9669
+      - 19669
+      - 19670
+```
+
+`9669:9669` indicates the internal port 9669 is uniformly mapped to external ports, while `19669` indicates the internal port 19669 is randomly mapped to external ports.
+
+### How to upgrade or update the docker images of NebulaGraph services
+
+5. In the `nebula-docker-compose/docker-compose.yaml` file, change all the `image` values to the required image version.
+
+6. In the `nebula-docker-compose` directory, run `docker-compose pull` to update the images of the Graph Service, Storage Service, Meta Service, and NebulaGraph Console.
+
+7. Run `docker-compose up -d` to start the NebulaGraph services again.
+
+8. After connecting to NebulaGraph with NebulaGraph Console, run `SHOW HOSTS GRAPH`, `SHOW HOSTS STORAGE`, or `SHOW HOSTS META` to check the version of the responding service respectively.
+
+### `ERROR: toomanyrequests` when `docker-compose pull`
+
+You may meet the following error.
+
+`ERROR: toomanyrequests: You have reached your pull rate limit. You may increase the limit by authenticating and upgrading: https://www.docker.com/increase-rate-limit`.
+
+You have met the rate limit of Docker Hub. Learn more on [Understanding Docker Hub Rate Limiting](https://www.docker.com/increase-rate-limit).
+
+### How to update the NebulaGraph Console client
+
+The command `docker-compose pull` updates both the NebulaGraph services and the NebulaGraph Console.
+</code></pre>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/vesoft-inc/nebula-docs-cn" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.tabs.sticky"], "search": "../../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.aecac24b.min.js"></script>
+      
+    
+  </body>
+</html>
