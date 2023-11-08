@@ -25,20 +25,23 @@ theme:
       toggle:
         icon: material/toggle-switch
         name: Switch to light mode
+
+extra_css:
+  - stylesheets/note.css
   
-  markdown_extensions:
-    - footnotes
-    - admonition
-    - codehilite:
-        guess_lang: false
-    - toc:
-        permalink: true
-        separator: "_"
-#        toc_depth: 1
-    - mdx_truly_sane_lists
-    - pymdownx.superfences
-    - pymdownx.snippets:
-        base_path: docs-3/reuse/
+markdown_extensions:
+  - footnotes
+  - admonition
+  - codehilite:
+      guess_lang: false
+  - toc:
+      permalink: true
+      separator: "_"
+#   toc_depth: 1
+  - mdx_truly_sane_lists
+  - pymdownx.superfences
+  - pymdownx.snippets:
+      base_path: docs-3/reuse/
 
 nav:
   - Home: README.md
